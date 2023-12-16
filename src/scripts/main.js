@@ -1,8 +1,13 @@
 import { Router } from "@wearearchangel/handcrafted";
+import { Home } from "../pages/Home";
 
 Router({
   home: {
-    path: "/",
-    template: "Hello World"
-  }
+    path: '/',
+    async template (props) {
+      return `
+        ${await Home(props)}
+      `
+    },
+  },
 });
