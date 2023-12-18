@@ -25,10 +25,10 @@ export function Hero (props) {
             </div>
 
             <div class="carousel__side">
-                <div class="Carousel__sidebanner-1">  
+                <div class="Carousel__sidebanner">  
                 </div>
 
-                <div class="Carousel__sidebanner-2">   
+                <div class="Carousel__sidebanner">   
                 </div>
             </div>
 
