@@ -1,0 +1,34 @@
+.product-container {
+  width: 300px; /* Adjust the width as needed */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product_card {
+  padding: 16px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-title {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.product-description {
+  color: #555;
+  margin-top: 8px;
+}
+
+.product-price {
+  color: #e44d26; /* Apple's official color */
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 10px;
+}
