@@ -2,12 +2,11 @@
     padding: 20px;
 }
 
-.cartCard__item {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    border-radius: 8px;
-    padding: 10px;
+.couponCard__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .cartCard__item > div:first-child {
@@ -35,9 +34,11 @@
     flex-wrap: wrap;
 }
 
-.cartCard__images {
+.couponCard__images {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }
 
 .cartCard__content > p {
