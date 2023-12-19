@@ -1,0 +1,97 @@
+.orderSummary__container {
+    background-color: rgba(235, 240, 252, 1);
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.summary__top {
+    padding-bottom: 80px;
+    border-bottom: 2px solid rgba(64, 69, 83, 0.3);
+}
+
+.summary__title {
+    padding-bottom: 10px;
+}
+
+.summary__title h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.summary__title input {
+    padding: 5px;
+    background: white;
+    border-radius: 3px;
+    border: 2px solid rgba(64, 69, 83, 0.3);
+}
+
+.summary__input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#applyButton {
+    padding: 5px 12px;
+    border-radius: 3px;
+    border: 1px solid rgba(56, 102, 223, 1);
+    background-color: rgba(56, 102, 223, 1);
+    text-transform: uppercase;
+    color: white;
+}
+
+.summary__subtotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    padding-bottom: 20px;
+    font-size: 18px;
+}
+
+.summary__shipping {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+}
+
+.summary__shipping h3 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.summary__shipping p {
+    font-size: 12px;
+}
+
+.bottom__icons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.bottom__price {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.bottom__button {
+    background-color: white;
+    font-size: 12px;
+}
+
+.bottom__button button {
+    padding: 5px 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background: rgba(56, 102, 223, 1);
+    border: none;
+    border-radius: 3.5px;
+}
