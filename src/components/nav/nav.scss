@@ -32,10 +32,7 @@
     background-color: var(--color-type-1);
     border-radius: 3.289px;
     height: 40px;
-}
-
-.Nav__button img {
-    filter: invert(1);
+    padding: 0 10px;
 }
 
 input[type="text"] {
@@ -69,6 +66,10 @@ input[type="text"] {
 
 .Category__links li {
     padding: 10px;
+}
+
+.Category__links li a:hover {
+    color: var(--color-type-6);
 }
 
 .all {

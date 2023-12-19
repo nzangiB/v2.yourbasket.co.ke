@@ -1,0 +1,10 @@
+.recommended__text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recommended__text a {
+    margin-right: 30px;
+    color: var(--color-type-6);
+}

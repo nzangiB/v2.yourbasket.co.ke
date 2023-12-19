@@ -14,6 +14,10 @@
     padding: 5px 10px;
 }
 
+.Hero__nav li a:hover {
+    color: var(--color-type-6);
+}
+
 #main {
     display: flex;
     align-items: center;
@@ -35,7 +39,7 @@
     background-size: cover;
     background-position: center;
     width: 850px;
-    height: 366px;
+    height: 390px;
     border-radius: 5px;
     margin: 10px;
 }
@@ -53,7 +57,7 @@
     background-size: cover;
     background-position: center;
     width: 236px;
-    height: 176px;
+    height: 190px;
     border-radius: 5px;
     margin-bottom: 10px;
 }

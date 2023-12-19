@@ -5,31 +5,43 @@
 }
 
 .Categories__title {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 20px;
+    font-weight: 700;
 }
 
 .Categories__arrows {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    flex-direction: row;
 }
 
+.Categories__arrows img {
+    margin-right: 10px;
+}
+
+// TODO: change to grid
 .Categories__gallery {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
+    width: 100%;
 }
 
 .gallery__item {
+    width: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 10px;
-    font-size: var(--font-size-1);
+    font-size: 14px;
+    text-align: center;
 }
 
 .gallery__image {

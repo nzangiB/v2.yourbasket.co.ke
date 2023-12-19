@@ -1,0 +1,60 @@
+.featured__title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    width: 100%;
+    margin: 0 20px;
+    background-color: var(--color-type-5);
+}
+
+.featured__gallery {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.featured__item {
+    position: relative;
+}
+
+#samsung {
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.featured__image {
+    background-image: url('../../assets/images/cart.png'); 
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    width: 1300px;
+    height: 228px;
+    margin: 20px 40px;
+}
+
+.featured__text {
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.text__item {
+    padding: 20px 0;
+}
+
+.text__item h3 {
+    font-size: var(--font-size-3);
+    font-weight: bold;
+    padding: 20px 0;
+}

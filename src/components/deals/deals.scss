@@ -1,0 +1,34 @@
+.Deals__container {
+    padding: 20px;
+}
+
+.Deals__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.Deals__time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Deals__time h3 {
+    padding-right: 20px;
+}
+
+.Deals__text {
+    padding: 0px 25px;
+    background: none;
+    background-color: var(--color-type-8);
+    border-radius: 99em;
+    border: none;
+    color: var(--color-type-4);
+}
+
+.Deals__time button {
+    background-color: var(--color-type-6);
+}
+

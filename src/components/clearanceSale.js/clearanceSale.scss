@@ -1,0 +1,19 @@
+.clearance__container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--color-type-7);
+  }
+  
+.clearance__card {
+  padding: 16px;
+}
+
+.clearance__image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+  
