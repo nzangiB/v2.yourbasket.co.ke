@@ -1,6 +1,6 @@
 .productInfo__container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 }
 
@@ -9,6 +9,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-right: 10px;
+}
+
+.productpage__content {
+    padding: 20px;
 }
 
 .product__gallery {
@@ -63,4 +68,21 @@
 .productpage__logos {
     padding: 20px;
     background-color: rgba(235, 240, 252, 1);
+}
+
+.productpage__offers {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.offers__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.offers__content img {
+    margin-right: 10px;
 }

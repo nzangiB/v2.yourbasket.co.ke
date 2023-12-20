@@ -2,6 +2,7 @@ import { Nav } from '../components/nav/nav';
 import { Footer } from '../components/footer/footer';
 import { productInfo } from '../components/productInfo/productInfo';
 import { moreDeals } from '../components/moreDeals/moreDeals';
+import { Signup } from '../components/signup/signup';
 
 import './productPage.scss';
 
@@ -11,6 +12,7 @@ export function productPage (props) {
       ${Nav()}
       ${productInfo()}
       ${moreDeals()}
+      ${Signup()}
       ${Footer()}
     </div>
     `;

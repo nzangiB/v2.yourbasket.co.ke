@@ -6,12 +6,13 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 10px;
-    border-radius: 8px;
     padding: 10px;
+    border-radius: 4px;
+    background-color: white;
 }
 
 .cartCard__item > div:first-child {
-    grid-column: span 3;
+    grid-column: span 2;
 }
 
 .item__title {

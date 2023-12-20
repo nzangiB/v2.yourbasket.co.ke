@@ -100,7 +100,7 @@ export function productInfo (props) {
 
             <div class="productpage__offers">
                 <div class="offers__content">
-                    <img src="${Buy} alt="card icon">
+                    <img src="${Buy}" alt="cart icon">
                     <p>7 other offers from other sellers</p>
                 </div> 
                 <a href="#">View All Offers</a>
