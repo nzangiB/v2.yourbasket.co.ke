@@ -1,5 +1,6 @@
 .Nav {
     width: 100%;
+    background: white;
 }
 
 .Nav__container {
@@ -55,7 +56,9 @@ input[type="text"] {
 .Categories__container {
     display: flex;
     align-items: flex-start;
+    justify-content: center;
     gap: 4px;
+    padding-bottom: 10px;
 }
 
 .Category__links {
@@ -65,7 +68,7 @@ input[type="text"] {
 }
 
 .Category__links li {
-    padding: 10px;
+    padding: 0 10px;
 }
 
 .Category__links li a:hover {

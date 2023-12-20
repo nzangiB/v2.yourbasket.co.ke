@@ -4,9 +4,9 @@ import { Signup } from '../../components/signup/signup';
 import { orderCard } from '../../components/orderCard/orderCard';
 import { Footer } from '../../components/footer/footer';
 
-import './checkout.scss';
+import './checkoutAddress.scss';
 
-export function Checkout (props) {
+export function CheckoutAddress (props) {
     return `
     <div class="container productPage__container">
       ${Nav()}

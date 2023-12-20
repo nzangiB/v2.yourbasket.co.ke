@@ -4,6 +4,7 @@ import { productPage } from "../pages/productPage";
 import { Cart } from "../pages/cart/cart";
 import { CartCoupon } from "../pages/cart/cartCoupon";
 import { Checkout } from "../pages/checkout/checkout";
+import { CheckoutAddress } from "../pages/checkout/checkoutAddress";
 
 Router({
   home: {
@@ -47,6 +48,15 @@ Router({
     async template (props) {
       return `
         ${await Checkout(props)}
+      `
+    },
+  },
+
+  checkoutAddressRoute: {
+    path: '/checkoutaddress',
+    async template (props) {
+      return `
+        ${await CheckoutAddress(props)}
       `
     },
   },
