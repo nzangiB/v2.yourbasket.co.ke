@@ -6,6 +6,10 @@ import { CartCoupon } from "../pages/cart/cartCoupon";
 import { Checkout } from "../pages/checkout/checkout";
 import { CheckoutAddress } from "../pages/checkout/checkoutAddress";
 import { CheckoutIpay } from "../pages/checkout/ipay/checkoutIpay";
+import { CheckoutMpesa } from "../pages/checkout/mpesa/checkoutMpesa";
+import { MpesaDelivery } from "../pages/checkout/mpesaDelivery/mpesaDelivery";
+import { partialPay } from "../pages/checkout/partialpay/partialPay";
+import { payLater } from "../pages/checkout/payLater/payLater";
 
 Router({
   home: {
@@ -67,6 +71,42 @@ Router({
     async template (props) {
       return `
         ${await CheckoutIpay(props)}
+      `
+    },
+  },
+
+  checkoutMpesaRoute: {
+    path: '/checkoutmpesa',
+    async template (props) {
+      return `
+        ${await CheckoutMpesa(props)}
+      `
+    },
+  },
+
+  MpesaDeliveryRoute: {
+    path: '/mpesadelivery',
+    async template (props) {
+      return `
+        ${await MpesaDelivery(props)}
+      `
+    },
+  },
+
+  partialPayRoute: {
+    path: '/partialpay',
+    async template (props) {
+      return `
+        ${await partialPay(props)}
+      `
+    },
+  },
+
+  payLaterRoute: {
+    path: '/paylater',
+    async template (props) {
+      return `
+        ${await payLater(props)}
       `
     },
   },

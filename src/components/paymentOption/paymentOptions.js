@@ -1,9 +1,10 @@
-import Check from "../../assets/images/productpage/icons/check.svg"
 import Greencheck from "../../assets/images/productpage/icons/green_check.svg"
 import Mastercard from "../../assets/images/productpage/icons/Mastercard.svg"
 import Airtel from "../../assets/images/productpage/icons/artboard.svg"
 import Mpesa from "../../assets/images/productpage/icons/image 3.svg"
 import Visa from "../../assets/images/productpage/icons/visa-logo.svg"
+import Blueright from "../../assets/images/productpage/icons/blue-right.svg"
+import Leftarrow from "../../assets/images/productpage/icons/left-arrow.svg"
 
 import "./paymentOptions.scss";
 
@@ -16,7 +17,10 @@ export function paymentOptions (props) {
                     <img src="${Greencheck}" alt="check icon">
                     <h3>1. Customer Address</h3>
                 </div>
-                <a href="#"><p>Edit</p></a>
+                <div class="Edit">
+                    <a href="#"><p>Edit</p></a>
+                    <img src="${Blueright}">
+                </div>
             </div>
         </div>
     </div>
@@ -26,9 +30,12 @@ export function paymentOptions (props) {
             <div class="orderCard__text paymentOptions__cardtext">
                 <div class="check-text">
                     <img src="${Greencheck}" alt="check icon">
-                    <h3>1. Customer Address</h3>
+                    <h3>2. Delivery Details</h3>
                 </div>
-                <a href="#"><p>Edit</p></a>
+                <div class="Edit">
+                    <a href="#"><p>Edit</p></a>
+                    <img src="${Blueright}">
+                </div>
             </div>
         </div>
     </div>
@@ -94,7 +101,7 @@ export function paymentOptions (props) {
             </div>
             <div class="type__content">
                 <h3>We accept all major cards</h3>
-                <p>
+                <p class="content__para">
                     You will be redirected to the iPay
                     platform to complete your purchase.
                     Ensure your payment information is
@@ -119,6 +126,7 @@ export function paymentOptions (props) {
                 CONFIRM PAYMENT METHOD
             </button>
         </div>
+        <button class="bottom__button1"><span><img src="${Leftarrow}"></span>Back to shopping</button>
     </div>
   `;
 }
