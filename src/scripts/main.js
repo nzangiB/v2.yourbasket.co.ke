@@ -10,6 +10,7 @@ import { CheckoutMpesa } from "../pages/checkout/mpesa/checkoutMpesa";
 import { MpesaDelivery } from "../pages/checkout/mpesaDelivery/mpesaDelivery";
 import { partialPay } from "../pages/checkout/partialpay/partialPay";
 import { payLater } from "../pages/checkout/payLater/payLater";
+import { checkoutEdit } from "../pages/checkout/checkoutEdit/checkoutEdit";
 
 Router({
   home: {
@@ -110,4 +111,23 @@ Router({
       `
     },
   },
+
+  checkoutEditRoute: {
+    path: '/checkoutedit',
+    async template (props) {
+      return `
+        ${await checkoutEdit(props)}
+      `
+    },
+  },
+
+  checkoutDisabledRoute: {
+    path: '/checkoutdisabled',
+    async template (props) {
+      return `
+        ${await checkoutDisabled(props)}
+      `
+    },
+  },
+
 });
