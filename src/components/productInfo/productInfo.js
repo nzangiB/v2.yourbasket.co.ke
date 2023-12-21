@@ -18,6 +18,10 @@ import Mpesa from "../../assets/images/productpage/icons/image 3.svg"
 import Airtel from "../../assets/images/productpage/icons/artboard.svg"
 import Buy from "../../assets/images/productpage/icons/Buy.svg"
 
+import Express from "../../assets/images/productpage/icons/express_red_logo.svg"
+import QuestionMark from "../../assets/images/productpage/icons/question_mark_icon.svg"
+import Delivery from "../../assets/images/productpage/icons/delivery_icon.svg"
+
 
 import './productInfo.scss';
 
@@ -106,6 +110,62 @@ export function productInfo (props) {
                 <a href="#">View All Offers</a>
             </div>
 
+        </div>
+
+        <div class="productInfo__delivery">
+            <div class="delivery__content">
+                <h3>DELIVERY &amp; RETURNS</h3>
+                <div class="delivery__info">
+                    <img src="${Express}" alt="express logo">
+                    <p>Express delivery in main cities & towns.<span><img src="${QuestionMark}"></span></p>
+                </div>
+                <div class="delivery__inputs">
+                    <h3>Select delivery options</h3>
+                    <label for="generalLocation"></label>
+                    <input type="text" id="generalLocation" name="generalLocation" placeholder="Nairobi">
+
+                    <label for="specificLocation"></label>
+                    <input type="text" id="specificLocation" name="specificLocation" placeholder="Roysambu/Zimmerman">
+                </div>
+
+                <div class="delivery__policy">
+                    <div class="policy__item">
+                        <img src="${Delivery}" alt="truck icon">
+                        <div class="policy__text">
+                            <h3>Door Delivery</h3>
+                            <p>Delivery fee of KSH 450 (free delivery if order above KSH 10,000)</p>
+                        </div>
+                        <a href="#">Learn More</a>
+                    </div>
+
+                    <div class="policy__item">
+                        <img src="${Delivery}" alt="truck icon">
+                        <div class="policy__text">
+                            <h3>Door Delivery</h3>
+                            <p>Delivery fee of KSH 450 (free delivery if order above KSH 10,000)</p>
+                        </div>
+                        <a href="#">Learn More</a>
+                    </div>
+
+                    <div class="policy__item">
+                        <img src="${Delivery}" alt="truck icon">
+                        <div class="policy__text">
+                            <h3>Door Delivery</h3>
+                            <p>Delivery fee of KSH 450 (free delivery if order above KSH 10,000)</p>
+                        </div>
+                        <a href="#">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="delivery__sell">
+                    <p>How does one sell?</p>
+                    <button>Sell on YourBasket</button>
+                </div>
+
+                <div>
+
+                </div>
+            </div>
         </div>
 
     </div>

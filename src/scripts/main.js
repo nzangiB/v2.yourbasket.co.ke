@@ -1,6 +1,6 @@
 import { Router } from "@wearearchangel/handcrafted";
 import { Home } from "../pages/Home";
-import { productPage } from "../pages/productPage";
+import { productPage } from "../pages/productPage/productPage";
 import { Cart } from "../pages/cart/cart";
 import { CartCoupon } from "../pages/cart/cartCoupon";
 import { Checkout } from "../pages/checkout/checkout";
