@@ -1,0 +1,5 @@
+.delivery__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-gap: 10px
+}

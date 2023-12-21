@@ -21,6 +21,10 @@ import Buy from "../../assets/images/productpage/icons/Buy.svg"
 import Express from "../../assets/images/productpage/icons/express_red_logo.svg"
 import QuestionMark from "../../assets/images/productpage/icons/question_mark_icon.svg"
 import Delivery from "../../assets/images/productpage/icons/delivery_icon.svg"
+import Discount from "../../assets/images/productpage/icons/Discount.svg"
+
+import Seller from "../../assets/images/productpage/Seller.png"
+import Rate from "../../assets/images/productpage/icons/Rate.svg"
 
 
 import './productInfo.scss';
@@ -30,7 +34,7 @@ export function productInfo (props) {
     <div class="productInfo__container">
 
         <div class="productInfo__images">
-            <div class="image__container">
+            <div class="image__container image__container__main">
                 <img src="${(productImage)}" alt>
             </div>
 
@@ -69,14 +73,14 @@ export function productInfo (props) {
                     XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge-Onyx Gray Black 128 GB
                 </h1>
                 <div class="productpage__rating">
-                    <h3>Brand: Xiaomi | See more from Xiaomi </h3>
+                    <h3>Brand: <span>Xiaomi | See more from Xiaomi</span></h3>
                     <img src="${Rating}" alt="">
                 </div>
             </div>
 
             <div class="productpage__saving productpage__border">
-                <p>Was: <span>KSH 30,000</span></p>
-                <p>Now: <span>KSH 25,999</span> <span>inclusive of VAT</span></p>
+                <h3>Was: <span>KSH 30,000</span></h3>
+                <p>Now: <span>KSH 25,999</span> inclusive of VAT</p>
                 <img src="${Save13}" alt="save icon">
             </div>
 
@@ -155,6 +159,36 @@ export function productInfo (props) {
                         </div>
                         <a href="#">Learn More</a>
                     </div>
+                </div>
+
+                <div class="delivery__ratings">
+                    <div class="delivery__ImageSeller">
+
+                        <img src="${Seller}" alt="seller image">
+
+                        <div class="seller__info">
+                            <h3>Sold by <a href="#">COMPLAND SHOP</a></h3>
+                            <div>
+                                <img src=${Rate}>
+                                <h3>Positive Reviews</h3>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="seller__ratings">
+                        <div class="seller__ratings__item">
+                            <img src="${Discount}"><p>Order fufillment: Good</p>
+                        </div>
+
+                        <div class="seller__ratings__item">
+                            <img src="${Discount}"><p>Quality score: Good</p>
+                        </div>
+
+                        <div class="seller__ratings__item">
+                            <img src="${Discount}"><p>Customer rating: Good</p>
+                        </div>
+                    </div>  
                 </div>
 
                 <div class="delivery__sell">

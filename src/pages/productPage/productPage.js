@@ -5,6 +5,8 @@ import { moreDeals } from '../../components/moreDeals/moreDeals';
 import { Signup } from '../../components/signup/signup';
 import { Advert } from '../../components/advert/advert';
 
+import { productPageModal } from '../../components/modals/productPageModal/productPageModal';
+
 import './productPage.scss';
 
 export function productPage (props) {
@@ -12,6 +14,7 @@ export function productPage (props) {
     <div class="container productPage__container">
       ${Nav()}
       ${productInfo()}
+      <!--${productPageModal()}-->
       ${moreDeals()}
       ${Advert()}
       ${Signup()}
