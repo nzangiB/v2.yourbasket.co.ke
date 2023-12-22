@@ -57,11 +57,11 @@ export function checkoutDelivery (props) {
                                         <input id="IpayRadio" type="radio" name="Payment" value="Pay now with Ipay">
                                         Door Delivery
                                     </label>
-                                    <p>Delivery between Aug 10 and Aug 17(from 350 KES)</p>
+                                    <p>Delivery between <span>Aug 10 and Aug 17</span> (from 350 KES)</p>
                                 </div>
                                 <div class="deliveryGallery__text">
-                                    <p>Shipment 1/3</p>
-                                    <p>Fulfilled by YourBasket</p>
+                                    <h3>Shipment 1/3</h3>
+                                    <h3>Fulfilled by YourBasket</h3>
                                 </div>
                             </div>
 
@@ -71,16 +71,60 @@ export function checkoutDelivery (props) {
                                         <p>Delivery scheduled for Aug 11</p>
                                     </div>
 
-                                    <div>
+                                    <div class="deliveryGalleryImage">
                                         <img src="${CartImage}" alt="phone">
-                                        <div>
-                                            <p>width: 341px
-                                            height: 14px
-                                            </p>
-                                            <p>QTY: 1</p>
+                                        <div class="GalleryImage__content">
+                                            <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
+                                            <h3>QTY: 1</h3>
                                         </div>
                                     </div>
 
+                                </div>
+                                <div class="deliveryShipment__text">
+                                    <h3>Shipment 2/3</h3>
+                                    <h3>Fulfilled by YourBasket</h3>
+                                </div>
+                            </div>
+
+                            <div class="devliveryGallery__item">
+                                <div class="deliveryGallery__content">
+                                    <div class="deliveryGallery__date">
+                                        <p>Delivery scheduled for Aug 11</p>
+                                    </div>
+
+                                    <div class="deliveryGalleryImage">
+                                        <img src="${CartImage}" alt="phone">
+                                        <div class="GalleryImage__content">
+                                            <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
+                                            <h3>QTY: 1</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="deliveryShipment__text">
+                                    <h3>Shipment 2/3</h3>
+                                    <h3>Fulfilled by YourBasket</h3>
+                                </div>
+                            </div>
+
+                            <div class="devliveryGallery__item">
+                                <div class="deliveryGallery__content">
+                                    <div class="deliveryGallery__date">
+                                        <p>Delivery scheduled for Aug 11</p>
+                                    </div>
+
+                                    <div class="deliveryGalleryImage">
+                                        <img src="${CartImage}" alt="phone">
+                                        <div class="GalleryImage__content">
+                                            <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
+                                            <h3>QTY: 1</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="deliveryShipment__text">
+                                    <h3>Shipment 2/3</h3>
+                                    <h3>Fulfilled by YourBasket</h3>
                                 </div>
                             </div>
                         </div>
@@ -92,11 +136,11 @@ export function checkoutDelivery (props) {
                                         <input id="IpayRadio" type="radio" name="Payment" value="Pay now with Ipay">
                                         Door Delivery
                                     </label>
-                                    <p>Delivery between Aug 10 and Aug 17(from 350 KES)</p>
+                                    <p>Delivery between <span>Aug 10 and Aug 17</span> (from 350 KES)</p> 
                                 </div>
                                 <div class="deliveryGallery__text">
-                                    <p>Shipment 1/3</p>
-                                    <p>Fulfilled by YourBasket</p>
+                                    <h3>Shipment 1/3</h3>
+                                    <h3>Fulfilled by YourBasket</h3>
                                 </div>
                             </div>
 
@@ -106,18 +150,64 @@ export function checkoutDelivery (props) {
                                         <p>Delivery scheduled for Aug 11</p>
                                     </div>
 
-                                    <div>
+                                    <div class="deliveryGalleryImage">
                                         <img src="${CartImage}" alt="phone">
-                                        <div>
-                                            <p>width: 341px
-                                            height: 14px
-                                            </p>
-                                            <p>QTY: 1</p>
+                                        <div class="GalleryImage__content">
+                                            <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
+                                            <h3>QTY: 1</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="deliveryShipment__text">
+                                    <h3>Shipment 2/3</h3>
+                                    <h3>Fulfilled by YourBasket</h3>
+                                </div>
+                                
+                            </div>
+
+                            <div class="devliveryGallery__item">
+                                <div class="deliveryGallery__content">
+                                    <div class="deliveryGallery__date">
+                                        <p>Delivery scheduled for Aug 11</p>
+                                    </div>
+
+                                    <div class="deliveryGalleryImage">
+                                        <img src="${CartImage}" alt="phone">
+                                        <div class="GalleryImage__content">
+                                            <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
+                                            <h3>QTY: 1</h3>
                                         </div>
                                     </div>
 
                                 </div>
+                                <div class="deliveryShipment__text">
+                                    <h3>Shipment 2/3</h3>
+                                    <h3>Fulfilled by YourBasket</h3>
+                                </div>
                             </div>
+
+                            <div class="devliveryGallery__item">
+                                <div class="deliveryGallery__content">
+                                    <div class="deliveryGallery__date">
+                                        <p>Delivery scheduled for Aug 11</p>
+                                    </div>
+
+                                    <div class="deliveryGalleryImage">
+                                        <img src="${CartImage}" alt="phone">
+                                        <div class="GalleryImage__content">
+                                            <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
+                                            <h3>QTY: 1</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="deliveryShipment__text">
+                                    <h3>Shipment 2/3</h3>
+                                    <h3>Fulfilled by YourBasket</h3>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>                

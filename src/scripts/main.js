@@ -12,6 +12,7 @@ import { partialPay } from "../pages/checkout/partialpay/partialPay";
 import { payLater } from "../pages/checkout/payLater/payLater";
 import { checkoutEdit } from "../pages/checkout/checkoutEdit/checkoutEdit";
 import { checkoutDelivery } from "../pages/checkout/checkoutDelivery/checkoutDelivery";
+import { checkoutDisabled } from "../pages/checkout/checkoutDisabled/checkoutDisabled"
 
 Router({
   home: {

@@ -39,15 +39,15 @@ export function shippingSummary (props) {
                     <button>CHECKOUT</button>
                 </div>
             </div>
-        </div>
 
-        <div class="shipping__terms">
-            <p>By continuing, you are automatically accepting the <a href="#">Terms & Conditions</a></p>
-            <div class="shipping__text">
-                <img src="${Tick}" alt="">
-                <p>Subscribe for exclusive e-mail offers and discounts.</p>
+            <div class="shipping__terms">
+                <p>By continuing, you are automatically accepting the <a href="#">Terms & Conditions</a></p>
+                <div class="shipping__text">
+                    <img src="${Tick}" alt="">
+                    <p>Subscribe for exclusive e-mail offers and discounts.</p>
+                </div>
             </div>
-        </div>
+        </div> 
     </div>    
     
     `;
