@@ -1,16 +1,16 @@
-import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
-import Mpesa from "../../../assets/images/productpage/icons/image 3.svg"
-import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
-import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from '../../../../components/nav/nav';
+import { shippingSummary } from '../../../../components/shippingSummary/shippingSummary';
+import { Signup } from '../../../../components/signup/signup';
+import Greencheck from "../../../../assets/images/productpage/icons/green_check.svg"
+import Mpesa from "../../../../assets/images/productpage/icons/image 3.svg"
+import Blueright from "../../../../assets/images/productpage/icons/blue-right.svg"
+import Leftarrow from "../../../../assets/images/productpage/icons/left-arrow.svg"
+import { Footer } from '../../../../components/footer/footer';
 
 
-import './payLater.scss';
+import './checkoutWithMpesa.scss';
 
-export function payLater (props) {
+export function CheckoutWithMpesa (props) {
     return `
             <div class="container productPage__container">
             ${Nav()}
@@ -106,16 +106,17 @@ export function payLater (props) {
                 </div>
                 <div class="paymentOptions__type">
                     <div class="type__title">
-                        <h3>Buy Now, Pay Later With Aspira<h3>
+                        <h3>Pay with Mpesa<h3>
                     </div>
                     <div class="type__content">
-                        <h3>Flexible Payments with Aspira</h3> 
+                        <h3>Pay cashless with Mpesa</h3>
                         <p>
-                            YourBasket is offering the option 
-                            to give you flexibility in your spending.
-                            Simply click checkout and our agents will
-                            contact you with more details on your order.
-                            Prices might change when paying with Aspira.
+                            You will be redirected to the iPay
+                            platform to complete your purchase.
+                            Ensure your payment information is
+                            up to date and that you have the 
+                            necessary funds. Please note transaction
+                            costs apply.
                         </p>
                         <div class="type__contentcontainer">
                             <div></div>

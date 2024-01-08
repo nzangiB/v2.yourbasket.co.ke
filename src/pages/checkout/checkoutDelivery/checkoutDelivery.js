@@ -11,7 +11,7 @@ import CartImage from "../../../assets/images/productpage/cartImage.png"
 
 import './checkoutDelivery.scss';
 
-export function checkoutDelivery (props) {
+export function CheckoutDelivery (props) {
     return `
             <div class="container productPage__container">
             ${Nav()}

@@ -1,8 +1,8 @@
-import { Nav } from '../../components/nav/nav';
-import { couponCard } from '../../components/cartCard/couponCard';
-import { orderSummary } from '../../components/orderSummary/orderSummary';
-import { Signup } from '../../components/signup/signup';
-import { Footer } from '../../components/footer/footer';
+import { Nav } from '../../../components/nav/nav';
+import { couponCard } from '../../../components/cartCard/couponCard';
+import { orderSummary } from '../../../components/orderSummary/orderSummary';
+import { Signup } from '../../../components/signup/signup';
+import { Footer } from '../../../components/footer/footer';
 
 import './cartCoupon.scss';
 

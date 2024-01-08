@@ -1,16 +1,16 @@
-import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
-import Mpesa from "../../../assets/images/productpage/icons/image 3.svg"
-import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
-import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from '../../../../components/nav/nav';
+import { shippingSummary } from '../../../../components/shippingSummary/shippingSummary';
+import { Signup } from '../../../../components/signup/signup';
+import Greencheck from "../../../../assets/images/productpage/icons/green_check.svg"
+import Mpesa from "../../../../assets/images/productpage/icons/image 3.svg"
+import Blueright from "../../../../assets/images/productpage/icons/blue-right.svg"
+import Leftarrow from "../../../../assets/images/productpage/icons/left-arrow.svg"
+import { Footer } from '../../../../components/footer/footer';
 
 
-import './partialPay.scss';
+import './checkoutWithMpesa.scss';
 
-export function partialPay (props) {
+export function CheckoutWithMpesa (props) {
     return `
             <div class="container productPage__container">
             ${Nav()}
@@ -106,13 +106,17 @@ export function partialPay (props) {
                 </div>
                 <div class="paymentOptions__type">
                     <div class="type__title">
-                        <h3>Pay Partially, Finalize on Delivery or Pickup<h3>
+                        <h3>Pay With MPESA on Delivery<h3>
                     </div>
                     <div class="type__content">
-                        <h3>Pay now using MPESA.</h3>
+                        <h3>Pay using MPESA at your doorstep or pick-up station.</h3>
                         <p>
-                            Begin with a 30% down payment at KSH 23,400.
-                            Finalize your payment of 54,597 upon receiving your order.
+                            Our authorized Delivery Agent will
+                            prompt you for mobile money payment
+                            to save your time. Always verify the
+                            identity of the Delivery Agent to match
+                                the Delivery Notification messages from
+                                YourBasket before making any payment.
                         </p>
                         <div class="type__contentcontainer">
                             <div></div>

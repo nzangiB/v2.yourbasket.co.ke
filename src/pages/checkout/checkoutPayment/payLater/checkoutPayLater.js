@@ -1,16 +1,16 @@
-import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
-import Mpesa from "../../../assets/images/productpage/icons/image 3.svg"
-import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
-import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from '../../../../components/nav/nav';
+import { shippingSummary } from '../../../../components/shippingSummary/shippingSummary';
+import { Signup } from '../../../../components/signup/signup';
+import Greencheck from "../../../../assets/images/productpage/icons/green_check.svg"
+import Mpesa from "../../../../assets/images/productpage/icons/image 3.svg"
+import Blueright from "../../../../assets/images/productpage/icons/blue-right.svg"
+import Leftarrow from "../../../../assets/images/productpage/icons/left-arrow.svg"
+import { Footer } from '../../../../components/footer/footer';
 
 
-import './MpesaDelivery.scss';
+import './checkoutPayLater.scss';
 
-export function MpesaDelivery (props) {
+export function CheckoutPayLater (props) {
     return `
             <div class="container productPage__container">
             ${Nav()}
@@ -106,17 +106,16 @@ export function MpesaDelivery (props) {
                 </div>
                 <div class="paymentOptions__type">
                     <div class="type__title">
-                        <h3>Pay With MPESA on Delivery<h3>
+                        <h3>Buy Now, Pay Later With Aspira<h3>
                     </div>
                     <div class="type__content">
-                        <h3>Pay using MPESA at your doorstep or pick-up station.</h3>
+                        <h3>Flexible Payments with Aspira</h3> 
                         <p>
-                            Our authorized Delivery Agent will
-                            prompt you for mobile money payment
-                            to save your time. Always verify the
-                            identity of the Delivery Agent to match
-                                the Delivery Notification messages from
-                                YourBasket before making any payment.
+                            YourBasket is offering the option 
+                            to give you flexibility in your spending.
+                            Simply click checkout and our agents will
+                            contact you with more details on your order.
+                            Prices might change when paying with Aspira.
                         </p>
                         <div class="type__contentcontainer">
                             <div></div>

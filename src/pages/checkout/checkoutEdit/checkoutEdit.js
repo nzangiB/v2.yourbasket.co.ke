@@ -9,7 +9,7 @@ import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
 
 import './checkoutEdit.scss';
 
-export function checkoutEdit (props) {
+export function CheckoutEdit (props) {
     return `
     <div class="container productPage__container">
       ${Nav()}

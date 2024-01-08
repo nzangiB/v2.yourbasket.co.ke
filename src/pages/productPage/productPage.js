@@ -9,8 +9,11 @@ import { productPageModal } from '../../components/modals/productPageModal/produ
 
 import './productPage.scss';
 
-export function productPage (props) {
-    return `
+export function ProductPage (props) {
+  const { params } = props;
+  const id = params.id;
+
+  return `
     <div class="container productPage__container">
       ${Nav()}
       ${productInfo()}

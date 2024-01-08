@@ -1,16 +1,16 @@
-import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
-import Mpesa from "../../../assets/images/productpage/icons/image 3.svg"
-import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
-import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from '../../../../components/nav/nav';
+import { shippingSummary } from '../../../../components/shippingSummary/shippingSummary';
+import { Signup } from '../../../../components/signup/signup';
+import Greencheck from "../../../../assets/images/productpage/icons/green_check.svg"
+import Mpesa from "../../../../assets/images/productpage/icons/image 3.svg"
+import Blueright from "../../../../assets/images/productpage/icons/blue-right.svg"
+import Leftarrow from "../../../../assets/images/productpage/icons/left-arrow.svg"
+import { Footer } from '../../../../components/footer/footer';
 
 
-import './checkoutMpesa.scss';
+import './checkoutPayPartial.scss';
 
-export function CheckoutMpesa (props) {
+export function CheckoutPayPartial (props) {
     return `
             <div class="container productPage__container">
             ${Nav()}
@@ -106,17 +106,13 @@ export function CheckoutMpesa (props) {
                 </div>
                 <div class="paymentOptions__type">
                     <div class="type__title">
-                        <h3>Pay with Mpesa<h3>
+                        <h3>Pay Partially, Finalize on Delivery or Pickup<h3>
                     </div>
                     <div class="type__content">
-                        <h3>Pay cashless with Mpesa</h3>
+                        <h3>Pay now using MPESA.</h3>
                         <p>
-                            You will be redirected to the iPay
-                            platform to complete your purchase.
-                            Ensure your payment information is
-                            up to date and that you have the 
-                            necessary funds. Please note transaction
-                            costs apply.
+                            Begin with a 30% down payment at KSH 23,400.
+                            Finalize your payment of 54,597 upon receiving your order.
                         </p>
                         <div class="type__contentcontainer">
                             <div></div>

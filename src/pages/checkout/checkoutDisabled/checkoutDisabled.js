@@ -10,7 +10,7 @@ import GrayTick from "../../../assets/images/productpage/icons/Tick Square Disab
 
 import './checkoutDisabled.scss';
 
-export function checkoutDisabled (props) {
+export function CheckoutDisabled (props) {
     return `
     <div class="container productPage__container">
       ${Nav()}
