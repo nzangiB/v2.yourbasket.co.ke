@@ -1,6 +1,6 @@
 import { Nav } from '../../../components/Nav/Nav';
 import { couponCard } from '../../../components/Cards/CouponCard';
-import { orderSummary } from '../../../components/OrderSummary/OrderSummary';
+import { OrderSummary } from '../../../components/OrderSummary/OrderSummary';
 import { Signup } from '../../../components/Signup/Signup';
 import { Footer } from '../../../components/Footer/Footer';
 
@@ -19,7 +19,7 @@ export function CartCoupon (props) {
                 ${couponCard()}
                 ${couponCard()}
             </div>
-            ${orderSummary()}
+            ${OrderSummary()}
         </div>
         ${Signup()}
         ${Footer()}

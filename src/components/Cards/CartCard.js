@@ -7,7 +7,7 @@ import CartImage from "../../assets/images/productpage/cartImage.png"
 
 import './CartCard.scss';
 
-export function cartCard (props) {
+export function CartCard (props) {
     return `
     <div class="cartCard__container">
         <div class="cartCard__item">

@@ -1,7 +1,7 @@
 import Check from "../../assets/images/productpage/icons/check.svg"
 import './CustomerAddress.scss';
 
-export function customerAddress (props) {
+export function CustomerAddress (props) {
     return `
     <div class="customerAddress__container">
 

@@ -1,6 +1,6 @@
 import { Nav } from '../../../components/Nav/Nav';
-import { cartCard } from '../../../components/Cards/CartCard';
-import { orderSummary } from '../../../components/OrderSummary/OrderSummary';
+import { CartCard } from '../../../components/Cards/CartCard';
+import { OrderSummary } from '../../../components/OrderSummary/OrderSummary';
 import { Footer } from '../../../components/Footer/Footer';
 import { Signup } from '../../../components/Signup/Signup';
 
@@ -15,11 +15,11 @@ export function Cart (props) {
         </div>
         <div class="cart__content">
             <div>
-                ${cartCard()}
-                ${cartCard()}
-                ${cartCard()}
+                ${CartCard()}
+                ${CartCard()}
+                ${CartCard()}
             </div>
-            ${orderSummary()}
+            ${OrderSummary()}
         </div>
         ${Signup()}
         ${Footer()}

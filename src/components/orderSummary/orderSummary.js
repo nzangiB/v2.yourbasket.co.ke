@@ -1,7 +1,7 @@
 import ExpressRed from "../../assets/images/productpage/icons/express_red_logo.svg"
 import './OrderSummary.scss';
 
-export function orderSummary (props) {
+export function OrderSummary (props) {
     return `
     <div class="orderSummary__container">
 

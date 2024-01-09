@@ -1,6 +1,6 @@
 import { productCard } from '../ProductCard/ProductCard';
 
-import './moreDeals.scss';
+import './MoreDeals.scss';
 
 export function moreDeals (props) {
     return `

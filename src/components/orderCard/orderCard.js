@@ -1,7 +1,7 @@
 import Check from "../../assets/images/productpage/icons/check.svg"
 import './OrderCard.scss';
 
-export function orderCard (props) {
+export function OrderCard (props) {
     return `
     <div class="orderCard__container">
         <div class="orderCard__item">
