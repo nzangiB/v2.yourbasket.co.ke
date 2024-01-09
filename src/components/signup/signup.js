@@ -4,7 +4,7 @@ import Android from "../../assets/images/android.svg"
 import ios from "../../assets/images/ios.svg"
 import Creditcard from "../../assets/images/credit-card.svg"
 
-import './signup.scss';
+import './Signup.scss';
 
 export function Signup (props) {
     return `

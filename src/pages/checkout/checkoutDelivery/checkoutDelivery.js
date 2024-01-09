@@ -1,11 +1,11 @@
-import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
+import { Nav } from '../../../components/Nav/Nav';
+import { shippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
+import { Signup } from '../../../components/Signup/Signup';
 import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
 import Mpesa from "../../../assets/images/productpage/icons/image 3.svg"
 import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
 import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
-import { Footer } from '../../../components/footer/footer';
+import { Footer } from '../../../components/Footer/Footer';
 import CartImage from "../../../assets/images/productpage/cartImage.png"
 
 

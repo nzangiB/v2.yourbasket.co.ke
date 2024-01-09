@@ -1,4 +1,4 @@
-import './topcategories.scss';
+import './TopCategories.scss';
 import Rightarrow from "../../assets/icons/arrow_right_blue.svg"
 import Leftarrow from "../../assets/icons/arrow_left_dark.svg"
 import Galleryitem from "../../assets/images/gallery_item.jpg"

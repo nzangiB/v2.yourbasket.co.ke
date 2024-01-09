@@ -1,5 +1,5 @@
 import Check from "../../assets/images/productpage/icons/check.svg"
-import './customerAddress.scss';
+import './CustomerAddress.scss';
 
 export function customerAddress (props) {
     return `

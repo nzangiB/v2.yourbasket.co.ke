@@ -1,7 +1,7 @@
-import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from '../../../components/Nav/Nav';
+import { shippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
+import { Signup } from '../../../components/Signup/Signup';
+import { Footer } from '../../../components/Footer/Footer';
 import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
 import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
 import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"

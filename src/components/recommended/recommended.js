@@ -1,6 +1,6 @@
-import { productCard } from "../productCard/productCard";
+import { productCard } from "../ProductCard/ProductCard";
 import rightArrow from "../../assets/icons/Stroke_1.svg"
-import './recommended.scss'
+import './Recommended.scss'
 
 export function Recommended (props) {
     return `

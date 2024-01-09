@@ -1,7 +1,7 @@
 import clearance from "../../assets/images/clearanceSale.png";
-import "./clearanceSale.scss";
+import "./ClearanceSale.scss";
 
-export function clearanceSale(props) {
+export function ClearanceSale(props) {
     return `
       <div class="clearance">
         <div class="product-title">

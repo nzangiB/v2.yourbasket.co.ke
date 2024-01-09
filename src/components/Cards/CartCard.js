@@ -5,7 +5,7 @@ import Offer from "../../assets/images/productpage/icons/offer.svg"
 import Savings from "../../assets/images/productpage/icons/savings.svg"
 import CartImage from "../../assets/images/productpage/cartImage.png"
 
-import './cartCard.scss';
+import './CartCard.scss';
 
 export function cartCard (props) {
     return `

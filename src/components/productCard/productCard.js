@@ -5,7 +5,7 @@ import Rating from "../../assets/images/Rating.svg"
 import Coupon from "../../assets/images/Coupon.svg"
 import Standard from "../../assets/images/Standard.svg"
 import rightArrow from "../../assets/icons/Stroke_1.svg"
-import "./productCard.scss";
+import "./ProductCard.scss";
 
 export function productCard(props) {
   return `

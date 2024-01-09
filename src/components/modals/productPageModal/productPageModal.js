@@ -1,7 +1,7 @@
 import X from "../../../assets/images/productpage/icons/Multiplication sign.svg"
 import ProductImage from "../../../assets/images/productpage/galleryImage1.png"
 
-import "./productPageModal.scss";
+import "./ProductPageModal.scss";
 
 export function productPageModal (props) {
     return `

@@ -1,5 +1,5 @@
 import Check from "../../assets/images/productpage/icons/check.svg"
-import './orderCard.scss';
+import './OrderCard.scss';
 
 export function orderCard (props) {
     return `

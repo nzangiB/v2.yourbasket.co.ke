@@ -27,7 +27,7 @@ import Seller from "../../assets/images/productpage/Seller.png"
 import Rate from "../../assets/images/productpage/icons/Rate.svg"
 
 
-import './productInfo.scss';
+import './ProductInfo.scss';
 
 export function productInfo (props) {
     return `

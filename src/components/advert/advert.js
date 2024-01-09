@@ -1,6 +1,6 @@
 import Ad from "../../assets/images/productpage/ad.png"
 
-import './advert.scss';
+import './Advert.scss';
 
 export function Advert (props) {
     return `

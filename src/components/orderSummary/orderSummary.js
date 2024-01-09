@@ -1,5 +1,5 @@
 import ExpressRed from "../../assets/images/productpage/icons/express_red_logo.svg"
-import './orderSummary.scss';
+import './OrderSummary.scss';
 
 export function orderSummary (props) {
     return `

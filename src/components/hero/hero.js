@@ -1,6 +1,6 @@
 import RightArrow from "../../assets/icons/right_arrow.svg"
 
-import './hero.scss';
+import './Hero.scss';
 
 export function Hero (props) {
     return `

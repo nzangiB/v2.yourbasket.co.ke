@@ -4,7 +4,7 @@ import Profile from "../../assets/icons/profile.svg"
 import Cart from "../../assets/icons/cart_default.svg"
 import Customer from "../../assets/icons/customer_care.svg"
 import Hamburger from "../../assets/icons/hamburger_menu.svg"
-import './nav.scss';
+import './Nav.scss';
 
 export function Nav (props) {
     return `

@@ -10,7 +10,7 @@ import linkedin from "../../assets/icons/linkedin.svg"
 import instagram from "../../assets/icons/instagram.svg"
 
 
-import './footer.scss';
+import './Footer.scss';
 
 export function Footer (props) {
     return `

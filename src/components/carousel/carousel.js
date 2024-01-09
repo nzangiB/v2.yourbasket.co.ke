@@ -1,5 +1,5 @@
 
-import './carousel.scss';
+import './Carousel.scss';
 
 export function Carousel (props) {
     return `

@@ -1,4 +1,4 @@
-import { productCard } from '../productCard/productCard';
+import { productCard } from '../ProductCard/ProductCard';
 
 import './moreDeals.scss';
 

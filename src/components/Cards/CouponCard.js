@@ -8,7 +8,7 @@ import CartImage from "../../assets/images/productpage/cartImage.png"
 import button from "../../assets/images/productpage/icons/btn-basic.svg"
 import button2 from "../../assets/images/productpage/icons/btn-basic-2.svg"
 
-import './couponCard.scss';
+import './CouponCard.scss';
 
 export function couponCard (props) {
     return `

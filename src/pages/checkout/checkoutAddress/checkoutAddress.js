@@ -1,9 +1,9 @@
-import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import { orderCard } from '../../../components/orderCard/orderCard';
+import { Nav } from '../../../components/Nav/Nav';
+import { shippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
+import { Signup } from '../../../components/Signup/Signup';
+import { orderCard } from '../../../components/OrderCard/OrderCard';
 import { customerAddress } from '../../../components/customerAddress/customerAddress';
-import { Footer } from '../../../components/footer/footer';
+import { Footer } from '../../../components/Footer/Footer';
 
 import './checkoutAddress.scss';
 

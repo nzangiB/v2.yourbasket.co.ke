@@ -3,7 +3,7 @@ import Leftarrow from "../../assets/icons/arrow_left_dark.svg"
 import FeaturedImage from "../../assets/images/featured.png"
 import Samsung from "../../assets/images/samsung.svg"
 
-import './featured.scss';
+import './Featured.scss';
 
 export function Featured (props) {
     return `

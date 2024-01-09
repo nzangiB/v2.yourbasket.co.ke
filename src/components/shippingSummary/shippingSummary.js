@@ -1,5 +1,5 @@
 import Tick from "../../assets/images/productpage/icons/Tick Square.svg"
-import './shippingSummary.scss';
+import './ShippingSummary.scss';
 
 export function shippingSummary (props) {
     return `

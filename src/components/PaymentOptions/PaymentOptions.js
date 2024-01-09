@@ -6,7 +6,7 @@ import Visa from "../../assets/images/productpage/icons/visa-logo.svg"
 import Blueright from "../../assets/images/productpage/icons/blue-right.svg"
 import Leftarrow from "../../assets/images/productpage/icons/left-arrow.svg"
 
-import "./paymentOptions.scss";
+import "./PaymentOptions.scss";
 
 export function paymentOptions (props) {
   return `

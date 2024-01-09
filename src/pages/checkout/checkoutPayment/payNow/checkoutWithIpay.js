@@ -1,11 +1,11 @@
-import { Nav } from '../../../../components/nav/nav';
-import { shippingSummary } from '../../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../../components/signup/signup';
+import { Nav } from '../../../../components/Nav/Nav';
+import { shippingSummary } from '../../../../components/ShippingSummary/ShippingSummary';
+import { Signup } from '../../../../components/Signup/Signup';
 import Check from "../../../../assets/images/productpage/icons/check.svg";
-import { orderCard } from '../../../../components/orderCard/orderCard';
-import { paymentOptions } from '../../../../components/paymentOption/paymentOptions';
+import { orderCard } from '../../../../components/OrderCard/OrderCard';
+import { paymentOptions } from '../../../../components/PaymentOptions/PaymentOptions';
 import Leftarrow from "../../../../assets/images/productpage/icons/left-arrow.svg"
-import { Footer } from '../../../../components/footer/footer';
+import { Footer } from '../../../../components/Footer/Footer';
 
 import './checkoutWithIpay.scss';
 
