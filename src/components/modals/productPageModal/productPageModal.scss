@@ -1,12 +1,12 @@
 .productPageModal {
     padding: 20px;
     width: 800px;
-    border-bottom: 2px solid rgba(236, 236, 238, 1);
     position: absolute;
     top: 0;
     right: 0;
     border: 2px solid black;
-    background-color: rgba(235, 240, 252, 1); 
+    border-bottom: 2px solid rgba(236, 236, 238, 1);
+    background-color: rgba(235, 240, 252, 1);
     z-index: 998;
 }
 
@@ -33,7 +33,7 @@
 .modalImage__text {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -72,8 +72,7 @@
     border-radius: 5px;
     padding: 5px 0;
     flex: 1;
-    background: none;
-    background-color: rgba(56, 102, 223, 1);
+    background: rgba(56, 102, 223, 1) none;
     color: white;
     border: 1px solid rgba(56, 102, 223, 1);
     font-weight: bold;

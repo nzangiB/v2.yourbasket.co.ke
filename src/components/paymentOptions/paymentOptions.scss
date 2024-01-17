@@ -81,7 +81,7 @@
     color: var(--color-type-6);
 }
 
-.type__contentcontainer {
+.type__content-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,7 +109,7 @@
     font-weight: bolder;
 }
 
-.paymentOptions__cardtext {
+.paymentOptions__card-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,9 +122,8 @@
 }
 
 .check-text img {
-    margin: 0;
     padding: 0;
-    margin-right: 10px;
+    margin: 0 10px 0 0;
 }
 
 .Edit {
@@ -136,9 +135,8 @@
 }
 
 .Edit img {
-    margin: 0;
     padding: 0;
-    margin-left: 20px;
+    margin: 0 0 0 20px;
 }
 
 .bottom__button1 {
@@ -156,9 +154,8 @@
 }
 
 .bottom__button1 img {
-    margin: 0;
     padding: 0;
-    margin-right: 10px;
+    margin: 0 10px 0 0;
 }
 
 

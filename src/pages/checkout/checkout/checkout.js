@@ -1,5 +1,5 @@
 import { Nav } from '../../../components/Nav/Nav';
-import { shippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
+import { ShippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
 import { Signup } from '../../../components/Signup/Signup';
 import { OrderCard } from '../../../components/OrderCard/OrderCard';
 import { Footer } from '../../../components/Footer/Footer';
@@ -19,7 +19,7 @@ export function Checkout (props) {
                 ${OrderCard()}
                 ${OrderCard()}
             </div>
-            ${shippingSummary()}
+            ${ShippingSummary()}
         </div>
       ${Signup()}
       ${Footer()}

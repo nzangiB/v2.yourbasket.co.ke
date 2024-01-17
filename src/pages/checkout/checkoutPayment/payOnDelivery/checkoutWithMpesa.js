@@ -1,12 +1,12 @@
-import { Nav } from '../../../../components/Nav/Nav';
-import { shippingSummary } from '../../../../components/ShippingSummary/ShippingSummary';
-import { Signup } from '../../../../components/Signup/Signup';
-import Greencheck from "../../../../assets/images/productpage/icons/green_check.svg"
-import Mpesa from "../../../../assets/images/productpage/icons/image 3.svg"
-import Blueright from "../../../../assets/images/productpage/icons/blue-right.svg"
-import Leftarrow from "../../../../assets/images/productpage/icons/left-arrow.svg"
-import { Footer } from '../../../../components/Footer/Footer';
+import greenCheck from "../../../../assets/images/productpage/icons/green-check.svg"
+import mPesa from "../../../../assets/images/productpage/icons/m-pesa.svg"
+import blueRight from "../../../../assets/images/productpage/icons/blue-right.svg"
+import leftArrow from "../../../../assets/images/productpage/icons/left-arrow.svg"
 
+import { Nav } from '../../../../components/Nav/Nav';
+import { ShippingSummary } from '../../../../components/ShippingSummary/ShippingSummary';
+import { Signup } from '../../../../components/Signup/Signup';
+import { Footer } from '../../../../components/Footer/Footer';
 
 import './checkoutWithMpesa.scss';
 
@@ -21,14 +21,14 @@ export function CheckoutWithMpesa (props) {
                 <div class="bottom__content">
                 <div class="orderCard__container">
                 <div class="orderCard__item check-item">
-                    <div class="orderCard__text paymentOptions__cardtext">
+                    <div class="orderCard__text paymentOptions__card-text">
                         <div class="check-text">
-                            <img src="${Greencheck}" alt="check icon">
+                            <img src="${greenCheck}" alt="check icon">
                             <h3>1. Customer Address</h3>
                         </div>
                         <div class="Edit">
                             <a href="#"><p>Edit</p></a>
-                            <img src="${Blueright}">
+                            <img src="${blueRight}">
                         </div>
                     </div>
                 </div>
@@ -36,14 +36,14 @@ export function CheckoutWithMpesa (props) {
         
             <div class="orderCard__container">
                 <div class="orderCard__item check-item">
-                    <div class="orderCard__text paymentOptions__cardtext">
+                    <div class="orderCard__text paymentOptions__card-text">
                         <div class="check-text">
-                            <img src="${Greencheck}" alt="check icon">
+                            <img src="${greenCheck}" alt="check icon">
                             <h3>2. Delivery Details</h3>
                         </div>
                         <div class="Edit">
                             <a href="#"><p>Edit</p></a>
-                            <img src="${Blueright}">
+                            <img src="${blueRight}">
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export function CheckoutWithMpesa (props) {
             <div class="paymentOptions">
         
                 <div class="orderCard__text payment__title">
-                    <img src="${Greencheck}" alt="check icon">
+                    <img src="${greenCheck}" alt="check icon">
                     <h3>3. Payment Option</h3>
                 </div>
         
@@ -118,11 +118,11 @@ export function CheckoutWithMpesa (props) {
                                 the Delivery Notification messages from
                                 YourBasket before making any payment.
                         </p>
-                        <div class="type__contentcontainer">
+                        <div class="type__content-container">
                             <div></div>
                             <div class="type__icons">
                                 <p>We accept:</p>
-                                <img src="${Mpesa}" alt="mpesa logo">
+                                <img src="${mPesa}" alt="mpesa logo">
                             </div>
                         </div>
                     </div>                
@@ -131,10 +131,10 @@ export function CheckoutWithMpesa (props) {
                         CONFIRM PAYMENT METHOD
                     </button>
                 </div>
-                <button class="bottom__button1"><span><img src="${Leftarrow}"></span>Back to shopping</button>
+                <button class="bottom__button1"><span><img src="${leftArrow}"></span>Back to shopping</button>
             </div>
                 </div>
-                ${shippingSummary()}
+                ${ShippingSummary()}
             </div>
             
             ${Signup()}

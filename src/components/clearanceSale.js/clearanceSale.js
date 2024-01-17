@@ -1,4 +1,5 @@
-import clearance from "../../assets/images/clearanceSale.png";
+import clearance from "../../assets/images/clearance-sale.png";
+
 import "./ClearanceSale.scss";
 
 export function ClearanceSale(props) {
@@ -62,4 +63,4 @@ export function ClearanceSale(props) {
       </div>
     `;
   }
-  
+

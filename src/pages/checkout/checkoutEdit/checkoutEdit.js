@@ -1,10 +1,11 @@
+import blueRight from "../../../assets/images/productpage/icons/blue-right.svg"
+import greenCheck from "../../../assets/images/productpage/icons/green-check.svg"
+import leftArrow from "../../../assets/images/productpage/icons/left-arrow.svg"
+
 import { Nav } from '../../../components/Nav/Nav';
-import { shippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
+import { ShippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
 import { Signup } from '../../../components/Signup/Signup';
 import { Footer } from '../../../components/Footer/Footer';
-import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
-import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
-import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
 
 
 import './checkoutEdit.scss';
@@ -21,14 +22,14 @@ export function CheckoutEdit (props) {
                 
                 <div class="orderCard__container">
                     <div class="orderCard__item check-item edit__item">
-                        <div class="orderCard__text paymentOptions__cardtext">
+                        <div class="orderCard__text paymentOptions__card-text">
                             <div class="check-text">
-                                <img src="${Greencheck}" alt="check icon">
+                                <img src="${greenCheck}" alt="check icon">
                                 <h3>1. Customer Address</h3>
                             </div>
                             <div class="Edit">
                                 <a href="#"><p>Edit</p></a>
-                                <img src="${Blueright}">
+                                <img src="${blueRight}">
                             </div>
                         </div>
                     </div>
@@ -36,14 +37,14 @@ export function CheckoutEdit (props) {
 
                 <div class="orderCard__container">
                     <div class="orderCard__item check-item edit__item">
-                        <div class="orderCard__text paymentOptions__cardtext">
+                        <div class="orderCard__text paymentOptions__card-text">
                             <div class="check-text">
-                                <img src="${Greencheck}" alt="check icon">
+                                <img src="${greenCheck}" alt="check icon">
                                 <h3>2. Delivery Details</h3>
                             </div>
                             <div class="Edit">
                                 <a href="#"><p>Edit</p></a>
-                                <img src="${Blueright}">
+                                <img src="${blueRight}">
                             </div>
                         </div>
                     </div>
@@ -51,22 +52,22 @@ export function CheckoutEdit (props) {
 
                 <div class="orderCard__container">
                     <div class="orderCard__item check-item edit__item">
-                        <div class="orderCard__text paymentOptions__cardtext">
+                        <div class="orderCard__text paymentOptions__card-text">
                             <div class="check-text">
-                                <img src="${Greencheck}" alt="check icon">
+                                <img src="${greenCheck}" alt="check icon">
                                 <h3>3. Payment Option</h3>
                             </div>
                             <div class="Edit">
                                 <a href="#"><p>Edit</p></a>
-                                <img src="${Blueright}">
+                                <img src="${blueRight}">
                             </div>
                         </div>
                     </div>
-                    <button class="bottom__button1"><span><img src="${Leftarrow}"></span>Back to shopping</button>
+                    <button class="bottom__button1"><span><img src="${leftArrow}"></span>Back to shopping</button>
                 </div>
                 
             </div>
-            ${shippingSummary()}
+            ${ShippingSummary()}
         </div>
       ${Signup()}
       ${Footer()}

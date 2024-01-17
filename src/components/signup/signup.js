@@ -1,8 +1,8 @@
-import Email from "../../assets/images/emails.svg"
-import Logo from "../../assets/images/logo.svg"
-import Android from "../../assets/images/android.svg"
+import email from "../../assets/images/emails.svg"
+import logo from "../../assets/images/logo.svg"
+import android from "../../assets/images/android.svg"
 import ios from "../../assets/images/ios.svg"
-import Creditcard from "../../assets/images/credit-card.svg"
+import creditCard from "../../assets/images/credit-card.svg"
 
 import './Signup.scss';
 
@@ -23,7 +23,7 @@ export function Signup (props) {
             </div>
 
             <div class="field__image">
-                <img src="${Email}" alt="email illustration">
+                <img src="${email}" alt="email illustration">
             </div>
         </div>
 
@@ -32,7 +32,7 @@ export function Signup (props) {
             <div class="links__content_container"> 
                 <div class="links__content">
                     <div class="links__image">
-                        <img src="${Logo}" alt="company logo">
+                        <img src="${logo}" alt="company logo">
                     </div>
                     <div class="link__text">
                         <h3>SHOP ON THE GO</h3>
@@ -40,13 +40,13 @@ export function Signup (props) {
                     </div>
                 </div>
                 <div class="links__images">
-                    <img src="${Android}" alt="android download logo">
+                    <img src="${android}" alt="android download logo">
                     <img src="${ios}" alt="ios download logo">
                 </div>
             </div>
 
             <div class="links__image">
-                <img src="${Creditcard}" alt="credit card illustration">
+                <img src="${creditCard}" alt="credit card illustration">
             </div>
         </div>
 

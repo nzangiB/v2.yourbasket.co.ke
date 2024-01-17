@@ -1,6 +1,6 @@
 import { Nav } from "../../components/Nav/Nav";
 import { Hero } from "../../components/Hero/Hero";
-import { TopCategories } from "../../components/TopCategories/TopCategories";
+import { TopCategories } from "../../components/topCategories/topCategories";
 import { Deals } from "../../components/Deals/Deals";
 import { ClearanceSale } from "../../components/ClearanceSale.js/ClearanceSale";
 import { Recommended } from "../../components/Recommended/Recommended";

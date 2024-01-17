@@ -1,5 +1,5 @@
 import { Nav } from '../../../components/Nav/Nav';
-import { CartCard } from '../../../components/Cards/CartCard';
+import { CartCard } from '../../../components/cards/cartCard';
 import { OrderSummary } from '../../../components/OrderSummary/OrderSummary';
 import { Footer } from '../../../components/Footer/Footer';
 import { Signup } from '../../../components/Signup/Signup';

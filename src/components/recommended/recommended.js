@@ -1,5 +1,7 @@
-import { productCard } from "../ProductCard/ProductCard";
-import rightArrow from "../../assets/icons/Stroke_1.svg"
+import { ProductCard } from "../ProductCard/ProductCard";
+
+import rightArrow from "../../assets/icons/stroke_1.svg";
+
 import './Recommended.scss'
 
 export function Recommended (props) {
@@ -9,7 +11,7 @@ export function Recommended (props) {
             <h1 class="product-title">DEALS ON ELECTRONICS</h1>
             <a href="#">See More <span><img src="${rightArrow}" alt="right arrow"></span></a>
         </div>
-        ${productCard()}
+        ${ProductCard()}
     </div>
     `;
 }

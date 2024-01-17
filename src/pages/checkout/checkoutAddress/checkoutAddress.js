@@ -1,7 +1,6 @@
 import { Nav } from '../../../components/Nav/Nav';
-import { shippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
+import { ShippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
 import { Signup } from '../../../components/Signup/Signup';
-import { OrderCard } from '../../../components/OrderCard/OrderCard';
 import { CustomerAddress } from '../../../components/CustomerAddress/CustomerAddress';
 import { Footer } from '../../../components/Footer/Footer';
 
@@ -18,7 +17,7 @@ export function CheckoutAddress (props) {
             <div>
                 ${CustomerAddress()}
             </div>
-            ${shippingSummary()}
+            ${ShippingSummary()}
         </div>
       ${Signup()}
       ${Footer()}

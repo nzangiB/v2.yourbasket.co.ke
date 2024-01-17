@@ -1,4 +1,5 @@
-import Check from "../../assets/images/productpage/icons/check.svg"
+import check from "../../assets/images/productpage/icons/check.svg"
+
 import './CustomerAddress.scss';
 
 export function CustomerAddress (props) {
@@ -8,7 +9,7 @@ export function CustomerAddress (props) {
         <div class="orderCard__container">
             <div class="orderCard__item">
                 <div class="orderCard__text">
-                    <img src="${Check}" alt="check icon">
+                    <img src="${check}" alt="check icon">
                     <h3>1. Customer Address</h3>
                 </div>
 
@@ -73,7 +74,7 @@ export function CustomerAddress (props) {
         <div class="orderCard__container">
             <div class="orderCard__item">
                 <div class="orderCard__text">
-                    <img src="${Check}" alt="check icon">
+                    <img src="${check}" alt="check icon">
                     <h3>2. Delivery Details</h3>
                 </div>
                 <p>Choose whether to get a home delivery or choose to pick from one of our stations.</p>
@@ -83,7 +84,7 @@ export function CustomerAddress (props) {
         <div class="orderCard__container">
             <div class="orderCard__item">
                 <div class="orderCard__text">
-                    <img src="${Check}" alt="check icon">
+                    <img src="${check}" alt="check icon">
                     <h3>3. Payment Option</h3>
                 </div>
                 <p>Pay Fast and securely with Mpesa, Bank Cards, Partial Payment and Aspira</p>

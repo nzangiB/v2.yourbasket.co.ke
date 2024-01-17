@@ -1,11 +1,11 @@
 import { Nav } from '../../components/Nav/Nav';
 import { Footer } from '../../components/Footer/Footer';
-import { productInfo } from '../../components/ProductInfo/ProductInfo';
-import { moreDeals } from '../../components/moreDeals/moreDeals';
+import { ProductInfo } from '../../components/ProductInfo/ProductInfo';
+import { MoreDeals } from '../../components/moreDeals/moreDeals';
 import { Signup } from '../../components/Signup/Signup';
 import { Advert } from '../../components/advert/advert';
 
-import { productPageModal } from '../../components/modals/productPageModal/productPageModal';
+import { ProductPageModal } from '../../components/modals/productPageModal/productPageModal';
 
 import './productPage.scss';
 
@@ -16,9 +16,9 @@ export function ProductPage (props) {
   return `
     <div class="container productPage__container">
       ${Nav()}
-      ${productInfo()}
-      <!--${productPageModal()}-->
-      ${moreDeals()}
+      ${ProductInfo({id})}
+      <!--${ProductPageModal({id})}-->
+      ${MoreDeals()}
       ${Advert()}
       ${Signup()}
       ${Footer()}

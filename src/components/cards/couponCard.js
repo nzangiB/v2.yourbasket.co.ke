@@ -1,23 +1,20 @@
-import Heart from "../../assets/images/productpage/icons/red-heart.svg"
-import X from "../../assets/images/productpage/icons/x.svg"
-import ExpressRed from "../../assets/images/productpage/icons/express_red_logo.svg"
-import Offer from "../../assets/images/productpage/icons/offer.svg"
-import Savings from "../../assets/images/productpage/icons/savings.svg"
-import CartImage from "../../assets/images/productpage/cartImage.png"
+import expressRed from "../../assets/images/productpage/icons/express-red-logo.svg"
+import offer from "../../assets/images/productpage/icons/offer.svg"
+import cartImage from "../../assets/images/productpage/cart-image.png"
 
 import button from "../../assets/images/productpage/icons/btn-basic.svg"
 import button2 from "../../assets/images/productpage/icons/btn-basic-2.svg"
 
-import './CouponCard.scss';
+import "./couponCard.scss";
 
-export function couponCard (props) {
+export function CouponCard (props) {
     return `
     <div class="cartCard__container">
         <div class="couponCard__item">
             <div class="cartCard__content">  
 
                 <div class="item__image">
-                    <img src="${CartImage}" alt="cart preview image">
+                    <img src="${cartImage}" alt="cart preview image">
                     <div class="item__text">
                         <p>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge-Onyx Gray Black 128 GB</p>
                         <h3>Sold by <span>COMPLAND SHOP</span></h3>
@@ -40,8 +37,8 @@ export function couponCard (props) {
                     </div>
 
                     <div>
-                        <img src="${Offer}" alt="">
-                        <img src="${ExpressRed}" alt="">
+                        <img src="${offer}" alt="">
+                        <img src="${expressRed}" alt="">
                     </div>
                 </div>
             </div>

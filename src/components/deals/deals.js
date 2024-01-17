@@ -1,4 +1,5 @@
-import { productCard } from '../ProductCard/ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
+
 import './Deals.scss';
 
 export function Deals (props) {
@@ -19,11 +20,11 @@ export function Deals (props) {
             </div>
 
             
-            ${productCard()}
+            ${ProductCard()}
             <div class="product-title">
                 <h1>RECOMMENDED FOR YOU</h1>
             </div>
-            ${productCard()}
+            ${ProductCard()}
         </div>
 
     </div>
