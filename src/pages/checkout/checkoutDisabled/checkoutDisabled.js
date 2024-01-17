@@ -1,11 +1,11 @@
-import blueRight from "../../../assets/images/productpage/icons/blue-right.svg"
-import greenCheck from "../../../assets/images/productpage/icons/green-check.svg"
-import leftArrow from "../../../assets/images/productpage/icons/left-arrow.svg"
-import grayTick from "../../../assets/images/productpage/icons/tick-square-disabled.svg"
+import blueRight from "../../../assets/images/product-page/icons/blue-right.svg"
+import greenCheck from "../../../assets/images/product-page/icons/green-check.svg"
+import leftArrow from "../../../assets/images/product-page/icons/left-arrow.svg"
+import grayTick from "../../../assets/images/product-page/icons/tick-square-disabled.svg"
 
-import { Nav } from '../../../components/Nav/Nav';
-import { Signup } from '../../../components/Signup/Signup';
-import { Footer } from '../../../components/Footer/Footer';
+import { Nav } from '../../../components/nav/nav';
+import { Signup } from '../../../components/signup/signup';
+import { Footer } from '../../../components/footer/footer';
 
 
 import './checkoutDisabled.scss';

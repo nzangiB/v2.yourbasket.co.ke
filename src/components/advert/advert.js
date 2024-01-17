@@ -1,4 +1,4 @@
-import ad from "../../assets/images/productpage/ad.png"
+import ad from "../../assets/images/product-page/ad.png"
 
 import "./advert.scss";
 

@@ -1,9 +1,9 @@
-import expressRed from "../../assets/images/productpage/icons/express-red-logo.svg"
-import offer from "../../assets/images/productpage/icons/offer.svg"
-import cartImage from "../../assets/images/productpage/cart-image.png"
+import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg"
+import offer from "../../assets/images/product-page/icons/offer.svg"
+import cartImage from "../../assets/images/product-page/cart-image.png"
 
-import button from "../../assets/images/productpage/icons/btn-basic.svg"
-import button2 from "../../assets/images/productpage/icons/btn-basic-2.svg"
+import button from "../../assets/images/product-page/icons/btn-basic.svg"
+import button2 from "../../assets/images/product-page/icons/btn-basic-2.svg"
 
 import "./couponCard.scss";
 

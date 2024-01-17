@@ -1,9 +1,9 @@
-import heart from "../../assets/images/productpage/icons/red-heart.svg"
-import x from "../../assets/images/productpage/icons/x.svg"
-import expressRed from "../../assets/images/productpage/icons/express-red-logo.svg"
-import offer from "../../assets/images/productpage/icons/offer.svg"
-import savings from "../../assets/images/productpage/icons/savings.svg"
-import cartImage from "../../assets/images/productpage/cart-image.png"
+import heart from "../../assets/images/product-page/icons/red-heart.svg"
+import x from "../../assets/images/product-page/icons/x.svg"
+import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg"
+import offer from "../../assets/images/product-page/icons/offer.svg"
+import savings from "../../assets/images/product-page/icons/savings.svg"
+import cartImage from "../../assets/images/product-page/cart-image.png"
 
 import './cartCard.scss';
 

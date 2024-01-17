@@ -1,5 +1,5 @@
-import x from "../../../assets/images/productpage/icons/multiplication-sign.svg"
-import productImage from "../../../assets/images/productpage/gallery-image-1.png"
+import x from "../../../assets/images/product-page/icons/multiplication-sign.svg"
+import productImage from "../../../assets/images/product-page/gallery-image-1.png"
 
 import "./ProductPageModal.scss";
 

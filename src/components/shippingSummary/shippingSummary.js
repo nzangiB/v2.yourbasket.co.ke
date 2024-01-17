@@ -1,4 +1,4 @@
-import tick from "../../assets/images/productpage/icons/tick-square.svg"
+import tick from "../../assets/images/product-page/icons/tick-square.svg"
 
 import './ShippingSummary.scss';
 

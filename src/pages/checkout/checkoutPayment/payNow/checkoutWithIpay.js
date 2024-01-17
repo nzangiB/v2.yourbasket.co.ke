@@ -1,8 +1,8 @@
-import { Nav } from '../../../../components/Nav/Nav';
-import { ShippingSummary } from '../../../../components/ShippingSummary/ShippingSummary';
-import { Signup } from '../../../../components/Signup/Signup';
+import { Nav } from '../../../../components/nav/nav';
+import { ShippingSummary } from '../../../../components/shippingSummary/shippingSummary';
+import { Signup } from '../../../../components/signup/signup';
 import { PaymentOptions } from '../../../../components/paymentOptions/paymentOptions';
-import { Footer } from '../../../../components/Footer/Footer';
+import { Footer } from '../../../../components/footer/footer';
 
 import './checkoutWithIpay.scss';
 

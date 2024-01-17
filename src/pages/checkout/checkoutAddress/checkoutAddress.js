@@ -1,8 +1,8 @@
-import { Nav } from '../../../components/Nav/Nav';
-import { ShippingSummary } from '../../../components/ShippingSummary/ShippingSummary';
-import { Signup } from '../../../components/Signup/Signup';
-import { CustomerAddress } from '../../../components/CustomerAddress/CustomerAddress';
-import { Footer } from '../../../components/Footer/Footer';
+import { Nav } from '../../../components/nav/nav';
+import { ShippingSummary } from '../../../components/shippingSummary/shippingSummary';
+import { Signup } from '../../../components/signup/signup';
+import { CustomerAddress } from '../../../components/customerAddress/customerAddress';
+import { Footer } from '../../../components/footer/footer';
 
 import './checkoutAddress.scss';
 

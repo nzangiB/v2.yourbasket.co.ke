@@ -1,13 +1,13 @@
-import { Nav } from "../../components/Nav/Nav";
-import { Hero } from "../../components/Hero/Hero";
+import { Nav } from "../../components/nav/nav";
+import { Hero } from "../../components/hero/hero";
 import { TopCategories } from "../../components/topCategories/topCategories";
-import { Deals } from "../../components/Deals/Deals";
-import { ClearanceSale } from "../../components/ClearanceSale.js/ClearanceSale";
-import { Recommended } from "../../components/Recommended/Recommended";
-import { Carousel } from "../../components/Carousel/Carousel";
-import { Signup } from "../../components/Signup/Signup";
-import { Featured } from "../../components/Featured/Featured";
-import { Footer } from "../../components/Footer/Footer";
+import { Deals } from "../../components/deals/deals";
+import { ClearanceSale } from "../../components/clearanceSale.js/clearanceSale";
+import { Recommended } from "../../components/recommended/recommended";
+import { Carousel } from "../../components/carousel/carousel";
+import { Signup } from "../../components/signup/signup";
+import { Featured } from "../../components/featured/featured";
+import { Footer } from "../../components/footer/footer";
 
 import './home.scss';
 

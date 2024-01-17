@@ -1,4 +1,4 @@
-import expressRed from "../../assets/images/productpage/icons/express-red-logo.svg"
+import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg"
 
 import './OrderSummary.scss';
 

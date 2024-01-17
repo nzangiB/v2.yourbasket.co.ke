@@ -1,10 +1,10 @@
-import greenCheck from "../../assets/images/productpage/icons/green-check.svg"
-import mastercard from "../../assets/images/productpage/icons/mastercard.svg"
-import airtel from "../../assets/images/productpage/icons/artboard.svg"
-import mPesa from "../../assets/images/productpage/icons/m-pesa.svg"
-import visa from "../../assets/images/productpage/icons/visa-logo.svg"
-import blueRight from "../../assets/images/productpage/icons/blue-right.svg"
-import leftArrow from "../../assets/images/productpage/icons/left-arrow.svg"
+import greenCheck from "../../assets/images/product-page/icons/green-check.svg"
+import mastercard from "../../assets/images/product-page/icons/mastercard.svg"
+import airtel from "../../assets/images/product-page/icons/artboard.svg"
+import mPesa from "../../assets/images/product-page/icons/m-pesa.svg"
+import visa from "../../assets/images/product-page/icons/visa-logo.svg"
+import blueRight from "../../assets/images/product-page/icons/blue-right.svg"
+import leftArrow from "../../assets/images/product-page/icons/left-arrow.svg"
 
 import "./paymentOptions.scss";
 

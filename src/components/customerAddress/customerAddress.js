@@ -1,4 +1,4 @@
-import check from "../../assets/images/productpage/icons/check.svg"
+import check from "../../assets/images/product-page/icons/check.svg"
 
 import './CustomerAddress.scss';
 
