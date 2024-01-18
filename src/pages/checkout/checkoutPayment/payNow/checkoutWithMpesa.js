@@ -1,17 +1,17 @@
-import greenCheck from "../../../../assets/images/product-page/icons/green-check.svg"
-import mPesa from "../../../../assets/images/product-page/icons/m-pesa.svg"
-import blueRight from "../../../../assets/images/product-page/icons/blue-right.svg"
-import leftArrow from "../../../../assets/images/product-page/icons/left-arrow.svg"
+import greenCheck from "../../../../assets/images/product-page/icons/green-check.svg";
+import mPesa from "../../../../assets/images/product-page/icons/m-pesa.svg";
+import blueRight from "../../../../assets/images/product-page/icons/blue-right.svg";
+import leftArrow from "../../../../assets/images/product-page/icons/left-arrow.svg";
 
-import { Nav } from '../../../../components/nav/nav';
-import { ShippingSummary } from '../../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../../components/signup/signup';
-import { Footer } from '../../../../components/footer/footer';
+import { Nav } from "../../../../components/nav/nav";
+import { ShippingSummary } from "../../../../components/shippingSummary/shippingSummary";
+import { Signup } from "../../../../components/signup/signup";
+import { Footer } from "../../../../components/footer/footer";
 
-import './checkoutWithMpesa.scss';
+import "./checkoutWithMpesa.scss";
 
 export function CheckoutWithMpesa (props) {
-    return `
+  return `
             <div class="container productPage__container">
             ${Nav()}
             <div class="checkout__title">
@@ -142,4 +142,3 @@ export function CheckoutWithMpesa (props) {
         </div>
     `;
 }
-

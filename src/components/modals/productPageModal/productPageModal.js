@@ -1,10 +1,10 @@
-import x from "../../../assets/images/product-page/icons/multiplication-sign.svg"
-import productImage from "../../../assets/images/product-page/gallery-image-1.png"
+import x from "../../../assets/images/product-page/icons/multiplication-sign.svg";
+import productImage from "../../../assets/images/product-page/gallery-image-1.png";
 
 import "./ProductPageModal.scss";
 
 export function ProductPageModal (props) {
-    return `
+  return `
         <div class="productPageModal">
             <div class="productModal__content">
 
@@ -142,5 +142,4 @@ export function ProductPageModal (props) {
             </div>
         </div>
     `;
-  }
-
+}

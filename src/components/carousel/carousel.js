@@ -1,7 +1,7 @@
 import "./carousel.scss";
 
 export function Carousel (props) {
-    return `
+  return `
     <div class="Carousel__container">
         <div class="Carousel__arrows">
 
@@ -9,4 +9,3 @@ export function Carousel (props) {
     </div>
     `;
 }
-

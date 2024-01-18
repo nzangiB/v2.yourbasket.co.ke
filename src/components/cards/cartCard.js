@@ -1,14 +1,14 @@
-import heart from "../../assets/images/product-page/icons/red-heart.svg"
-import x from "../../assets/images/product-page/icons/x.svg"
-import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg"
-import offer from "../../assets/images/product-page/icons/offer.svg"
-import savings from "../../assets/images/product-page/icons/savings.svg"
-import cartImage from "../../assets/images/product-page/cart-image.png"
+import heart from "../../assets/images/product-page/icons/red-heart.svg";
+import x from "../../assets/images/product-page/icons/x.svg";
+import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg";
+import offer from "../../assets/images/product-page/icons/offer.svg";
+import savings from "../../assets/images/product-page/icons/savings.svg";
+import cartImage from "../../assets/images/product-page/cart-image.png";
 
-import './cartCard.scss';
+import "./cartCard.scss";
 
 export function CartCard (props) {
-    return `
+  return `
     <div class="cartCard__container">
         <div class="cartCard__item">
             <div class="cartCard__content">
@@ -63,4 +63,3 @@ export function CartCard (props) {
     
     `;
 }
-

@@ -1,9 +1,9 @@
-import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg"
+import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg";
 
-import './OrderSummary.scss';
+import "./OrderSummary.scss";
 
 export function OrderSummary (props) {
-    return `
+  return `
     <div class="orderSummary__container">
 
         <div class="summary__top">
@@ -52,4 +52,3 @@ export function OrderSummary (props) {
     
     `;
 }
-

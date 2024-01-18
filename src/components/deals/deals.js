@@ -1,9 +1,9 @@
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductCard } from "../ProductCard/ProductCard";
 
-import './Deals.scss';
+import "./Deals.scss";
 
 export function Deals (props) {
-    return `
+  return `
     <div class="Deals__container">
 
         <div class="Deals__top">
@@ -31,4 +31,3 @@ export function Deals (props) {
     
     `;
 }
-

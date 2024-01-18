@@ -1,13 +1,13 @@
-import email from "../../assets/images/emails.svg"
-import logo from "../../assets/images/logo.svg"
-import android from "../../assets/images/android.svg"
-import ios from "../../assets/images/ios.svg"
-import creditCard from "../../assets/images/credit-card.svg"
+import email from "../../assets/images/emails.svg";
+import logo from "../../assets/images/logo.svg";
+import android from "../../assets/images/android.svg";
+import ios from "../../assets/images/ios.svg";
+import creditCard from "../../assets/images/credit-card.svg";
 
-import './Signup.scss';
+import "./Signup.scss";
 
 export function Signup (props) {
-    return `
+  return `
     <div class="signup__container">
 
         <div class="signup__field">
@@ -53,4 +53,3 @@ export function Signup (props) {
     </div>
     `;
 }
-

@@ -1,9 +1,9 @@
-import check from "../../assets/images/product-page/icons/check.svg"
+import check from "../../assets/images/product-page/icons/check.svg";
 
-import './OrderCard.scss';
+import "./OrderCard.scss";
 
 export function OrderCard (props) {
-    return `
+  return `
     <div class="orderCard__container">
         <div class="orderCard__item">
             <div class="orderCard__text">
@@ -16,4 +16,3 @@ export function OrderCard (props) {
     
     `;
 }
-

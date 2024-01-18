@@ -1,12 +1,12 @@
-import rightArrow from "../../assets/icons/arrow_right_blue.svg"
-import leftArrow from "../../assets/icons/arrow_left_dark.svg"
-import featuredImage from "../../assets/images/featured.png"
-import samsung from "../../assets/images/samsung.svg"
+import rightArrow from "../../assets/icons/arrow_right_blue.svg";
+import leftArrow from "../../assets/icons/arrow_left_dark.svg";
+import featuredImage from "../../assets/images/featured.png";
+import samsung from "../../assets/images/samsung.svg";
 
-import './Featured.scss';
+import "./Featured.scss";
 
 export function Featured (props) {
-    return `
+  return `
     <div class="featured__container">
         <div class="featured__title">
             <p>FEATURED BRANDS</p>
@@ -133,4 +133,3 @@ export function Featured (props) {
     </div>
     `;
 }
-

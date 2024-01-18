@@ -1,35 +1,35 @@
-import productImage from "../../assets/images/product-page/product-image.png"
-import gallery1 from "../../assets/images/product-page/gallery-image-1.png"
-import gallery2 from "../../assets/images/product-page/gallery-image-2.png"
-import gallery3 from "../../assets/images/product-page/gallery-image-3.png"
-import gallery4 from "../../assets/images/product-page/gallery-image-4.png"
-import gallery5 from "../../assets/images/product-page/gallery-image-5.png"
+import productImage from "../../assets/images/product-page/product-image.png";
+import gallery1 from "../../assets/images/product-page/gallery-image-1.png";
+import gallery2 from "../../assets/images/product-page/gallery-image-2.png";
+import gallery3 from "../../assets/images/product-page/gallery-image-3.png";
+import gallery4 from "../../assets/images/product-page/gallery-image-4.png";
+import gallery5 from "../../assets/images/product-page/gallery-image-5.png";
 
-import newButton1 from "../../assets/images/product-page/icons/new-button-1.svg"
-import newButton2 from "../../assets/images/product-page/icons/new-button-2.svg"
-import rating from "../../assets/images/product-page/icons/rating.svg"
-import save from "../../assets/images/product-page/icons/save-13.svg"
-import aspiraLogo from "../../assets/images/product-page/aspira-logo.png"
-import offer from "../../assets/images/product-page/offer.png"
+import newButton1 from "../../assets/images/product-page/icons/new-button-1.svg";
+import newButton2 from "../../assets/images/product-page/icons/new-button-2.svg";
+import rating from "../../assets/images/product-page/icons/rating.svg";
+import save from "../../assets/images/product-page/icons/save-13.svg";
+import aspiraLogo from "../../assets/images/product-page/aspira-logo.png";
+import offer from "../../assets/images/product-page/offer.png";
 
-import visa from "../../assets/images/product-page/icons/visa-logo.svg"
-import mastercard from "../../assets/images/product-page/icons/mastercard.svg"
-import mPesa from "../../assets/images/product-page/icons/m-pesa.svg"
-import airtel from "../../assets/images/product-page/icons/artboard.svg"
-import buy from "../../assets/images/product-page/icons/buy.svg"
+import visa from "../../assets/images/product-page/icons/visa-logo.svg";
+import mastercard from "../../assets/images/product-page/icons/mastercard.svg";
+import mPesa from "../../assets/images/product-page/icons/m-pesa.svg";
+import airtel from "../../assets/images/product-page/icons/artboard.svg";
+import buy from "../../assets/images/product-page/icons/buy.svg";
 
-import express from "../../assets/images/product-page/icons/express-red-logo.svg"
-import questionMark from "../../assets/images/product-page/icons/question-mark-icon.svg"
-import delivery from "../../assets/images/product-page/icons/delivery-icon.svg"
-import discount from "../../assets/images/product-page/icons/discount.svg"
+import express from "../../assets/images/product-page/icons/express-red-logo.svg";
+import questionMark from "../../assets/images/product-page/icons/question-mark-icon.svg";
+import delivery from "../../assets/images/product-page/icons/delivery-icon.svg";
+import discount from "../../assets/images/product-page/icons/discount.svg";
 
-import seller from "../../assets/images/product-page/Seller.png"
-import rate from "../../assets/images/product-page/icons/rate.svg"
+import seller from "../../assets/images/product-page/Seller.png";
+import rate from "../../assets/images/product-page/icons/rate.svg";
 
-import './ProductInfo.scss';
+import "./ProductInfo.scss";
 
 export function ProductInfo (props) {
-    return `
+  return `
     <div class="productInfo__container">
 
         <div class="productInfo__images">
@@ -205,4 +205,3 @@ export function ProductInfo (props) {
     
     `;
 }
-

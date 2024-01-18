@@ -1,9 +1,9 @@
-import check from "../../assets/images/product-page/icons/check.svg"
+import check from "../../assets/images/product-page/icons/check.svg";
 
-import './CustomerAddress.scss';
+import "./CustomerAddress.scss";
 
 export function CustomerAddress (props) {
-    return `
+  return `
     <div class="customerAddress__container">
 
         <div class="orderCard__container">
@@ -96,4 +96,3 @@ export function CustomerAddress (props) {
     
     `;
 }
-

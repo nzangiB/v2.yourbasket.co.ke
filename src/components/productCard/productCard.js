@@ -7,7 +7,7 @@ import standard from "../../assets/images/standard.svg";
 
 import "./ProductCard.scss";
 
-export function ProductCard(props) {
+export function ProductCard (props) {
   return `
   <div class="product">
 

@@ -1,7 +1,7 @@
-import { Router } from '@wearearchangel/handcrafted';
+import { Router } from "@wearearchangel/handcrafted";
 
-import { Home } from '../pages/home/home';
-import { ProductPage } from '../pages/productPage/productPage';
+import { Home } from "../pages/home/home";
+import { ProductPage } from "../pages/productPage/productPage";
 import Cart from "../pages/cart";
 import Checkout from "../pages/checkout";
 // import Categories from "../pages/categories";
@@ -13,7 +13,7 @@ Router({
    * .1 Landing Page [Search]
    */
   homeRoute: {
-    path: '/',
+    path: "/",
     template: Home
   },
   /**
@@ -26,7 +26,7 @@ Router({
    * .5 Product Page > Modal > Offers Available [Card Selected]
    */
   productPageRoute: {
-    path: '/product/:id',
+    path: "/product/:id",
     template: ProductPage
   },
   /**

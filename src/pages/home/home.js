@@ -9,10 +9,10 @@ import { Signup } from "../../components/signup/signup";
 import { Featured } from "../../components/featured/featured";
 import { Footer } from "../../components/footer/footer";
 
-import './home.scss';
+import "./home.scss";
 
 export function Home (props) {
-    return `
+  return `
     <div class="container">
       ${Nav()}
       ${Hero()}
@@ -27,4 +27,3 @@ export function Home (props) {
     </div>
     `;
 }
-

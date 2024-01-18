@@ -1,9 +1,9 @@
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductCard } from "../ProductCard/ProductCard";
 
-import './MoreDeals.scss';
+import "./MoreDeals.scss";
 
 export function MoreDeals (props) {
-    return `
+  return `
     <div class="moreDeals__container">
         <div class="recommended__text">
             <h1 class="product-title">MORE DEALS FOR YOU</h1>
@@ -18,4 +18,3 @@ export function MoreDeals (props) {
     
     `;
 }
-

@@ -2,8 +2,8 @@ import clearance from "../../assets/images/clearance-sale.png";
 
 import "./ClearanceSale.scss";
 
-export function ClearanceSale(props) {
-    return `
+export function ClearanceSale (props) {
+  return `
       <div class="clearance">
         <div class="product-title">
           <h1>CLEARANCE SALE | 23 - 26 DECEMBER</h1>
@@ -62,5 +62,4 @@ export function ClearanceSale(props) {
           </div>
       </div>
     `;
-  }
-
+}

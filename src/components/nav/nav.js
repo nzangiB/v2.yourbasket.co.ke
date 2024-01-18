@@ -1,14 +1,14 @@
-import logo from "../../assets/logos/logo-dark.svg"
-import search from "../../assets/icons/search.svg"
-import profile from "../../assets/icons/profile.svg"
-import cart from "../../assets/icons/cart_default.svg"
-import customer from "../../assets/icons/customer_care.svg"
-import hamburger from "../../assets/icons/hamburger_menu.svg"
+import logo from "../../assets/logos/logo-dark.svg";
+import search from "../../assets/icons/search.svg";
+import profile from "../../assets/icons/profile.svg";
+import cart from "../../assets/icons/cart_default.svg";
+import customer from "../../assets/icons/customer_care.svg";
+import hamburger from "../../assets/icons/hamburger_menu.svg";
 
-import './Nav.scss';
+import "./Nav.scss";
 
 export function Nav (props) {
-    return `
+  return `
     <div class="Nav">
         <div class="Nav__container">
             <div class="Nav__logo">
@@ -48,4 +48,3 @@ export function Nav (props) {
     
     `;
 }
-

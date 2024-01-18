@@ -1,9 +1,9 @@
-import ad from "../../assets/images/product-page/ad.png"
+import ad from "../../assets/images/product-page/ad.png";
 
 import "./advert.scss";
 
 export function Advert (props) {
-    return `
+  return `
     <div class="ad__container">
         <div class="ad__image">
             <p>Sponsored ads</p>
@@ -12,4 +12,3 @@ export function Advert (props) {
     </div>
     `;
 }
-

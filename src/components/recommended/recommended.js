@@ -2,10 +2,10 @@ import { ProductCard } from "../ProductCard/ProductCard";
 
 import rightArrow from "../../assets/icons/stroke_1.svg";
 
-import './Recommended.scss'
+import "./Recommended.scss";
 
 export function Recommended (props) {
-    return `
+  return `
     <div class="recommended__container">
         <div class="recommended__text">
             <h1 class="product-title">DEALS ON ELECTRONICS</h1>
@@ -15,4 +15,3 @@ export function Recommended (props) {
     </div>
     `;
 }
-

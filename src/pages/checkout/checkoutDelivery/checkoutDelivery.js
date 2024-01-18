@@ -1,18 +1,17 @@
-import greenCheck from "../../../assets/images/product-page/icons/green-check.svg"
-import blueRight from "../../../assets/images/product-page/icons/blue-right.svg"
-import leftArrow from "../../../assets/images/product-page/icons/left-arrow.svg"
-import cartImage from "../../../assets/images/product-page/cart-image.png"
+import greenCheck from "../../../assets/images/product-page/icons/green-check.svg";
+import blueRight from "../../../assets/images/product-page/icons/blue-right.svg";
+import leftArrow from "../../../assets/images/product-page/icons/left-arrow.svg";
+import cartImage from "../../../assets/images/product-page/cart-image.png";
 
-import { Nav } from '../../../components/nav/nav';
-import { ShippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from "../../../components/nav/nav";
+import { ShippingSummary } from "../../../components/shippingSummary/shippingSummary";
+import { Signup } from "../../../components/signup/signup";
+import { Footer } from "../../../components/footer/footer";
 
-
-import './checkoutDelivery.scss';
+import "./checkoutDelivery.scss";
 
 export function CheckoutDelivery (props) {
-    return `
+  return `
             <div class="container productPage__container">
             ${Nav()}
             <div class="checkout__title">
@@ -243,4 +242,3 @@ export function CheckoutDelivery (props) {
         </div>
     `;
 }
-

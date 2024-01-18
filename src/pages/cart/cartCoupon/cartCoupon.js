@@ -1,13 +1,13 @@
-import { Nav } from '../../../components/nav/nav';
-import { CouponCard } from '../../../components/cards/couponCard';
-import { OrderSummary } from '../../../components/orderSummary/orderSummary';
-import { Signup } from '../../../components/signup/signup';
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from "../../../components/nav/nav";
+import { CouponCard } from "../../../components/cards/couponCard";
+import { OrderSummary } from "../../../components/orderSummary/orderSummary";
+import { Signup } from "../../../components/signup/signup";
+import { Footer } from "../../../components/footer/footer";
 
-import './cartCoupon.scss';
+import "./cartCoupon.scss";
 
 export function CartCoupon (props) {
-    return `
+  return `
     <div class="container">
         ${Nav()}
         <div class="cart__title">
@@ -26,4 +26,3 @@ export function CartCoupon (props) {
     </div>
     `;
 }
-

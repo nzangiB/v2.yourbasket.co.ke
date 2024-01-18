@@ -1,13 +1,13 @@
-import { Nav } from '../../../components/nav/Nav';
-import { CartCard } from '../../../components/cards/cartCard';
-import { OrderSummary } from '../../../components/orderSummary/OrderSummary';
-import { Footer } from '../../../components/footer/Footer';
-import { Signup } from '../../../components/signup/Signup';
+import { Nav } from "../../../components/nav/Nav";
+import { CartCard } from "../../../components/cards/cartCard";
+import { OrderSummary } from "../../../components/orderSummary/OrderSummary";
+import { Footer } from "../../../components/footer/Footer";
+import { Signup } from "../../../components/signup/Signup";
 
-import './cart.scss';
+import "./cart.scss";
 
 export function Cart (props) {
-    return `
+  return `
     <div class="container">
         ${Nav()}
         <div class="cart__title">
@@ -26,4 +26,3 @@ export function Cart (props) {
     </div>
     `;
 }
-

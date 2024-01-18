@@ -1,17 +1,16 @@
-import blueRight from "../../../assets/images/product-page/icons/blue-right.svg"
-import greenCheck from "../../../assets/images/product-page/icons/green-check.svg"
-import leftArrow from "../../../assets/images/product-page/icons/left-arrow.svg"
+import blueRight from "../../../assets/images/product-page/icons/blue-right.svg";
+import greenCheck from "../../../assets/images/product-page/icons/green-check.svg";
+import leftArrow from "../../../assets/images/product-page/icons/left-arrow.svg";
 
-import { Nav } from '../../../components/nav/nav';
-import { ShippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from "../../../components/nav/nav";
+import { ShippingSummary } from "../../../components/shippingSummary/shippingSummary";
+import { Signup } from "../../../components/signup/signup";
+import { Footer } from "../../../components/footer/footer";
 
-
-import './checkoutEdit.scss';
+import "./checkoutEdit.scss";
 
 export function CheckoutEdit (props) {
-    return `
+  return `
     <div class="container productPage__container">
       ${Nav()}
       <div class="checkout__title">
@@ -74,4 +73,3 @@ export function CheckoutEdit (props) {
     </div>
     `;
 }
-

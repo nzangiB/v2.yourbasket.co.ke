@@ -1,9 +1,9 @@
-import rightArrow from "../../assets/icons/right_arrow.svg"
+import rightArrow from "../../assets/icons/right_arrow.svg";
 
-import './Hero.scss';
+import "./Hero.scss";
 
 export function Hero (props) {
-    return `
+  return `
     <div class="Hero__container">
 
         <ul class="Hero__nav">
@@ -38,4 +38,3 @@ export function Hero (props) {
     
     `;
 }
-

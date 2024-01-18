@@ -1,13 +1,13 @@
-import { Nav } from '../../../components/nav/nav';
-import { ShippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import { OrderCard } from '../../../components/orderCard/orderCard';
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from "../../../components/nav/nav";
+import { ShippingSummary } from "../../../components/shippingSummary/shippingSummary";
+import { Signup } from "../../../components/signup/signup";
+import { OrderCard } from "../../../components/orderCard/orderCard";
+import { Footer } from "../../../components/footer/footer";
 
-import './checkout.scss';
+import "./checkout.scss";
 
 export function Checkout (props) {
-    return `
+  return `
     <div class="container productPage__container">
       ${Nav()}
       <div class="checkout__title">
@@ -26,4 +26,3 @@ export function Checkout (props) {
     </div>
     `;
 }
-

@@ -1,13 +1,13 @@
-import { Nav } from '../../../components/nav/nav';
-import { ShippingSummary } from '../../../components/shippingSummary/shippingSummary';
-import { Signup } from '../../../components/signup/signup';
-import { CustomerAddress } from '../../../components/customerAddress/customerAddress';
-import { Footer } from '../../../components/footer/footer';
+import { Nav } from "../../../components/nav/nav";
+import { ShippingSummary } from "../../../components/shippingSummary/shippingSummary";
+import { Signup } from "../../../components/signup/signup";
+import { CustomerAddress } from "../../../components/customerAddress/customerAddress";
+import { Footer } from "../../../components/footer/footer";
 
-import './checkoutAddress.scss';
+import "./checkoutAddress.scss";
 
 export function CheckoutAddress (props) {
-    return `
+  return `
     <div class="container productPage__container">
       ${Nav()}
       <div class="checkout__title">
@@ -24,4 +24,3 @@ export function CheckoutAddress (props) {
     </div>
     `;
 }
-
