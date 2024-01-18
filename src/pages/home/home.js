@@ -1,8 +1,8 @@
 import { Nav } from "../../components/nav/nav";
 import { Hero } from "../../components/hero/hero";
-import { TopCategories } from "../../components/topcategories/topcategories";
+import { TopCategories } from "../../components/topCategories/topCategories";
 import { Deals } from "../../components/deals/deals";
-import { clearanceSale } from "../../components/clearanceSale.js/clearanceSale";
+import { ClearanceSale } from "../../components/clearanceSale.js/clearanceSale";
 import { Recommended } from "../../components/recommended/recommended";
 import { Carousel } from "../../components/carousel/carousel";
 import { Signup } from "../../components/signup/signup";
@@ -18,7 +18,7 @@ export function Home (props) {
       ${Hero()}
       ${TopCategories()}
       ${Deals()}
-      ${clearanceSale()}
+      ${ClearanceSale()}
       ${Recommended()}
       ${Carousel()}
       ${Featured()}

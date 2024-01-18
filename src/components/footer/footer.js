@@ -1,16 +1,16 @@
+// payment icons
 import gpay from "../../assets/images/gpay.svg"
 import aspira from "../../assets/images/aspira.svg"
 import visa from "../../assets/images/visa.svg"
 import neteller from "../../assets/images/neteller.svg"
 import astropay from "../../assets/images/astropay.svg"
-
+// social icons
 import facebook from "../../assets/icons/facebook2.svg"
 import twitter from "../../assets/icons/twitter2.svg"
 import linkedin from "../../assets/icons/linkedin.svg"
 import instagram from "../../assets/icons/instagram.svg"
 
-
-import './footer.scss';
+import './Footer.scss';
 
 export function Footer (props) {
     return `

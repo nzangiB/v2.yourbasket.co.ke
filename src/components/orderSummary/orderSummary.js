@@ -1,7 +1,8 @@
-import ExpressRed from "../../assets/images/productpage/icons/express_red_logo.svg"
-import './orderSummary.scss';
+import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg"
 
-export function orderSummary (props) {
+import './OrderSummary.scss';
+
+export function OrderSummary (props) {
     return `
     <div class="orderSummary__container">
 
@@ -30,7 +31,7 @@ export function orderSummary (props) {
 
         <div class="summary__bottom">
             <div class="bottom__icons">
-                <img src="${ExpressRed}" alt="express logo">
+                <img src="${expressRed}" alt="express logo">
                 <p>Items labeled “Express” are eligible for free delivery.</p>
             </div>
 

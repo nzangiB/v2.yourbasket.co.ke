@@ -67,7 +67,7 @@ font-weight: bold;
     gap: 30px;
 }
 
-.footer__logos img::not(:last-child) {
+.footer__logos img:not(:last-child) {
 margin-right: 10px;
 }
 

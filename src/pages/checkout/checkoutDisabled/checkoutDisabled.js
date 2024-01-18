@@ -1,11 +1,11 @@
+import blueRight from "../../../assets/images/product-page/icons/blue-right.svg"
+import greenCheck from "../../../assets/images/product-page/icons/green-check.svg"
+import leftArrow from "../../../assets/images/product-page/icons/left-arrow.svg"
+import grayTick from "../../../assets/images/product-page/icons/tick-square-disabled.svg"
+
 import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
 import { Signup } from '../../../components/signup/signup';
 import { Footer } from '../../../components/footer/footer';
-import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
-import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
-import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
-import GrayTick from "../../../assets/images/productpage/icons/Tick Square Disabled.svg"
 
 
 import './checkoutDisabled.scss';
@@ -22,14 +22,14 @@ export function CheckoutDisabled (props) {
                 
                 <div class="orderCard__container">
                     <div class="orderCard__item check-item edit__item">
-                        <div class="orderCard__text paymentOptions__cardtext">
+                        <div class="orderCard__text paymentOptions__card-text">
                             <div class="check-text">
-                                <img src="${Greencheck}" alt="check icon">
+                                <img src="${greenCheck}" alt="check icon">
                                 <h3>1. Customer Address</h3>
                             </div>
                             <div class="Edit">
                                 <a href="#"><p>Edit</p></a>
-                                <img src="${Blueright}">
+                                <img src="${blueRight}">
                             </div>
                         </div>
                     </div>
@@ -37,14 +37,14 @@ export function CheckoutDisabled (props) {
 
                 <div class="orderCard__container">
                     <div class="orderCard__item check-item edit__item">
-                        <div class="orderCard__text paymentOptions__cardtext">
+                        <div class="orderCard__text paymentOptions__card-text">
                             <div class="check-text">
-                                <img src="${Greencheck}" alt="check icon">
+                                <img src="${greenCheck}" alt="check icon">
                                 <h3>2. Delivery Details</h3>
                             </div>
                             <div class="Edit">
                                 <a href="#"><p>Edit</p></a>
-                                <img src="${Blueright}">
+                                <img src="${blueRight}">
                             </div>
                         </div>
                     </div>
@@ -52,18 +52,18 @@ export function CheckoutDisabled (props) {
 
                 <div class="orderCard__container">
                     <div class="orderCard__item check-item edit__item">
-                        <div class="orderCard__text paymentOptions__cardtext">
+                        <div class="orderCard__text paymentOptions__card-text">
                             <div class="check-text">
-                                <img src="${Greencheck}" alt="check icon">
+                                <img src="${greenCheck}" alt="check icon">
                                 <h3>3. Payment Option</h3>
                             </div>
                             <div class="Edit">
                                 <a href="#"><p>Edit</p></a>
-                                <img src="${Blueright}">
+                                <img src="${blueRight}">
                             </div>
                         </div>
                     </div>
-                    <button class="bottom__button1"><span><img src="${Leftarrow}"></span>Back to shopping</button>
+                    <button class="bottom__button1"><span><img src="${leftArrow}"></span>Back to shopping</button>
                 </div>
                 
             </div>
@@ -107,7 +107,7 @@ export function CheckoutDisabled (props) {
                     <div class="shipping__terms">
                         <p>By continuing, you are automatically accepting the <a href="#">Terms & Conditions</a></p>
                         <div class="shipping__text">
-                            <img src="${GrayTick}" alt="">
+                            <img src="${grayTick}" alt="">
                             <p>Subscribe for exclusive e-mail offers and discounts.</p>
                         </div>
                     </div>

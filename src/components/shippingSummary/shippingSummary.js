@@ -1,7 +1,8 @@
-import Tick from "../../assets/images/productpage/icons/Tick Square.svg"
-import './shippingSummary.scss';
+import tick from "../../assets/images/product-page/icons/tick-square.svg"
 
-export function shippingSummary (props) {
+import './ShippingSummary.scss';
+
+export function ShippingSummary (props) {
     return `
     <div class="container">
         <div class="orderSummary__container">
@@ -43,7 +44,7 @@ export function shippingSummary (props) {
             <div class="shipping__terms">
                 <p>By continuing, you are automatically accepting the <a href="#">Terms & Conditions</a></p>
                 <div class="shipping__text">
-                    <img src="${Tick}" alt="">
+                    <img src="${tick}" alt="">
                     <p>Subscribe for exclusive e-mail offers and discounts.</p>
                 </div>
             </div>

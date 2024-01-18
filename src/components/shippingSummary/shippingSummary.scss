@@ -2,7 +2,6 @@
     background-color: rgba(235, 240, 252, 1);
     padding: 20px;
     margin-right: 20px;
-    padding-bottom: 20px;
 }
 
 .summary__top {
@@ -54,7 +53,7 @@
 
 .summary__shipping {
     display: flex;
-    align-items: left;
+    align-items: flex-start;
     flex-direction: column;
 }
 

@@ -1,10 +1,7 @@
 import { Nav } from '../../../../components/nav/nav';
-import { shippingSummary } from '../../../../components/shippingSummary/shippingSummary';
+import { ShippingSummary } from '../../../../components/shippingSummary/shippingSummary';
 import { Signup } from '../../../../components/signup/signup';
-import Check from "../../../../assets/images/productpage/icons/check.svg";
-import { orderCard } from '../../../../components/orderCard/orderCard';
-import { paymentOptions } from '../../../../components/paymentOption/paymentOptions';
-import Leftarrow from "../../../../assets/images/productpage/icons/left-arrow.svg"
+import { PaymentOptions } from '../../../../components/paymentOptions/paymentOptions';
 import { Footer } from '../../../../components/footer/footer';
 
 import './checkoutWithIpay.scss';
@@ -18,9 +15,9 @@ export function CheckoutWithIpay (props) {
             </div>
             <div class="checkout__content">
                 <div class="bottom__content">
-                    ${paymentOptions()}
+                    ${PaymentOptions()}
                 </div>
-                ${shippingSummary()}
+                ${ShippingSummary()}
             </div>
             
             ${Signup()}

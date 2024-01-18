@@ -1,7 +1,7 @@
 import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
+import { ShippingSummary } from '../../../components/shippingSummary/shippingSummary';
 import { Signup } from '../../../components/signup/signup';
-import { orderCard } from '../../../components/orderCard/orderCard';
+import { OrderCard } from '../../../components/orderCard/orderCard';
 import { Footer } from '../../../components/footer/footer';
 
 import './checkout.scss';
@@ -15,11 +15,11 @@ export function Checkout (props) {
         </div>
         <div class="checkout__content">
             <div>
-                ${orderCard()}
-                ${orderCard()}
-                ${orderCard()}
+                ${OrderCard()}
+                ${OrderCard()}
+                ${OrderCard()}
             </div>
-            ${shippingSummary()}
+            ${ShippingSummary()}
         </div>
       ${Signup()}
       ${Footer()}

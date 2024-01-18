@@ -1,13 +1,13 @@
-import RightArrow from "../../assets/icons/right_arrow.svg"
+import rightArrow from "../../assets/icons/right_arrow.svg"
 
-import './hero.scss';
+import './Hero.scss';
 
 export function Hero (props) {
     return `
     <div class="Hero__container">
 
         <ul class="Hero__nav">
-            <li><a href="#" id="main"><span>Electronics &amp; Smartphones</span><img src="${RightArrow}" alt="right arrow"></a></li>
+            <li><a href="#" id="main"><span>Electronics &amp; Smartphones</span><img src="${rightArrow}" alt="right arrow"></a></li>
             <li><a href="#">Home &amp; Kitchen</a></li>
             <li><a href="#">Fashion</a></li>
             <li><a href="#">Health &amp; Beauty</a></li>
@@ -26,10 +26,10 @@ export function Hero (props) {
             </div>
 
             <div class="carousel__side">
-                <div class="Carousel__sidebanner">  
+                <div class="Carousel__side-banner">  
                 </div>
 
-                <div class="Carousel__sidebanner">   
+                <div class="Carousel__side-banner">   
                 </div>
             </div>
 

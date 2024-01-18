@@ -1,22 +1,22 @@
-import X from "../../../assets/images/productpage/icons/Multiplication sign.svg"
-import ProductImage from "../../../assets/images/productpage/galleryImage1.png"
+import x from "../../../assets/images/product-page/icons/multiplication-sign.svg"
+import productImage from "../../../assets/images/product-page/gallery-image-1.png"
 
-import "./productPageModal.scss";
+import "./ProductPageModal.scss";
 
-export function productPageModal (props) {
+export function ProductPageModal (props) {
     return `
         <div class="productPageModal">
             <div class="productModal__content">
 
                 <div class="productModal__title">
                     <p>7 Offers Available</p>
-                    <a href="#"><img src="${X}" alt="x icon"></a>
+                    <a href="#"><img src="${x}" alt="x icon"></a>
                 </div>
 
                 <div class="productModal__item">
                     <div class="productModal__image">
                         <div class="">
-                            <img src="${ProductImage}" alt="product image">
+                            <img src="${productImage}" alt="product image">
                         </div>
                         <div class="modalImage__text">
                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge - Onyx Gray Black 128 GB</h3>
@@ -34,7 +34,7 @@ export function productPageModal (props) {
                 <div class="productModal__item">
                     <div class="productModal__image">
                         <div class="">
-                            <img src="${ProductImage}" alt="product image">
+                            <img src="${productImage}" alt="product image">
                         </div>
                         <div class="modalImage__text">
                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge - Onyx Gray Black 128 GB</h3>
@@ -52,7 +52,7 @@ export function productPageModal (props) {
                 <div class="productModal__item">
                     <div class="productModal__image">
                         <div class="">
-                            <img src="${ProductImage}" alt="product image">
+                            <img src="${productImage}" alt="product image">
                         </div>
                         <div class="modalImage__text">
                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge - Onyx Gray Black 128 GB</h3>
@@ -70,7 +70,7 @@ export function productPageModal (props) {
                 <div class="productModal__item">
                     <div class="productModal__image">
                         <div class="">
-                            <img src="${ProductImage}" alt="product image">
+                            <img src="${productImage}" alt="product image">
                         </div>
                         <div class="modalImage__text">
                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge - Onyx Gray Black 128 GB</h3>
@@ -88,7 +88,7 @@ export function productPageModal (props) {
                 <div class="productModal__item">
                     <div class="productModal__image">
                         <div class="">
-                            <img src="${ProductImage}" alt="product image">
+                            <img src="${productImage}" alt="product image">
                         </div>
                         <div class="modalImage__text">
                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge - Onyx Gray Black 128 GB</h3>
@@ -106,7 +106,7 @@ export function productPageModal (props) {
                 <div class="productModal__item">
                     <div class="productModal__image">
                         <div class="">
-                            <img src="${ProductImage}" alt="product image">
+                            <img src="${productImage}" alt="product image">
                         </div>
                         <div class="modalImage__text">
                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge - Onyx Gray Black 128 GB</h3>
@@ -124,7 +124,7 @@ export function productPageModal (props) {
                 <div class="productModal__item">
                     <div class="productModal__image">
                         <div class="">
-                            <img src="${ProductImage}" alt="product image">
+                            <img src="${productImage}" alt="product image">
                         </div>
                         <div class="modalImage__text">
                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge - Onyx Gray Black 128 GB</h3>
@@ -143,4 +143,4 @@ export function productPageModal (props) {
         </div>
     `;
   }
-  
+

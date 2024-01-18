@@ -1,35 +1,34 @@
-import productImage from "../../assets/images/productpage/productImage.png"
-import gallery1 from "../../assets/images/productpage/galleryImage1.png"
-import gallery2 from "../../assets/images/productpage/galleryImage2.png"
-import gallery3 from "../../assets/images/productpage/galleryImage3.png"
-import gallery4 from "../../assets/images/productpage/galleryImage4.png"
-import gallery5 from "../../assets/images/productpage/galleryImage5.png" 
+import productImage from "../../assets/images/product-page/product-image.png"
+import gallery1 from "../../assets/images/product-page/gallery-image-1.png"
+import gallery2 from "../../assets/images/product-page/gallery-image-2.png"
+import gallery3 from "../../assets/images/product-page/gallery-image-3.png"
+import gallery4 from "../../assets/images/product-page/gallery-image-4.png"
+import gallery5 from "../../assets/images/product-page/gallery-image-5.png"
 
-import NewButton1 from "../../assets/images/productpage/icons/New Button 1.svg"
-import NewButton2 from "../../assets/images/productpage/icons/New Button 2.svg"
-import Rating from "../../assets/images/productpage/icons/rating.svg"
-import Save13 from "../../assets/images/productpage/icons/save13.svg"
-import Aspiralogo from "../../assets/images/productpage/aspira-logo.png"
-import Offer from "../../assets/images/productpage/offer.png"
+import newButton1 from "../../assets/images/product-page/icons/new-button-1.svg"
+import newButton2 from "../../assets/images/product-page/icons/new-button-2.svg"
+import rating from "../../assets/images/product-page/icons/rating.svg"
+import save from "../../assets/images/product-page/icons/save-13.svg"
+import aspiraLogo from "../../assets/images/product-page/aspira-logo.png"
+import offer from "../../assets/images/product-page/offer.png"
 
-import Visa from "../../assets/images/productpage/icons/visa-logo.svg"
-import Mastercard from "../../assets/images/productpage/icons/Mastercard.svg"
-import Mpesa from "../../assets/images/productpage/icons/image 3.svg"
-import Airtel from "../../assets/images/productpage/icons/artboard.svg"
-import Buy from "../../assets/images/productpage/icons/Buy.svg"
+import visa from "../../assets/images/product-page/icons/visa-logo.svg"
+import mastercard from "../../assets/images/product-page/icons/mastercard.svg"
+import mPesa from "../../assets/images/product-page/icons/m-pesa.svg"
+import airtel from "../../assets/images/product-page/icons/artboard.svg"
+import buy from "../../assets/images/product-page/icons/buy.svg"
 
-import Express from "../../assets/images/productpage/icons/express_red_logo.svg"
-import QuestionMark from "../../assets/images/productpage/icons/question_mark_icon.svg"
-import Delivery from "../../assets/images/productpage/icons/delivery_icon.svg"
-import Discount from "../../assets/images/productpage/icons/Discount.svg"
+import express from "../../assets/images/product-page/icons/express-red-logo.svg"
+import questionMark from "../../assets/images/product-page/icons/question-mark-icon.svg"
+import delivery from "../../assets/images/product-page/icons/delivery-icon.svg"
+import discount from "../../assets/images/product-page/icons/discount.svg"
 
-import Seller from "../../assets/images/productpage/Seller.png"
-import Rate from "../../assets/images/productpage/icons/Rate.svg"
+import seller from "../../assets/images/product-page/Seller.png"
+import rate from "../../assets/images/product-page/icons/rate.svg"
 
+import './ProductInfo.scss';
 
-import './productInfo.scss';
-
-export function productInfo (props) {
+export function ProductInfo (props) {
     return `
     <div class="productInfo__container">
 
@@ -63,52 +62,52 @@ export function productInfo (props) {
         </div>
 
         <!-- Product info text-->
-        <div class="productpage__content">
-            <div class="productpage__title productpage__border">
-                <div class="productpage__icons">
-                    <img src="${NewButton1}" alt="">
-                    <img src="${NewButton2}" alt="">
+        <div class="productPage__content">
+            <div class="productPage__title productPage__border">
+                <div class="productPage__icons">
+                    <img src="${newButton1}" alt="">
+                    <img src="${newButton2}" alt="">
                 </div>
                 <h1>
                     XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim, 33W Fast Charge-Onyx Gray Black 128 GB
                 </h1>
-                <div class="productpage__rating">
+                <div class="productPage__rating">
                     <h3>Brand: <span>Xiaomi | See more from Xiaomi</span></h3>
-                    <img src="${Rating}" alt="">
+                    <img src="${rating}" alt="">
                 </div>
             </div>
 
-            <div class="productpage__saving productpage__border">
+            <div class="productPage__saving productPage__border">
                 <h3>Was: <span>KSH 30,000</span></h3>
                 <p>Now: <span>KSH 25,999</span> inclusive of VAT</p>
-                <img src="${Save13}" alt="save icon">
+                <img src="${save}" alt="save icon">
             </div>
 
             <div class="aspira">
-                <img src="${Aspiralogo}" alt="aspira logo">
+                <img src="${aspiraLogo}" alt="aspira logo">
                 <p>Buy Now. Pay Later on Orders above 10,000 KES.</p>
                 <a href="#">Learn More.</a>
             </div>
 
-            <div class="productpage__cart">
-                <img src="${Offer}" alt="exclusive offer">
+            <div class="productPage__cart">
+                <img src="${offer}" alt="exclusive offer">
                 <div class="cart__buttons">
                     <button class="cart__button-1">Add to cart</button>
                     <button class="cart__button-2">Buy Now</button>
                 </div>
             </div>
 
-            <div class="productpage__logos">
+            <div class="productPage__logos">
                 <p>100% Guarantee Safe Checkout</p>
-                <img src="${Visa}" alt="visa logo">
-                <img src="${Mastercard}" alt="mastercard logo">
-                <img src="${Mpesa}" alt="mpesa logo">
-                <img src="${Airtel}" alt="airtel logo">
+                <img src="${visa}" alt="visa logo">
+                <img src="${mastercard}" alt="mastercard logo">
+                <img src="${mPesa}" alt="mPesa logo">
+                <img src="${airtel}" alt="airtel logo">
             </div>
 
-            <div class="productpage__offers">
+            <div class="productPage__offers">
                 <div class="offers__content">
-                    <img src="${Buy}" alt="cart icon">
+                    <img src="${buy}" alt="cart icon">
                     <p>7 other offers from other sellers</p>
                 </div> 
                 <a href="#">View All Offers</a>
@@ -120,8 +119,8 @@ export function productInfo (props) {
             <div class="delivery__content">
                 <h3>DELIVERY &amp; RETURNS</h3>
                 <div class="delivery__info">
-                    <img src="${Express}" alt="express logo">
-                    <p>Express delivery in main cities & towns.<span><img src="${QuestionMark}"></span></p>
+                    <img src="${express}" alt="express logo">
+                    <p>Express delivery in main cities & towns.<span><img src="${questionMark}"></span></p>
                 </div>
                 <div class="delivery__inputs">
                     <h3>Select delivery options</h3>
@@ -134,7 +133,7 @@ export function productInfo (props) {
 
                 <div class="delivery__policy">
                     <div class="policy__item">
-                        <img src="${Delivery}" alt="truck icon">
+                        <img src="${delivery}" alt="truck icon">
                         <div class="policy__text">
                             <h3>Door Delivery</h3>
                             <p>Delivery fee of KSH 450 (free delivery if order above KSH 10,000)</p>
@@ -143,7 +142,7 @@ export function productInfo (props) {
                     </div>
 
                     <div class="policy__item">
-                        <img src="${Delivery}" alt="truck icon">
+                        <img src="${delivery}" alt="truck icon">
                         <div class="policy__text">
                             <h3>Door Delivery</h3>
                             <p>Delivery fee of KSH 450 (free delivery if order above KSH 10,000)</p>
@@ -152,7 +151,7 @@ export function productInfo (props) {
                     </div>
 
                     <div class="policy__item">
-                        <img src="${Delivery}" alt="truck icon">
+                        <img src="${delivery}" alt="truck icon">
                         <div class="policy__text">
                             <h3>Door Delivery</h3>
                             <p>Delivery fee of KSH 450 (free delivery if order above KSH 10,000)</p>
@@ -164,12 +163,12 @@ export function productInfo (props) {
                 <div class="delivery__ratings">
                     <div class="delivery__ImageSeller">
 
-                        <img src="${Seller}" alt="seller image">
+                        <img src="${seller}" alt="seller image">
 
                         <div class="seller__info">
                             <h3>Sold by <a href="#">COMPLAND SHOP</a></h3>
                             <div>
-                                <img src=${Rate}>
+                                <img src=${rate}>
                                 <h3>Positive Reviews</h3>
                             </div>
                             
@@ -178,15 +177,15 @@ export function productInfo (props) {
 
                     <div class="seller__ratings">
                         <div class="seller__ratings__item">
-                            <img src="${Discount}"><p>Order fufillment: Good</p>
+                            <img src="${discount}"><p>Order fufillment: Good</p>
                         </div>
 
                         <div class="seller__ratings__item">
-                            <img src="${Discount}"><p>Quality score: Good</p>
+                            <img src="${discount}"><p>Quality score: Good</p>
                         </div>
 
                         <div class="seller__ratings__item">
-                            <img src="${Discount}"><p>Customer rating: Good</p>
+                            <img src="${discount}"><p>Customer rating: Good</p>
                         </div>
                     </div>  
                 </div>

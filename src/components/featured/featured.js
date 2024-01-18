@@ -1,9 +1,9 @@
-import Rightarrow from "../../assets/icons/arrow_right_blue.svg"
-import Leftarrow from "../../assets/icons/arrow_left_dark.svg"
-import FeaturedImage from "../../assets/images/featured.png"
-import Samsung from "../../assets/images/samsung.svg"
+import rightArrow from "../../assets/icons/arrow_right_blue.svg"
+import leftArrow from "../../assets/icons/arrow_left_dark.svg"
+import featuredImage from "../../assets/images/featured.png"
+import samsung from "../../assets/images/samsung.svg"
 
-import './featured.scss';
+import './Featured.scss';
 
 export function Featured (props) {
     return `
@@ -11,45 +11,45 @@ export function Featured (props) {
         <div class="featured__title">
             <p>FEATURED BRANDS</p>
             <div class="Categories__arrows">
-                <a href="#"><img src="${Leftarrow}" alt="left arrow"></a>
-                <a href="#"><img src="${Rightarrow}" alt="right arrow"></a>
+                <a href="#"><img src="${leftArrow}" alt="left arrow"></a>
+                <a href="#"><img src="${rightArrow}" alt="right arrow"></a>
             </div>
         </div>
 
         <div class="featured__gallery">
             <div class="featured__item">
-                <img src="${FeaturedImage}" alt="samsung tv">
-                <img id="samsung" src="${Samsung}" alt="samsung logo">
+                <img src="${featuredImage}" alt="samsung tv">
+                <img id="samsung" src="${samsung}" alt="samsung logo">
             </div>
 
             <div class="featured__item">
-                <img src="${FeaturedImage}" alt="samsung tv">
-                <img id="samsung" src="${Samsung}" alt="samsung logo">
+                <img src="${featuredImage}" alt="samsung tv">
+                <img id="samsung" src="${samsung}" alt="samsung logo">
             </div>
 
             <div class="featured__item">
-                <img src="${FeaturedImage}" alt="samsung tv">
-                <img id="samsung" src="${Samsung}" alt="samsung logo">
+                <img src="${featuredImage}" alt="samsung tv">
+                <img id="samsung" src="${samsung}" alt="samsung logo">
             </div>
 
             <div class="featured__item">
-                <img src="${FeaturedImage}" alt="samsung tv">
-                <img id="samsung" src="${Samsung}" alt="samsung logo">
+                <img src="${featuredImage}" alt="samsung tv">
+                <img id="samsung" src="${samsung}" alt="samsung logo">
             </div>
 
             <div class="featured__item">
-                <img src="${FeaturedImage}" alt="samsung tv">
-                <img id="samsung" src="${Samsung}" alt="samsung logo">
+                <img src="${featuredImage}" alt="samsung tv">
+                <img id="samsung" src="${samsung}" alt="samsung logo">
             </div>
 
             <div class="featured__item">
-                <img src="${FeaturedImage}" alt="samsung tv">
-                <img id="samsung" src="${Samsung}" alt="samsung logo">
+                <img src="${featuredImage}" alt="samsung tv">
+                <img id="samsung" src="${samsung}" alt="samsung logo">
             </div>
 
             <div class="featured__item">
-                <img src="${FeaturedImage}" alt="samsung tv">
-                <img id="samsung" src="${Samsung}" alt="samsung logo">
+                <img src="${featuredImage}" alt="samsung tv">
+                <img id="samsung" src="${samsung}" alt="samsung logo">
             </div>
         </div>
 

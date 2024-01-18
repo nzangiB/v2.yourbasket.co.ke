@@ -1,8 +1,7 @@
 import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
+import { ShippingSummary } from '../../../components/shippingSummary/shippingSummary';
 import { Signup } from '../../../components/signup/signup';
-import { orderCard } from '../../../components/orderCard/orderCard';
-import { customerAddress } from '../../../components/customerAddress/customerAddress';
+import { CustomerAddress } from '../../../components/customerAddress/customerAddress';
 import { Footer } from '../../../components/footer/footer';
 
 import './checkoutAddress.scss';
@@ -16,9 +15,9 @@ export function CheckoutAddress (props) {
         </div>
         <div class="checkout__content">
             <div>
-                ${customerAddress()}
+                ${CustomerAddress()}
             </div>
-            ${shippingSummary()}
+            ${ShippingSummary()}
         </div>
       ${Signup()}
       ${Footer()}

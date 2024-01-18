@@ -1,12 +1,12 @@
+import greenCheck from "../../../assets/images/product-page/icons/green-check.svg"
+import blueRight from "../../../assets/images/product-page/icons/blue-right.svg"
+import leftArrow from "../../../assets/images/product-page/icons/left-arrow.svg"
+import cartImage from "../../../assets/images/product-page/cart-image.png"
+
 import { Nav } from '../../../components/nav/nav';
-import { shippingSummary } from '../../../components/shippingSummary/shippingSummary';
+import { ShippingSummary } from '../../../components/shippingSummary/shippingSummary';
 import { Signup } from '../../../components/signup/signup';
-import Greencheck from "../../../assets/images/productpage/icons/green_check.svg"
-import Mpesa from "../../../assets/images/productpage/icons/image 3.svg"
-import Blueright from "../../../assets/images/productpage/icons/blue-right.svg"
-import Leftarrow from "../../../assets/images/productpage/icons/left-arrow.svg"
 import { Footer } from '../../../components/footer/footer';
-import CartImage from "../../../assets/images/productpage/cartImage.png"
 
 
 import './checkoutDelivery.scss';
@@ -22,14 +22,14 @@ export function CheckoutDelivery (props) {
                 <div class="bottom__content">
                 <div class="orderCard__container">
                 <div class="orderCard__item check-item">
-                    <div class="orderCard__text paymentOptions__cardtext">
+                    <div class="orderCard__text paymentOptions__card-text">
                         <div class="check-text">
-                            <img src="${Greencheck}" alt="check icon">
+                            <img src="${greenCheck}" alt="check icon">
                             <h3>1. Customer Address</h3>
                         </div>
                         <div class="Edit">
                             <a href="#"><p>Edit</p></a>
-                            <img src="${Blueright}">
+                            <img src="${blueRight}">
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ export function CheckoutDelivery (props) {
             <div class="paymentOptions">
         
                 <div class="orderCard__text payment__title">
-                    <img src="${Greencheck}" alt="check icon">
+                    <img src="${greenCheck}" alt="check icon">
                     <h3>2. Delivery Options</h3>
                 </div>
         
@@ -72,7 +72,7 @@ export function CheckoutDelivery (props) {
                                     </div>
 
                                     <div class="deliveryGalleryImage">
-                                        <img src="${CartImage}" alt="phone">
+                                        <img src="${cartImage}" alt="phone">
                                         <div class="GalleryImage__content">
                                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
                                             <h3>QTY: 1</h3>
@@ -93,7 +93,7 @@ export function CheckoutDelivery (props) {
                                     </div>
 
                                     <div class="deliveryGalleryImage">
-                                        <img src="${CartImage}" alt="phone">
+                                        <img src="${cartImage}" alt="phone">
                                         <div class="GalleryImage__content">
                                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
                                             <h3>QTY: 1</h3>
@@ -114,7 +114,7 @@ export function CheckoutDelivery (props) {
                                     </div>
 
                                     <div class="deliveryGalleryImage">
-                                        <img src="${CartImage}" alt="phone">
+                                        <img src="${cartImage}" alt="phone">
                                         <div class="GalleryImage__content">
                                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
                                             <h3>QTY: 1</h3>
@@ -151,7 +151,7 @@ export function CheckoutDelivery (props) {
                                     </div>
 
                                     <div class="deliveryGalleryImage">
-                                        <img src="${CartImage}" alt="phone">
+                                        <img src="${cartImage}" alt="phone">
                                         <div class="GalleryImage__content">
                                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
                                             <h3>QTY: 1</h3>
@@ -173,7 +173,7 @@ export function CheckoutDelivery (props) {
                                     </div>
 
                                     <div class="deliveryGalleryImage">
-                                        <img src="${CartImage}" alt="phone">
+                                        <img src="${cartImage}" alt="phone">
                                         <div class="GalleryImage__content">
                                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
                                             <h3>QTY: 1</h3>
@@ -194,7 +194,7 @@ export function CheckoutDelivery (props) {
                                     </div>
 
                                     <div class="deliveryGalleryImage">
-                                        <img src="${CartImage}" alt="phone">
+                                        <img src="${cartImage}" alt="phone">
                                         <div class="GalleryImage__content">
                                             <h3>XIAOMI Redmi Note 12, 6.67'' , 4GB+128GB, 50MP, Dual Sim...</h3>
                                             <h3>QTY: 1</h3>
@@ -220,22 +220,22 @@ export function CheckoutDelivery (props) {
 
             <div class="orderCard__container">
                 <div class="orderCard__item check-item">
-                    <div class="orderCard__text paymentOptions__cardtext">
+                    <div class="orderCard__text paymentOptions__card-text">
                         <div class="check-text">
-                            <img src="${Greencheck}" alt="check icon">
+                            <img src="${greenCheck}" alt="check icon">
                             <h3>3. Delivery Details</h3>
                         </div>
                         <div class="Edit">
                             <a href="#"><p>Edit</p></a>
-                            <img src="${Blueright}">
+                            <img src="${blueRight}">
                         </div>
                     </div>
                 <p>Pay Fast and securely with Mpesa, Bank Cards, Partial Payment and Aspira</p>
                 </div>
-                <button class="bottom__button1"><span><img src="${Leftarrow}"></span>Back to shopping</button>
+                <button class="bottom__button1"><span><img src="${leftArrow}"></span>Back to shopping</button>
             </div>
                 </div>
-                ${shippingSummary()}
+                ${ShippingSummary()}
             </div>
             
             ${Signup()}
