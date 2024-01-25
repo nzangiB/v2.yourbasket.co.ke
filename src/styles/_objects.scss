@@ -8,14 +8,20 @@
 	display: flex;
 	flex-flow: column;
 	padding-left: calc(var(--grid) / 3);
-	
+
 	.name,
 	.tagline {
 		white-space: nowrap;
 		line-height: 15px;
 	}
-	
+
 	.name {
 		font-weight: 700;
 	}
+}
+
+.title {
+  //margin-inline: 30px;
+  font-size: 20px;
+  font-weight: bold;
 }

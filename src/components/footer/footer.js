@@ -10,14 +10,12 @@ import twitter from "../../assets/icons/twitter2.svg";
 import linkedin from "../../assets/icons/linkedin.svg";
 import instagram from "../../assets/icons/instagram.svg";
 
-import "./Footer.scss";
+import "./footer.scss";
 
 export function Footer (props) {
   return `
     <div class="footer__container">
-
         <div class="footer__nav">
-
             <div class="footer__nav__item">
                 <h3>ELECTRONICS</h3>
                 <ul>
@@ -123,7 +121,7 @@ export function Footer (props) {
         <div class="footer__socials">
             <div class="socials__content">
                 <h3>CONNECT WITH US</h3>
-                <div class="socials__links">
+                <div class="social-icons">
                     <a href="#"><img src="${facebook}" alt=""></a>
                     <a href="#"><img src="${twitter}" alt=""></a>
                     <a href="#"><img src="${linkedin}" alt=""></a>
@@ -131,12 +129,14 @@ export function Footer (props) {
                 </div>
             </div>
 
-            <div class="footer__logos">
-                <img src="${visa}" alt="visa logo">
-                <img src="${aspira}" alt="aspira logo">
-                <img src="${gpay}" alt="google pay logo">
-                <img src="${neteller}" alt="neteller logo">
-                <img src="${astropay}" alt="astropay logo">
+            <div class="socials__content">
+                <div class="payment-icons">
+                    <img src="${visa}" alt="visa logo">
+                    <img src="${aspira}" alt="aspira logo">
+                    <img src="${gpay}" alt="google pay logo">
+                    <img src="${neteller}" alt="neteller logo">
+                    <img src="${astropay}" alt="astropay logo">
+                </div>
             </div>
         </div>
 

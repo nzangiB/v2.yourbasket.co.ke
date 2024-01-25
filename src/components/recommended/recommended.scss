@@ -1,10 +1,27 @@
-.recommended__text {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+@use "../../styles/objects" as objects;
+
+.recommended {
+  padding: 20px;
 }
 
-.recommended__text a {
-    margin-right: 30px;
-    color: var(--color-type-6);
+.recommended__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.recommended__title {
+  @extend .title;
+}
+
+.recommended__button {
+  color: var(--color-type-6);
+  font-weight: 500;
+  font-size: var(--font-size-4);
+  background-image: url("../../assets/icons/stroke_1.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px 16px;
+  padding-right: 20px;
 }

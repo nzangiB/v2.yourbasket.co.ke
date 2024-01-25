@@ -1,60 +1,61 @@
+import cart from "../../assets/images/cart.png";
 import rightArrow from "../../assets/icons/arrow_right_blue.svg";
 import leftArrow from "../../assets/icons/arrow_left_dark.svg";
 import featuredImage from "../../assets/images/featured.png";
 import samsung from "../../assets/images/samsung.svg";
 
-import "./Featured.scss";
+import "./featured.scss";
 
 export function Featured (props) {
   return `
-    <div class="featured__container">
-        <div class="featured__title">
-            <p>FEATURED BRANDS</p>
-            <div class="Categories__arrows">
+    <div class="featured">
+        <div class="featured__header">
+            <h3 class="featured__title">FEATURED BRANDS</h3>
+            <div class="categories__arrows">
                 <a href="#"><img src="${leftArrow}" alt="left arrow"></a>
                 <a href="#"><img src="${rightArrow}" alt="right arrow"></a>
             </div>
         </div>
 
         <div class="featured__gallery">
-            <div class="featured__item">
-                <img src="${featuredImage}" alt="samsung tv">
-                <img id="samsung" src="${samsung}" alt="samsung logo">
+            <div class="featured__gallery--item">
+                <img class="brand-image" src="${featuredImage}" alt="samsung tv">
+                <img class="brand-name" src="${samsung}" alt="samsung logo">
             </div>
 
-            <div class="featured__item">
-                <img src="${featuredImage}" alt="samsung tv">
-                <img id="samsung" src="${samsung}" alt="samsung logo">
+            <div class="featured__gallery--item">
+                <img class="brand-image" src="${featuredImage}" alt="samsung tv">
+                <img class="brand-name" src="${samsung}" alt="samsung logo">
             </div>
 
-            <div class="featured__item">
-                <img src="${featuredImage}" alt="samsung tv">
-                <img id="samsung" src="${samsung}" alt="samsung logo">
+            <div class="featured__gallery--item">
+                <img class="brand-image" src="${featuredImage}" alt="samsung tv">
+                <img class="brand-name" src="${samsung}" alt="samsung logo">
             </div>
 
-            <div class="featured__item">
-                <img src="${featuredImage}" alt="samsung tv">
-                <img id="samsung" src="${samsung}" alt="samsung logo">
+            <div class="featured__gallery--item">
+                <img class="brand-image" src="${featuredImage}" alt="samsung tv">
+                <img class="brand-name" src="${samsung}" alt="samsung logo">
             </div>
 
-            <div class="featured__item">
-                <img src="${featuredImage}" alt="samsung tv">
-                <img id="samsung" src="${samsung}" alt="samsung logo">
+            <div class="featured__gallery--item">
+                <img class="brand-image" src="${featuredImage}" alt="samsung tv">
+                <img class="brand-name" src="${samsung}" alt="samsung logo">
             </div>
 
-            <div class="featured__item">
-                <img src="${featuredImage}" alt="samsung tv">
-                <img id="samsung" src="${samsung}" alt="samsung logo">
+            <div class="featured__gallery--item">
+                <img class="brand-image" src="${featuredImage}" alt="samsung tv">
+                <img class="brand-name" src="${samsung}" alt="samsung logo">
             </div>
 
-            <div class="featured__item">
-                <img src="${featuredImage}" alt="samsung tv">
-                <img id="samsung" src="${samsung}" alt="samsung logo">
+            <div class="featured__gallery--item">
+                <img class="brand-image" src="${featuredImage}" alt="samsung tv">
+                <img class="brand-name" src="${samsung}" alt="samsung logo">
             </div>
         </div>
 
         <div class="featured__image">
-            
+            <img src="${cart}" alt="cart illustration" class="img">
         </div>
 
         <div class="featured__text">
@@ -126,10 +127,7 @@ export function Featured (props) {
                         orders over a set amount.
                 </p>
             </div>
-
-
         </div>
-
     </div>
     `;
 }

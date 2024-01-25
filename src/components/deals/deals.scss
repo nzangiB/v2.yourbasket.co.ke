@@ -1,33 +1,55 @@
-.Deals__container {
-    padding: 20px;
+@use "../../styles/objects" as objects;
+
+.deals {
+  padding: 20px;
 }
 
-.Deals__title {
+.deals-list {
+  .deals__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 20px 0;
-}
+  }
 
-.Deals__time {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+  .deals__title {
+    @extend .title;
+  }
 
-.Deals__time h3 {
-    padding-right: 20px;
-}
-
-.Deals__text {
-    padding: 0 25px;
+  .deals__text {
+    font-weight: 500;
+    font-size: var(--font-size-4);
+    padding: 5px 15px;
     background: var(--color-type-8) none;
     border-radius: 99em;
     border: none;
     color: var(--color-type-4);
+  }
 }
 
-.Deals__time button {
-    background-color: var(--color-type-6);
+.deals-today {
+  @extend .deals-list;
+
+  .deals__time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h3 {
+      padding-right: 20px;
+    }
+
+    button {
+      background-color: var(--color-type-6);
+    }
+  }
+}
+
+.deals-recommended {
+  @extend .deals-list;
+}
+
+.deals-more {
+  @extend .deals-list;
 }
 

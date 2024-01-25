@@ -1,61 +1,58 @@
-.cartCard__container {
-    padding: 20px;
+.couponCard__container {
+  padding: 20px;
 }
 
 .couponCard__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    background-color: white;
-    padding: 10px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: white;
+  padding: 10px;
 
-.cartCard__item > div:first-child {
+  > div:first-child {
     grid-column: span 3;
-}
+  }
 
-.item__title {
+  .item__title {
     font-weight: bold;
     margin-bottom: 10px;
-}
+  }
 
-.item__image {
+  .item__image {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     padding-bottom: 10px;
+
+    img {
+      margin-right: 10px
+    }
+
+    p {
+      font-weight: bold;
+      flex-wrap: wrap;
+    }
+  }
 }
 
-.item__image img {
-    margin-right: 10px
-}
-
-.item__image p {
-    font-weight: bold;
-    flex-wrap: wrap;
+.couponCard__item--content {
+    > p {
+        font-weight: bold;
+    }
 }
 
 .couponCard__images {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
-.cartCard__content > p {
-    font-weight: bold;
-}
-
-.cartCart__icons {
-    display: flex;
-    flex-direction: column;
-    width: 20px;
-    gap: 10px;
-}
-
-#icons {
-    font-size: 10px;
-    width: 30px;
+.couponCard__icons {
+  display: flex;
+  flex-direction: column;
+  width: 20px;
+  gap: 10px;
 }

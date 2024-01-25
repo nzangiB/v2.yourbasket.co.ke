@@ -1,7 +1,7 @@
 import { Nav } from "../../components/nav/nav";
 import { Footer } from "../../components/footer/footer";
 import { ProductInfo } from "../../components/productInfo/productInfo";
-import { MoreDeals } from "../../components/moreDeals/moreDeals";
+import { MoreDeals } from "../../components/deals/moreDeals";
 import { Signup } from "../../components/signup/signup";
 import { Advert } from "../../components/advert/advert";
 

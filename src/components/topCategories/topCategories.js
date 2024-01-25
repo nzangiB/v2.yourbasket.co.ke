@@ -2,20 +2,20 @@ import rightArrow from "../../assets/icons/arrow_right_blue.svg"
 import leftArrow from "../../assets/icons/arrow_left_dark.svg"
 import galleryItem from "../../assets/images/gallery-item.jpg"
 
-import './topCategories.scss';
+import "./topCategories.scss";
 
 export function TopCategories (props) {
     return `
-    <div class="Categories__container">
-        <div class="Categories__title  product-title">
+    <div class="topCategories">
+        <div class="topCategories__title">
             <p>SHOP OUR TOP CATEGORIES</p>
-            <div class="Categories__arrows">
+            <div class="topCategories__arrows">
                 <a href="#"><img src="${leftArrow}" alt="left arrow"></a>
                 <a href="#"><img src="${rightArrow}" alt="right arrow"></a>
             </div>
         </div>
 
-        <div class="Categories__gallery">
+        <div class="topCategories__gallery">
             <div class="gallery__item">
                 <div class="gallery__image">
                     <img src="${galleryItem}" alt="gallery image">

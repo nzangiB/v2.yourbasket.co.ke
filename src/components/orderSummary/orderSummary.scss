@@ -1,9 +1,6 @@
 .orderSummary__container {
     background-color: rgba(235, 240, 252, 1);
     padding: 20px;
-    margin-right: 20px;
-    margin-bottom: 90px;
-    margin-top: 20px;
 }
 
 .summary__top {
@@ -12,12 +9,14 @@
 }
 
 .summary__title {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
-.summary__title h1 {
-    font-size: 24px;
-    font-weight: bold;
+.summary__title {
+    h1 {
+        font-size: var(--font-size-3);
+        font-weight: bold;
+    }
 }
 
 .summary__title input {
@@ -48,7 +47,7 @@
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    padding-bottom: 20px;
+    padding-block: 20px;
     font-size: 18px;
 }
 

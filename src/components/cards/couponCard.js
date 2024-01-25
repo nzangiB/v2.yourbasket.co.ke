@@ -9,10 +9,9 @@ import "./couponCard.scss";
 
 export function CouponCard (props) {
   return `
-    <div class="cartCard__container">
+    <div class="couponCard__container">
         <div class="couponCard__item">
-            <div class="cartCard__content">  
-
+            <div class="couponCard__item--content">  
                 <div class="item__image">
                     <img src="${cartImage}" alt="cart preview image">
                     <div class="item__text">
@@ -21,13 +20,11 @@ export function CouponCard (props) {
                         <h3>Variation: Black</p>
                         <h3>1 units left</h3>
                     </div>
-
                     
-                    <div class="cartCard__content">
+                    <div class="couponCard__item--content">
                         <p>KSH 25,999.00</p>
                         <p>1</p>
                     </div>
-
                 </div>
 
                 <div class="couponCard__images">
@@ -42,7 +39,6 @@ export function CouponCard (props) {
                     </div>
                 </div>
             </div>
-        
         </div>
     </div>
     

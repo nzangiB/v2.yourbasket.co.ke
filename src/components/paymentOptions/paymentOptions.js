@@ -3,8 +3,6 @@ import mastercard from "../../assets/images/product-page/icons/mastercard.svg";
 import airtel from "../../assets/images/product-page/icons/artboard.svg";
 import mPesa from "../../assets/images/product-page/icons/m-pesa.svg";
 import visa from "../../assets/images/product-page/icons/visa-logo.svg";
-import blueRight from "../../assets/images/product-page/icons/blue-right.svg";
-import leftArrow from "../../assets/images/product-page/icons/left-arrow.svg";
 
 import "./paymentOptions.scss";
 
@@ -17,9 +15,10 @@ export function PaymentOptions (props) {
                     <img src="${greenCheck}" alt="check icon">
                     <h3>1. Customer Address</h3>
                 </div>
-                <div class="Edit">
-                    <a href="#"><p>Edit</p></a>
-                    <img src="${blueRight}">
+                <div class="edit-button">
+                    <button type="button">
+                        <span>Edit</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -32,9 +31,10 @@ export function PaymentOptions (props) {
                     <img src="${greenCheck}" alt="check icon">
                     <h3>2. Delivery Details</h3>
                 </div>
-                <div class="Edit">
-                    <a href="#"><p>Edit</p></a>
-                    <img src="${blueRight}">
+                <div class="edit-button">
+                    <button type="button">
+                        <span>Edit</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -42,7 +42,6 @@ export function PaymentOptions (props) {
 
 
     <div class="paymentOptions">
-
         <div class="orderCard__text payment__title">
             <img src="${greenCheck}" alt="check icon">
             <h3>3. Payment Option</h3>
@@ -54,7 +53,7 @@ export function PaymentOptions (props) {
             </div>
 
             <div class="paymentOptions__inputs">
-                <div class="inputs__container-1">
+                <div class="inputs__container --1">
                     <div class="inputs__item">
                         <label for="IpayRadio">
                             <input id="IpayRadio" type="radio" name="Payment" value="Pay now with Ipay">
@@ -77,7 +76,7 @@ export function PaymentOptions (props) {
                     </div>
                 </div>
 
-                <div class="inputs__container-2">
+                <div class="inputs__container --2">
                     <div class="inputs__item">
                         <label for="PartialRadio">
                             <input id="PartialRadio" type="radio" name="Payment" value="Partial Payment">
@@ -126,7 +125,12 @@ export function PaymentOptions (props) {
                 CONFIRM PAYMENT METHOD
             </button>
         </div>
-        <button class="bottom__button1"><span><img src="${leftArrow}"></span>Back to shopping</button>
+        
+        <button class="back-to-shopping-button">
+            <span>
+                Back to shopping
+            </span>
+        </button>
     </div>
   `;
 }

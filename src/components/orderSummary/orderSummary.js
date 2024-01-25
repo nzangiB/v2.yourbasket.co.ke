@@ -1,15 +1,14 @@
 import expressRed from "../../assets/images/product-page/icons/express-red-logo.svg";
 
-import "./OrderSummary.scss";
+import "./orderSummary.scss";
 
 export function OrderSummary (props) {
   return `
     <div class="orderSummary__container">
 
         <div class="summary__top">
-
             <div class="summary__title">
-                <h1>Order Summary</h1>
+                <h1 class="">Order Summary</h1>
                 <div class="summary__input">
                     <input type="number" id="codeInput" placeholder="Apply coupon code" required>
                     <button id="applyButton">Apply</button>

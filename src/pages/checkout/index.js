@@ -10,7 +10,7 @@ import { CheckoutDisabled } from "./checkoutDisabled/checkoutDisabled";
 
 export default {
   checkoutRoute: {
-    path: "/checkout/",
+    path: "/checkout",
     template: Checkout
   },
   checkoutAddressRoute: {

@@ -9,9 +9,9 @@ import "./cartCard.scss";
 
 export function CartCard (props) {
   return `
-    <div class="cartCard__container">
+    <div class="cartCard">
         <div class="cartCard__item">
-            <div class="cartCard__content">
+            <div class="cartCard__item--content">
                 <div class="item__title">
                     <p>Item</p>
                 </div>
@@ -28,21 +28,21 @@ export function CartCard (props) {
                 </div>
             </div>
 
-            <div class="cartCard__content">
+            <div class="cartCard__item--content">
                 <div class="item__title">
                     <p>Price</p>
                 </div>
                 <p>KSH 25,999.00</p>
             </div>
 
-            <div class="cartCard__content">
+            <div class="cartCard__item--content">
                 <div class="item__title">
                     <p>Qty</p>
                 </div>
                 <p>1</p>
             </div>
 
-            <div class="cartCard__content">
+            <div class="cartCard__item--content">
                 <div class="item__title">
                     <p>Subtotal</p>
                 </div>
@@ -50,7 +50,7 @@ export function CartCard (props) {
             </div>
 
             <!--
-            <div class="cartCard__content" id="icons">
+            <div class="cartCard__item--content" id="icons">
                 <div class="cartCart__icons">
                     <img src="${x}" alt = "x icon">
                     <img src="${heart}" alt="heart icon">

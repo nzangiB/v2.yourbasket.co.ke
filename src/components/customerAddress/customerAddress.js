@@ -1,11 +1,10 @@
 import check from "../../assets/images/product-page/icons/check.svg";
 
-import "./CustomerAddress.scss";
+import "./customerAddress.scss";
 
 export function CustomerAddress (props) {
   return `
     <div class="customerAddress__container">
-
         <div class="orderCard__container">
             <div class="orderCard__item">
                 <div class="orderCard__text">
@@ -17,7 +16,6 @@ export function CustomerAddress (props) {
                     <h3>Add Address</h3>
                     <div class="orderCard__form">
                         <form>
-
                             <div class="form__details">
                                 <div class="form__item">
                                     <label for="phoneNumber">Phone Number</label>
@@ -63,11 +61,9 @@ export function CustomerAddress (props) {
                                 <button>SAVE</button>
                                 <button>CANCEL</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -89,9 +85,7 @@ export function CustomerAddress (props) {
                 </div>
                 <p>Pay Fast and securely with Mpesa, Bank Cards, Partial Payment and Aspira</p>
             </div>
-        </div>
-
-            
+        </div>            
     </div>
     
     `;
