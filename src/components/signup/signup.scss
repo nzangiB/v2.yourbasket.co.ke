@@ -1,13 +1,19 @@
+@use "../../styles/tools.breakpoint" as breakpoint;
+
 .signup__container {
   background-color: rgba(235, 240, 252, 1);
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: space-between;
-  padding: 40px;
+  padding: 20px;
   gap: 20px;
+  width: 100%;
 
-  & > div {
-    flex: 1;
+  @include breakpoint.phablet {
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  }
+
+  @include breakpoint.mobile-only {
+    grid-auto-flow: row;
   }
 }
 
@@ -16,9 +22,16 @@
   background-color: var(--color-type-10);
   border-radius: 5px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 20px;
+
+  @include breakpoint.phablet {
+    flex-direction: row;
+  }
+
+  @include breakpoint.mobile-only {
+    flex-direction: column;
+  }
 
   h3 {
     font-size: var(--font-size-3);
@@ -33,29 +46,29 @@
   .field__input {
     form {
       input {
-        background: var();
-        border: 0.94px #DEE2E7 solid;
+        border: 1px solid #DEE2E7;
         border-radius: 5px;
-        width: 370px;
-        padding: 5px;
+        max-width: 370px;
+        padding: 5px 10px;
       }
 
       button {
         text-align: center;
-        padding: 0 15px;
+        padding: 5px 15px;
         background: var(--color-type-5);
         border: none;
         text-transform: uppercase;
-        margin-left: 5px;
+        margin-top: 5px;
         font-weight: bold;
-        height: 37.417px;
         border-radius: 5px;
       }
     }
   }
 
   .field__image {
-    padding-left: 40px;
+    @include breakpoint.mobile-only {
+      display: none;
+    }
   }
 }
 
@@ -64,23 +77,34 @@
   padding: 20px;
   border-radius: 5px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 20px;
+
+  @include breakpoint.phablet {
+    flex-direction: row;
+  }
+
+  @include breakpoint.mobile-only {
+    flex-direction: column;
+  }
 
   .links__content {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
     margin-bottom: 10px;
     gap: 10px;
+  }
+
+  .links__image {
+    @include breakpoint.mobile-only {
+      display: none;
+    }
   }
 
   .link__text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
 
     h3 {
       font-size: var(--font-size-3);
@@ -93,11 +117,6 @@
   }
 
   .links__images {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-
     img:first-child {
       margin-right: 10px;
     }

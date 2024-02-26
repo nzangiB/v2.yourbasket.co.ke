@@ -1,0 +1,60 @@
+@use "../../styles/tools.breakpoint" as breakpoint;
+
+.product-cards__wrapper {
+  padding-inline: 20px;
+
+  .simplebar-track {
+    display: none;
+  }
+
+  &[data-simplebar] {
+    .product-cards {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .product-card-container {
+      flex: 0 0 250px;
+
+      .product-card {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+.product-group {
+  .product-cards {
+    margin-left: -5px;
+    width: calc(100% + 5px);
+  }
+
+  .product-card-container {
+    //min-width: 250px;
+    padding-inline: 5px;
+    //margin-bottom: 10px;
+
+    @include breakpoint.phablet {
+      @include breakpoint.laptop {
+        //width: calc(25% - 10px);
+        width: 25%;
+      }
+
+      @include breakpoint.laptop-only {
+        //width: calc(33.3333% - 10px);
+        width: 33.3333%;
+      }
+    }
+    
+    @include breakpoint.mobile-only {
+      //width: calc(50% - 10px);
+      width: 50%;
+    }
+
+    &:last-child {
+      //padding-right: 20px;
+    }
+  }
+}

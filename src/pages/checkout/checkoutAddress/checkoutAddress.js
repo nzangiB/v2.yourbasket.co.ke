@@ -22,5 +22,5 @@ export function CheckoutAddress (props) {
       ${Signup()}
       ${Footer()}
     </div>
-    `;
+  `;
 }

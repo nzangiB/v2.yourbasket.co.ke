@@ -1,26 +1,26 @@
-.orderCard__container {
-    margin: 0 20px 0 20px;
-    padding-bottom: 20px;
+.orderCard {
+  margin: 0 20px 0 20px;
+  padding-bottom: 20px;
 }
 
 .orderCard__item {
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 1);
-}
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 1);
 
-.orderCard__item p {
+  p {
     font-size: 12px;
+  }
 }
 
 .orderCard__text {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: bold;
-}
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
 
-.orderCard__text img {
+  img {
     margin-right: 10px;
+  }
 }

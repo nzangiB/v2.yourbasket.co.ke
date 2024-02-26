@@ -1,27 +1,45 @@
 import { Nav } from "../../components/nav/nav";
 import { Footer } from "../../components/footer/footer";
-import { ProductInfo } from "../../components/productInfo/productInfo";
-import { MoreDeals } from "../../components/deals/moreDeals";
 import { Signup } from "../../components/signup/signup";
 import { Advert } from "../../components/advert/advert";
+import { RecentlyViewed } from "../../components/recentlyViewed";
+import { RelatedProducts } from "../../components/relatedProducts";
 
-import { ProductPageModal } from "../../components/modals/productPageModal/productPageModal";
+import AuthService from "../../services/auth.service";
+import DataService from "../../services/data.service";
 
 import "./productPage.scss";
 
-export function ProductPage (props) {
+async function ProductPage (props) {
   const { params } = props;
-  const id = params.id;
+  const auth = AuthService.getCurrentUser();
+  const userId = auth ? auth.id : "";
+
+  const data = await DataService.getProductDetailWithSlug(params.id, userId);
+  const productData = data.data.category;
+  productData.images = productData.images
+    ? JSON.parse(productData.images)
+    : [];
+  productData.variant = productData.variant
+    ? JSON.parse(productData.variant)
+    : [];
+  const product = productData;
+  const html = { __html: productData.details };
 
   return `
-    <div class="container productPage__container">
-      ${Nav()}
-      ${ProductInfo({ id })}
-      <!--${ProductPageModal({ id })}-->
-      ${MoreDeals()}
-      ${Advert()}
+      ${await Nav()}
+      <div class="container">
+          <div class="content">
+              {{! ProductInfo }}
+              {{! ProductPageModal }}
+              ${await RelatedProducts({ productData })}
+              ${await RecentlyViewed({ productData })}
+              ${Advert()}
+          </div>
+      </div>
       ${Signup()}
       ${Footer()}
-    </div>
-    `;
+  `;
 }
+
+export default ProductPage;

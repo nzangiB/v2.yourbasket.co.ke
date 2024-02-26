@@ -2,12 +2,13 @@
 
 .clearanceSale {
   padding: 20px;
+  background-color: #EBF0FC;
 }
 
 .clearanceSale__container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
+  grid-gap: 10px;
   border-radius: 8px;
   background-color: var(--color-type-7);
 }
@@ -29,6 +30,13 @@
 
 .clearanceSale__image {
   width: 100%;
-  height: auto;
-  border-bottom: 1px solid #ddd;
+  aspect-ratio: 3/4;
+  border-radius: 5px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

@@ -11,7 +11,7 @@ export function Cart (props) {
     <div class="container">
         ${Nav()}
         <div class="cart__title">
-            <h1>Shopping Cart (2 items)</h1>
+            <h1>Shopping Cart <span>(2 items)</span></h1>
         </div>
         <div class="cart__content">
             <div>
@@ -24,5 +24,5 @@ export function Cart (props) {
         ${Signup()}
         ${Footer()}
     </div>
-    `;
+  `;
 }

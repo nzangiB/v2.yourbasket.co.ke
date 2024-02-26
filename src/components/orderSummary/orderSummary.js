@@ -4,15 +4,15 @@ import "./orderSummary.scss";
 
 export function OrderSummary (props) {
   return `
-    <div class="orderSummary__container">
-
+    <div class="orderSummary">
         <div class="summary__top">
             <div class="summary__title">
                 <h1 class="">Order Summary</h1>
-                <div class="summary__input">
-                    <input type="number" id="codeInput" placeholder="Apply coupon code" required>
-                    <button id="applyButton">Apply</button>
-                </div>
+            </div>
+            
+            <div class="summary__input">
+                <input type="number" id="codeInput" placeholder="Apply coupon code" required>
+                <button type="button" id="applyButton">Apply</button>
             </div>
             
             <div class="summary__text">
@@ -31,23 +31,23 @@ export function OrderSummary (props) {
         <div class="summary__bottom">
             <div class="bottom__icons">
                 <img src="${expressRed}" alt="express logo">
-                <p>Items labeled “Express” are eligible for free delivery.</p>
+                <span>Items labeled “Express” are eligible for free delivery.</span>
             </div>
 
             <div class="bottom__price">
-                <p>Total (Inclusive of VAT)</p>
-                <p>KSH 77,997.00</p>
+                <span>Total (Inclusive of VAT)</span>
+                <span>KSH 77,997.00</span>
+            </div>
+            
+            <div class="bottom__text">
+                <img src="bank" alt="bank icon">
+                <span>Buy Now, Pay Later. Monthly payment plans from KSH 10,000. <a href="#">Learn More</a></span>
             </div>
 
             <div class="bottom__button">
-                <div class="bottom__text">
-                    <p>Buy Now, Pay Later. Monthly payment plans from KSH 10,000. <a href="#">Learn More</a></p>
-                </div>
                 <button>CHECKOUT</button>
             </div>
-        </div>
-        
+        </div>   
     </div>
-    
-    `;
+  `;
 }

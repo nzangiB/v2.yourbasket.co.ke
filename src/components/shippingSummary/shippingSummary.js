@@ -1,13 +1,12 @@
 import tick from "../../assets/images/product-page/icons/tick-square.svg";
 
-import "./ShippingSummary.scss";
+// import "./ShippingSummary.scss";
 
 export function ShippingSummary (props) {
   return `
     <div class="container">
         <div class="orderSummary__container">
             <div class="summary__top">
-
                 <div class="summary__title">
                     <h1>Order Summary</h1>
                     <div class="summary__input">

@@ -3,6 +3,7 @@ module.exports = {
     browser: true, es2021: true
   },
   extends: ["standard", "eslint:recommended", "plugin:import/recommended"],
+  parser: "@babel/eslint-parser",
   plugins: ["import"],
   settings: {
     "import/resolver": "webpack"
@@ -23,6 +24,8 @@ module.exports = {
     "no-loss-of-precision": 0,
     "space-before-function-paren": ["error", {
       anonymous: "always", named: "always", asyncArrow: "always"
-    }]
+    }],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   }
 };

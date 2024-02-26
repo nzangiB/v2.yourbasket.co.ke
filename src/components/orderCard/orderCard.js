@@ -1,10 +1,10 @@
 import check from "../../assets/images/product-page/icons/check.svg";
 
-import "./OrderCard.scss";
+import "./orderCard.scss";
 
 export function OrderCard (props) {
   return `
-    <div class="orderCard__container">
+    <div class="orderCard">
         <div class="orderCard__item">
             <div class="orderCard__text">
                 <img src="${check}" alt="check icon">

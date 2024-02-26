@@ -8,16 +8,16 @@ import { CheckoutEdit } from "./checkoutEdit/checkoutEdit";
 import { CheckoutDelivery } from "./checkoutDelivery/checkoutDelivery";
 import { CheckoutDisabled } from "./checkoutDisabled/checkoutDisabled";
 
-export default {
-  checkoutRoute: {
+export default [
+  {
     path: "/checkout",
     template: Checkout
   },
-  checkoutAddressRoute: {
+  {
     path: "/checkout/address",
     template: CheckoutAddress
   },
-  checkoutPaymentRoute: {
+  {
     path: "/checkout/payment",
     template: (props) => {
       const { option } = props.query;
@@ -33,16 +33,16 @@ export default {
       return "Unsupported Payment Option";
     }
   },
-  checkoutEditRoute: {
+  {
     path: "/checkout/edit",
     template: CheckoutEdit
   },
-  checkoutDisabledRoute: {
+  {
     path: "/checkout/disabled",
     template: CheckoutDisabled
   },
-  checkoutDeliveryRoute: {
+  {
     path: "/checkout/delivery",
     template: CheckoutDelivery
   }
-};
+];

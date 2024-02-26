@@ -1,27 +1,116 @@
+@use "tools.breakpoint" as breakpoint;
+
 .wrapper {
-	display: flex;
-	flex-flow: column nowrap;
+  display: flex;
+  flex-flow: column nowrap;
+  // overflow-x: hidden;
+  // width: 100vw;
+}
+
+.container {
+  height: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: var(--color-type-7);
+}
+
+.aside {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
+  flex: .15;
+  position: sticky;
+  top: 99px;
+
+  &__left {
+    align-items: flex-end;
+  }
+
+  &__right {
+    align-items: flex-start;
+  }
+
+  .ad, .ad-group {
+    width: 100%;
+  }
+
+  @include breakpoint.tablet-only {
+    display: none;
+  }
+}
+
+.content {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  //max-width: 1200px;
+  //width: 80%;
 }
 
 .logo__text {
-	flex: 1;
-	display: flex;
-	flex-flow: column;
-	padding-left: calc(var(--grid) / 3);
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  padding-left: calc(var(--grid) / 3);
 
-	.name,
-	.tagline {
-		white-space: nowrap;
-		line-height: 15px;
-	}
+  .name,
+  .tagline {
+    white-space: nowrap;
+    line-height: 15px;
+  }
 
-	.name {
-		font-weight: 700;
-	}
+  .name {
+    font-weight: 700;
+  }
 }
 
 .title {
-  //margin-inline: 30px;
   font-size: 20px;
   font-weight: bold;
+  line-height: 1;
+}
+
+.link {
+  &.--see-more {
+    font-weight: 500;
+    font-size: var(--font-size-4);
+    background-image: url("/assets/icons/right_arrow.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 16px 16px;
+    padding-right: 16px;
+    color: var(--color-type-6);
+  }
+
+  &.--see-all {
+    font-weight: 500;
+    font-size: var(--font-size-4);
+    padding: 5px 15px;
+    background: var(--color-type-8) none;
+    border-radius: 99em;
+    border: none;
+    color: var(--color-type-4);
+  }
+}
+
+.lead {
+  font: 500 var(--font-variant-4);
+  margin-bottom: var(--grid);
+  text-align: center;
+}
+
+.icon {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+  height: 0.9375rem;
+  width: 0.9375rem;
+}
+
+.icon.is-medium {
+  height: 0.9375rem;
+  width: 0.9375rem;
 }

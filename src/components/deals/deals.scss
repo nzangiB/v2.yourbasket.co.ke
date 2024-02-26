@@ -1,34 +1,49 @@
 @use "../../styles/objects" as objects;
 
 .deals {
+  &-list {
+  }
+
+  &-grid {
+    padding-block: 20px;
+  }
+
+  &-carousel {
+    .carousel {
+      padding: 20px;
+    }
+  }
+}
+
+.deals__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 20px;
 }
 
-.deals-list {
-  .deals__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 20px 0;
-  }
+.deals__list {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
 
-  .deals__title {
-    @extend .title;
-  }
+.deals__grid {
+}
 
-  .deals__text {
-    font-weight: 500;
-    font-size: var(--font-size-4);
-    padding: 5px 15px;
-    background: var(--color-type-8) none;
-    border-radius: 99em;
-    border: none;
-    color: var(--color-type-4);
-  }
+.deals__title {
+  @extend .title;
+}
+
+.deals__text {
 }
 
 .deals-today {
-  @extend .deals-list;
+  @extend .deals-grid;
+  padding-inline: 0;
+
+  .deals__text {
+  }
 
   .deals__time {
     display: flex;
@@ -40,16 +55,30 @@
     }
 
     button {
-      background-color: var(--color-type-6);
+      font-weight: 500;
+      font-size: var(--font-size-4);
+      padding: 5px 15px;
+      background: var(--color-type-6) none;
+      border-radius: 99em;
+      border: none;
+      color: var(--color-type-4);
     }
   }
 }
 
 .deals-recommended {
-  @extend .deals-list;
+  //padding-inline: 20px;
 }
 
 .deals-more {
-  @extend .deals-list;
+  //padding-inline: 20px;
+}
+
+.deals-for-you {
+  //padding-inline: 20px;
+}
+
+.deals-on-electronics {
+  //padding-inline: 20px;
 }
 

@@ -1,0 +1,64 @@
+@use "sass:math";
+
+@mixin hd {
+    @media (min-width: 90em) {
+        // >1440px
+        @content;
+    }
+}
+
+@mixin desktop-only {
+    @media (max-width: 89.9em) {
+        // >1438px
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 70.1em) {
+        // >1121px
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (min-width: 64.1em) {
+        // >1025px
+        @content;
+    }
+}
+
+@mixin laptop-only {
+    @media (max-width: 64em) {
+        // <1024px
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 50.1em) {
+        // >804px
+        @content;
+    }
+}
+
+@mixin tablet-only {
+    @media (max-width: 50em) {
+        // <800px
+        @content;
+    }
+}
+
+@mixin phablet {
+    @media (min-width: 37.6em) {
+        // >601px
+        @content;
+    }
+}
+
+@mixin mobile-only {
+    @media (max-width: 37.5em) {
+        // <600px
+        @content;
+    }
+}

@@ -1,20 +1,26 @@
-import { ProductCard } from "../productCard/productCard";
+import AuthService from "../../services/auth.service";
+import DataService from "../../services/data.service";
 
-import "./moreDeals.scss";
+import { ProductRow } from "../productCard/productRow";
 
-export function MoreDeals (props) {
+import "./deals.scss";
+
+export async function MoreDeals (props) {
   return `
-    <div class="deals-more">
-        <header class="deals__header">
-            <h3 class="deals__title">MORE DEALS FOR YOU</h3>
-        </header>
-        ${ProductCard()}
+      <div class="deals-grid deals-more">
+          <header class="deals__header">
+              <h3 class="title">More deals for you</h3>
+          </header>
 
-        <header class="deals__header">
-            <h3 class="deals__title">MORE ITEMS FROM THIS SELLER</h3>
-        </header>>
-        ${ProductCard()}
-    </div>
-    
-    `;
+          ${new ProductRow([]).render()}
+      </div>
+      
+      <div class="deals deals-more">
+          <header class="deals__header">
+              <h3 class="title">More items from this seller</h3>
+          </header>
+
+          ${new ProductRow([]).render()}
+      </div>    
+  `;
 }

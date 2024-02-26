@@ -16,9 +16,9 @@ export function Footer (props) {
   return `
     <div class="footer__container">
         <div class="footer__nav">
-            <div class="footer__nav__item">
-                <h3>ELECTRONICS</h3>
-                <ul>
+            <div class="footer__nav--item">
+                <h3 class="title">Electronics</h3>
+                <ul class="list">
                     <li><a href="#">Mobiles</a></li>
                     <li><a href="#">Tablets</a></li>
                     <li><a href="#">Laptops</a></li>
@@ -30,9 +30,9 @@ export function Footer (props) {
                 </ul>
             </div>
 
-            <div class="footer__nav__item">
-                <h3>HOME AND KITCHEN</h3>
-                <ul>
+            <div class="footer__nav--item">
+                <h3 class="title">Home And Kitchen</h3>
+                <ul class="list">
                     <li><a href="#">Bath</a></li>
                     <li><a href="#">Home Decor</a></li>
                     <li><a href="#">Kitchen &amp; Dining</a></li>
@@ -44,9 +44,9 @@ export function Footer (props) {
                 </ul>
             </div>
 
-            <div class="footer__nav__item">
-                <h3>YOUR KIOSK</h3>
-                <ul>
+            <div class="footer__nav--item">
+                <h3 class="title">Your Kiosk</h3>
+                <ul class="list">
                     <li><a href="#">Fresh produce</a></li>
                     <li><a href="#">Dairy &amp; Eggs</a></li>
                     <li><a href="#">Bread &amp; Bakery</a></li>
@@ -58,9 +58,9 @@ export function Footer (props) {
                 </ul>
             </div>
 
-            <div class="footer__nav__item">
-                <h3>FASHION</h3>
-                <ul>
+            <div class="footer__nav--item">
+                <h3 class="title">Fashion</h3>
+                <ul class="list">
                     <li><a href="#">Women's Fashion</a></li>
                     <li><a href="#">Men's Fashion</a></li>
                     <li><a href="#">Girl's Fashion</a></li>
@@ -72,9 +72,9 @@ export function Footer (props) {
                 </ul>
             </div>
 
-            <div class="footer__nav__item">
-                <h3>BEAUTY</h3>
-                <ul>
+            <div class="footer__nav--item">
+                <h3 class="title">Beauty</h3>
+                <ul class="list">
                     <li><a href="#">Fragrance</a></li>
                     <li><a href="#">Make-Up</a></li>
                     <li><a href="#">Haircare</a></li>
@@ -86,9 +86,9 @@ export function Footer (props) {
                 </ul>
             </div>
 
-            <div class="footer__nav__item">
-                <h3>BABY &amp; TOYS</h3>
-                <ul>
+            <div class="footer__nav--item">
+                <h3 class="title">Baby &amp; Toys</h3>
+                <ul class="list">
                     <li><a href="#">Diapering</a></li>
                     <li><a href="#">Baby Transport</a></li>
                     <li><a href="#">Nursing &amp; Feeding</a></li>
@@ -100,9 +100,9 @@ export function Footer (props) {
                 </ul>
             </div>
 
-            <div class="footer__nav__item">
-                <h3>TOP BRANDS</h3>
-                <ul>
+            <div class="footer__nav--item">
+                <h3 class="title">Top Brands</h3>
+                <ul class="list">
                     <li><a href="#">Apple</a></li>
                     <li><a href="#">Xiaomi</a></li>
                     <li><a href="#">Samsung</a></li>
@@ -114,13 +114,11 @@ export function Footer (props) {
                     <li><a href="#">Vitron</a></li>
                 </ul>
             </div>
-
-
         </div>
 
         <div class="footer__socials">
             <div class="socials__content">
-                <h3>CONNECT WITH US</h3>
+                <h3 class="title">Connect With Us</h3>
                 <div class="social-icons">
                     <a href="#"><img src="${facebook}" alt=""></a>
                     <a href="#"><img src="${twitter}" alt=""></a>
@@ -140,11 +138,9 @@ export function Footer (props) {
             </div>
         </div>
 
-        
-
         <div class="footer__links">
-            <h3>2023 YOURBASKET. All Rights Reserved</h3>
-            <ul>
+            <p>2023 YourBasket. All Rights Reserved</p>
+            <ul class="list">
                 <li><a href="#">Blog</a></li>
                 <li><a href="#">About us</a></li>
                 <li><a href="#">Sell with us</a></li>
@@ -154,7 +150,6 @@ export function Footer (props) {
                 <li><a href="#">My Profile</a></li>
             </ul>
         </div>
-
     </div>
-    `;
+  `;
 }

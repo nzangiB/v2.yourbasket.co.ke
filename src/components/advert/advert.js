@@ -4,11 +4,10 @@ import "./advert.scss";
 
 export function Advert (props) {
   return `
-    <div class="advert__container">
-        <div class="advert__image">
-            <p>Sponsored ads</p>
-            <img src="${ad}" alt="ad banner">
+        <div class="ad-group --row">
+            <div class="ad" style="aspect-ratio: 970/90">
+                <img src="${ad}" class="img" alt="Ad" />
+            </div>
         </div>
-    </div>
     `;
 }

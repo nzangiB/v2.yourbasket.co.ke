@@ -1,13 +1,25 @@
 .cart__content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 0 20px 20px;
-    gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 20px 20px;
+  gap: 20px;
 }
 
 .cart__title {
-    padding: 20px;
-    font-size: 28px;
-    font-weight: bold;
+  font-size: 28px; // var(--font-size-1);
+  font-weight: 700;
+  padding: 20px;
+
+  h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      color: var(--color-type-2);
+      font-size: var(--font-size-3);
+      font-weight: 400;
+    }
+  }
 }

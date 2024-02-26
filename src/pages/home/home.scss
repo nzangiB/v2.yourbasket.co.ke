@@ -1,5 +1,31 @@
-.container {
-    height: 100%;
-    max-width: 100%;
-    background-color: rgb(247, 247, 250);
+.page-home {
+}
+
+.ad-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+
+  .ad-group {
+    padding: 0;
+  }
+
+  &.--column {
+    flex-direction: column;
+  }
+
+  &.--row {
+    flex-direction: row;
+  }
+}
+
+.ad {
+  line-height: 0;
+
+  .img {
+    width: 100%;
+  }
 }

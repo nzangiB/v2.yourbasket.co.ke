@@ -1,3 +1,5 @@
+@use "../../styles/tools.breakpoint" as breakpoint;
+
 .nav {
   width: 100%;
   background: white;
@@ -9,19 +11,30 @@
 
 .nav__main {
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-type-5);
-  //padding: 20px;
+  padding: 10px;
+  gap: 10px;
 
   & > * {
-    flex: 0 0 1;
+    flex: 1;
+  }
+
+  @include breakpoint.tablet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas: "navLogo navSearch navLinks";
+  }
+
+  @include breakpoint.tablet-only {
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas: "navLogo navLinks" "navSearch navSearch";
   }
 }
 
 .nav__logo {
+  grid-area: navLogo;
+  display: flex;
   align-content: start;
 
   a {
@@ -30,38 +43,36 @@
   }
 
   img {
-    max-width: 240px;
-    height: 56px;
-    padding: 10px;
+    @include breakpoint.phablet {
+      max-width: 180px;
+      height: 30px;
+    }
+
+    @include breakpoint.mobile-only {
+      max-width: 150px;
+      height: 25px;
+    }
   }
 }
 
 .nav__links {
+  grid-area: navLinks;
   justify-self: end;
-  padding: 0 20px;
 
   ul {
     display: flex;
-    //justify-content: space-between;
     justify-content: center;
-    //gap: 10px;
   }
 
   li {
-    padding-inline: 15px;
-
     &:not(:first-child) {
+      padding-left: 15px;
       border-left: 1px solid rgba(0, 0, 0, 0.1);
     }
-  }
 
-  img {
-    width: 24px;
-    aspect-ratio: 1/1;
-  }
-
-  span {
-    padding-inline: 5px;
+    &:not(:last-child) {
+      padding-right: 15px;
+    }
   }
 
   a {
@@ -70,13 +81,31 @@
     font-size: var(--font-size-4);
     line-height: 1.1;
     height: 100%;
+
+    img {
+      width: 24px;
+      aspect-ratio: 1/1;
+    }
+
+    span {
+      padding-inline: 5px;
+
+      @include breakpoint.laptop-only {
+        display: none;
+      }
+    }
   }
 }
 
 .nav__search {
+  grid-area: navSearch;
   display: flex;
   border-radius: 5px;
   align-content: center;
+
+  @include breakpoint.tablet {
+    max-width: 625px;
+  }
 
   .button {
     display: flex;
@@ -92,7 +121,6 @@
     flex: 1;
     border: none;
     border-radius: 5px 0 0 5px;
-    max-width: 625px;
     height: 40px;
     padding: 5px 15px;
   }
@@ -102,52 +130,89 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  gap: 4px;
+  flex-flow: row nowrap;
+  width: 100%;
 
-  .category__links {
+  .sf-menu {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    flex-flow: row nowrap;
+    margin-bottom: 0;
 
     li {
-      a {
-        font-size: var(--font-size-4);
-        font-weight: 500;
+      background: var(--color-type-4);
+    }
 
-        img {
-          width: 24px;
-          aspect-ratio: 1/1;
-        }
+    a {
+      display: flex;
+      align-items: center;
+      color: var(--color-type-8);
+      font-size: var(--font-size-4);
+      font-weight: 500;
+      line-height: 20px;
+      max-width: 48ch;
 
-        span {
-          padding-inline: 10px;
-        }
+      img {
+        width: 21px;
+        line-height: 20px;
+        aspect-ratio: 1/1;
+        margin-right: 5px;
       }
 
-      a:hover {
+      span {
+        //padding: 4px 10px;
+      }
+
+      &:hover {
         color: var(--color-type-6);
       }
 
-      a.selected {
-        display: flex;
-        align-items: center;
+      &.selected {
         color: var(--color-type-6);
         font-weight: 500;
-
-        img {
-          //margin-right: 10px;
-        }
       }
     }
   }
 
-  .category__cta {
-    color: inherit;
-    background: var(--color-type-9);
-    font-size: var(--font-size-4);
-    font-weight: 500;
-    padding: 5px 10px;
+  .categories__all,
+  .categories__list {
+  }
+
+  .categories__all {
+    li {
+      a {
+        padding: 10px;
+      }
+
+      li a {
+        padding: 5px;
+      }
+    }
+  }
+
+  .categories__list {
+    flex: 0 0 1;
+    overflow-x: clip;
+    gap: 10px;
+
+    a {
+      padding: 10px;
+    }
+
+    @include breakpoint.mobile-only {
+      display: none;
+    }
+  }
+
+  .categories__cta {
+    a {
+      color: inherit;
+      background: var(--color-type-9);
+      font-size: var(--font-size-4);
+      font-weight: 500;
+      line-height: 1.3;
+      padding: .5em .75em;
+      margin: 4px;
+      white-space: nowrap;
+    }
   }
 }

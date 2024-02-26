@@ -31,12 +31,11 @@
 // TODO: change to grid
 .topCategories__gallery {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
 
   .gallery__item {
-    width: 120px;
+    flex: 0 0 120px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,16 +46,17 @@
   }
 
   .gallery__image {
-    width: 80px;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
+    background: white;
+    border-radius: 5px;
+    aspect-ratio: 4/3;
     overflow: hidden;
     margin-bottom: 10px;
 
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: bottom;
     }
   }
 }

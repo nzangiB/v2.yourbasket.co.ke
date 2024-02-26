@@ -24,5 +24,5 @@ export function CartCoupon (props) {
         ${Signup()}
         ${Footer()}
     </div>
-    `;
+  `;
 }

@@ -24,5 +24,5 @@ export function Checkout (props) {
       ${Signup()}
       ${Footer()}
     </div>
-    `;
+  `;
 }

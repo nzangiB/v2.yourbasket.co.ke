@@ -1,0 +1,21 @@
+.breadcrumbs {
+  display: flex;
+  padding: 20px;
+
+  .breadcrumb-spacer {
+    margin-inline: 10px;
+  }
+
+  .breadcrumb {
+    text-transform: capitalize;
+    font-size: var(--font-size-4);
+    font-weight: 500;
+    color: var(--color-gray-500);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--color-gray-700);
+    }
+  }
+}

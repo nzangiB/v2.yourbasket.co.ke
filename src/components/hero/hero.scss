@@ -1,28 +1,32 @@
+@use "../../styles/tools.breakpoint" as breakpoint;
+
 :root {
   --hero-gap: 20px;
 }
 
 .hero {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: var(--hero-gap);
-  width: 100%;
+  //display: flex;
+  //flex-direction: row;
+  //align-items: flex-start;
+  //gap: var(--hero-gap);
   padding: 20px;
-  background-color: var(--color-type-7);
+  width: 100%;
 }
 
 .hero__nav {
+  flex: 0 0 20%;
   border-radius: 5px;
   background-color: var(--color-type-4);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-  width: 20%;
   max-width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
   padding: 20px;
-  gap: 10px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
 
   li {
     //padding: 10px 0;
@@ -54,38 +58,40 @@
   }
 }
 
-.hero__carousel {
+.hero-carousel {
+  flex: 1;
   display: flex;
-  flex-direction: row;
-  width: 100%;
   gap: var(--hero-gap);
 
-  .carousel__banner {
-    border-radius: 5px;
-    background-image: url('../../assets/images/banner.png');
-    background-size: cover;
-    background-position: center;
-    aspect-ratio: 850 / 390;
-    width: 75%;
-  }
-
-  .carousel__side {
+  &__side {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 25%;
     gap: var(--hero-gap);
   }
 
-  .carousel__side-banner {
-    display: block;
-    background-image: url('../../assets/images/side-banner.png');
-    background-size: cover;
-    background-position: center;
-    aspect-ratio: 236 / 190;
-    border-radius: 5px;
-    width: 100%;
+  @include breakpoint.tablet {
+    flex-direction: row;
+
+    &__main {
+      width: 75%;
+    }
+
+    &__side {
+      flex-direction: column;
+      width: 25%;
+    }
+  }
+
+  @include breakpoint.tablet-only {
+    flex-direction: column;
+
+    &__side {
+      flex-direction: row;
+      width: 100%;
+
+      .side-banner {
+        flex: 1;
+      }
+    }
   }
 }
 
