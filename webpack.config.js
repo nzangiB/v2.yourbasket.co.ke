@@ -92,13 +92,6 @@ module.exports = (env, argv) => {
       devServer: {
         static: {
           directory: path.resolve(__dirname, "dist"),
-          devMiddleware: {
-            index: true,
-            mimeTypes: { phtml: "text/html" },
-            publicPath: "/publicPathForDevServe",
-            serverSideRender: true,
-            writeToDisk: true
-          },
           staticOptions: {
             redirect: true
           },
