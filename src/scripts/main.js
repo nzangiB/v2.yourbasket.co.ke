@@ -22,6 +22,7 @@ Router([
 	 */
   {
     path: "/",
+    data: { page: { title: "Home" } },
     template: Home,
     controller: () => {
       const Flickity = window.Flickity;
@@ -53,22 +54,27 @@ Router([
 	 */
   {
     path: "/product",
+    data: { page: { title: "Product" } },
     template: Categories
   },
   {
     path: "/product/search/:keyword?",
+    data: { page: { title: "Product by Search" } },
     template: Categories
   },
   {
     path: "/product/brand/:brand?",
+    data: { page: { title: "Product by Brand" } },
     template: Categories
   },
   {
     path: "/product/filter/:filter?",
+    data: { page: { title: "Product by Filter" } },
     template: Categories
   },
   {
     path: "/product/:id",
+    data: { page: { title: "Product by Id" } },
     template: ProductPage
   },
   /**
@@ -111,23 +117,27 @@ Router([
 	 */
   {
     path: "/categories{/:master}?{/:category}?{/:subcategory}?",
+    data: { page: { title: "Subcategory" } },
     template: Categories
   },
   {
     path: "/categories/:master/:category/:subcategory/:id",
+    data: { page: { title: "Category ID" } },
     template: ProductPage
   },
   //  {
   //    path: "/brands/:brand?",
+  //    data: {page: {title: 'Brand'}},
   //    template: Brands
   //  },
   {
     path: "/login",
+    data: { page: { title: "Login" } },
     template: Login
   },
   {
     path: "/register",
-    data: { title: "Sign up" },
+    data: { page: { title: "Register" } },
     template: Register
   }
 ], () => {
