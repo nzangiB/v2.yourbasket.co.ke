@@ -73,7 +73,12 @@ blockquote {
 }
 
 svg:not(:root) {
+  overflow-clip-margin: content-box;
   overflow: hidden;
+}
+
+img, svg {
+  vertical-align: middle;
 }
 
 input, button {
