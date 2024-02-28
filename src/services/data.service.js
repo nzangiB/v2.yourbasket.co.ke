@@ -1,8 +1,7 @@
 import axios from "axios";
 import AuthService from "./auth.service";
 
-// const API_URL = (process.env.NODE_ENV !== 'production' ? 'http://localhost:3000/' : 'https://api.yourbasket.co.ke/');
-const API_URL = ("https://api.yourbasket.co.ke/");
+const API_URL = (process.env.NODE_ENV !== "production" ? "http://localhost:3000/" : "https://api.yourbasket.co.ke/");
 
 axios.interceptors.request.use(function (config) {
   const token = AuthService.getCurrentUserTokken();
@@ -14,10 +13,10 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
-  if (error.response.status === 401) {
+  if (error?.response?.status === 401) {
     localStorage.removeItem("user");
     window.location.href = "/#/login";
-    // Hace la solicitud de refresco de tokens
+    // makes the token refresh request
   }
   return Promise.reject(error);
 });

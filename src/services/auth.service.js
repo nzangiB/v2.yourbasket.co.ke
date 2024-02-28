@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// const API_URL = (process.env.NODE_ENV !== 'production' ? "http://localhost:3000/" : "https://api.yourbasket.co.ke/");
-const API_URL = ("https://api.yourbasket.co.ke/");
+const API_URL = (process.env.NODE_ENV !== "production" ? "http://localhost:3000/" : "https://api.yourbasket.co.ke/");
 
 const register = (data) => {
   return axios.post(API_URL + "api/users/register", data);
@@ -31,11 +30,13 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
+  const user = localStorage.getItem("user");
+  return user ? JSON.parse(user) : user;
 };
 
 const getCurrentUserTokken = () => {
-  return JSON.parse(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
+  return token ? JSON.parse(token) : token;
 };
 
 const socialLogin = (data) => {
