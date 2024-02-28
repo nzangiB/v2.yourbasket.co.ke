@@ -58,6 +58,7 @@ export default `<!DOCTYPE html>
 		            }
 		        </style>
 		    </noscript>
+		    
 		    <div style="display: none">
 		        <?xml version="1.0" encoding="utf-8" ?>
 		        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -354,6 +355,7 @@ export default `<!DOCTYPE html>
 		                  stroke="#21362C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 		        </svg>
 		    </div>
+		    
 		    <main class="page"></main>
 		</body>
 		</html>

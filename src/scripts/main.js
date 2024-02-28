@@ -1,7 +1,12 @@
 import { defaults, Router } from "@wearearchangel/handcrafted";
+
 // plugins
 import { reportWebVitals } from "../plugins/reportWebVitals";
 import { updateViewport } from "../plugins/updateViewport";
+
+// layout
+import { Layout } from "./layout";
+
 // routes
 import Home from "../pages/home/home";
 import ProductPage from "../pages/productPage/productPage";
@@ -13,6 +18,7 @@ import Login from "../pages/account/login";
 
 // initialize defaults
 defaults.templateEngine = "react";
+defaults.layout = Layout;
 
 Router([
   /**
