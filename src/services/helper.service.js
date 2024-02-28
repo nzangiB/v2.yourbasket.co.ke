@@ -15,15 +15,16 @@ const getLocalCart = () => {
 const setLocalCart = (item, qty = null) => {
   let user_cart = JSON.parse(localStorage.getItem("user_cart"));
   if (user_cart) {
-    var filtered = user_cart.filter((k, g) => {
-      return (k.product_id == item.product_id);
+    let filtered;
+    filtered = user_cart.filter((k, g) => {
+      return (parseInt(k.product_id) === parseInt(item.product_id));
     });
     if (filtered.length > 0) {
-      var filtered = user_cart.map((k, g) => {
-        if ((k.product_id == item.product_id)) {
+      filtered = user_cart.map((k, g) => {
+        if ((parseInt(k.product_id) === parseInt(item.product_id))) {
           if (qty == null) {
-            const valuee = parseInt(user_cart[g].quantity);
-            user_cart[g].quantity = valuee + 1;
+            const value = parseInt(user_cart[g].quantity);
+            user_cart[g].quantity = value + 1;
           } else {
             user_cart[g].quantity = qty;
           }
@@ -40,13 +41,14 @@ const setLocalCart = (item, qty = null) => {
 };
 
 const deleteLocalCart = (id) => {
-  var user_cart = JSON.parse(localStorage.getItem("user_cart"));
+  let user_cart = localStorage.getItem("user_cart");
+  user_cart = user_cart ? JSON.parse(user_cart) : [];
   if (user_cart) {
-    var user_cart = user_cart.filter((k, g) => {
-      return (k.product_id != id);
+    user_cart = user_cart.filter((k, g) => {
+      return (parseInt(k.product_id) !== parseInt(id));
     });
   } else {
-    var user_cart = [];
+    user_cart = [];
   }
   localStorage.setItem("user_cart", JSON.stringify(user_cart));
 };
@@ -56,39 +58,172 @@ const emptyLocalCart = (id) => {
   localStorage.setItem("user_cart", JSON.stringify(user_cart));
 };
 
-const getShippingRate = (region) => {
-  const regions = [
+const getShippingRates = () => {
+  const rocheTerre = [
     {
-      name: "ZONE A",
+      name: "Nairobi (Zone A)",
       rate: 190,
       regions: [
         "CBD", "PARKLANDS", "KILIMANI", "NGARA", "KILELESHWA", "KIBRA", "LAVINGTON", "HURLINGHAM", "RIVERSIDE", "KANGEMI", "ADAMS", "KAWANGWARE", "UPPERHILL", "DAGORETTI CORNER", "WESTLANDS", "JAMUHURI"
       ]
     },
     {
-      name: "ZONE B",
+      name: "Nairobi (Zone B)",
       rate: 270,
       regions: [
         "LANGATA", "JOGOO ROAD", "KAREN", "EMBAKASI", "SOUTH B/C", "KASARANI", "NAIROBI WEST", "KARIOBANGI", "MADARAKA DANDORA", "MOMBASA ROAD TO JKIA", "PANGANGI", "HIGHRIDGE", "RACECOURSE", "LORESHO", "LENANA", "KITASURU", "MUTHAIGA", "RUNDA", "UMOJA", "WAITHAKA", "LOWER KABETE", "KABIRIA", "KAYOLE"
       ]
     },
     {
-      name: "KIAMBU COUNTY",
+      name: "Kiambu",
+      rate: 300,
+      regions: [
+        "UTHIRU", "THIKA", "KINOO", "MUGUGA", "LIMURU", "KIAMBU TOWN", "KIKUYU ", "BANANA", "RUIRU"
+      ]
+    },
+    {
+      name: "Machakos",
       rate: 400,
+      regions: [
+        "MLOLONGO", "ATHI RIVER"
+      ]
+    }
+  ];
+
+  const drift = [
+    {
+      name: "Nairobi (Zone A)",
+      rate: 200,
+      regions: [
+        "CBD", "PARKLANDS", "KILIMANI", "NGARA", "KILELESHWA", "KIBRA", "LAVINGTON", "HURLINGHAM", "RIVERSIDE", "KANGEMI", "ADAMS", "KAWANGWARE", "UPPERHILL", "DAGORETTI CORNER", "WESTLANDS", "JAMUHURI"
+      ]
+    },
+    {
+      name: "Nairobi (Zone B)",
+      rate: 370,
+      regions: [
+        "LANGATA", "JOGOO ROAD", "KAREN", "EMBAKASI", "SOUTH B/C", "KASARANI", "NAIROBI WEST", "KARIOBANGI", "MADARAKA DANDORA", "MOMBASA ROAD TO JKIA", "PANGANGI", "HIGHRIDGE", "RACECOURSE", "LORESHO", "LENANA", "KITASURU", "MUTHAIGA", "RUNDA", "UMOJA", "WAITHAKA", "LOWER KABETE", "KABIRIA", "KAYOLE"
+      ]
+    },
+    {
+      name: "Kiambu",
+      rate: 500,
+      regions: [
+        "UTHIRU", "THIKA", "KINOO", "MUGUGA", "LIMURU", "KIAMBU TOWN", "KIKUYU ", "BANANA", "RUIRU"
+      ]
+    },
+    {
+      name: "Machakos",
+      rate: 480,
       regions: [
         "UTHIRU", "THIKA", "KINOO", "MUGUGA", "LIMURU", "KIAMBU TOWN", "KIKUYU ", "BANANA", "RUIRU"
       ]
     }
   ];
 
-  let rate = 0;
-  regions.map((r, i) => {
-    r.regions.map((s, j) => {
-      if (s == region) {
-        rate = r.rate;
+  const pickupMtaani = [
+    {
+      name: "Waiyaki Way",
+      rate: 350,
+      regions: [
+        "CHIROMO", "KILELESHWA", "ABC", "KANGEMI/UTHIRU", "KINOO/MUTHIGA/KIKUYU", "LOWER KABETE SPRING VALLEY", "LOWER KABETE BEFORE UON", "LOWER KABETE AFTER UON", "KITUSURU", "WANGIGE", "THIGIRI RIDGE"
+      ]
+    },
+    {
+      name: "Thika Road",
+      rate: 370,
+      regions: [
+        "NGARA/PANGANI", "ALSOPS/ROASTERS/GUMBA", "LUCKY SUMMER/MATHARE NORTH", "ROYSAMBU/USIU", "MIREMA/ZIMMERMAN", "KASARANI BEFORE SUNTON", "KASARANI MWIKI/GITHURAI", "KAHAWA WENDANI/SUKARI/KU", "RUIRU/KIMBO/JUJA"
+      ]
+    },
+    {
+      name: "Kiambu",
+      rate: 500,
+      regions: [
+        "UTHIRU", "THIKA", "KINOO", "MUGUGA", "LIMURU", "KIAMBU TOWN", "KIKUYU ", "BANANA", "RUIRU"
+      ]
+    },
+    {
+      name: "Machakos",
+      rate: 480,
+      regions: [
+        "UTHIRU", "THIKA", "KINOO", "MUGUGA", "LIMURU", "KIAMBU TOWN", "KIKUYU ", "BANANA", "RUIRU"
+      ]
+    }
+  ];
+
+  const cossim = [];
+
+  const transformDeliveryListFormat = (listItemsV1, provider) => {
+    const listItemsV2 = [];
+
+    // transform
+    for (const item of listItemsV1) {
+      const { name, rate, regions } = item;
+      const newName = name;
+      const newRegions = [];
+      for (const region of regions) {
+        newRegions.push({
+          name: region,
+          provider,
+          rate
+        });
       }
+
+      const newItem = {
+        name: newName,
+        regions: newRegions
+      };
+
+      listItemsV2.push(newItem);
+    }
+
+    return listItemsV2;
+  };
+
+  const mergeDeliveryList = (suppliers) => {
+    const mergedSuppliers = new Map([]);
+    for (const supplier of suppliers) {
+      for (const [, { name, regions }] of Object.entries(supplier)) {
+        mergedSuppliers.set(name, [
+          ...mergedSuppliers.get(name) || [],
+          ...regions
+        ]);
+      }
+    }
+
+    const mergedList = [];
+    for (const [name, regions] of mergedSuppliers) {
+      mergedList.push({
+        name,
+        regions: regions.sort((a, b) => a.name.localeCompare(b.name))
+      });
+    }
+
+    return mergedList;
+  };
+
+  const supplier1 = transformDeliveryListFormat(rocheTerre, "Roche Terre");
+  const supplier2 = transformDeliveryListFormat(drift, "Drift");
+  const supplier3 = transformDeliveryListFormat(pickupMtaani, "Pickup Mtaani");
+  const supplier4 = transformDeliveryListFormat(cossim, "Cossim");
+
+  return mergeDeliveryList([
+    supplier1,
+    supplier2,
+    supplier3,
+    supplier4
+  ]);
+};
+
+const getShippingRate = (requestedRegion) => {
+  const regions = getShippingRates();
+  let rate = 0;
+  for (const region of regions) {
+    region.regions.map((s, j) => {
+      if (s === requestedRegion) rate = region.rate;
     });
-  });
+  }
 
   return rate;
 };
@@ -107,12 +242,10 @@ const setRecentProducts = (item) => {
   if (!recent_products) {
     recent_products = [];
   }
-  const filteredArray = recent_products.filter(function (itemm, pos) {
-    return itemm.id == item.id;
+  const filteredArray = recent_products.filter(function (filteredItem, pos) {
+    return filteredItem.id === item.id;
   });
-  if (filteredArray.length == 0) {
-    recent_products.push(item);
-  }
+  if (filteredArray.length === 0) recent_products.push(item);
   localStorage.setItem("recent_products", JSON.stringify(recent_products.slice(-4)));
 };
 
