@@ -17,6 +17,7 @@ const login = (username, password) => {
       if (response.data.token) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", JSON.stringify(response.data.token));
+        localStorage.removeItem("user-unregistered");
       }
       return response.data;
     });
@@ -34,7 +35,7 @@ const getCurrentUser = () => {
   return user ? JSON.parse(user) : user;
 };
 
-const getCurrentUserTokken = () => {
+const getCurrentUserToken = () => {
   const token = localStorage.getItem("token");
   return token ? JSON.parse(token) : token;
 };
@@ -56,7 +57,7 @@ const AuthService = {
   login,
   logout,
   getCurrentUser,
-  getCurrentUserTokken,
+  getCurrentUserTokken: getCurrentUserToken,
   socialLogin
 };
 

@@ -123,6 +123,7 @@ const sendOtp = (data) => {
 const verifyOtp = (data) => {
   return axios.post(API_URL + "api/front/verifyotp", data);
 };
+// TODO: Split this to forgotPassword and sendUserOtp
 const forgotPassword = (data) => {
   return axios.post(API_URL + "api/users/forgotpassword", data);
 };
@@ -145,7 +146,7 @@ const getContactUs = (data) => {
   return axios.get(API_URL + "api/front/contact-page", data);
 };
 const getNotifications = (read = false) => {
-  return axios.get(API_URL + "api/users/notifications" + (read == true ? "?read=yes" : ""));
+  return axios.get(API_URL + "api/users/notifications" + (read === true ? "?read=yes" : ""));
 };
 
 const DataService = {
@@ -175,10 +176,11 @@ const DataService = {
   getUserField,
   sendOtp,
   verifyOtp,
+  // TODO: Split this to forgotPassword and sendUserOtp
   forgotPassword,
+  verifyUserOtp,
   getFaqs,
   deleteCart,
-  verifyUserOtp,
   deleteWishlist,
   getProductDetailWithSlug,
   updateAddress,
