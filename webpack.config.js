@@ -100,7 +100,8 @@ module.exports = (env, argv) => {
           watch: true
         },
         historyApiFallback: true,
-        compress: true
+        compress: true,
+        hot: true
       },
       optimization: {},
       plugins: plugins.concat([])
