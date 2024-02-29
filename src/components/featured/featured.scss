@@ -1,4 +1,3 @@
-@use "../../styles/objects" as objects;
 @use "../../styles/tools.breakpoint" as breakpoint;
 
 .featured__header {
@@ -11,7 +10,6 @@
 }
 
 .featured__title {
-  @extend .title;
 }
 
 .featured__gallery {

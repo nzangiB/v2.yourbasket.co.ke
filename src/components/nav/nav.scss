@@ -14,7 +14,6 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-type-5);
-  padding: 10px;
   gap: 10px;
 
   & > * {
@@ -62,16 +61,17 @@
   ul {
     display: flex;
     justify-content: center;
+    padding-block: 8px;
   }
 
   li {
     &:not(:first-child) {
-      padding-left: 15px;
+      //padding-left: 15px;
       border-left: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     &:not(:last-child) {
-      padding-right: 15px;
+      //padding-right: 15px;
     }
   }
 
@@ -80,6 +80,7 @@
     align-items: center;
     font-size: var(--font-size-4);
     line-height: 1.1;
+    padding: 8px;
     height: 100%;
 
     img {
@@ -88,7 +89,7 @@
     }
 
     span {
-      padding-inline: 5px;
+      padding: 5px;
 
       @include breakpoint.laptop-only {
         display: none;
@@ -101,7 +102,7 @@
   grid-area: navSearch;
   display: flex;
   border-radius: 5px;
-  align-content: center;
+  align-items: center;
 
   @include breakpoint.tablet {
     max-width: 625px;
@@ -111,18 +112,23 @@
     display: flex;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 0 5px 5px 0;
+    //border-radius: 0 5px 5px 0;
     border: none;
-    height: 40px;
-    padding: 5px 15px;
+    padding: 8px;
+
+    img {
+      width: 24px;
+      aspect-ratio: 1/1;
+      padding: 4px;
+    }
   }
 
   .field {
     flex: 1;
     border: none;
-    border-radius: 5px 0 0 5px;
+    //border-radius: 5px 0 0 5px;
+    padding: 8px 16px;
     height: 40px;
-    padding: 5px 15px;
   }
 }
 
