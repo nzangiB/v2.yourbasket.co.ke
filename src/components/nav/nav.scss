@@ -108,6 +108,10 @@
     max-width: 625px;
   }
 
+  @include breakpoint.tablet-only {
+    padding: 0 10px 10px;
+  }
+
   .button {
     display: flex;
     align-items: center;
