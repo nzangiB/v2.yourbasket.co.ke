@@ -19,28 +19,30 @@ const topCategory = async ({ name, slug, id }) => {
   }, userId);
 
   const { products } = data.data;
-  return `
-      <div class="deals-list deals-on-${slug}">
-          <header class="deals__header">
-              <h3 class="title">${name}</h3>
-              <div class="deals__text">
-                  <a class="link --see-more" data-route="/categories/${slug}?deals=true">
-                      See more
-                  </a>
-              </div>
-          </header>
-
-          <section class="deals__list">
-              ${new ProductRow(products).render()}
-          </section>
-      </div>
-
-      <div class="ad-group --row">
-          <div class="ad" style="aspect-ratio: 920/90">
-              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad" />
+  return (
+    <>
+      <div className="deals-list deals-on-${slug}">
+        <header className="deals__header">
+          <h3 className="title">{name}</h3>
+          <div className="deals__text">
+            <a className="link --see-more" data-route="/categories/${slug}?deals=true">
+							See more
+            </a>
           </div>
+        </header>
+
+        <section className="deals__list">
+          <ProductRow products={products}/>
+        </section>
       </div>
-  `;
+
+      <div className="ad-group --row">
+        <div className="ad" style="aspect-ratio: 920/90">
+          <img src="https://via.placeholder.com/920x90" className="img" alt="Ad"/>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export async function DealsByCategory () {
@@ -53,5 +55,9 @@ export async function DealsByCategory () {
   if (!topCategories.length) return ``;
 
   const topCategoriesList = await Promise.all(topCategories.map(topCategory));
-  return topCategoriesList.filter(Boolean).join("");
+  return (
+    <>
+      {topCategoriesList.filter(Boolean)}
+    </>
+  );
 }

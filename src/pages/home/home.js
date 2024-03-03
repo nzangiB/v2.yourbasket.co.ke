@@ -41,78 +41,80 @@ import "./home.scss";
 // };
 
 async function Home (props) {
-  return `
-    ${await Nav(props)}
-    
-    <div class="container">
+  return (
+    <>
+      {await Nav(props)}
+
+      <div class="container">
         <aside class="aside aside__left">
-            <div class="ad-group --column">
-                <div class="ad" style="aspect-ratio: 160/600">
-                  <img src="https://via.placeholder.com/160x600" class="img" alt="Ad" />
-                </div>
+          <div class="ad-group --column">
+            <div class="ad" style="aspect-ratio: 160/600">
+              <img src="https://via.placeholder.com/160x600" class="img" alt="Ad"/>
             </div>
+          </div>
         </aside>
 
         <main class="content">
-            ${await Hero(props)}
-            ${await TodayDeals(props)}
+          {await Hero(props)}
+          {await TodayDeals(props)}
 
-            <div class="ad-group --row">
-                <div class="ad" style="aspect-ratio: 920/90">
-                    <img src="https://via.placeholder.com/920x90" class="img" alt="Ad" />
-                </div>
+          <div class="ad-group --row">
+            <div class="ad" style="aspect-ratio: 920/90">
+              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
             </div>
+          </div>
 
-            ${await ClearanceDeals(props)}
+          {await ClearanceDeals(props)}
 
-            <div class="ad-group --row">
-                <div class="ad" style="aspect-ratio: 920/90">
-                    <img src="https://via.placeholder.com/920x90" class="img" alt="Ad" />
-                </div>
+          <div class="ad-group --row">
+            <div class="ad" style="aspect-ratio: 920/90">
+              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
             </div>
+          </div>
 
-            ${await CrazyOffers(props)}
+          {await CrazyOffers(props)}
 
-            <div class="ad-group --row">
-                <div class="ad" style="aspect-ratio: 920/90">
-                    <img src="https://via.placeholder.com/920x90" class="img" alt="Ad" />
-                </div>
+          <div class="ad-group --row">
+            <div class="ad" style="aspect-ratio: 920/90">
+              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
             </div>
-            
-            ${await LatestProducts(props)}
+          </div>
 
-            <div class="ad-group --row">
-                <div class="ad" style="aspect-ratio: 920/90">
-                    <img src="https://via.placeholder.com/920x90" class="img" alt="Ad" />
-                </div>
-            </div>
-            
-            ${await ClearanceSale(props)}
+          {await LatestProducts(props)}
 
-            <div class="ad-group --row">
-                <div class="ad" style="aspect-ratio: 728/90">
-                  <img src="https://via.placeholder.com/728x90" class="img" alt="Ad" />
-                </div>
-                <div class="ad" style="aspect-ratio: 728/90">
-                  <img src="https://via.placeholder.com/728x90" class="img" alt="Ad" />
-                </div>
+          <div class="ad-group --row">
+            <div class="ad" style="aspect-ratio: 920/90">
+              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
             </div>
+          </div>
+
+          {await ClearanceSale(props)}
+
+          <div class="ad-group --row">
+            <div class="ad" style="aspect-ratio: 728/90">
+              <img src="https://via.placeholder.com/728x90" class="img" alt="Ad"/>
+            </div>
+            <div class="ad" style="aspect-ratio: 728/90">
+              <img src="https://via.placeholder.com/728x90" class="img" alt="Ad"/>
+            </div>
+          </div>
         </main>
 
         <aside class="aside aside__right">
-            <div class="ad-group --column">
-                <div class="ad" style="aspect-ratio: 160/600">
-                  <img src="https://via.placeholder.com/160x600" class="img" alt="Ad" />
-                </div>
+          <div class="ad-group --column">
+            <div class="ad" style="aspect-ratio: 160/600">
+              <img src="https://via.placeholder.com/160x600" class="img" alt="Ad"/>
             </div>
+          </div>
         </aside>
-    </div>
+      </div>
 
-    ${await DealsByCategory(props)}
-    ${await FeaturedBrands(props)}
-    ${Signup(props)}
-    ${Footer()}
-  `;
+      {await DealsByCategory(props)}
+      {await FeaturedBrands(props)}
+      {Signup(props)}
+      {Footer()}
+    </>
+  );
 }
 
 export default Home;

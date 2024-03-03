@@ -20,23 +20,23 @@ export async function LatestProducts () {
 
   const { products } = data.data;
 
-  return `
-      <div class="deals-grid deals-today">
-            <header class="deals__header">
-                <div class="deals__time">
-                    <h3 class="title">Latest Products</h3>
-                </div>
-                
-                <div class="deals__text">
-                    <a class="link --see-more" data-route="/product">
-                        See all deals
-                    </a>
-                </div>
-            </header>
-            
-            <section class="deals__grid">
-                ${new ProductGroup({ products }).render()}
-            </section>
-      </div>
-  `;
+  return (
+    <div className="deals-grid deals-today">
+      <header className="deals__header">
+        <div className="deals__time">
+          <h3 className="title">Latest Products</h3>
+        </div>
+
+        <div className="deals__text">
+          <a className="link --see-more" data-route="/product">
+						See all deals
+          </a>
+        </div>
+      </header>
+
+      <section className="deals__grid">
+        <ProductGroup products={products}/>
+      </section>
+    </div>
+  );
 }

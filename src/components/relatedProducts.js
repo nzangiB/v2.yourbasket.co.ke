@@ -11,29 +11,31 @@ export async function RelatedProducts ({ productData }) {
   const relatedProducts = de.data.relatedProducts;
   const allProducts = de.data.Products;
 
-  return `
-      <div class="deals-grid deals-today">
-            <header class="deals__header">
-                <div class="deals__time">
-                    <h3 class="deals__title">More deals for you</h3>
-                </div>
-            </header>
+  return (
+    <>
+      <div className="deals-grid deals-today">
+        <header className="deals__header">
+          <div className="deals__time">
+            <h3 className="deals__title">More deals for you</h3>
+          </div>
+        </header>
 
-            <section class="deals__list">
-                ${ProductRow(relatedProducts)}
-            </section>
+        <section className="deals__list">
+          <ProductRow products={relatedProducts}/>
+        </section>
       </div>
 
-      <div class="deals-grid deals-today">
-            <header class="deals__header">
-                <div class="deals__time">
-                    <h3 class="deals__title">More items from this seller</h3>
-                </div>
-            </header>
+      <div className="deals-grid deals-today">
+        <header className="deals__header">
+          <div className="deals__time">
+            <h3 className="deals__title">More items from this seller</h3>
+          </div>
+        </header>
 
-            <section class="deals__list">
-                ${ProductRow(allProducts)}
-            </section>
+        <section className="deals__list">
+          <ProductRow products={allProducts}/>
+        </section>
       </div>
-  `;
+    </>
+  );
 }

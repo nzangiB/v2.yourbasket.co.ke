@@ -1,80 +1,82 @@
-import { Component } from "@wearearchangel/handcrafted";
+import { Component } from '@wearearchangel/handcrafted';
 
-import rightArrow from "../../assets/icons/arrow_right_blue.svg";
-import leftArrow from "../../assets/icons/arrow_left_dark.svg";
+import rightArrow from '../../assets/icons/arrow_right_blue.svg';
+import leftArrow from '../../assets/icons/arrow_left_dark.svg';
 
-import AuthService from "../../services/auth.service";
-import DataService from "../../services/data.service";
+import AuthService from '../../services/auth.service';
+import DataService from '../../services/data.service';
 
-import { VendorBanner } from "../carousel/carousel";
+import { VendorBanner } from '../carousel/carousel';
 
-import "./featured.scss";
+import './featured.scss';
 
-function Brand (item) {
-  const image = item.file_path ? "https://api.yourbasket.co.ke/" + item.file_path : "";
-  return `
-      <div class="featured-brand" data-route="/brands/${item.slug}">
-           <div class="brand-image">
-              ${item.file_path ? `<img src=${image} class="w-100" alt="" srcset="" />` : item.name}
-            </div>
-            <div class="brand-name srt">
-                <span>${item.name}</span>
-            </div>                   
-      </div>
-  `;
+function Brand (brand) {
+	const image = brand.file_path ? 'https://api.yourbasket.co.ke/' + brand.file_path : '';
+	return (
+		<div className="featured-brand" data-route={'/brands/' + brand.slug}>
+			<div className="brand-image">
+				{brand.file_path ? <img src={image} className="w-100" alt="" srcSet=""/> : brand.name}
+			</div>
+			<div className="brand-name srt">
+				<span>{brand.name}</span>
+			</div>
+		</div>
+	);
 }
 
 export async function FeaturedBrands () {
-  const auth = AuthService.getCurrentUser();
-  const userId = (auth) ? auth.id : "";
-  const brands = await DataService.getHomePageData(userId, 2).then((data) => {
-    return data.data.brands;
-  });
+	const auth = AuthService.getCurrentUser();
+	const userId = (auth) ? auth.id : '';
+	const brands = await DataService.getHomePageData(userId, 2).then((data) => {
+		return data.data.brands;
+	});
 
-  class FeaturedBrands extends Component {
-    template () {
-      return brands.map(Brand).join("");
-    }
+	class FeaturedBrands extends Component {
+		template () {
+			return (
+				<>
+					{brands.map(brand => <Brand brand={brand}/>)}
+				</>
+			);
+		}
 
-    controller () {
-      // const cards = document.getElementById(this.id);
-      // if (!cards) return;
-      //
-      // const Flickity = window.Flickity;
-      // new Flickity(cards, {
-      //   cellAlign: "left",
-      //   contain: true,
-      //   pageDots: false,
-      //   wrapAround: true,
-      //   // prevNextButtons: true,
-      //   adaptiveHeight: true
-      //   // watchCSS: true
-      // });
-    }
-  }
+		controller () {
+			// const cards = document.getElementById(this.id);
+			// if (!cards) return;
+			//
+			// const Flickity = window.Flickity;
+			// new Flickity(cards, {
+			//   cellAlign: "left",
+			//   contain: true,
+			//   pageDots: false,
+			//   wrapAround: true,
+			//   // prevNextButtons: true,
+			//   adaptiveHeight: true
+			//   // watchCSS: true
+			// });
+		}
+	}
 
-  return `
-      <div class="featured">
-          <div class="featured__header">
-              <h2 class="featured__title">Featured Brands</h2>
-              <!--
-              <div class="categories__arrows">
-                  <a href="#"><img src="${leftArrow}" alt="left arrow"></a>
-                  <a href="#"><img src="${rightArrow}" alt="right arrow"></a>
-              </div>
-              -->
-          </div>
+	return (
+		<div className="featured">
+			<div className="featured__header">
+				<h2 className="featured__title">Featured Brands</h2>
+				<div className="categories__arrows">
+					{/* <a href="#"><img src={leftArrow} alt="left arrow"></a> */}
+					{/* <a href="#"><img src={rightArrow} alt="right arrow"></a> */}
+				</div>
+			</div>
 
-          <div class="featured__gallery" data-simplebar>
-              ${brands && brands.length > 0 ? new FeaturedBrands().render() : "No brands found"}
-          </div>
-      </div>
-  `;
+			<div className="featured__gallery" data-simplebar>
+				{brands ? <FeaturedBrands/> : 'No brands found'}
+			</div>
+		</div>
+	);
 }
 
 export function FeaturedText (props) {
-  const { banners } = props;
-  return `
+	const { banners } = props;
+	return `
         <div class="featured">
             <div class="featured__image">
                 <div class="carousel">
@@ -146,10 +148,10 @@ export function FeaturedText (props) {
 }
 
 export function Featured (props) {
-  const hasText = props.hasText || false;
-  let template = FeaturedBrands();
-  if (hasText) template += FeaturedText(props);
-  return `
+	const hasText = props.hasText || false;
+	let template = FeaturedBrands();
+	if (hasText) template += FeaturedText(props);
+	return `
       <div class="featured">
           ${template}
       </div>

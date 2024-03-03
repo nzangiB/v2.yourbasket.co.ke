@@ -118,8 +118,7 @@ const makeBreadcrumb = async ({ masterCatData, cats = [], queryData = {} }, nv =
         }
       }
       if (nv && nvUrl) {
-        navigate("/" + nvUrl);
-        window.location.reload();
+        location.href = "/" + nvUrl;
       }
     }
   } else {
@@ -127,11 +126,19 @@ const makeBreadcrumb = async ({ masterCatData, cats = [], queryData = {} }, nv =
     str += " / " + "<a href='/#/product'>All Categories</a>";
   }
   if (nv && nvUrl) {
-    navigate("/" + nvUrl);
-    window.location.reload();
+    location.href = "/" + nvUrl;
   }
 
   return str;
+};
+
+const sortProductByPrice = (e) => {
+  const value = e.target.value;
+  if (value) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("sort", value);
+    location.href = url.pathname + url.search;
+  }
 };
 
 const getData = async (props) => {
@@ -179,18 +186,18 @@ const getData = async (props) => {
 async function SearchFilters ({ filters, ...props }) {
   const { cats, brand } = await getData(props);
 
-  const getSubCategoryFilters = (category) => category.Categories
-    ? `
-    <div class="options">
-      ${category.Categories.map(category => `
+  const getSubCategoryFilters = (category) => {
+    return category.Categories && `
+      <div class="options">
+        ${category.Categories.map(category => `
         <div class="option">
           <div class="option__name">${category.name}</div>
           ${getSubCategoryFilters(category)}
         </div>
       `).filter(Boolean).join("")}
-    </div>
-  `
-    : "";
+      </div>
+    `;
+  };
 
   const categoryFilter = cats.length && `
     <section class="filter">
@@ -337,43 +344,43 @@ async function SearchFilters ({ filters, ...props }) {
 async function SearchResults (props) {
   const { products } = await getData(props);
 
-  return `
-    <div class="search-results">
-        <div class="results">
-            <header class="results__header">
-                <div class="results__title">
-                    <div class="title">Results</div>
-                    <div class="count">
-                        ${products.count ? `Showing 1-12 of ${products.count}` : `0 Results Found`}
-                    </div>
-                </div>
-                <div class="results__sort">
-                    <div class="sort__label">Sort by</div>
-                    <div class="sort__options">
-                        <select onChange={sortProdctByPrice}>
-                            <option value="">Recommended</option>
-                            <option value="popularity">Popularity</option>
-                            <option value="asc">Price: Low to High</option>
-                            <option value="desc">Price: High to Low</option>
-                            <option value="new">Newest Arrivals</option>
-                        </select>
-                    </div>
-                </div>
-            </header>
-              
-            <section class="results__list">       
-                ${new ProductRow(products.list).render()}
-            </section>
-        </div>
+  return (
+    <div className="search-results">
+      <div className="results">
+        <header className="results__header">
+          <div className="results__title">
+            <div className="title">Results</div>
+            <div className="count">
+              {products.count ? `Showing 1-12 of ${products.count}` : `0 Results Found`}
+            </div>
+          </div>
+          <div className="results__sort">
+            <div className="sort__label">Sort by</div>
+            <div className="sort__options">
+              <select onChange={sortProductByPrice}>
+                <option value="">Recommended</option>
+                <option value="popularity">Popularity</option>
+                <option value="asc">Price: Low to High</option>
+                <option value="desc">Price: High to Low</option>
+                <option value="new">Newest Arrivals</option>
+              </select>
+            </div>
+          </div>
+        </header>
+
+        <section className="results__list">
+          <ProductRow products={products.list}/>
+        </section>
+      </div>
     </div>
-  `;
+  );
 }
 
 export async function Search ({ filters, params, query }) {
-  return `
-    <div class="search-component">
-        ${await SearchFilters({ filters, params, query })}
-        ${await SearchResults({ params, query })}
+  return (
+    <div className="search-component">
+      {await SearchFilters({ filters, params, query })}
+      {await SearchResults({ params, query })}
     </div>
-  `;
+  );
 }

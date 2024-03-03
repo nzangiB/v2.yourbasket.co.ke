@@ -26,20 +26,22 @@ async function ProductPage (props) {
   const product = productData;
   const html = { __html: productData.details };
 
-  return `
-      ${await Nav()}
-      <div class="container">
-          <div class="content">
-              {{! ProductInfo }}
-              {{! ProductPageModal }}
-              ${await RelatedProducts({ productData })}
-              ${await RecentlyViewed({ productData })}
-              ${Advert()}
-          </div>
+  return (
+    <>
+      {await Nav()}
+      <div className="container">
+        <div className="content">
+          {/* {{! ProductInfo }} */}
+          {/* {{! ProductPageModal }} */}
+          {await RelatedProducts({ productData })}
+          {await RecentlyViewed({ productData })}
+          {Advert()}
+        </div>
       </div>
-      ${Signup()}
-      ${Footer()}
-  `;
+      {Signup()}
+      {Footer()}
+    </>
+  );
 }
 
 export default ProductPage;

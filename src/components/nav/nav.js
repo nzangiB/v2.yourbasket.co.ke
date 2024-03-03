@@ -11,26 +11,24 @@ import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
 function NavItem (item) {
-  return `
-			<li>
-	        <a data-route="/categories/${item.slug}">
-	            <span>${item.name}</span>
-	        </a>
-	        ${item?.Categories?.length
-    ? `
-			        <ul>
-		              ${item?.Categories.map(itemDeep => {
-    itemDeep.slug = item.slug + "/" + itemDeep.slug;
-    return NavItem(itemDeep);
-  }).filter(Boolean).join("")}
-		          </ul>
-          `
-    : ""}
-      </li>
-  `;
+  return (
+    <li>
+      <a data-route={"/categories/" + item.slug}>
+        <span>{item.name}</span>
+      </a>
+      {item?.Categories?.length > 0 && (
+        <ul>
+          {item.Categories.map(itemDeep => {
+            itemDeep.slug = item.slug + "/" + itemDeep.slug;
+            return NavItem(itemDeep);
+          }).filter(Boolean)}
+        </ul>
+      )}
+    </li>
+  );
 }
 
-function NavMain () {
+export function NavMain () {
   return `
       <nav class="nav__main">
           <div class="nav__logo">
@@ -79,7 +77,7 @@ function NavMain () {
   `;
 }
 
-async function NavCategories () {
+export async function NavCategories () {
   const auth = AuthService.getCurrentUser();
   const userId = (auth) ? auth.id : "";
   const data = await DataService.getHomePageData(userId);
@@ -97,49 +95,47 @@ async function NavCategories () {
     });
   }, 1000);
 
-  return `
-      <nav class="nav__categories">
-          <div class="categories__all">
-              <ul class="sf-menu">
-                  ${categories.length
-    ? `
-	                    <li>
-					                <a data-route="/categories">
-					                    <img src="${hamburger}" alt="Hamburger Menu">
-					                    <span>All Categories</span>
-					                </a>				                    
-					                <ul>        				
-					                    ${categories.map(NavItem).filter(Boolean).join("")}
-			                    </ul>
-											</li>
-									`
-    : ""}
-							</ul>
-          </div>
-          
-          <div class="categories__list">
-              <ul class="sf-menu">
-                  <li>
-			                <a data-route="/product/filter/top-deals">
-			                    <span>Today's Deals</span>
-			                </a>            				
-									</li>
-                  ${topCategories?.length && topCategories.map(NavItem).filter(Boolean).join("")}
-							</ul>
-          </div>
+  return (
+    <nav className="nav__categories">
+      <div className="categories__all">
+        <ul className="sf-menu">
+          {categories.length > 0 && (
+            <li>
+              <a data-route="/categories">
+                <img src={hamburger} alt="Hamburger Menu"/>
+                <span>All Categories</span>
+              </a>
+              <ul>
+                {categories.map(NavItem).filter(Boolean)}
+              </ul>
+            </li>
+          )}
+        </ul>
+      </div>
 
-          <div class="categories__cta">
-              <a href="#">Sell on YourBasket</a>
-          </div>
-      </nav>
-  `;
+      <div className="categories__list">
+        <ul className="sf-menu">
+          <li>
+            <a data-route="/product/filter/top-deals">
+              <span>Today's Deals</span>
+            </a>
+          </li>
+          {topCategories?.length > 0 && topCategories.map(NavItem).filter(Boolean)}
+        </ul>
+      </div>
+
+      <div className="categories__cta">
+        <a href="#">Sell on YourBasket</a>
+      </div>
+    </nav>
+  );
 }
 
 export async function Nav () {
-  return `
-      <div class="nav">
-          ${NavMain()}
-          ${await NavCategories()}
-      </div>    
-  `;
+  return (
+    <div className="nav">
+      <NavMain/>
+      <NavCategories/>
+    </div>
+  );
 }
