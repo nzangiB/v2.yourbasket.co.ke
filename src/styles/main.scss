@@ -8,12 +8,16 @@
 
 :root {
   --font-family: 'Hubot Sans', sans-serif;
-  --font-variant-1: 34px/1.3 var(--font-family);
-  --font-variant-2: 27px/1.3 var(--font-family);
-  --font-variant-3: 21px/1.3 var(--font-family);
-  --font-variant-4: 17px/1.5 var(--font-family);
-  --font-variant-5: 13px/1.5 var(--font-family);
-  --font-variant-6: 12px/1.5 var(--font-family);
+  --font-variant-1: 48px/56px var(--font-family);
+  --font-variant-2: 40px/48px var(--font-family);
+  --font-variant-3: 32px/42px var(--font-family);
+  --font-variant-4: 28px/36px var(--font-family);
+  --font-variant-5: 24px/32px var(--font-family);
+  --font-variant-6: 20px/32px var(--font-family);
+  --font-variant-sub-title: 18px/26px var(--font-family);
+  --font-variant-text: 16px/24px var(--font-family);
+  --font-variant-caption: 14px/20px var(--font-family);
+  --font-variant-label: 12px/16px var(--font-family);
   --grid: 24px;
   --theme-color: #222;
   --theme-background: #FFF;
@@ -32,9 +36,15 @@
   //--color-type-10: rgba(156, 179, 239, 1);
   --color-type-11: rgba(198, 199, 203, 1);
 
-  --font-size-1: 16px;
-  --font-size-2: 20px;
-  --font-size-3: 18px;
+  --color-green: #2C5F2D;
+  --color-off-white: #F5F5F5;
+  --color-white: #FFF;
+  --color-black: #000;
+  --color-yellow: #FEEE00;
+
+  --font-size-1: 20px;
+  --font-size-2: 18px;
+  --font-size-3: 16px;
   --font-size-4: 14px;
   --font-size-5: 12px;
 }
