@@ -1,3 +1,5 @@
+import { toast } from "../../plugins/react-toastify";
+
 import { Nav } from "../../components/nav/nav";
 import { Footer } from "../../components/footer/footer";
 import { Signup } from "../../components/signup/signup";

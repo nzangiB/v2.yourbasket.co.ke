@@ -1,24 +1,12 @@
 import { Nav } from "../../components/nav/nav";
-import { toast } from "../../plugins/toastify";
+import { useState } from "../../plugins/react";
+import { toast } from "../../plugins/react-toastify";
 
 import "./register.scss";
 
 import DataService from "../../services/data.service";
 import AuthService from "../../services/auth.service";
 import HelperService from "../../services/helper.service";
-
-const useState = (initialValue) => {
-  // store private current state
-  let _val = initialValue;
-  // get the current state
-  const state = (() => _val)();
-  // update the state
-  const setState = (newValue) => {
-    _val = newValue;
-  };
-
-  return [state, setState];
-};
 
 async function UserRegistrationForm () {
   const [firstName, setFirstName] = useState("");
