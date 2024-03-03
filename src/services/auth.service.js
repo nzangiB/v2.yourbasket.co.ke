@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = (process.env.NODE_ENV !== "production" ? "http://localhost:3000/" : "https://api.yourbasket.co.ke/");
+// const API_URL = (process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://api.yourbasket.co.ke/");
+const API_URL = "https://api.yourbasket.co.ke/";
 
 const register = (data) => {
   return axios.post(API_URL + "api/users/register", data);

@@ -142,18 +142,13 @@ Router([
     template: Login
   },
   {
-    path: "/register",
+    path: "/register{/:page}?",
     data: { page: { title: "Register" } },
     template: Register
   }
-], () => {
-  // addEventListener('load', reportWebVitals, false);
-  // addEventListener('load', updateViewport, false);
-  // addEventListener('resize', updateViewport, false);
-  // addEventListener('orientationchange', updateViewport, false);
+]).then(() => {
+  addEventListener("load", reportWebVitals, false);
+  addEventListener("load", updateViewport, false);
+  addEventListener("resize", updateViewport, false);
+  addEventListener("orientationchange", updateViewport, false);
 });
-
-addEventListener("load", reportWebVitals, false);
-addEventListener("load", updateViewport, false);
-addEventListener("resize", updateViewport, false);
-addEventListener("orientationchange", updateViewport, false);
