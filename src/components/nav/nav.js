@@ -1,7 +1,8 @@
+import placeholder from "../../assets/images/placeholder.png";
 import logo from "../../assets/logos/logo-dark.svg";
 import search from "../../assets/icons/search.svg";
 import profile from "../../assets/icons/profile.svg";
-// import basket from "../../assets/icons/basket.svg";
+import basket from "../../assets/icons/cart_icon.svg";
 import customer from "../../assets/icons/customer_care.svg";
 import hamburger from "../../assets/icons/hamburger_menu.svg";
 
@@ -29,52 +30,66 @@ function NavItem (item) {
 }
 
 export function NavMain () {
-  return `
-      <nav class="nav__main">
-          <div class="nav__logo">
-              <a data-route="/">
-                  <img class="img" src=${logo} alt="company logo">
-              </a>
-          </div>
+  const isAuthenticated = AuthService.getCurrentUser();
+  const profilePic = isAuthenticated?.file_path
+    ? `https://api.yourbasket.co.ke/${isAuthenticated?.file_path}`
+    : placeholder;
 
-          <div class="nav__search">
-              <label for="searchInput"></label>
-              <input class="field" type="text" id="searchInput" name="q" placeholder="Search products, brands and more">
-              <button class="button" type="submit">
-                  <img src=${search} alt="search icon">
-              </button>
-          </div>
+  return (
+    <nav className="nav__main">
+      <div className="nav__logo">
+        <a data-route="/">
+          <img className="img" src={logo} alt="company logo"/>
+        </a>
+      </div>
 
-          <div class="nav__links">
-              <ul>
-                  <li>
-                      <a data-route="/login">
-                          <img src="${profile}" alt="search icon">
-                          <span class="srt">Sign In/ Register</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a data-route="/wishlist">
-                          <img src="" alt="wishlist icon">
-                          <span class="srt">Wishlist</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a data-route="/basket">
-                          <img src="" alt="basket icon">
-                          <span class="srt">Basket</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          <img src="${customer}" alt="customer icon">
-                          <span class="srt">Customer Care</span>
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </nav>
-  `;
+      <div className="nav__search">
+        <label htmlFor="searchInput"></label>
+        <input className="field" type="text" id="searchInput" name="q" placeholder="Search products, brands and more"/>
+        <button className="button" type="submit">
+          <img src={search} alt="search icon"/>
+        </button>
+      </div>
+
+      <div className="nav__links">
+        <ul>
+          <li>
+            {isAuthenticated
+              ? (
+                <a data-route="/profile">
+                  <img src={profilePic} alt="profile picture"/>
+                  <span className="srt">Profile</span>
+                </a>
+              )
+              : (
+                <a data-route="/login">
+                  <img src={profile} alt="profile icon"/>
+                  <span className="srt">Sign In/ Register</span>
+                </a>
+              )}
+          </li>
+          <li>
+            <a data-route="/wishlist">
+              <img src={"wishlist"} alt="wishlist icon"/>
+              <span className="srt">Wishlist</span>
+            </a>
+          </li>
+          <li>
+            <a data-route="/basket">
+              <img src={basket} alt="basket icon"/>
+              <span className="srt">Basket</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={customer} alt="customer icon"/>
+              <span className="srt">Customer Care</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
 }
 
 export async function NavCategories () {

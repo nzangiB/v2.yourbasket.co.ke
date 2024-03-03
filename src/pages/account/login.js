@@ -20,7 +20,7 @@ const useState = (initialValue) => {
   return [state, setState];
 };
 
-async function LoginForm (props) {
+function LoginForm (props) {
   const [selected, setSelected] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -199,10 +199,10 @@ function SocialLoginForm (props) {
 async function Login (props) {
   return (
     <>
-      <Nav props={props}/>
+      <Nav/>
       <div className="container">
         <main className="content">
-          {await LoginForm()}
+          <LoginForm/>
           {/* <SocialLoginForm/> */}
         </main>
       </div>
