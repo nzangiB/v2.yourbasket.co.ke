@@ -1,21 +1,22 @@
+import placeholder from "../../assets/images/placeholder.png";
+
 import { toast } from "../../plugins/react-toastify";
 
 import { Nav } from "../../components/nav/nav";
 import { Footer } from "../../components/footer/footer";
 import { Signup } from "../../components/signup/signup";
 import { Advert } from "../../components/advert/advert";
-import { ProductInfo } from "../../components/product/productInfo";
+import { ProductDetails } from "../../components/product/productDetails";
+import { RelatedProducts } from "../../components/relatedProducts";
 import { RecentlyViewed } from "../../components/recentlyViewed";
 
-import "./productPage.scss";
+import "./product.scss";
 
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 import HelperService from "../../services/helper.service";
-import placeholder from "../../assets/images/placeholder.png";
-import { RelatedProducts } from "../../components/relatedProducts";
 
-async function ProductPage ({ params }) {
+async function Product ({ params }) {
   const auth = AuthService.getCurrentUser();
   const userId = auth ? auth.id : "";
 
@@ -146,7 +147,7 @@ async function ProductPage ({ params }) {
       {await Nav()}
       <div className="container">
         <div className="content">
-          {await ProductInfo({ product })}
+          {await ProductDetails({ product })}
           {/* {{! ProductPageModal }} */}
           {await RelatedProducts({ product })}
           {await RecentlyViewed({ product })}
@@ -159,4 +160,4 @@ async function ProductPage ({ params }) {
   );
 }
 
-export default ProductPage;
+export default Product;

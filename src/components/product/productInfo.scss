@@ -1,33 +1,26 @@
-@use "../../styles/tools.breakpoint" as breakpoint;
-
 .product-info {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 
-  @include breakpoint.tablet {
-    display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-    align-items: start;
+
+  &__title {
+    font: 600 var(--font-variant-3);
+    line-height: 1.1;
+
+    .title {
+      font: inherit;
+    }
   }
 
-  @include breakpoint.tablet-only {
-    display: flex;
-    flex-direction: column;
+  &__price {
+    font: 500 var(--font-variant-4);
   }
 
-  .column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  &__description {
+    font: var(--font-variant-text);
   }
 
-  .product-images,
-  .product-details,
-  .product-reviews,
-  .related-products {
-    width: 100%;
-    background: #FFF;
-    border-radius: 8px;
-    padding: 24px;
+  &__btn-group {
   }
 }

@@ -23,38 +23,37 @@ import questionMark from "../../assets/images/product-page/icons/question-mark-i
 import delivery from "../../assets/images/product-page/icons/delivery-icon.svg";
 import discount from "../../assets/images/product-page/icons/discount.svg";
 
-import seller from "../../assets/images/product-page/Seller.png";
+import seller from "../../assets/images/product-page/seller.png";
 import rate from "../../assets/images/product-page/icons/rate.svg";
 
-import "./ProductInfo.scss";
+import "./productDetails.v1.scss";
 
 export function ProductInfo (props) {
   return `
-    <div class="productInfo__container">
-
-        <div class="productInfo__images">
-            <div class="image__container image__container__main">
+    <div class="productPage__container">
+        <div class="productPage__images">
+            <div class="images">
                 <img src="${(productImage)}" alt>
             </div>
 
-            <div class="product__gallery">
-                <div class="product__gallery_item">
+            <div class="gallery">
+                <div class="gallery_item">
                     <img src="${(gallery1)}" alt="gallery item">
                 </div>
 
-                <div class="product__gallery_item">
+                <div class="gallery_item">
                     <img src="${(gallery2)}" alt="gallery item">
                 </div>
 
-                <div class="product__gallery_item">
+                <div class="gallery_item">
                     <img src="${(gallery3)}" alt="gallery item">
                 </div>
 
-                <div class="product__gallery_item">
+                <div class="gallery_item">
                     <img src="${(gallery4)}" alt="gallery item">
                 </div>
 
-                <div class="product__gallery_item">
+                <div class="gallery_item">
                     <img src="${(gallery5)}" alt="gallery item">
                 </div>
 
@@ -83,7 +82,7 @@ export function ProductInfo (props) {
                 <img src="${save}" alt="save icon">
             </div>
 
-            <div class="aspira">
+            <div class="productPage__aspira">
                 <img src="${aspiraLogo}" alt="aspira logo">
                 <p>Buy Now. Pay Later on Orders above 10,000 KES.</p>
                 <a href="#">Learn More.</a>
@@ -112,14 +111,13 @@ export function ProductInfo (props) {
                 </div> 
                 <a href="#">View All Offers</a>
             </div>
-
         </div>
 
         <div class="productInfo__delivery">
             <div class="delivery__content">
                 <h3>DELIVERY &amp; RETURNS</h3>
                 <div class="delivery__info">
-                    <img src="${express}" alt="express logo">
+                    <img src="../../../node_modules/@types/express" alt="${express} logo">
                     <p>Express delivery in main cities & towns.<span><img src="${questionMark}"></span></p>
                 </div>
                 <div class="delivery__inputs">
@@ -162,7 +160,6 @@ export function ProductInfo (props) {
 
                 <div class="delivery__ratings">
                     <div class="delivery__ImageSeller">
-
                         <img src="${seller}" alt="seller image">
 
                         <div class="seller__info">
