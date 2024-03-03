@@ -1,10 +1,10 @@
 import HelperService from "../services/helper.service";
 
-import { ProductRow } from "./productCard/productRow";
+import { ProductRow } from "./product/productRow";
 
-export async function RecentlyViewed ({ productData }) {
+export async function RecentlyViewed ({ product }) {
   const recentProducts = HelperService.getRecentProducts();
-  HelperService.setRecentProducts(productData);
+  HelperService.setRecentProducts(product);
 
   return (
     <div className="deals-grid deals-recommended">

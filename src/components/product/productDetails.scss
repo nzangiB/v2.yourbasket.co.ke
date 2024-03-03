@@ -1,0 +1,26 @@
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+
+  &__title {
+    font: 600 var(--font-variant-3);
+    line-height: 1.1;
+
+    .title {
+      font: inherit;
+    }
+  }
+
+  &__price {
+    font: 500 var(--font-variant-4);
+  }
+
+  &__description {
+    font: var(--font-variant-text);
+  }
+
+  &__btn-group {
+  }
+}

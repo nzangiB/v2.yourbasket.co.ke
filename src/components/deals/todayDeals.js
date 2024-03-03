@@ -4,7 +4,7 @@ import DataService from "../../services/data.service";
 import CountDown from "../countDown";
 
 import "./deals.scss";
-import { ProductGroup } from "../productCard/productGroup";
+import { ProductGroup } from "../product/productGroup";
 
 export async function TodayDeals () {
   const auth = AuthService.getCurrentUser();

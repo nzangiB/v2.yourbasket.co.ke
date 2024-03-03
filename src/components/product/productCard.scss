@@ -28,7 +28,7 @@
       background-color: #c40000;
       border-radius: 2px;
       padding: 4px 6px 2px;
-      font: var(--font-variant-6);
+      font: var(--font-variant-label);
     }
   }
 
@@ -76,15 +76,14 @@
     margin: 10px 0 0 0;
 
     &__title {
-      font-weight: 600;
-      font-size: var(--font-size-4);
+      font: 600 var(--font-variant-text);
       color: var(--color-type-8);
       line-height: 18px;
       margin-bottom: .5rem;
     }
 
     &__description {
-      font-size: var(--font-size-5);
+      font: var(--font-variant-caption);
       color: var(--color-type-8);
       line-height: 16px;
       height: 48px;
@@ -101,13 +100,12 @@
     margin: 10px 5px 0 0;
 
     &__current {
-      font-weight: 600;
-      font-size: var(--font-size-4);
+      font: 500 var(--font-variant-text);
       color: var(--font-size-2);
     }
 
     &__initial {
-      font-size: var(--font-size-5);
+      font: var(--font-variant-caption);
       color: #8C8F98;
       text-decoration: line-through;
     }

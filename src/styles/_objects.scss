@@ -245,12 +245,40 @@
   //border: none;
 
   &.--primary {
-    color: var(--color-type-8);
-    background: var(--color-type-5) none;
+    color: var(--color-black);
+    background: var(--color-yellow) none;
+    border: 1px solid var(--color-yellow);
   }
 
+  //&.--secondary {
+  //  color: var(--color-type-4);
+  //  background: var(--color-type-8) none;
+  //}
+
   &.--secondary {
-    color: var(--color-type-4);
-    background: var(--color-type-8) none;
+    color: var(--color-green);
+    background: transparent;
+    border: 1px solid var(--color-green);
   }
+
+  &.--link {
+    padding: 0;
+    color: var(--color-type-6);
+    background: transparent;
+    border: none;
+  }
+
+  &.--size-lg {
+    font: 600 var(--font-variant-text);
+    //border: 2px solid currentColor;
+    align-items: center;
+
+    //padding: 8px 16px;
+  }
+}
+
+.btn-group {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 10px;
 }

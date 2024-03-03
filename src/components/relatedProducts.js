@@ -1,18 +1,18 @@
 import AuthService from "../services/auth.service";
 import DataService from "../services/data.service";
 
-import { ProductRow } from "./productCard/productRow";
+import { ProductRow } from "./product/productRow";
 
-export async function RelatedProducts ({ productData }) {
+export async function RelatedProducts ({ product }) {
   const auth = AuthService.getCurrentUser();
   const userId = auth ? auth.id : "";
 
-  const de = await DataService.getRelatedProducts(productData.id, userId);
-  const relatedProducts = de.data.relatedProducts;
-  const allProducts = de.data.Products;
+  const response = await DataService.getRelatedProducts(product.id, userId);
+  const relatedProducts = response.data.relatedProducts;
+  const allProducts = response.data.Products;
 
   return (
-    <>
+    <section className={"related-products"}>
       <div className="deals-grid deals-today">
         <header className="deals__header">
           <div className="deals__time">
@@ -36,6 +36,6 @@ export async function RelatedProducts ({ productData }) {
           <ProductRow products={allProducts}/>
         </section>
       </div>
-    </>
+    </section>
   );
 }

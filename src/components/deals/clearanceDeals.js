@@ -2,7 +2,7 @@ import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
 import "./deals.scss";
-import { ProductGroup } from "../productCard/productGroup";
+import { ProductGroup } from "../product/productGroup";
 
 export async function ClearanceDeals () {
   const auth = AuthService.getCurrentUser();
