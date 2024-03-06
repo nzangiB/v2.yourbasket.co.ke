@@ -16,7 +16,9 @@ export function ProductRow (props) {
   return (
     <div className="product-cards__wrapper" data-simplebar>
       <div className="product-cards">
-        {products && products.slice(0, 10).map(ProductCard).filter(Boolean)}
+        {products && products.slice(0, 10).map(product => (
+          <ProductCard product={product}/>
+        )).filter(Boolean)}
       </div>
     </div>
   );

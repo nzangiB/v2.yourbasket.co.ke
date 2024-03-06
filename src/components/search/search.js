@@ -4,6 +4,7 @@ import DataService from "../../services/data.service";
 import { ProductRow } from "../product/productRow";
 
 import "./search.scss";
+import { Component } from "@wearearchangel/handcrafted";
 
 const setIdFromSlug = async ({ cats, brands, params }) => {
   let queryData;
@@ -16,9 +17,9 @@ const setIdFromSlug = async ({ cats, brands, params }) => {
   };
 
   // check if category..
-  if (params.master && params.master.length > 0) {
+  if (params?.master && params?.master.length > 0) {
     const ss = await Promise.all(cats.filter((item, i) => {
-      return item.slug === params.master;
+      return item.slug === params?.master;
     }));
 
     if (ss.length > 0) {
@@ -35,17 +36,17 @@ const setIdFromSlug = async ({ cats, brands, params }) => {
       }));
 
       // check sub category..
-      if (ss[0].Categories.length > 0 && (params.category && params.category.length > 0)) {
+      if (ss[0].Categories.length > 0 && (params?.category && params?.category.length > 0)) {
         const ss1 = await Promise.all(ss[0].Categories.filter((item, i) => {
-          return item.slug === params.category;
+          return item.slug === params?.category;
         }));
         if (ss1.length > 0) {
           obj.catId = ss1[0].id;
 
           // check sub sub category..
-          if (ss1[0].Categories.length > 0 && (params.subcategory && params.subcategory.length > 0)) {
+          if (ss1[0].Categories.length > 0 && (params?.subcategory && params?.subcategory.length > 0)) {
             const ss2 = await Promise.all(ss1[0].Categories.filter((item, i) => {
-              return item.slug === params.subcategory;
+              return item.slug === params?.subcategory;
             }));
             if (ss2.length > 0) {
               obj.subCatId = ss2[0].id;
@@ -57,9 +58,9 @@ const setIdFromSlug = async ({ cats, brands, params }) => {
   }
 
   // check if brand...
-  if (params.brand && params.brand.length > 0) {
+  if (params?.brand && params?.brand.length > 0) {
     const ss = await Promise.all(brands.filter((item, i) => {
-      return item.slug == params.brand;
+      return item.slug === params?.brand;
     }));
 
     if (ss.length > 0) {
@@ -68,13 +69,13 @@ const setIdFromSlug = async ({ cats, brands, params }) => {
   }
 
   // check if keyword..
-  if (params.keyword && params.keyword.length > 0) {
-    obj.keyword = params.keyword;
+  if (params?.keyword && params?.keyword.length > 0) {
+    obj.keyword = params?.keyword;
   }
 
   // check if keyword..
-  if (params.filter && params.filter.length > 0) {
-    obj.filter = params.filter;
+  if (params?.filter && params?.filter.length > 0) {
+    obj.filter = params?.filter;
   }
 
   queryData = obj;
@@ -141,51 +142,7 @@ const sortProductByPrice = (e) => {
   }
 };
 
-const getData = async (props) => {
-  let queryData;
-  let cats, masterCatData;
-  await DataService.getAllCategory("0").then((data) => {
-    masterCatData = data.data.categories;
-    cats = data.data.categories;
-  });
-
-  let brand, brands;
-  await DataService.getAllBrand().then((data) => {
-    brand = data.data.data;
-    brands = data.data.data;
-  });
-
-  const auth = AuthService.getCurrentUser();
-  const userId = (auth) ? auth.id : "";
-
-  ({ queryData, brand } = await setIdFromSlug({ cats, brands, ...props }));
-  const customBreadcrumb = await makeBreadcrumb({ masterCatData, cats, queryData });
-
-  const products = { list: [], count: 0 };
-  await DataService.searchProduct({
-    mastCatId: queryData.mastCatId ? (queryData.catId) ? [] : [queryData.mastCatId] : [],
-    catId: queryData.catId ? (queryData.subCatId) ? [] : [queryData.catId] : [],
-    subCatId: queryData.subCatId ? [queryData.subCatId] : [],
-    brandId: queryData.brandId ? [queryData.brandId] : [],
-    dates: [],
-    keyword: queryData.keyword ? queryData.keyword : "",
-    filter: queryData.filter ? queryData.filter : ""
-  }, userId).then((data) => {
-    products.list = data.data.products;
-    products.count = data.data.products_count;
-  });
-
-  return {
-    customBreadcrumb,
-    products,
-    brand,
-    cats
-  };
-};
-
-async function SearchFilters ({ filters, ...props }) {
-  const { cats, brand } = await getData(props);
-
+async function SearchFilters ({ cats, brand, filters, ...props }) {
   const getSubCategoryFilters = (category) => {
     return category.Categories && `
       <div class="options">
@@ -332,20 +289,19 @@ async function SearchFilters ({ filters, ...props }) {
     return filterList[filter];
   });
 
-  return `
-    <aside class="search-filters">
-        <div class="filters">
-            ${filtersToRender.filter(Boolean).join("")}
-        </div>
+  return (
+    <aside className="search-filters">
+      <div className="filters">
+        {filtersToRender.filter(Boolean)}
+      </div>
     </aside>
-  `;
+  );
 }
 
-async function SearchResults (props) {
-  const { products } = await getData(props);
-
-  return (
-    <div className="search-results">
+class SearchResults extends Component {
+  template () {
+    const { products } = this.props;
+    return (
       <div className="results">
         <header className="results__header">
           <div className="results__title">
@@ -372,15 +328,61 @@ async function SearchResults (props) {
           <ProductRow products={products.list}/>
         </section>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export async function Search ({ filters, params, query }) {
-  return (
-    <div className="search-component">
-      {await SearchFilters({ filters, params, query })}
-      {await SearchResults({ params, query })}
-    </div>
-  );
+export class Search extends Component {
+  data = async (props) => {
+    let queryData;
+    let cats, masterCatData;
+    await DataService.getAllCategory("0").then((data) => {
+      masterCatData = data.data.categories;
+      cats = data.data.categories;
+    });
+
+    let brand, brands;
+    await DataService.getAllBrand().then((data) => {
+      brand = data.data.data;
+      brands = data.data.data;
+    });
+
+    const auth = AuthService.getCurrentUser();
+    const userId = (auth) ? auth.id : "";
+
+    ({ queryData, brand } = await setIdFromSlug({ cats, brands, ...props }));
+    const customBreadcrumb = await makeBreadcrumb({ masterCatData, cats, queryData });
+
+    const products = { list: [], count: 0 };
+    await DataService.searchProduct({
+      mastCatId: queryData.mastCatId ? (queryData.catId) ? [] : [queryData.mastCatId] : [],
+      catId: queryData.catId ? (queryData.subCatId) ? [] : [queryData.catId] : [],
+      subCatId: queryData.subCatId ? [queryData.subCatId] : [],
+      brandId: queryData.brandId ? [queryData.brandId] : [],
+      dates: [],
+      keyword: queryData.keyword ? queryData.keyword : "",
+      filter: queryData.filter ? queryData.filter : ""
+    }, userId).then((data) => {
+      products.list = data.data.products;
+      products.count = data.data.products_count;
+    });
+
+    return {
+      customBreadcrumb,
+      products,
+      brand,
+      cats
+    };
+  };
+
+  template () {
+    const { filters, params, query } = this.props;
+    const { cats, brand, products } = this.state;
+    return (
+      <div className="search-component">
+        <SearchFilters cats={cats} brand={brand} filters={filters} params={params} query={query}/>
+        <SearchResults products={products} params={params} query={query}/>
+      </div>
+    );
+  }
 }

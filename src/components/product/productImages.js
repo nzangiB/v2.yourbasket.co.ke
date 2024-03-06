@@ -3,14 +3,19 @@ import { useState } from "../../plugins/react";
 import ProductImageSlider from "./ProductImageSlider";
 
 import "./productImages.scss";
+import placeholder from "../../assets/images/placeholder.png";
 
 export function ProductImages ({ product }) {
   const [currentImage, setCurrentImage] = useState(product?.images?.[0]);
 
-  const slides = product?.images?.map(image => ({
-    url: image,
-    title: "product image"
-  }));
+  const slides = product?.images?.map(image => {
+    image = image ?? placeholder;
+    const url = image?.file_path
+      ? `https://api.yourbasket.co.ke/${image.file_path}`
+      : image;
+    const title = "product image";
+    return ({ url, title });
+  });
   const containerStyles = {
     width: "100%",
     aspectRatio: "4/3",

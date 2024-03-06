@@ -38,7 +38,7 @@ export default `<!DOCTYPE html>
         <script defer src="/scripts/flickity.pkgd.js"></script>
 		</head>
 		
-		<body>
+		<body class="wrapper" style="display: flex; flex-flow: column nowrap; min-height: 100vh;">
 		    <noscript>You need to enable JavaScript to view this site.</noscript>
 		    <noscript>
 		        <style>
@@ -356,7 +356,12 @@ export default `<!DOCTYPE html>
 		        </svg>
 		    </div>
 		    
-		    <main class="page"></main>
+		    <main class="page" style="flex: 1">
+						<div class="loading" style="display: flex; align-items: center; justify-content: center; flex: 1">
+								<div class="icon --spinning"></div>
+								<div class="text">Loading...</div>
+						</div>		    
+				</main>
 		</body>
 		</html>
 `;

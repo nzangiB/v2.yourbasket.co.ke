@@ -1,90 +1,114 @@
 import placeholder from "../../assets/images/placeholder.png";
 
 import "./carousel.scss";
+import { Component } from "@wearearchangel/handcrafted";
 
 export function Slide (banner) {
   const image = banner.file_path
-    ? `https://api.yourbasket.co.ke/${banner.file_path}`
+    ? "https://api.yourbasket.co.ke/" + banner.file_path
     : "../assets/img/slider/slider-1.webp";
 
-  return `
-      <a class="banner" href="${banner.url}">
-          <div class="banner__img">
-              <img src="${placeholder}" data-flickity-lazyload="${image}" alt="${banner.title}" class="img"/>
-          </div>
-          <div class="srt banner__text">
-              <h4 class="">${banner.title}</h4>
-              <p class="">${banner.description}</p>
-          </div>
-      </a>
-  `;
-}
-
-function Carousel (banners) {
-  if (!banners.length > 0) {
-    return `
-        <div class="carousel">
-            <div class="banner">
-              <div class="banner__img"></div>
-              <div class="banner__text">
-                  <h4 class="">No images found</div>
-              </div>
-            </div>
-        </div>
-    `;
+  let href = "#";
+  if (banner.url) {
+    const url = new URL(banner.url);
+    href = new URL(url.hash.replace("#", "/categories"), location.origin);
   }
 
-  return `
-    <div class="carousel">
-        ${banners.map(Slide).filter(Boolean).join("")}
-    </div>
-  `;
-
-  // return `
-  //   <div class="carousel" data-flickity='${JSON.stringify(props)}'>
-  //       ${banners.map(Slide).filter(Boolean).join("")}
-  //   </div>
-  // `;
+  return (
+    <a className="banner" href={href}>
+      <div className="banner__img">
+        <img src={placeholder} data-flickity-lazyload={image} alt={banner.title} className="img"/>
+      </div>
+      <div className="srt banner__text">
+        <h4 className="">{banner.title}</h4>
+        <p className="">{banner.description}</p>
+      </div>
+    </a>
+  );
 }
 
-export function MainBanner (props) {
-  return `
-    <div class="main-banner">
-        ${Carousel(props)}
-    </div>
-  `;
+class Carousel extends Component {
+  template () {
+    const { banners } = this.props;
+    if (!banners.length) {
+      return (
+        <div className="banner">
+          <div className="banner__img"></div>
+          <div className="banner__text">
+            <h4 className="title">No images found</h4>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="carousel">
+        {banners.map(Slide).filter(Boolean)}
+      </div>
+    );
+
+    // return `
+    //   <div class="carousel" data-flickity='${JSON.stringify(props)}'>
+    //       ${banners.map(Slide).filter(Boolean).join("")}
+    //   </div>
+    // `;
+  }
+
+  controller ({ component }) {
+    if (!component) return;
+    const Flickity = window.Flickity;
+    new Flickity(component, {
+      autoPlay: true,
+      cellAlign: "left",
+      imagesLoaded: true,
+      // percentagePosition: true,
+      lazyLoad: true,
+      contain: true,
+      prevNextButtons: true,
+      pageDots: true
+      // watchCSS: true
+    });
+  }
 }
 
-export function SideBanner (props) {
-  return `
-    <div class="side-banner">
-        ${Carousel(props)}
+export function MainBanner ({ banners }) {
+  return (
+    <div className="main-banner">
+      <Carousel banners={banners}/>
     </div>
-  `;
+  );
 }
 
-export function OfferBanner (props) {
-  return `
-    <div class="offer-banner">
-        ${Carousel(props)}
+export function SideBanner ({ banners }) {
+  return (
+    <div className="side-banner">
+      <Carousel banners={banners}/>
     </div>
-  `;
+  );
 }
 
-export function VendorBanner (props) {
-  return `
-    <div class="vendor-banner">
-        ${Carousel(props)}
+export function OfferBanner ({ banners }) {
+  return (
+    <div className="offer-banner">
+      <Carousel banners={banners}/>
     </div>
-  `;
+  );
 }
 
-export function CategoryBanner (props) {
-  return `
-    <div class="category-banner">
-        ${Carousel(props)}
+export function VendorBanner ({ banners }) {
+  return (
+    <div className="vendor-banner">
+      <Carousel banners={banners}/>
     </div>
-  `;
+  );
+}
+
+export function CategoryBanner ({ banners }) {
+  return (
+    <div className="category-banner">
+      <Carousel banners={banners}/>
+    </div>
+  );
 }
 
 /*

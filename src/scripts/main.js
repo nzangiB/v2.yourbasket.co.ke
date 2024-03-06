@@ -9,7 +9,7 @@ import { Layout } from "./layout";
 
 // routes
 import Home from "../pages/home/home";
-import ProductPage from "../pages/productPage/productPage";
+import Product from "../pages/product/product";
 import Cart from "../pages/cart";
 import Checkout from "../pages/checkout";
 import Categories from "../pages/categories/categories";
@@ -81,7 +81,7 @@ Router([
   {
     path: "/product/:id",
     data: { page: { title: "Product by Id" } },
-    template: ProductPage
+    template: Product
   },
   /**
 	 * 03
@@ -129,7 +129,7 @@ Router([
   {
     path: "/categories/:master/:category/:subcategory/:id",
     data: { page: { title: "Category ID" } },
-    template: ProductPage
+    template: Product
   },
   //  {
   //    path: "/brands/:brand?",

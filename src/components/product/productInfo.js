@@ -39,6 +39,17 @@ export function ProductInfo (props) {
     console.log("checking out...");
   };
 
+  const costPrice = parseFloat(product.cost_price).toLocaleString(navigator.language, { minimumFractionDigits: 0 });
+  const offerPrice = parseFloat(product.offer_price).toLocaleString(navigator.language, { minimumFractionDigits: 0 });
+  const getDiscountRate = () => Math.floor(0 - ((costPrice - offerPrice) / costPrice) * 100, 100);
+  const discount = product.cost_price && product.offer_price && getDiscountRate() > 0 ? getDiscountRate() : null;
+
+  const KES = new Intl.NumberFormat("en-KE", {
+    style: "currency",
+    currency: "KES",
+    minimumFractionDigits: 0
+  });
+
   return (
     <section className="product-info">
       {/* <ProductRatings rating={props.rating}/> */}
@@ -46,29 +57,15 @@ export function ProductInfo (props) {
         <h2 className={"title"} id="title">{product.name}</h2>
       </div>
       <div className={"product-info__price"}>
-        <p className={"text"} id="title">
-          <span>
-            KSh. {product?.offer_price?.toLocaleString(navigator.language, {
-	          minimumFractionDigits: 0
-            })}
-          </span>
-          <span>
-            {product?.mrp > product?.offer_price
-	            ? (
-		            <>
-                  <span>
-                    KSh. {product?.mrp?.toLocaleString(navigator.language, {
-	                  minimumFractionDigits: 0
-                    })}
-                  </span>
-			            <span>
-                    {HelperService.calDiscount(product)}
-                  </span>
-		            </>
-	            )
-	            : (
-		            ""
-	            )}
+        <p className={"price"} id="title">
+          <span className="product-info__price--current">{KES.format(product.offer_price)}</span>
+          <span className="product-info__price--initial">
+            {(product?.mrp > product?.offer_price) && (
+	            <>
+		            <span className={"amount"}>{KES.format(product?.mrp)}</span>
+		            <span className={"percentage"}>{HelperService.calDiscount(product)}</span>
+	            </>
+            )}
           </span>
         </p>
       </div>

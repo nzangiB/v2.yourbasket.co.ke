@@ -13,8 +13,9 @@ async function Categories (props) {
 
   return (
     <>
-      {await Nav(props)}
-      {Breadcrumbs({ name: "Categories", route: "/categories" }, params)}
+      <Nav/>
+
+      {/* {Breadcrumbs({ name: "Categories", route: "/categories" }, params)} */}
 
       <div className="ad-group --row">
         <div className="ad" style="aspect-ratio: 920/90">
@@ -22,11 +23,11 @@ async function Categories (props) {
         </div>
       </div>
 
-      {await FeaturedBrands()}
+      <FeaturedBrands/>
 
       <div className="container">
         <main className="content">
-          {await Search({ filters, params, query })}
+          <Search {...{ filters, params, query }}/>
         </main>
 
         <aside className="aside aside__right">
@@ -37,8 +38,9 @@ async function Categories (props) {
           </div>
         </aside>
       </div>
-      {Signup()}
-      {Footer()}
+
+      <Signup/>
+      <Footer/>
     </>
   );
 }

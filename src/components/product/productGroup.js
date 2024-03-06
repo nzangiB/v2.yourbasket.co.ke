@@ -20,14 +20,17 @@ export class ProductGroup extends Component {
 
   template () {
     const { products } = this.state;
-
-    return `
-        <div class="product-cards__wrapper">
-            <div id="${this.id}-product-cards" class="product-cards">
-                ${products && products.length > 0 ? products.slice(0, 10).map(ProductCard).join("") : "No products found"}
-            </div>
+    return (
+      <div className="product-cards__wrapper">
+        <div id={this.id + "-product-cards"} className="product-cards">
+          {products && products.length
+            ? products.slice(0, 10).map(product => (
+              <ProductCard product={product}/>
+            ))
+            : "No products found"}
         </div>
-    `;
+      </div>
+    );
   }
 
   controller () {

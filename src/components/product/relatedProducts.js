@@ -1,7 +1,7 @@
-import AuthService from "../services/auth.service";
-import DataService from "../services/data.service";
+import AuthService from "../../services/auth.service";
+import DataService from "../../services/data.service";
 
-import { ProductRow } from "./product/productRow";
+import { ProductRow } from "./productRow";
 
 export async function RelatedProducts ({ product }) {
   const auth = AuthService.getCurrentUser();
@@ -15,8 +15,8 @@ export async function RelatedProducts ({ product }) {
     <section className={"related-products"}>
       <div className="deals-grid deals-today">
         <header className="deals__header">
-          <div className="deals__time">
-            <h3 className="deals__title">More deals for you</h3>
+          <div className="deals__title">
+            <h3 className="title">More deals for you</h3>
           </div>
         </header>
 
@@ -27,8 +27,8 @@ export async function RelatedProducts ({ product }) {
 
       <div className="deals-grid deals-today">
         <header className="deals__header">
-          <div className="deals__time">
-            <h3 className="deals__title">More items from this seller</h3>
+          <div className="deals__title">
+            <h3 className="title">More items from this seller</h3>
           </div>
         </header>
 

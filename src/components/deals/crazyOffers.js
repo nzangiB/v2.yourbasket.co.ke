@@ -3,39 +3,45 @@ import DataService from "../../services/data.service";
 
 import "./deals.scss";
 import { ProductGroup } from "../product/productGroup";
+import { Component } from "@wearearchangel/handcrafted";
 
-export async function CrazyOffers () {
-  const auth = AuthService.getCurrentUser();
-  const userId = (auth) ? auth.id : "";
-  const data = await DataService.searchProduct({
-    mastCatId: [],
-    catId: [],
-    subCatId: [],
-    brandId: [],
-    dates: [],
-    keyword: "",
-    filter: "best-sellers"
-  }, userId);
+export class CrazyOffers extends Component {
+  async data () {
+    const auth = AuthService.getCurrentUser();
+    const userId = (auth) ? auth.id : "";
+    const data = await DataService.searchProduct({
+      mastCatId: [],
+      catId: [],
+      subCatId: [],
+      brandId: [],
+      dates: [],
+      keyword: "",
+      filter: "best-sellers"
+    }, userId);
 
-  const { products } = data.data;
+    return data.data;
+  }
 
-  return (
-    <div class="deals-grid deals-today">
-      <header class="deals__header">
-        <div class="deals__time">
-          <h3 class="title">Crazy Offers</h3>
-        </div>
+  template () {
+    const { products } = this.state;
+    return (
+      <div className="deals-grid deals-today">
+        <header className="deals__header">
+          <div className="deals__title">
+            <h3 className="title">Crazy Offers</h3>
+          </div>
 
-        <div class="deals__text">
-          <a class="link --see-more" data-route="/product/filter/best-sellers">
-						See all deals
-          </a>
-        </div>
-      </header>
+          <div className="deals__text">
+            <a className="link --see-more" data-route="/product/filter/best-sellers">
+							See all deals
+            </a>
+          </div>
+        </header>
 
-      <section class="deals__grid">
-        <ProductGroup products={products}/>
-      </section>
-    </div>
-  );
+        <section className="deals__grid">
+          <ProductGroup products={products}/>
+        </section>
+      </div>
+    );
+  }
 }

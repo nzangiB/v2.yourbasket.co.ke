@@ -1,3 +1,5 @@
+@use "../../styles/tools.breakpoint" as breakpoint;
+
 .product-info {
   display: flex;
   flex-direction: column;
@@ -5,20 +7,63 @@
 
 
   &__title {
-    font: 600 var(--font-variant-3);
-    line-height: 1.1;
+    @include breakpoint.tablet {
+      font: 600 var(--font-variant-3);
+    }
+
+    @include breakpoint.tablet-only {
+      @include breakpoint.phablet {
+        font: 600 var(--font-variant-4);
+      }
+      @include breakpoint.mobile-only {
+        font: 600 var(--font-variant-5);
+      }
+    }
 
     .title {
       font: inherit;
+      line-height: 1.1;
     }
   }
 
   &__price {
-    font: 500 var(--font-variant-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 5px 0 0;
+
+    @include breakpoint.tablet {
+      font: 500 var(--font-variant-4);
+    }
+
+    @include breakpoint.tablet-only {
+      @include breakpoint.phablet {
+        font: 500 var(--font-variant-5);
+      }
+      @include breakpoint.mobile-only {
+        font: 500 var(--font-variant-6);
+      }
+    }
+
+    &.--current {
+      font: 500 var(--font-variant-text);
+      color: rgba(0, 0, 0, 1);
+    }
+
+    &.--initial {
+      font: var(--font-variant-caption);
+      color: rgba(0, 0, 0, .54);
+      text-decoration: line-through;
+    }
   }
 
   &__description {
-    font: var(--font-variant-text);
+    @include breakpoint.phablet {
+      font: var(--font-variant-text);
+    }
+    @include breakpoint.mobile-only {
+      font: var(--font-variant-caption);
+    }
   }
 
   &__btn-group {

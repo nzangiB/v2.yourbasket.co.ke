@@ -12,38 +12,10 @@ import { Footer } from "../../components/footer/footer";
 
 import "./home.scss";
 
-// import AuthService from "../../services/auth.service";
-// import DataService from "../../services/data.service";
-//
-// const getData = async () => {
-//   let allData = {};
-//
-//   const auth = AuthService.getCurrentUser();
-//   const userId = (auth) ? auth.id : "";
-//   await DataService.getHomePageData(userId).then((data) => {
-//     const { masterCategories: categories, categories: topCategories, banners } = data.data;
-//     allData = { banners, categories, topCategories };
-//   });
-//   await DataService.getHomePageData(userId, 1).then((data) => {
-//     const { best_sellers: bestSellers, products } = data.data;
-//     allData = { ...allData, bestSellers, products };
-//   });
-//   await DataService.getHomePageData(userId, 2).then((data) => {
-//     const { top_deals: dealToday, brands } = data.data;
-//     allData = { ...allData, dealToday, brands };
-//   });
-//   await DataService.getHomePageData(userId, 3).then((data) => {
-//     const { new_arrivals: newArrivals, electronics } = data.data;
-//     allData = { ...allData, newArrivals, electronics };
-//   });
-//
-//   return allData;
-// };
-
 async function Home (props) {
   return (
     <>
-      {await Nav(props)}
+      <Nav/>
 
       <div class="container">
         <aside class="aside aside__left">
@@ -55,8 +27,8 @@ async function Home (props) {
         </aside>
 
         <main class="content">
-          {await Hero(props)}
-          {await TodayDeals(props)}
+          <Hero/>
+          <TodayDeals/>
 
           <div class="ad-group --row">
             <div class="ad" style="aspect-ratio: 920/90">
@@ -64,7 +36,7 @@ async function Home (props) {
             </div>
           </div>
 
-          {await ClearanceDeals(props)}
+          <ClearanceDeals/>
 
           <div class="ad-group --row">
             <div class="ad" style="aspect-ratio: 920/90">
@@ -72,7 +44,7 @@ async function Home (props) {
             </div>
           </div>
 
-          {await CrazyOffers(props)}
+          <CrazyOffers/>
 
           <div class="ad-group --row">
             <div class="ad" style="aspect-ratio: 920/90">
@@ -80,22 +52,11 @@ async function Home (props) {
             </div>
           </div>
 
-          {await LatestProducts(props)}
+          <LatestProducts/>
 
           <div class="ad-group --row">
             <div class="ad" style="aspect-ratio: 920/90">
               <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
-            </div>
-          </div>
-
-          {await ClearanceSale(props)}
-
-          <div class="ad-group --row">
-            <div class="ad" style="aspect-ratio: 728/90">
-              <img src="https://via.placeholder.com/728x90" class="img" alt="Ad"/>
-            </div>
-            <div class="ad" style="aspect-ratio: 728/90">
-              <img src="https://via.placeholder.com/728x90" class="img" alt="Ad"/>
             </div>
           </div>
         </main>
@@ -109,10 +70,21 @@ async function Home (props) {
         </aside>
       </div>
 
-      {await DealsByCategory(props)}
-      {await FeaturedBrands(props)}
-      {Signup(props)}
-      {Footer()}
+      <ClearanceSale/>
+
+      {/* <div class="ad-group --row"> */}
+      {/*  <div class="ad" style="aspect-ratio: 728/90"> */}
+      {/*    <img src="https://via.placeholder.com/728x90" class="img" alt="Ad"/> */}
+      {/*  </div> */}
+      {/*  <div class="ad" style="aspect-ratio: 728/90"> */}
+      {/*    <img src="https://via.placeholder.com/728x90" class="img" alt="Ad"/> */}
+      {/*  </div> */}
+      {/* </div> */}
+
+      <DealsByCategory/>
+      <FeaturedBrands/>
+      <Signup/>
+      <Footer/>
     </>
   );
 }

@@ -11,7 +11,9 @@ export async function DealsForYou (props) {
   return `
       <div class="deals-grid deals-for-you">
             <header class="deals__header">
-                <h3 class="title">BEST DEALS FOR YOU</h3>
+                <div class="deals__title">
+                    <h3 class="title">BEST DEALS FOR YOU</h3>
+                </div>
                 <div class="deals__text">
                     <a class="link --see-more" data-route="/categories/deals-for-you">
                         See more

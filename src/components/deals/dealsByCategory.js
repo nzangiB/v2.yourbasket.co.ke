@@ -4,6 +4,7 @@ import DataService from "../../services/data.service";
 import { ProductRow } from "../product/productRow";
 
 import "./deals.scss";
+import { Component } from "@wearearchangel/handcrafted";
 
 const topCategory = async ({ name, slug, id }) => {
   const auth = AuthService.getCurrentUser();
@@ -23,7 +24,9 @@ const topCategory = async ({ name, slug, id }) => {
     <>
       <div className="deals-list deals-on-${slug}">
         <header className="deals__header">
-          <h3 className="title">{name}</h3>
+          <div className="deals__title">
+            <h3 className="title">{name}</h3>
+          </div>
           <div className="deals__text">
             <a className="link --see-more" data-route="/categories/${slug}?deals=true">
 							See more
@@ -45,19 +48,36 @@ const topCategory = async ({ name, slug, id }) => {
   );
 };
 
-export async function DealsByCategory () {
-  const auth = AuthService.getCurrentUser();
-  const userId = (auth) ? auth.id : "";
-  const topCategories = await DataService.getHomePageData(userId).then((data) => {
-    return data.data.categories;
-  });
+export class DealsByCategory extends Component {
+  async data () {
+    const auth = AuthService.getCurrentUser();
+    const userId = (auth) ? auth.id : "";
+    const topCategories = await DataService.getHomePageData(userId).then((data) => {
+      return data.data.categories;
+    });
+    return { topCategories };
+  }
 
-  if (!topCategories.length) return ``;
+  skeleton () {
+    return (
+      <div className="deals-list">
+        <header className="deals__header">
+          <h3 className="title">Loading...</h3>
+        </header>
+        <section className="deals__list">
+          <ProductRow products={Array(10).fill({ skeleton: true })}/>
+        </section>
+      </div>
+    );
+  }
 
-  const topCategoriesList = await Promise.all(topCategories.map(topCategory));
-  return (
-    <>
-      {topCategoriesList.filter(Boolean)}
-    </>
-  );
+  template () {
+    const { topCategories } = this.state;
+    if (!topCategories.length) return ``;
+    return (
+      <>
+        {topCategories.map(topCategory).filter(Boolean)}
+      </>
+    );
+  }
 }

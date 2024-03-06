@@ -1,12 +1,36 @@
 import placeholder from "../../assets/images/placeholder.png";
 import heart from "../../assets/icons/heart-small.svg";
-import rating from "../../assets/images/rating.svg";
-import coupon from "../../assets/images/coupon.svg";
-import standard from "../../assets/images/standard.svg";
 
 import "./productCard.scss";
 
-export function ProductCard (product) {
+import HelperService from "../../services/helper.service";
+
+export function ProductCard ({ product }) {
+  if (!product.slug) return "";
+  if (product.skeleton) {
+    return (
+      <div className="product-card-container">
+        <div className="product-card">
+          <div className="product-card__image">
+            <div className="skeleton skeleton__image"></div>
+          </div>
+          <div className="product-card__details">
+            <div className="text">
+              <div className="skeleton skeleton__title"></div>
+              <div className="skeleton skeleton__description"></div>
+            </div>
+            <div className="price">
+              <div className="skeleton skeleton__price"></div>
+            </div>
+            <div className="rating">
+              <div className="skeleton skeleton__rating"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const url = "/categories/" + product.mastercategory.slug + "/" + product.category.slug + "/" + product.subcategory.slug + "/" + product.slug;
   const image = product.file_path
     ? `https://api.yourbasket.co.ke/${product.file_path}`
@@ -15,7 +39,7 @@ export function ProductCard (product) {
   const costPrice = parseFloat(product.cost_price).toLocaleString(navigator.language, { minimumFractionDigits: 0 });
   const offerPrice = parseFloat(product.offer_price).toLocaleString(navigator.language, { minimumFractionDigits: 0 });
   const getDiscountRate = () => Math.floor(0 - ((costPrice - offerPrice) / costPrice) * 100, 100);
-  const discount = product.cost_price && product.offer_price && getDiscountRate() > 0 ? getDiscountRate() : null;
+  const discount = HelperService.calDiscount(product);
 
   const KES = new Intl.NumberFormat("en-KE", {
     style: "currency",
@@ -26,59 +50,59 @@ export function ProductCard (product) {
   const productName = product.name.length > 60 ? product.name.substring(0, 60) + "..." : product.name;
   const productDescription = product.description.split(" ").length > 15 ? product.description.split(" ").slice(0, 15).join(" ") + "..." : product.description;
 
-  return `
-        <div class="product-card-container">
-            <a class="product-card" id="${product.id}" data-route="${url}">
-                <div class="product-card__icons">
-                    <div class="discount">
-                        ${discount ? `<span>${discount}% OFF</span>` : ""}
-                    </div>
-                    <div class="icons">
-                        <div class="icon">
-                            <img src="${heart}" alt="Discount price"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card__image">
-                    <img src="${image}" alt="${product.file_name}" class="img"/>
-                </div>
-                <div class="product-card__details">
-                    <div class="text">
-                        <h4 class="text__title">${productName}</h4>
-                        <p class="text__description">${productDescription}</p>
-                    </div>
-                    <div class="price">
-                        ${product.offer_price ? `<div class="price__current">${KES.format(product.offer_price)}</div>` : ""}
-                        ${(discount || !product.offer_price) && product.cost_price ? `<div class="price__initial">${KES.format(product.cost_price)}</div>` : ""}
-                    </div>
-                    <div class="rating">
-                        <span class="srt">4.19 out of 5 stars based on  reviews</span>
-                        <svg aria-hidden="true" class="icon is-medium">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                        </svg>
-                        <svg aria-hidden="true" class="icon is-medium">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                        </svg>
-                        <svg aria-hidden="true" class="icon is-medium">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                        </svg>
-                        <svg aria-hidden="true" class="icon is-medium">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                        </svg>
-                        <svg aria-hidden="true" class="icon is-medium">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                        </svg>
-                        <svg aria-hidden="true" class="icon is-medium">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                        </svg>
-                        <div class="rating__stars rating__stars--filled">
-                        </div>
-        <!--                <img src="${standard}" alt="standard icon">-->
-        <!--                <img src="${rating}" alt="rating icon">-->
-                    </div>
-        <!--            <img src="${coupon}" alt="coupon icon">-->
-                </div>
-            </a>
+  return (
+    <div className="product-card-container">
+      <a className="product-card" id={product.id} data-route={url}>
+        <div className="product-card__icons">
+          {discount && (
+            <div className="discount">
+              <span>{discount}</span>
+            </div>
+          )}
+          <div className="icons">
+            <div className="icon">
+              <img src={heart} alt="Discount price"/>
+            </div>
+          </div>
         </div>
-    `;
+        <div className="product-card__image">
+          <img src={image} alt={product.file_name} className="img"/>
+        </div>
+        <div className="product-card__details">
+          <div className="text">
+            <h4 className="text__title">{productName}</h4>
+            <p className="text__description">{productDescription}</p>
+          </div>
+          <div className="price">
+            {product.offer_price && <div className="price__current">{KES.format(product.offer_price)}</div>}
+            {(product?.mrp > product?.offer_price || !product.offer_price) &&
+							<div className="price__initial">{KES.format(product?.mrp)}</div>}
+          </div>
+          <div className="rating">
+            <span className="srt">4.19 out of 5 stars based on  reviews</span>
+            <span className="rating__stars rating__stars--filled">
+              <svg aria-hidden="true" className="icon is-medium">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+              </svg>
+              <svg aria-hidden="true" className="icon is-medium">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+              </svg>
+              <svg aria-hidden="true" className="icon is-medium">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+              </svg>
+              <svg aria-hidden="true" className="icon is-medium">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+              </svg>
+              <svg aria-hidden="true" className="icon is-medium">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+              </svg>
+              <svg aria-hidden="true" className="icon is-medium">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  );
 }

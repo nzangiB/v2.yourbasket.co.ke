@@ -39,35 +39,22 @@ const getRelativeTime = (dateTime) => {
 };
 
 class CountDown extends Component {
-  constructor (props) {
-    super(props);
-
-    this.state.timeRemaining = "00:00:00";
-    this.state.setTimeRemaining = (time) => {
-      this.state.timeRemaining = getRelativeTime(time);
-      this.render();
-    };
-  }
-
   template () {
-    const { timeRemaining } = this.state;
-
     return `
         <div class="timer">
             <div id="countdown">
-                ${timeRemaining}
+               00:00:00
             </div>
         </div>
     `;
   }
 
-  controller () {
-    const { setTimeRemaining } = this.state;
-
+  controller ({ component }) {
     const interval = setInterval(() => {
       const now = new Date();
       const endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24, 0, 0); // Set end time to 24:00 hours
-      setTimeRemaining(endTime);
+      const countdown = component.querySelector("#countdown");
+      countdown.innerHTML = getRelativeTime(endTime);
     }, 1000);
 
     return () => {

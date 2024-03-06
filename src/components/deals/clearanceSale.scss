@@ -1,3 +1,5 @@
+@use "../../styles/tools.breakpoint" as breakpoint;
+
 .clearanceSale {
   padding: 20px;
   background-color: #EBF0FC;
@@ -5,10 +7,22 @@
 
 .clearanceSale__container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
   grid-gap: 10px;
   border-radius: 8px;
   background-color: var(--color-type-7);
+
+  @include breakpoint.tablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include breakpoint.tablet-only {
+    @include breakpoint.phablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include breakpoint.mobile-only {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 
 .clearanceSale__header {
