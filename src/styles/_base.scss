@@ -1,5 +1,8 @@
 body {
   font: 400 var(--font-variant-6);
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
   color: var(--theme-color);
   background: var(--theme-background);
   font-size: var(--font-type-1);

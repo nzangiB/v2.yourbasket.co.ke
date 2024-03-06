@@ -1,7 +1,6 @@
 import favicon from "./favicon.ico";
-import font from "./fonts/hubot-sans.woff2";
 
-const name = "YourBasket | Online Shopping for Furniture, Appliances & More!";
+const name = "YourBasket";
 const description = "What's in your basket?";
 const keywords = "Handcrafted, Starter, Kit";
 
@@ -21,7 +20,9 @@ export default `<!DOCTYPE html>
 		
 		    <link rel="manifest" href="/manifest.json"/>
 		    <link rel="shortcut icon" href="${favicon}"/>
-		    <link rel="preload" href="${font}" as="font" type="font/woff2" crossorigin>
+		    <link rel="preconnect" href="https://fonts.googleapis.com">
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+				<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 		    
 				<link href="/styles/flickity.css" rel="stylesheet" media="screen">
 				<link href="/styles/superfish.css" rel="stylesheet" media="screen">
@@ -31,9 +32,9 @@ export default `<!DOCTYPE html>
 		
 		    <title>${name}</title>
 		
-		    <script defer src="/scripts/jquery.js"></script>
-        <script defer src="/scripts/simplebar.js"></script>
-		    <script defer src="/scripts/hoverIntent.js"></script>
+		    <script src="/scripts/jquery.js"></script>
+        <script src="/scripts/simplebar.js"></script>
+		    <script src="/scripts/hoverIntent.js"></script>
 		    <script defer src="/scripts/superfish.js"></script>
         <script defer src="/scripts/flickity.pkgd.js"></script>
 		</head>
