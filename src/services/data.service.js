@@ -1,6 +1,7 @@
 import axios from "axios";
 import AuthService from "./auth.service";
 
+// const API_URL = (process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://api.yourbasket.co.ke/");
 const API_URL = "https://api.yourbasket.co.ke/";
 
 axios.interceptors.request.use(function (config) {
