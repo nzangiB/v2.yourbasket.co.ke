@@ -1,18 +1,19 @@
-import { Nav } from "../../components/nav/nav";
-import { Signup } from "../../components/signup/signup";
+import { Header } from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
-import { ProductRow } from "../../components/product/productCards";
+import { Search } from "../../components/search/search";
+import { ProductRow } from "../../components/product/productRow";
 import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
 
 import "./brands.scss";
-import { Search } from "../../components/search/search";
 
 async function Brands (props) {
   const { params } = props;
 
   return ` 
-      ${Nav(props)}
+      ${Header()}
+      
       ${Breadcrumbs({ name: "Categories", route: "/categories" }, params)}
+
       <div class="ad-group --row">
           <div class="ad" style="aspect-ratio: 920/90">
             <img src="https://via.placeholder.com/920x90" class="img" alt="Ad" />
@@ -47,7 +48,7 @@ async function Brands (props) {
             <img src="https://via.placeholder.com/920x90" class="img" alt="Ad" />
           </div>
       </div>
-      ${Signup()}
+      
       ${Footer()}
   `;
 }

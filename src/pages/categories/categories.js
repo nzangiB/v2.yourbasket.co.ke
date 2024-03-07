@@ -1,5 +1,4 @@
-import { Nav } from "../../components/nav/nav";
-import { Signup } from "../../components/signup/signup";
+import { Header } from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
 import { FeaturedBrands } from "../../components/featured/featured";
 import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
@@ -13,7 +12,7 @@ async function Categories (props) {
 
   return (
     <>
-      <Nav/>
+      <Header/>
 
       {/* {Breadcrumbs({ name: "Categories", route: "/categories" }, params)} */}
 
@@ -39,7 +38,6 @@ async function Categories (props) {
         </aside>
       </div>
 
-      <Signup/>
       <Footer/>
     </>
   );

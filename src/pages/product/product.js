@@ -2,7 +2,7 @@ import placeholder from "../../assets/images/placeholder.png";
 
 import { toast } from "../../plugins/react-toastify";
 
-import { Nav } from "../../components/nav/nav";
+import { Header } from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
 import { Signup } from "../../components/signup/signup";
 import { Advert } from "../../components/advert/advert";
@@ -120,13 +120,12 @@ const addToCart = async (event, item) => {
 async function Product ({ params }) {
   return (
     <>
-      <Nav/>
+      <Header/>
       <div className="container">
         <div className="content">
           <ProductPage params={params}/>
         </div>
       </div>
-      <Signup/>
       <Footer/>
     </>
   );

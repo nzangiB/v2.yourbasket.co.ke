@@ -1,10 +1,12 @@
-import { Nav } from "../nav/nav";
+import { Categories, NavHeader } from "../nav/nav";
+
 import "./header.scss";
 
 export function Header (props) {
-  return `
-		<header class="page__header">
-				${Nav(props)}
-		</header>
-	`;
+  return (
+    <header className="page__header">
+      <NavHeader {...props}/>
+      <Categories/>
+    </header>
+  );
 }

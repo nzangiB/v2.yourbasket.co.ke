@@ -7,7 +7,7 @@ import { LatestProducts } from "../../components/deals/latestProducts";
 import { ClearanceSale } from "../../components/deals/clearanceSale";
 import { FeaturedBrands } from "../../components/featured/featured";
 import { DealsByCategory } from "../../components/deals/dealsByCategory";
-import { Signup } from "../../components/signup/signup";
+import { Header } from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
 
 import "./home.scss";
@@ -15,7 +15,7 @@ import "./home.scss";
 async function Home (props) {
   return (
     <>
-      <Nav/>
+      <Header/>
 
       <div class="container">
         <aside class="aside aside__left">
@@ -83,7 +83,7 @@ async function Home (props) {
 
       <DealsByCategory/>
       <FeaturedBrands/>
-      <Signup/>
+
       <Footer/>
     </>
   );

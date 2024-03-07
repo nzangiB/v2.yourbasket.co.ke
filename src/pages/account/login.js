@@ -1,4 +1,4 @@
-import { Nav } from "../../components/nav/nav";
+import { NavHeader } from "../../components/nav/nav";
 import { useState } from "../../plugins/react";
 import { toast } from "../../plugins/react-toastify";
 
@@ -187,7 +187,7 @@ function SocialLoginForm (props) {
 async function Login (props) {
   return (
     <>
-      <Nav/>
+      <NavHeader/>
       <div className="container">
         <main className="content">
           <LoginForm/>

@@ -9,7 +9,7 @@ import "./signup.scss";
 export function Signup (props) {
   return (
     <div className="signup__container">
-      <div className="signup__field">
+      <section className="signup__field">
         <div className="field__text">
           <h3>DEALS JUST FOR YOU</h3>
           <p>Sign up to receive exclusive offers in your inbox.</p>
@@ -24,9 +24,9 @@ export function Signup (props) {
         <div className="field__image">
           <img src={email} alt="email illustration"/>
         </div>
-      </div>
+      </section>
 
-      <div className="signup__links">
+      <section className="signup__links">
         <div className="links__content_container">
           <div className="links__content">
             <div className="links__image">
@@ -46,7 +46,7 @@ export function Signup (props) {
         <div className="links__image">
           <img src={creditCard} alt="credit card illustration"/>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

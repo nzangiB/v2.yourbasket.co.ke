@@ -1,4 +1,4 @@
-import { Nav } from "../../components/nav/nav";
+import { NavHeader } from "../../components/nav/nav";
 import { useState } from "../../plugins/react";
 import { toast } from "../../plugins/react-toastify";
 
@@ -456,7 +456,7 @@ async function Register (props) {
 
   return (
     <>
-      <Nav/>
+      <NavHeader/>
       <div className="container">
         <div className="content">
           {page === "verify-otp" && <RegistrationFormVerifyOtp/>}

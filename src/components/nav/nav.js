@@ -12,6 +12,94 @@ import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 import { Component } from "@wearearchangel/handcrafted";
 
+function Logo () {
+  return (
+    <div className="logo">
+      <a data-route="/">
+        <img className="img" src={logo} alt="company logo"/>
+      </a>
+    </div>
+  );
+}
+
+function Search () {
+  const keyUpEvent = (e) => {
+    if (e.key === "Enter") {
+      location.href = `/search?q=${e.target.value}`;
+    }
+  };
+
+  const submitEvent = (e) => {
+    e.preventDefault();
+    const searchInput = e.target.querySelector("input[name=q]");
+    location.href = `/search?q=${searchInput.value}`;
+  };
+
+  return (
+    <form className="search" onSubmit={submitEvent}>
+      <label htmlFor="searchInput"></label>
+      <input
+        className="field"
+        type="text"
+        id="searchInput"
+        name="q"
+        placeholder="Search products, brands and more"
+        onKeyUp={keyUpEvent}
+      />
+      <button className="button" type="submit">
+        <img src={search} alt="search icon"/>
+      </button>
+    </form>
+  );
+}
+
+function Support () {
+  const isAuthenticated = AuthService.getCurrentUser();
+  const profilePic = isAuthenticated?.file_path
+    ? `https://api.yourbasket.co.ke/${isAuthenticated?.file_path}`
+    : placeholder;
+
+  return (
+    <div className="support">
+      <ul>
+        <li>
+          {isAuthenticated
+            ? (
+              <a data-route="/profile">
+                <img src={profilePic} alt="profile picture"/>
+                <span className="srt">Profile</span>
+              </a>
+            )
+            : (
+              <a data-route="/login">
+                <img src={profile} alt="profile icon"/>
+                <span className="srt">Sign In/ Register</span>
+              </a>
+            )}
+        </li>
+        <li>
+          <a data-route="/wishlist">
+            <img src={"wishlist"} alt="wishlist icon"/>
+            <span className="srt">Wishlist</span>
+          </a>
+        </li>
+        <li>
+          <a data-route="/basket">
+            <img src={basket} alt="basket icon"/>
+            <span className="srt">Basket</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src={customer} alt="customer icon"/>
+            <span className="srt">Customer Care</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
 function NavItem (item) {
   return (
     <li>
@@ -30,14 +118,14 @@ function NavItem (item) {
   );
 }
 
-class NavMain extends Component {
+export class NavHeader extends Component {
   skeleton () {
     return (
-      <div className="nav__main">
-        <div className="nav__logo">
+      <div className="nav nav-header">
+        <div className="logo">
           <div className="skeleton skeleton__logo"></div>
         </div>
-        <div className="nav__search">
+        <div className="search">
           <div className="skeleton skeleton__search"></div>
         </div>
         <div className="nav__links">
@@ -48,71 +136,17 @@ class NavMain extends Component {
   }
 
   template () {
-    const isAuthenticated = AuthService.getCurrentUser();
-    const profilePic = isAuthenticated?.file_path
-      ? `https://api.yourbasket.co.ke/${isAuthenticated?.file_path}`
-      : placeholder;
-
     return (
-      <nav className="nav__main">
-        <div className="nav__logo">
-          <a data-route="/">
-            <img className="img" src={logo} alt="company logo"/>
-          </a>
-        </div>
-
-        <div className="nav__search">
-          <label htmlFor="searchInput"></label>
-          <input className="field" type="text" id="searchInput" name="q"
-					       placeholder="Search products, brands and more"/>
-          <button className="button" type="submit">
-            <img src={search} alt="search icon"/>
-          </button>
-        </div>
-
-        <div className="nav__links">
-          <ul>
-            <li>
-              {isAuthenticated
-                ? (
-                  <a data-route="/profile">
-                    <img src={profilePic} alt="profile picture"/>
-                    <span className="srt">Profile</span>
-                  </a>
-                )
-                : (
-                  <a data-route="/login">
-                    <img src={profile} alt="profile icon"/>
-                    <span className="srt">Sign In/ Register</span>
-                  </a>
-                )}
-            </li>
-            <li>
-              <a data-route="/wishlist">
-                <img src={"wishlist"} alt="wishlist icon"/>
-                <span className="srt">Wishlist</span>
-              </a>
-            </li>
-            <li>
-              <a data-route="/basket">
-                <img src={basket} alt="basket icon"/>
-                <span className="srt">Basket</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src={customer} alt="customer icon"/>
-                <span className="srt">Customer Care</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <>
+        <Logo/>
+        <Search/>
+        <Support/>
+      </>
     );
   }
 }
 
-class NavCategories extends Component {
+export class Categories extends Component {
   async data () {
     const auth = AuthService.getCurrentUser();
     const userId = (auth) ? auth.id : "";
@@ -125,7 +159,7 @@ class NavCategories extends Component {
 
   skeleton () {
     return (
-      <div className="nav__categories">
+      <div className="categories">
         <div className="categories__all">
           <div className="skeleton skeleton__categories"></div>
         </div>
@@ -142,24 +176,24 @@ class NavCategories extends Component {
   template () {
     const { topCategories, categories } = this.state;
     return (
-      <nav className="nav__categories">
-        {/* <div className="categories__all"> */}
-        {/*  <ul className="sf-menu"> */}
-        {/*    {categories.length > 0 && ( */}
-        {/*      <li> */}
-        {/*        <a data-route="/categories"> */}
-        {/*          <img src={hamburger} alt="Hamburger Menu"/> */}
-        {/*          <span>All Categories</span> */}
-        {/*        </a> */}
-        {/*        <ul> */}
-        {/*          {categories.map(NavItem).filter(Boolean)} */}
-        {/*        </ul> */}
-        {/*      </li> */}
-        {/*    )} */}
-        {/*  </ul> */}
-        {/* </div> */}
+      <nav className="categories">
+        <div className="nav categories__all">
+          <ul className="sf-menu">
+            {categories.length > 0 && (
+              <li>
+                <a data-route="/categories">
+                  <img src={hamburger} alt="Hamburger Menu"/>
+                  <span>All Categories</span>
+                </a>
+                <ul>
+                  {categories.map(NavItem).filter(Boolean)}
+                </ul>
+              </li>
+            )}
+          </ul>
+        </div>
 
-        <div className="categories__list">
+        <div className="nav categories__list">
           <ul className="sf-menu">
             <li>
               <a data-route="/product/filter/top-deals">
@@ -170,7 +204,7 @@ class NavCategories extends Component {
           </ul>
         </div>
 
-        <div className="categories__cta">
+        <div className="cta">
           <a href="#">Sell on YourBasket</a>
         </div>
       </nav>
@@ -194,8 +228,8 @@ class NavCategories extends Component {
 export function Nav () {
   return (
     <div className="nav">
-      <NavMain/>
-      <NavCategories/>
+      <NavHeader/>
+      <Categories/>
     </div>
   );
 }

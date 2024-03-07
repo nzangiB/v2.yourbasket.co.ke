@@ -1,15 +1,9 @@
 @use "../../styles/tools.breakpoint" as breakpoint;
 
 .nav {
-  width: 100%;
-  background: white;
-  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.24);
-  position: sticky;
-  z-index: 999;
-  top: 0;
 }
 
-.nav__main {
+.nav-header {
   display: grid;
   align-items: center;
   justify-content: space-between;
@@ -22,16 +16,16 @@
 
   @include breakpoint.tablet {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-areas: "navLogo navSearch navLinks";
+    grid-template-areas: "navLogo navSearch navSupport";
   }
 
   @include breakpoint.tablet-only {
     grid-template-columns: repeat(2, auto);
-    grid-template-areas: "navLogo navLinks" "navSearch navSearch";
+    grid-template-areas: "navLogo navSupport" "navSearch navSearch";
   }
 }
 
-.nav__logo {
+.logo {
   grid-area: navLogo;
   display: flex;
   align-content: start;
@@ -55,8 +49,46 @@
   }
 }
 
-.nav__links {
-  grid-area: navLinks;
+.search {
+  grid-area: navSearch;
+  display: flex;
+  border-radius: 5px;
+  align-items: center;
+
+  @include breakpoint.tablet {
+    max-width: 625px;
+  }
+
+  @include breakpoint.tablet-only {
+    padding: 0 10px 10px;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    //border-radius: 0 5px 5px 0;
+    border: none;
+    padding: 8px;
+
+    img {
+      width: 24px;
+      aspect-ratio: 1/1;
+      padding: 4px;
+    }
+  }
+
+  .field {
+    flex: 1;
+    border: none;
+    //border-radius: 5px 0 0 5px;
+    padding: 8px 16px;
+    height: 40px;
+  }
+}
+
+.support {
+  grid-area: navSupport;
   justify-self: end;
 
   ul {
@@ -99,55 +131,48 @@
   }
 }
 
-.nav__search {
-  grid-area: navSearch;
-  display: flex;
-  border-radius: 5px;
-  align-items: center;
-
-  @include breakpoint.tablet {
-    max-width: 625px;
-  }
-
-  @include breakpoint.tablet-only {
-    padding: 0 10px 10px;
-  }
-
-  .button {
-    display: flex;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.1);
-    //border-radius: 0 5px 5px 0;
-    border: none;
-    padding: 8px;
-
-    img {
-      width: 24px;
-      aspect-ratio: 1/1;
-      padding: 4px;
-    }
-  }
-
-  .field {
-    flex: 1;
-    border: none;
-    //border-radius: 5px 0 0 5px;
-    padding: 8px 16px;
-    height: 40px;
-  }
-}
-
-.nav__categories {
+.categories {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-flow: row nowrap;
+  background-color: white;
   width: 100%;
 
-  .sf-menu {
-    display: flex;
-    flex-flow: row nowrap;
-    margin-bottom: 0;
+  .nav, .cta {
+    padding: 10px;
+
+    a {
+      font: 500 var(--font-variant-caption);
+      padding: 8px 10px;
+    }
+  }
+
+  .cta {
+    a {
+      color: inherit;
+      display: inherit;
+      white-space: nowrap;
+      background: var(--color-type-9);
+    }
+  }
+
+  .nav {
+    ul, .sf-menu {
+      display: flex;
+      flex-flow: row nowrap;
+      margin-bottom: 0;
+
+      ul {
+        //box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+        //min-width: 12em;
+
+        ul {
+          top: 100%;
+          left: 0;
+        }
+      }
+    }
 
     li {
       background: var(--color-type-4);
@@ -184,10 +209,6 @@
     }
   }
 
-  .categories__all,
-  .categories__list {
-  }
-
   .categories__all {
     li {
       a {
@@ -202,7 +223,7 @@
 
   .categories__list {
     flex: 0 0 1;
-    overflow-x: clip;
+    overflow-x: auto;
     gap: 10px;
 
     a {
@@ -211,20 +232,6 @@
 
     @include breakpoint.mobile-only {
       display: none;
-    }
-  }
-
-  .categories__cta {
-    a {
-      color: inherit;
-      display: inherit;
-      background: var(--color-type-9);
-      font-size: var(--font-size-4);
-      font-weight: 500;
-      line-height: 1.3;
-      padding: 8px 10px;
-      margin: 10px;
-      white-space: nowrap;
     }
   }
 }
