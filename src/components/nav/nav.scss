@@ -49,7 +49,7 @@
   }
 }
 
-.search {
+.search-form {
   grid-area: navSearch;
   display: flex;
   border-radius: 5px;
@@ -87,7 +87,7 @@
   }
 }
 
-.support {
+.support-links {
   grid-area: navSupport;
   justify-self: end;
 

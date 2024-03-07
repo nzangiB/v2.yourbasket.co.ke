@@ -36,7 +36,7 @@ function Search () {
   };
 
   return (
-    <form className="search" onSubmit={submitEvent}>
+    <form className="search-form" onSubmit={submitEvent}>
       <label htmlFor="searchInput"></label>
       <input
         className="field"
@@ -60,7 +60,7 @@ function Support () {
     : placeholder;
 
   return (
-    <div className="support">
+    <div className="support-links">
       <ul>
         <li>
           {isAuthenticated
@@ -125,10 +125,10 @@ export class NavHeader extends Component {
         <div className="logo">
           <div className="skeleton skeleton__logo"></div>
         </div>
-        <div className="search">
+        <div className="search-form">
           <div className="skeleton skeleton__search"></div>
         </div>
-        <div className="nav__links">
+        <div className="support-links">
           <div className="skeleton skeleton__links"></div>
         </div>
       </div>

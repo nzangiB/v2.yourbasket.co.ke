@@ -385,10 +385,10 @@ export class Search extends Component {
     const { filters, params, query } = this.props;
     const { cats, brand, products } = this.state;
     return (
-      <div className="search-component">
+      <>
         <SearchFilters cats={cats} brand={brand} filters={filters} params={params} query={query}/>
         <SearchResults products={products} params={params} query={query}/>
-      </div>
+      </>
     );
   }
 }
