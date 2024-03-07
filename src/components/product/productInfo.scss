@@ -5,6 +5,16 @@
   flex-direction: column;
   gap: 20px;
 
+  &__discount {
+    span {
+      display: inline-block;
+      color: white;
+      background-color: #c40000;
+      border-radius: 2px;
+      padding: 4px 6px 3px;
+      font: var(--font-variant-label);
+    }
+  }
 
   &__title {
     @include breakpoint.tablet {
@@ -30,10 +40,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 5px 0 0;
 
     @include breakpoint.tablet {
-      font: 500 var(--font-variant-4);
+      font: var(--font-variant-4);
     }
 
     @include breakpoint.tablet-only {
@@ -45,15 +54,35 @@
       }
     }
 
-    &.--current {
-      font: 500 var(--font-variant-text);
+    &--current {
+      //font: 500 var(--font-variant-text);
       color: rgba(0, 0, 0, 1);
     }
 
-    &.--initial {
-      font: var(--font-variant-caption);
+    &--initial {
       color: rgba(0, 0, 0, .54);
-      text-decoration: line-through;
+      font-size: 80%;
+      margin-left: 10px;
+
+      &:not(:has(span)) {
+      }
+
+      &:has(span) {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 5px;
+
+        span {
+          font: 500 var(--font-variant-text);
+
+          &.text {
+          }
+
+          &.amount {
+          }
+        }
+      }
     }
   }
 

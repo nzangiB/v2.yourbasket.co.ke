@@ -53,17 +53,22 @@ export function ProductInfo (props) {
   return (
     <section className="product-info">
       {/* <ProductRatings rating={props.rating}/> */}
+      <div className={"product-info__discount"}>
+        <span>{HelperService.calDiscount(product)}</span>
+      </div>
       <div className={"product-info__title"}>
         <h2 className={"title"} id="title">{product.name}</h2>
       </div>
       <div className={"product-info__price"}>
-        <p className={"price"} id="title">
-          <span className="product-info__price--current">{KES.format(product.offer_price)}</span>
+        <p className={"product-info__price"} id="title">
+          <span className="product-info__price--current">
+            <span>{KES.format(product.offer_price)}</span>
+          </span>
           <span className="product-info__price--initial">
             {(product?.mrp > product?.offer_price) && (
 	            <>
+		            <span className={"text"}>From</span>
 		            <span className={"amount"}>{KES.format(product?.mrp)}</span>
-		            <span className={"percentage"}>{HelperService.calDiscount(product)}</span>
 	            </>
             )}
           </span>
