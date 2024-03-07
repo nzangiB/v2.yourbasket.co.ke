@@ -145,6 +145,16 @@ Router([
     path: "/register{/:page}?",
     data: { page: { title: "Register" } },
     template: Register
+  },
+  {
+    path: "/404",
+    data: { page: { title: "Page Not Found" } },
+    template: (
+      <div>
+        <h1>404</h1>
+        <p>Page Not Found</p>
+      </div>
+    )
   }
 ]).then(() => {
   addEventListener("load", reportWebVitals, false);
