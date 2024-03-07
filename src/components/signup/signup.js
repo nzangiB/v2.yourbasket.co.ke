@@ -1,4 +1,5 @@
 import DataService from "../../services/data.service";
+import AuthService from "../../services/auth.service";
 
 import { toast } from "../../plugins/react-toastify";
 
@@ -11,6 +12,8 @@ import creditCard from "../../assets/images/credit-card.svg";
 import "./signup.scss";
 
 export function Signup (props) {
+  const auth = AuthService.getCurrentUser();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -38,7 +41,14 @@ export function Signup (props) {
           <p>Sign up to receive exclusive offers in your inbox.</p>
           <div className="field__input">
             <form method="post" onSubmit={handleSubmit}>
-              <input type="email" id="email" name="email" placeholder="Enter your email address" required/>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={auth.email}
+                placeholder="Enter your email address"
+                required
+              />
 
               <select id="gender" name="gender" required>
                 <option value="">Gender</option>
