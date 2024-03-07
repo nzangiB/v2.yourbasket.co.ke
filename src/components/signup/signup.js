@@ -1,3 +1,6 @@
+import DataService from "../../services/data.service";
+import { toast } from "../../plugins/react-toastify";
+import { useState } from "../../plugins/react";
 import email from "../../assets/images/emails.svg";
 import logo from "../../assets/images/logo.svg";
 import android from "../../assets/images/android.svg";
@@ -7,6 +10,41 @@ import creditCard from "../../assets/images/credit-card.svg";
 import "./signup.scss";
 
 export function Signup (props) {
+  const [gender, setGender] = useState("");
+  const [mail, setMail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const email = formData.get("email");
+    const gender = formData.get("gender");
+
+    const data = { email, gender };
+    DataService.addNewsletter(data)
+      .then(() => {
+        toast.success("Form Submitted Successfully!!", {
+          position: toast.POSITION.TOP_RIGHT
+        });
+        setMail("");
+        setGender("");
+      })
+      .catch((error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.msg) ||
+          error.message ||
+          error.toString();
+        toast.error(resMessage, {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      });
+    console.log("Data:", data);
+  };
+
+
   return (
     <div className="signup__container">
       <section className="signup__field">
@@ -14,15 +52,23 @@ export function Signup (props) {
           <h3>DEALS JUST FOR YOU</h3>
           <p>Sign up to receive exclusive offers in your inbox.</p>
           <div className="field__input">
-            <form action="#" method="post">
-              <input type="email" id="email" name="email" placeholder="Enter your email address" required/>
-              <button type="submit">Sign Up</button>
+            <form method="post" onSubmit={handleSubmit}>
+              <input type="email" id="email" name="email" value={mail} required/>
+
+              <select id="gender" name="gender" value={gender} required>
+                <option value="">Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+
+              <button type="submit" >Submit</button>
             </form>
           </div>
         </div>
 
         <div className="field__image">
-          <img src={email} alt="email illustration"/>
+          <img src={email} alt="email illustration" />
         </div>
       </section>
 
@@ -30,7 +76,7 @@ export function Signup (props) {
         <div className="links__content_container">
           <div className="links__content">
             <div className="links__image">
-              <img src={logo} alt="company logo"/>
+              <img src={logo} alt="company logo" />
             </div>
             <div className="link__text">
               <h3>SHOP ON THE GO</h3>
@@ -38,13 +84,13 @@ export function Signup (props) {
             </div>
           </div>
           <div className="links__images">
-            <img src={android} alt="android download logo"/>
-            <img src={ios} alt="ios download logo"/>
+            <img src={android} alt="android download logo" />
+            <img src={ios} alt="ios download logo" />
           </div>
         </div>
 
         <div className="links__image">
-          <img src={creditCard} alt="credit card illustration"/>
+          <img src={creditCard} alt="credit card illustration" />
         </div>
       </section>
     </div>
