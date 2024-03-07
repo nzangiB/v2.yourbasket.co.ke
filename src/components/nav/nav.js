@@ -11,6 +11,7 @@ import "./nav.scss";
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 import { Component } from "@wearearchangel/handcrafted";
+import HelperService from "../../services/helper.service";
 
 function Logo () {
   return (
@@ -86,6 +87,11 @@ function Support () {
         <li>
           <a data-route="/basket">
             <img src={basket} alt="basket icon"/>
+            <span id={"cart-count"}>
+              <span className={"cart-count"}>
+                {HelperService.getLocalCart().length}
+              </span>
+            </span>
             <span className="srt">Basket</span>
           </a>
         </li>

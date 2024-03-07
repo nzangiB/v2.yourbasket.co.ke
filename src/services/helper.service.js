@@ -37,6 +37,7 @@ const setLocalCart = (item, qty = null) => {
     user_cart = [];
     user_cart.push(item);
   }
+
   localStorage.setItem("user_cart", JSON.stringify(user_cart));
 };
 
@@ -229,11 +230,16 @@ const getShippingRate = (requestedRegion) => {
 };
 
 const updateCartCount = () => {
-  const wrap = document.getElementById("cart-nav-item-li").getElementsByClassName("notication_count");
-  if (wrap.length > 0) {
-    wrap[0].innerHTML = "<h2>" + getLocalCart().length + "</h2>";
+  const cart = document.getElementById("cart-count");
+  const cartCount = cart.getElementsByClassName("cart-count");
+  if (cartCount.length > 0) {
+    cartCount[0].innerHTML = getLocalCart().length;
   } else {
-    document.getElementById("cart-nav-item-li").innerHTML += '<div class="notication_count"><h2>' + getLocalCart().length + "</h2></div>";
+    cart.innerHTML += `
+        <span class="cart-count">
+            ${getLocalCart().length}
+        </span>
+    `;
   }
 };
 
