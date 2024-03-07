@@ -1,3 +1,6 @@
+import DataService from "../../services/data.service";
+import { toast } from "../../plugins/react-toastify";
+import { useState } from "../../plugins/react";
 import email from "../../assets/images/emails.svg";
 import logo from "../../assets/images/logo.svg";
 import android from "../../assets/images/android.svg";
@@ -7,6 +10,32 @@ import creditCard from "../../assets/images/credit-card.svg";
 import "./signup.scss";
 
 export function Signup (props) {
+  const [gender, setGender] = useState("");
+  const [mail, setMail] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = { email: mail, gender };
+    DataService.addNewsletter(data)
+      .then(() => {
+        toast.success("Form Submitted Successfully!!", {
+          position: toast.POSITION.TOP_RIGHT
+        });
+        setGender("");
+        setMail("");
+      })
+      .catch((error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.msg) ||
+          error.message ||
+          error.toString();
+        toast.error(resMessage, {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      });
+  };
   return (
     <div className="signup__container">
       <section className="signup__field">
@@ -14,10 +43,18 @@ export function Signup (props) {
           <h3>DEALS JUST FOR YOU</h3>
           <p>Sign up to receive exclusive offers in your inbox.</p>
           <div className="field__input">
-            <form action="#" method="post">
-              <input type="email" id="email" name="email" placeholder="Enter your email address" required/>
-              <button type="submit">Sign Up</button>
+            <form method="post" onSubmit={handleSubmit}>
+              <input type="email" id="email" name="email" required/>
+
+              <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+
+              <button type="submit">Submit</button>
             </form>
+
           </div>
         </div>
 
