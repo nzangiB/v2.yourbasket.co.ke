@@ -20,7 +20,7 @@ import Login from "../pages/account/login";
 defaults.templateEngine = "react";
 defaults.layout = Layout;
 
-Router([
+const routes = [
   /**
 	 * 01 Home
 	 * .0 Landing Page
@@ -147,16 +147,82 @@ Router([
     template: Register
   },
   {
+    path: "/account",
+    data: { page: { title: "Account" } },
+    template: (props) => {
+      const profile = routes.find((route) => route.path === "/account/profile");
+      return profile.template(props);
+    }
+  },
+  {
+    path: "/account/profile",
+    data: { page: { title: "My Profile" } },
+    template: (props) => (
+      <Layout {...props}>
+				My Profile
+      </Layout>
+    )
+  },
+  {
+    path: "/account/favorites",
+    data: { page: { title: "My Favorites" } },
+    template: (props) => (
+      <Layout {...props}>
+				My Favorites
+      </Layout>
+    )
+  },
+  {
+    path: "/account/notifications",
+    data: { page: { title: "Notifications" } },
+    template: (props) => (
+      <Layout {...props}>
+				Notifications
+      </Layout>
+    )
+  },
+  {
+    path: "/account/orders",
+    data: { page: { title: "My Orders" } },
+    template: (props) => (
+      <Layout {...props}>
+				My Orders
+      </Layout>
+    )
+  },
+  {
+    path: "/account/address",
+    data: { page: { title: "My Addresses" } },
+    template: (props) => (
+      <Layout {...props}>
+				My Addresses
+      </Layout>
+    )
+  },
+  {
+    path: "/support",
+    data: { page: { title: "Support and Help" } },
+    template: (props) => (
+      <Layout {...props}>
+				Support and Help
+      </Layout>
+    )
+  },
+  {
     path: "/404",
     data: { page: { title: "Page Not Found" } },
-    template: (
-      <div>
-        <h1>404</h1>
-        <p>Page Not Found</p>
-      </div>
+    template: (props) => (
+      <Layout {...props}>
+        <div>
+          <h1>404</h1>
+          <p>Page Not Found</p>
+        </div>
+      </Layout>
     )
   }
-]).then(() => {
+];
+
+Router(routes).then(() => {
   addEventListener("load", reportWebVitals, false);
   addEventListener("load", updateViewport, false);
   addEventListener("resize", updateViewport, false);

@@ -66,7 +66,7 @@ function Support () {
         <li>
           {isAuthenticated
             ? (
-              <a data-route="/profile">
+              <a data-route="/account">
                 <img src={profilePic} alt="profile picture"/>
                 <span className="srt">Profile</span>
               </a>
@@ -96,7 +96,7 @@ function Support () {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a data-route="/support">
             <img src={customer} alt="customer icon"/>
             <span className="srt">Customer Care</span>
           </a>

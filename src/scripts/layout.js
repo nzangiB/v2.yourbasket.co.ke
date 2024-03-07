@@ -1,11 +1,15 @@
 import { Footer } from "../components/footer/footer";
 import { Header } from "../components/header/header";
 
-export function Layout () {
+export function Layout (props, children) {
   return (
     <>
       <Header/>
-      <main className="page"></main>
+      <div className="container">
+        <main className="content">
+          {children}
+        </main>
+      </div>
       <Footer/>
     </>
   );
