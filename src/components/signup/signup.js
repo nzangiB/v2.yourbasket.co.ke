@@ -15,17 +15,20 @@ export function Signup (props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", mail);
-    console.log("Gender:", gender);
 
-    const data = { email: mail, gender };
+    const form = e.target;
+    const formData = new FormData(form);
+    const email = formData.get("email");
+    const gender = formData.get("gender");
+
+    const data = { email, gender };
     DataService.addNewsletter(data)
       .then(() => {
         toast.success("Form Submitted Successfully!!", {
           position: toast.POSITION.TOP_RIGHT
         });
-        setGender("");
         setMail("");
+        setGender("");
       })
       .catch((error) => {
         const resMessage =
@@ -41,6 +44,7 @@ export function Signup (props) {
     console.log("Data:", data);
   };
 
+
   return (
     <div className="signup__container">
       <section className="signup__field">
@@ -49,16 +53,16 @@ export function Signup (props) {
           <p>Sign up to receive exclusive offers in your inbox.</p>
           <div className="field__input">
             <form method="post" onSubmit={handleSubmit}>
-              <input type="email" id="email" name="email" value={mail} onChange={(e) => setMail(e.target.value)} required/>
+              <input type="email" id="email" name="email" value={mail} required/>
 
-              <select id="gender" name="gender" value={gender} onChange={(e) => setGender(e.target.value)} required>
+              <select id="gender" name="gender" value={gender} required>
                 <option value="">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
 
-              <button type="submit">Submit</button>
+              <button type="submit" >Submit</button>
             </form>
           </div>
         </div>
