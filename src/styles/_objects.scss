@@ -160,9 +160,7 @@
   }
 
   .input {
-    font-weight: 500;
-    font-size: var(--font-size-4);
-    line-height: 20px;
+    font: 500 var(--font-variant-caption);
     padding: 10px 15px;
     background: var(--color-type-4) none;
     border-radius: var(--border-radius);
