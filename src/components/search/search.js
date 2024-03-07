@@ -144,136 +144,142 @@ const sortProductByPrice = (e) => {
 
 async function SearchFilters ({ cats, brand, filters, ...props }) {
   const getSubCategoryFilters = (category) => {
-    return category.Categories && `
-      <div class="options">
-        ${category.Categories.map(category => `
-        <div class="option">
-          <div class="option__name">${category.name}</div>
-          ${getSubCategoryFilters(category)}
-        </div>
-      `).filter(Boolean).join("")}
+    return category.Categories && (
+      <div className="options">
+        {category.Categories.map(category => (
+          <div className="option">
+            <div className="option__name">
+              {category.name}
+            </div>
+            {getSubCategoryFilters(category)}
+          </div>
+        )).filter(Boolean)}
       </div>
-    `;
+    );
   };
 
-  const categoryFilter = cats.length && `
+  const categoryFilter = cats.length && (
     <section class="filter">
-        <header class="filter__title">
-            <div class="title">Category</div>
-        </header>
-        <section class="filter__options">
-            <div class="search">
-              <input type="text" placeholder="Search " value="">
+      <header class="filter__title">
+        <div class="title">Category</div>
+      </header>
+      <section class="filter__options">
+        <div class="search">
+          <input type="text" placeholder="Search " value=""/>
+        </div>
+        <div class="options" sdata-simplebar sdata-simplebar-auto-hide="false">
+          {cats.map((category) => (
+            <div class="option">
+              <div class="option__name">
+                {category.name}
+              </div>
+              {getSubCategoryFilters(category)}
             </div>
-            <div class="options" data-simplebar data-simplebar-auto-hide="false">
-               ${cats.map((category) => `
-                  <div class="option">
-                    <div class="option__name">${category.name}</div>
-                    ${getSubCategoryFilters(category)}
-                  </div>
-              `).filter(Boolean).join("")}
+          )).filter(Boolean)}
+        </div>
+      </section>
+    </section>
+  );
+
+  const brandFilter = brand.length && (
+    <section class="filter">
+      <header class="filter__title">
+        <div class="title">Brand</div>
+      </header>
+      <section class="filter__options">
+        <div class="search">
+          <input type="text" placeholder="Search " value=""/>
+        </div>
+        <div class="options" sdata-simplebar>
+          {brand.map((brand) => (
+            <div class="option">
+              <div class="option__name">
+                {brand.name}
+              </div>
             </div>
-        </section>
+          )).filter(Boolean)}
+        </div>
+      </section>
     </section>
-  `;
+  );
 
-  const brandFilter = brand.length && `
+  const priceFilter = (
     <section class="filter">
-        <header class="filter__title">
-          <div class="title">Brand</div>
-        </header>
-        <section class="filter__options">
-          <div class="search">
-            <input type="text" placeholder="Search " value="">
-          </div>
-          <div class="options" data-simplebar>
-            ${brand.map((brand) => `
-                <div class="option">
-                  <div class="option__name">${brand.name}</div>
-                </div>
-            `).filter(Boolean).join("")}
-          </div>
-        </section>
+      <header class="filter__title">
+        <div class="title">Price</div>
+      </header>
+      <section class="filter__options">
+        <div class="inputs">
+          <input type="number" name="min" aria-label="min" id="filter-min-input" value="5"/>
+          <span class="between to">To</span>
+          <input type="number" name="max" aria-label="max" id="filter-max-input" value="5000"/>
+          <button class="between" type="button" disabled="" id="filter-price-btn">go</button>
+        </div>
+      </section>
     </section>
-  `;
+  );
 
-  const priceFilter = `    
+  const dealsFilter = (
     <section class="filter">
-        <header class="filter__title">
-          <div class="title">Price</div>
-        </header>
-        <section class="filter__options">
-          <div class="inputs">
-            <input type="number" name="min" aria-label="min" id="filter-min-input" value="5">
-            <span class="between to">To</span>
-            <input type="number" name="max" aria-label="max" id="filter-max-input" value="5000">
-            <button class="between" type="button" disabled="" id="filter-price-btn">go</button>
-          </div>
-        </section>
+      <header class="filter__title">
+        <div class="title">Deal</div>
+      </header>
+      <section class="filter__options">
+        <div class="options" sdata-simplebar>
+          <div class="option">Today's Deals</div>
+        </div>
+      </section>
     </section>
-  `;
+  );
 
-  const dealsFilter = `
+  const newArrivalFilter = (
     <section class="filter">
-        <header class="filter__title">
-          <div class="title">Deal</div>
-        </header>
-        <section class="filter__options">
-          <div class="options" data-simplebar>
-            <div class="option">Today's Deals</div>
-          </div>
-        </section>
+      <header class="filter__title">
+        <div class="title">New Arrival</div>
+      </header>
+      <section class="filter__options">
+        <div class="options" sdata-simplebar>
+          <div class="option">Last 7 days</div>
+          <div class="option">Last 30 days</div>
+          <div class="option">Last 60 days</div>
+        </div>
+      </section>
     </section>
-  `;
+  );
 
-  const newArrivalFilter = `
+  const customerReviewFilter = (
     <section class="filter">
-        <header class="filter__title">
-          <div class="title">New Arrival</div>
-        </header>
-        <section class="filter__options">
-          <div class="options" data-simplebar>
-            <div class="option">Last 7 days</div>
-            <div class="option">Last 30 days</div>
-            <div class="option">Last 60 days</div>
-          </div>
-        </section>
+      <header class="filter__title">
+        <div class="title">Customer Review</div>
+      </header>
+      <section class="filter__options">
+        <div class="options" sdata-simplebar>
+          <div class="option">All stars</div>
+          <div class="option">5 stars only</div>
+          <div class="option">4 stars only</div>
+          <div class="option">3 stars only</div>
+          <div class="option">2 stars only</div>
+          <div class="option">1 star only</div>
+        </div>
+      </section>
     </section>
-  `;
+  );
 
-  const customerReviewFilter = `
+  const sellerScoreFilter = (
     <section class="filter">
-        <header class="filter__title">
-          <div class="title">Customer Review</div>
-        </header>
-        <section class="filter__options">
-          <div class="options" data-simplebar>
-            <div class="option">All stars</div>
-            <div class="option">5 stars only</div>
-            <div class="option">4 stars only</div>
-            <div class="option">3 stars only</div>
-            <div class="option">2 stars only</div>
-            <div class="option">1 star only</div>
-          </div>
-        </section>
+      <header class="filter__title">
+        <div class="title">Seller Score</div>
+      </header>
+      <section class="filter__options">
+        <div class="options" data-simplebar>
+          <div class="option">80% or more</div>
+          <div class="option">60% or more</div>
+          <div class="option">40% or more</div>
+          <div class="option">20% or more</div>
+        </div>
+      </section>
     </section>
-  `;
-
-  const sellerScoreFilter = `
-    <section class="filter">
-        <header class="filter__title">
-          <div class="title">Seller Score</div>
-        </header>
-        <section class="filter__options">
-          <div class="options" data-simplebar>
-            <div class="option">80% or more</div>
-            <div class="option">60% or more</div>
-            <div class="option">40% or more</div>
-            <div class="option">20% or more</div>
-          </div>
-        </section>
-    </section>   
-  `;
+  );
 
   const filterList = {
     category: categoryFilter,

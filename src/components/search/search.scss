@@ -106,6 +106,7 @@
       &:has(.option) {
         padding-block: 20px;
         max-height: 200px;
+        overflow: auto;
 
         .simplebar-scrollbar:before {
           background: rgba(0, 0, 0, 0.5);
