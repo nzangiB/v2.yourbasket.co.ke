@@ -88,7 +88,8 @@ function LoginForm (props) {
         location.href = "/";
       }
     }).catch((error) => {
-      const resMessage = (error.response && error.response.data && error.response.data.msg) || error.message || error.toString();
+      console.error(error);
+      const resMessage = error.response?.data?.msg || error.msg || error.message || error.toString();
       toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
     }).finally(() => {
       button.disabled = false;

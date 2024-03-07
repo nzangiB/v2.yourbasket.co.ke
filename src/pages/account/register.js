@@ -88,7 +88,8 @@ async function UserRegistrationForm () {
         toast.success("OTP sent successfully!", { position: toast.POSITION.TOP_RIGHT });
         // buttonref1.current.click();
       }).catch((error) => {
-        const resMessage = (error.response && error.response.data && error.response.data.msg) || error.message || error.toString();
+        console.error(error);
+        const resMessage = error.response?.data?.msg || error.msg || error.message || error.toString();
         toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
       });
     } else {
@@ -148,7 +149,7 @@ async function UserRegistrationForm () {
       location.href = "register/verify-otp";
     } catch (error) {
       console.error(error);
-      const resMessage = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();
+      const resMessage = error.response?.data?.msg || error.msg || error.message || error.toString();
       toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
 
       button.replaceChildren(
@@ -335,7 +336,8 @@ function RegistrationFormVerifyOtp (props) {
       button.disabled = false;
       toast.success("OTP sent successfully!", { position: toast.POSITION.TOP_RIGHT });
     }).catch(error => {
-      const resMessage = (error.response && error.response.data && error.response.data.msg) || error.message || error.toString();
+      console.error(error);
+      const resMessage = error.response?.data?.msg || error.msg || error.message || error.toString();
       toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
     }).finally(() => {
       button.disabled = false;
@@ -349,9 +351,10 @@ function RegistrationFormVerifyOtp (props) {
     const form = e.target;
     console.log("RegistrationFormVerifyOtp", form);
     const formData = new FormData(form);
+
+    // button
     const button = form.querySelector("button");
     button.disabled = true;
-    // button
 
     const data = {};
     data.otp = formData.get("otp");
@@ -378,7 +381,8 @@ function RegistrationFormVerifyOtp (props) {
       location.href = "/";
       // location.href = "https://www.yourbasket.co.ke/#/profile";
     } catch (error) {
-      const resMessage = (error.response && error.response.data && error.response.data.msg || error.msg) || error.message || error.toString();
+      console.error(error);
+      const resMessage = error.response?.data?.msg || error.msg || error.message || error.toString();
       toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
     } finally {
       button.disabled = false;
