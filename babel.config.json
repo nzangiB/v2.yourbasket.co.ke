@@ -15,7 +15,8 @@
       "@babel/plugin-transform-react-jsx",
       {
         "runtime": "automatic",
-        "importSource": "@wearearchangel/handcrafted-plugin-template-syntax-react"
+        "importSource": "@wearearchangel/handcrafted-plugin-template-syntax-react",
+        "throwIfNamespace": false
       }
     ]
   ]
