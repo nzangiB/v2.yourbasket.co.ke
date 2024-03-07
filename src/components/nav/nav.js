@@ -211,7 +211,9 @@ export class Categories extends Component {
         </div>
 
         <div className="cta">
-          <a href="#">Sell on YourBasket</a>
+          <a href="#">
+            <span>Sell on YourBasket</span>
+          </a>
         </div>
       </nav>
     );

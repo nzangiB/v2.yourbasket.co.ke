@@ -54,6 +54,7 @@
   display: flex;
   border-radius: 5px;
   align-items: center;
+  gap: 2px;
 
   @include breakpoint.tablet {
     max-width: 625px;
@@ -80,7 +81,7 @@
 
   .field {
     flex: 1;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     //border-radius: 5px 0 0 5px;
     padding: 8px 16px;
     height: 40px;
@@ -143,8 +144,14 @@
     padding: 10px;
 
     a {
+      display: flex;
       font: 500 var(--font-variant-caption);
       padding: 8px 10px;
+      height: 36px;
+
+      span {
+        display: inherit;
+      }
     }
   }
 
@@ -179,12 +186,8 @@
     }
 
     a {
-      display: flex;
       align-items: center;
       color: var(--color-type-8);
-      font-size: var(--font-size-4);
-      font-weight: 500;
-      line-height: 20px;
       max-width: 48ch;
 
       img {
@@ -212,11 +215,11 @@
   .categories__all {
     li {
       a {
-        padding: 10px;
+        //padding: 10px;
       }
 
       li a {
-        padding: 5px;
+        //padding: 5px;
       }
     }
   }
@@ -227,7 +230,7 @@
     gap: 10px;
 
     a {
-      padding: 10px;
+      //padding: 10px;
     }
 
     @include breakpoint.mobile-only {
