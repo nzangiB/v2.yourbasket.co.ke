@@ -6,8 +6,9 @@ import { RelatedProducts } from "./relatedProducts";
 import { RecentlyViewedProducts } from "./recentlyViewedProducts";
 import { Advert } from "../advert/advert";
 import AuthService from "../../services/auth.service";
+import { MoreProductsFromSeller } from "./moreProductsFromSeller";
 
-export default class ProductPage extends Component {
+export class ProductPage extends Component {
   async data () {
     const { params } = this.props;
 
@@ -47,7 +48,7 @@ export default class ProductPage extends Component {
       <>
         <ProductDetails product={product}/>
         {/* {{! ProductPageModal }} */}
-        <RelatedProducts product={product}/>
+        <MoreProductsFromSeller product={product}/>
         <RecentlyViewedProducts product={product}/>
         <Advert/>
       </>

@@ -6,6 +6,8 @@
   gap: 20px;
 
   &__discount {
+    line-height: 0;
+
     span {
       display: inline-block;
       color: white;

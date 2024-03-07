@@ -42,9 +42,9 @@ export class ProductGroup extends Component {
       cellAlign: "left",
       contain: true,
       pageDots: false,
-      wrapAround: true,
+      wrapAround: true
       // prevNextButtons: true,
-      adaptiveHeight: true
+      // adaptiveHeight: true
       // watchCSS: true
     });
   }

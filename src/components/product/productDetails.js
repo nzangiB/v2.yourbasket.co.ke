@@ -3,6 +3,7 @@ import { ProductInfo } from "./productInfo";
 import { ProductReviews } from "./productReviews";
 
 import "./productDetails.scss";
+import { RelatedProducts } from "./relatedProducts";
 
 async function ProductDetails ({ product }) {
   return (
@@ -11,13 +12,17 @@ async function ProductDetails ({ product }) {
         <div className={"product-detail"}>
           <ProductImages product={product}/>
         </div>
+        <div className={"product-detail"}>
+          <ProductReviews product={product}/>
+        </div>
       </div>
+
       <div className={"column"}>
         <div className={"product-detail"}>
           <ProductInfo {...product}/>
         </div>
         <div className={"product-detail"}>
-          <ProductReviews product={product}/>
+          <RelatedProducts product={product}/>
         </div>
       </div>
     </section>

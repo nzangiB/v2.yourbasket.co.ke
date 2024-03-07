@@ -6,7 +6,7 @@
 
   @include breakpoint.tablet {
     display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
   }
 
@@ -26,5 +26,56 @@
     background: #FFF;
     border-radius: 8px;
     padding: 24px;
+  }
+
+  .related-products {
+    .deals-grid {
+      padding-block: 0;
+    }
+
+    .deals__header {
+      padding: 0;
+      margin-bottom: 10px;
+    }
+
+    .product-card-container {
+      .product-card {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-left: -5px;
+        margin-right: 5px;
+
+        &__details {
+          .text {
+            margin: 10px 0 0 0;
+
+            &__title {
+              font: 600 var(--font-variant-caption);
+              line-height: 16px;
+              height: 48px;
+              margin-bottom: 0;
+            }
+
+            &__description {
+              display: none;
+            }
+          }
+
+          .price {
+            &__current {
+              font: 500 var(--font-variant-caption);
+              color: rgba(0, 0, 0, .54);
+            }
+
+            &__initial {
+              display: none;
+            }
+          }
+
+          .rating {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }
