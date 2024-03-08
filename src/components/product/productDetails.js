@@ -1,9 +1,13 @@
 import { ProductImages } from "./productImages";
 import { ProductInfo } from "./productInfo";
 import { ProductReviews } from "./productReviews";
+import { ProductRatings } from "./productRatings";
+import { RelatedProducts } from "./relatedProducts";
+import { ProductVendor } from "./productVendor";
+import { ProductActions } from "./productActions";
+import { ProductSpecs } from "./productSpecs";
 
 import "./productDetails.scss";
-import { RelatedProducts } from "./relatedProducts";
 
 async function ProductDetails ({ product }) {
   return (
@@ -19,7 +23,11 @@ async function ProductDetails ({ product }) {
 
       <div className={"column"}>
         <div className={"product-detail"}>
+          <ProductRatings productId={product.id}/>
           <ProductInfo {...product}/>
+          <ProductSpecs variant={product.variant}/>
+          <ProductVendor vendor={product.vendor}/>
+          <ProductActions {...product}/>
         </div>
         <div className={"product-detail"}>
           <RelatedProducts product={product}/>

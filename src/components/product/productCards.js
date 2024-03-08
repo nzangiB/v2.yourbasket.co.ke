@@ -1,4 +1,5 @@
 import { Component } from "@wearearchangel/handcrafted";
+
 import { ProductCard } from "./productCard";
 
 import "./productCards.scss";
@@ -21,8 +22,8 @@ export class ProductGroup extends Component {
   template () {
     const { products } = this.state;
     return (
-      <div className="product-cards__wrapper">
-        <div id={this.id + "-product-cards"} className="product-cards">
+      <div className="product-cards-container">
+        <div className="product-cards" id={this.id + "-product-cards"}>
           {products && products.length
             ? products.slice(0, 10).map(product => (
               <ProductCard product={product}/>
@@ -47,5 +48,30 @@ export class ProductGroup extends Component {
       // adaptiveHeight: true
       // watchCSS: true
     });
+  }
+}
+
+export class ProductRow extends Component {
+  template () {
+    const props = this.props;
+    let products, options;
+    if (props instanceof Array) {
+      ({ products, options } = {
+        products: props || [],
+        options: { type: "scrollable" }
+      });
+    } else {
+      ({ products, options } = props);
+    }
+
+    return (
+      <div className="product-cards-container" data-simplebar>
+        <div className="product-cards">
+          {products && products.slice(0, 10).map(product => (
+            <ProductCard product={product}/>
+          )).filter(Boolean)}
+        </div>
+      </div>
+    );
   }
 }

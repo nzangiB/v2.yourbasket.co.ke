@@ -1,9 +1,11 @@
+import { Component } from "@wearearchangel/handcrafted";
+
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
+import { ProductGroup } from "../product/productCards";
+
 import "./deals.scss";
-import { ProductGroup } from "../product/productGroup";
-import { Component } from "@wearearchangel/handcrafted";
 
 export class CrazyOffers extends Component {
   async data () {

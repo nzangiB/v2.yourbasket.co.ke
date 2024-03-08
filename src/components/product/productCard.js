@@ -59,14 +59,16 @@ export function ProductCard ({ product }) {
               <span>{discount}</span>
             </div>
           )}
-          <div className="icons">
-            <div className="icon">
-              <img src={heart} alt="Discount price"/>
-            </div>
-          </div>
+          {/* <div className="icons"> */}
+          {/*  <div className="icon"> */}
+          {/*    <img src={heart} alt="Discount price"/> */}
+          {/*  </div> */}
+          {/* </div> */}
         </div>
         <div className="product-card__image">
-          <img src={image} alt={product.file_name} className="img"/>
+          <div className={"image"}>
+            <img src={image} alt={product.file_name} className="img"/>
+          </div>
         </div>
         <div className="product-card__details">
           <div className="text">

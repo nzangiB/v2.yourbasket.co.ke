@@ -6,7 +6,9 @@ import "./productImages.scss";
 import placeholder from "../../assets/images/placeholder.png";
 
 export function ProductImages ({ product }) {
-  const [currentImage, setCurrentImage] = useState(product?.images?.[0]);
+  const [currentImage, setCurrentImage] = useState(product.file_path
+    ? `https://api.yourbasket.co.ke/${product.file_path}`
+    : placeholder);
 
   const slides = product?.images?.map(image => {
     image = image ?? placeholder;
@@ -22,32 +24,31 @@ export function ProductImages ({ product }) {
     margin: "0 auto"
   };
 
-  // function ImageThumbnails (product) {
-  //   return (
-  //     <section className="image-thumbnails">
-  //       <ul>
-  //         {product?.images.map(image => (
-  //           <li>
-  //             <button onClick={() => setCurrentImage(image)}>
-  //               <img src={image} alt="product thumbnail"/>
-  //             </button>
-  //           </li>
-  //         ))}
-  //       </ul>
-  //     </section>
-  //   );
-  // }
+  function ImageThumbnails (images) {
+    return (
+      <section className="image-thumbnails">
+        <ul>
+          {images.length && images.map(image => (
+            <li>
+              <button onClick={() => setCurrentImage(image)}>
+                <img src={image} alt="product thumbnail"/>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  }
 
   return (
     <section className="product-images">
-      {/* <img src={currentImage} alt="product image"/> */}
       <div style={containerStyles}>
         {slides.length
           ? <ProductImageSlider slides={slides}/>
-          : "Image"
+          : <img src={currentImage} alt="product image" className={"img"}/>
         }
       </div>
-      {/* <ImageThumbnails images={product.images}/> */}
+      <ImageThumbnails images={product.images}/>
     </section>
   );
 }

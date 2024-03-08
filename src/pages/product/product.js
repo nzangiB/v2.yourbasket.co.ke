@@ -1,13 +1,8 @@
-import placeholder from "../../assets/images/placeholder.png";
-
 import { toast } from "../../plugins/react-toastify";
 
 import { Header } from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
 import { ProductPage } from "../../components/product/productPage";
-import { ProductDetails } from "../../components/product/productDetails";
-import { RelatedProducts } from "../../components/product/relatedProducts";
-import { RecentlyViewedProducts } from "../../components/product/recentlyViewedProducts";
 
 import "./product.scss";
 

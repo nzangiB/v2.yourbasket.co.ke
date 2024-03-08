@@ -1,7 +1,7 @@
+import { Component } from "@wearearchangel/handcrafted";
 import clearance from "../../assets/images/clearance-sale.png";
 
 import "./clearanceSale.scss";
-import { Component } from "@wearearchangel/handcrafted";
 
 function ClearanceSaleItem (item) {
   const image = item.file_path

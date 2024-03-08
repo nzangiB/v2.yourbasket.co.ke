@@ -1,10 +1,11 @@
+import { Component } from "@wearearchangel/handcrafted";
+
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
-import { ProductRow } from "../product/productRow";
+import { ProductRow } from "../product/productCards";
 
 import "./deals.scss";
-import { Component } from "@wearearchangel/handcrafted";
 
 const topCategory = async ({ name, slug, id }) => {
   const auth = AuthService.getCurrentUser();

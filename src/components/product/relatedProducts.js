@@ -3,7 +3,7 @@ import { Component } from "@wearearchangel/handcrafted";
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
-import { ProductGroup } from "./productGroup";
+import { ProductGroup } from "./productCards";
 
 export class RelatedProducts extends Component {
   async data () {

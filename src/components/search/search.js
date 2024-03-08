@@ -1,10 +1,11 @@
+import { Component } from "@wearearchangel/handcrafted";
+
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
-import { ProductRow } from "../product/productRow";
+import { ProductRow } from "../product/productCards";
 
 import "./search.scss";
-import { Component } from "@wearearchangel/handcrafted";
 
 const setIdFromSlug = async ({ cats, brands, params }) => {
   let queryData;
@@ -159,18 +160,18 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
   };
 
   const categoryFilter = cats.length && (
-    <section class="filter">
-      <header class="filter__title">
-        <div class="title">Category</div>
+    <section className="filter">
+      <header className="filter__title">
+        <div className="title">Category</div>
       </header>
-      <section class="filter__options">
-        <div class="search">
+      <section className="filter__options">
+        <div className="search">
           <input type="text" placeholder="Search " value=""/>
         </div>
-        <div class="options" sdata-simplebar sdata-simplebar-auto-hide="false">
+        <div className="options" sdata-simplebar sdata-simplebar-auto-hide="false">
           {cats.map((category) => (
-            <div class="option">
-              <div class="option__name">
+            <div className="option">
+              <div className="option__name">
                 {category.name}
               </div>
               {getSubCategoryFilters(category)}
@@ -182,18 +183,18 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
   );
 
   const brandFilter = brand.length && (
-    <section class="filter">
-      <header class="filter__title">
-        <div class="title">Brand</div>
+    <section className="filter">
+      <header className="filter__title">
+        <div className="title">Brand</div>
       </header>
-      <section class="filter__options">
-        <div class="search">
+      <section className="filter__options">
+        <div className="search">
           <input type="text" placeholder="Search " value=""/>
         </div>
-        <div class="options" sdata-simplebar>
+        <div className="options" sdata-simplebar>
           {brand.map((brand) => (
-            <div class="option">
-              <div class="option__name">
+            <div className="option">
+              <div className="option__name">
                 {brand.name}
               </div>
             </div>
@@ -204,78 +205,78 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
   );
 
   const priceFilter = (
-    <section class="filter">
-      <header class="filter__title">
-        <div class="title">Price</div>
+    <section className="filter">
+      <header className="filter__title">
+        <div className="title">Price</div>
       </header>
-      <section class="filter__options">
-        <div class="inputs">
+      <section className="filter__options">
+        <div className="inputs">
           <input type="number" name="min" aria-label="min" id="filter-min-input" value="5"/>
-          <span class="between to">To</span>
+          <span className="between to">To</span>
           <input type="number" name="max" aria-label="max" id="filter-max-input" value="5000"/>
-          <button class="between" type="button" disabled="" id="filter-price-btn">go</button>
+          <button className="between" type="button" disabled="" id="filter-price-btn">go</button>
         </div>
       </section>
     </section>
   );
 
   const dealsFilter = (
-    <section class="filter">
-      <header class="filter__title">
-        <div class="title">Deal</div>
+    <section className="filter">
+      <header className="filter__title">
+        <div className="title">Deal</div>
       </header>
-      <section class="filter__options">
-        <div class="options" sdata-simplebar>
-          <div class="option">Today's Deals</div>
+      <section className="filter__options">
+        <div className="options" sdata-simplebar>
+          <div className="option">Today's Deals</div>
         </div>
       </section>
     </section>
   );
 
   const newArrivalFilter = (
-    <section class="filter">
-      <header class="filter__title">
-        <div class="title">New Arrival</div>
+    <section className="filter">
+      <header className="filter__title">
+        <div className="title">New Arrival</div>
       </header>
-      <section class="filter__options">
-        <div class="options" sdata-simplebar>
-          <div class="option">Last 7 days</div>
-          <div class="option">Last 30 days</div>
-          <div class="option">Last 60 days</div>
+      <section className="filter__options">
+        <div className="options" sdata-simplebar>
+          <div className="option">Last 7 days</div>
+          <div className="option">Last 30 days</div>
+          <div className="option">Last 60 days</div>
         </div>
       </section>
     </section>
   );
 
   const customerReviewFilter = (
-    <section class="filter">
-      <header class="filter__title">
-        <div class="title">Customer Review</div>
+    <section className="filter">
+      <header className="filter__title">
+        <div className="title">Customer Review</div>
       </header>
-      <section class="filter__options">
-        <div class="options" sdata-simplebar>
-          <div class="option">All stars</div>
-          <div class="option">5 stars only</div>
-          <div class="option">4 stars only</div>
-          <div class="option">3 stars only</div>
-          <div class="option">2 stars only</div>
-          <div class="option">1 star only</div>
+      <section className="filter__options">
+        <div className="options" sdata-simplebar>
+          <div className="option">All stars</div>
+          <div className="option">5 stars only</div>
+          <div className="option">4 stars only</div>
+          <div className="option">3 stars only</div>
+          <div className="option">2 stars only</div>
+          <div className="option">1 star only</div>
         </div>
       </section>
     </section>
   );
 
   const sellerScoreFilter = (
-    <section class="filter">
-      <header class="filter__title">
-        <div class="title">Seller Score</div>
+    <section className="filter">
+      <header className="filter__title">
+        <div className="title">Seller Score</div>
       </header>
-      <section class="filter__options">
-        <div class="options" data-simplebar>
-          <div class="option">80% or more</div>
-          <div class="option">60% or more</div>
-          <div class="option">40% or more</div>
-          <div class="option">20% or more</div>
+      <section className="filter__options">
+        <div className="options" data-simplebar>
+          <div className="option">80% or more</div>
+          <div className="option">60% or more</div>
+          <div className="option">40% or more</div>
+          <div className="option">20% or more</div>
         </div>
       </section>
     </section>

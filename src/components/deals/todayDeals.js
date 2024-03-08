@@ -1,11 +1,12 @@
+import { Component } from "@wearearchangel/handcrafted";
+
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
 import CountDown from "../countDown";
+import { ProductGroup } from "../product/productCards";
 
 import "./deals.scss";
-import { ProductGroup } from "../product/productGroup";
-import { Component } from "@wearearchangel/handcrafted";
 
 export class TodayDeals extends Component {
   async data () {

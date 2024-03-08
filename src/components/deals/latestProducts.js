@@ -1,10 +1,11 @@
+import { Component } from "@wearearchangel/handcrafted";
+
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
-import { ProductGroup } from "../product/productGroup";
+import { ProductGroup } from "../product/productCards";
 
 import "./deals.scss";
-import { Component } from "@wearearchangel/handcrafted";
 
 export class LatestProducts extends Component {
   async data () {

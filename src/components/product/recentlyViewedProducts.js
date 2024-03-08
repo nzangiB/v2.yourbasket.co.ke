@@ -1,6 +1,6 @@
 import HelperService from "../../services/helper.service";
 
-import { ProductRow } from "./productRow";
+import { ProductRow } from "./productCards";
 
 export async function RecentlyViewedProducts ({ product }) {
   const recentProducts = HelperService.getRecentProducts();

@@ -1,7 +1,8 @@
 import { Component } from "@wearearchangel/handcrafted";
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
-import { ProductRow } from "./productRow";
+
+import { ProductRow } from "./productCards";
 
 export class MoreProductsFromSeller extends Component {
   async data () {

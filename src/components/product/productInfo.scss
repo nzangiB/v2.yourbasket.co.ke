@@ -89,14 +89,25 @@
   }
 
   &__description {
-    @include breakpoint.phablet {
-      font: var(--font-variant-text);
-    }
-    @include breakpoint.mobile-only {
-      font: var(--font-variant-caption);
-    }
-  }
+    //@include breakpoint.phablet {
+    //  font: var(--font-variant-text);
+    //}
+    //@include breakpoint.mobile-only {
+    font: var(--font-variant-caption);
+    //}
 
-  &__btn-group {
+    .text {
+    }
+
+    .metadata {
+      margin-top: 10px;
+
+      ul {
+        li {
+          display: list-item;
+          list-style: inside;
+        }
+      }
+    }
   }
 }
