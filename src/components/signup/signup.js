@@ -45,7 +45,7 @@ export function Signup (props) {
                 type="email"
                 id="email"
                 name="email"
-                value={auth.email}
+                value={auth?.email}
                 placeholder="Enter your email address"
                 required
               />
