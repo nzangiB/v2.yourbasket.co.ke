@@ -2,7 +2,8 @@ import placeholder from "../../assets/images/placeholder.png";
 import logo from "../../assets/logos/logo-dark.svg";
 import search from "../../assets/icons/search.svg";
 import profile from "../../assets/icons/profile.svg";
-import basket from "../../assets/icons/cart_icon.svg";
+import basket from "../../assets/icons/basket.svg";
+import wishlist from "../../assets/icons/wishlist.svg";
 import customer from "../../assets/icons/customer_care.svg";
 import hamburger from "../../assets/icons/hamburger_menu.svg";
 
@@ -54,7 +55,53 @@ function Search () {
   );
 }
 
-function Support () {
+async function Wishlist () {
+  const auth = AuthService.getCurrentUser();
+  let wishlistCount = 0;
+
+  if (auth) {
+    await DataService.getCart("whislist").then((data) => {
+      wishlistCount = data?.data?.data.length;
+    }).catch((error) => {
+      wishlistCount = 0;
+    });
+  }
+
+  return (
+    <>
+      {wishlistCount > 0
+        ? <span className="count">{wishlistCount}</span>
+        : ""}
+    </>
+  );
+}
+
+async function Basket () {
+  const auth = AuthService.getCurrentUser();
+  let cartCount = 0;
+
+  if (auth) {
+    await DataService.getCart("cart").then((data) => {
+      cartCount = data?.data?.data.length;
+    }).catch((error) => {
+      console.error(error);
+      cartCount = 0;
+    });
+  } else {
+    const response = HelperService.getLocalCart();
+    cartCount = response.length;
+  }
+
+  return (
+    <>
+      {cartCount > 0
+        ? <span className="count">{cartCount}</span>
+        : ""}
+    </>
+  );
+}
+
+async function Support () {
   const isAuthenticated = AuthService.getCurrentUser();
   const profilePic = isAuthenticated?.file_path
     ? `https://api.yourbasket.co.ke/${isAuthenticated?.file_path}`
@@ -67,37 +114,38 @@ function Support () {
           {isAuthenticated
             ? (
               <a data-route="/account">
-                <img src={profilePic} alt="profile picture"/>
+                <img src={profilePic} alt="Profile Picture"/>
                 <span className="srt">Profile</span>
               </a>
             )
             : (
               <a data-route="/login">
-                <img src={profile} alt="profile icon"/>
+                <img src={profile} alt="Profile Icon"/>
                 <span className="srt">Sign In/ Register</span>
               </a>
             )}
         </li>
         <li>
           <a data-route="/wishlist">
-            <img src={"wishlist"} alt="wishlist icon"/>
+            <object data={wishlist} name={"Wishlist Icon"}/>
+            <span id={"wishlist-count"}>
+              {await Wishlist()}
+            </span>
             <span className="srt">Wishlist</span>
           </a>
         </li>
         <li>
           <a data-route="/basket">
-            <img src={basket} alt="basket icon"/>
+            <object data={basket} name="Basket Icon"/>
             <span id={"cart-count"}>
-              <span className={"cart-count"}>
-                {HelperService.getLocalCart().length}
-              </span>
+              {await Basket()}
             </span>
             <span className="srt">Basket</span>
           </a>
         </li>
         <li>
           <a data-route="/support">
-            <img src={customer} alt="customer icon"/>
+            <img src={customer} alt="Customer Care Icon"/>
             <span className="srt">Customer Care</span>
           </a>
         </li>

@@ -77,7 +77,9 @@ function LoginForm (props) {
     const loginUsername = (showEmail ? username : `${phoneCode}${username}`);
     await AuthService.login(loginUsername, password).then(async (data) => {
       const carts = HelperService.getLocalCart();
-      await Promise.all(carts.map((value, i) => DataService.addCart(value)));
+      await Promise.all(carts.map(async (value, i) => {
+        await DataService.addCart(value);
+      }));
       HelperService.emptyLocalCart();
     }).then(() => {
       const url = window.location.href;

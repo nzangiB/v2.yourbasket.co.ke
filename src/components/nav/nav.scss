@@ -112,8 +112,8 @@
   a {
     display: flex;
     align-items: center;
-    font-size: var(--font-size-4);
-    line-height: 1.1;
+    font: var(--font-variant-label);
+    cursor: pointer;
     padding: 8px;
     height: 100%;
 
@@ -122,12 +122,33 @@
       aspect-ratio: 1/1;
     }
 
-    span {
-      padding: 5px;
+    object {
+      width: 20px;
+      aspect-ratio: 1/1;
+      padding: 2px;
+    }
 
-      @include breakpoint.laptop-only {
-        display: none;
-      }
+    span {
+      display: inherit;
+      height: 20px;
+      //padding: 5px;
+
+      //@include breakpoint.laptop-only {
+      //  display: none;
+      //}
+    }
+
+    .count {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2px 4px;
+      margin-left: 4px;
+      font: 500 var(--font-variant-label);
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: var(--border-radius);
+      min-width: 16px;
+      height: 20px;
     }
   }
 }
@@ -141,13 +162,14 @@
   width: 100%;
 
   .nav, .cta {
-    padding: 10px;
+    display: flex;
+    align-items: center;
 
     a {
       display: flex;
       font: 500 var(--font-variant-caption);
-      padding: 8px 10px;
-      height: 36px;
+      padding: 10px 10px;
+      //height: 40px;
 
       span {
         display: inherit;
@@ -156,6 +178,8 @@
   }
 
   .cta {
+    padding-inline: 10px;
+
     a {
       color: inherit;
       display: inherit;
@@ -165,6 +189,8 @@
   }
 
   .nav {
+    height: 56px;
+
     ul, .sf-menu {
       display: flex;
       flex-flow: row nowrap;
@@ -197,10 +223,6 @@
         margin-right: 5px;
       }
 
-      span {
-        //padding: 4px 10px;
-      }
-
       &:hover {
         color: var(--color-type-6);
       }
@@ -213,25 +235,21 @@
   }
 
   .categories__all {
-    li {
-      a {
-        //padding: 10px;
-      }
+    overflow: hidden;
 
-      li a {
-        //padding: 5px;
-      }
+    &:has(.sf-js-enabled) {
+      overflow: visible;
     }
   }
 
   .categories__list {
-    flex: 0 0 1;
+    flex: 1;
     overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
     gap: 10px;
-
-    a {
-      //padding: 10px;
-    }
 
     @include breakpoint.mobile-only {
       display: none;

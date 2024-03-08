@@ -59,6 +59,20 @@ const emptyLocalCart = (id) => {
   localStorage.setItem("user_cart", JSON.stringify(user_cart));
 };
 
+const updateCartCount = () => {
+  const cart = document.getElementById("cart-count");
+  const cartCount = cart.getElementsByClassName("cart-count");
+  if (cartCount && cartCount.length > 0) {
+    cartCount[0].innerHTML = getLocalCart().length;
+  } else {
+    cart.innerHTML = `
+        <span class="count">
+            ${getLocalCart().length}
+        </span>
+    `;
+  }
+};
+
 const getShippingRates = () => {
   const rocheTerre = [
     {
@@ -229,20 +243,6 @@ const getShippingRate = (requestedRegion) => {
   return rate;
 };
 
-const updateCartCount = () => {
-  const cart = document.getElementById("cart-count");
-  const cartCount = cart.getElementsByClassName("cart-count");
-  if (cartCount.length > 0) {
-    cartCount[0].innerHTML = getLocalCart().length;
-  } else {
-    cart.innerHTML += `
-        <span class="cart-count">
-            ${getLocalCart().length}
-        </span>
-    `;
-  }
-};
-
 const setRecentProducts = (item) => {
   let recent_products = JSON.parse(localStorage.getItem("recent_products"));
   if (!recent_products) {
@@ -288,8 +288,8 @@ const HelperService = {
   setLocalCart,
   deleteLocalCart,
   emptyLocalCart,
-  getShippingRate,
   updateCartCount,
+  getShippingRate,
   setRecentProducts,
   getRecentProducts,
   orderStatus

@@ -373,13 +373,15 @@ function RegistrationFormVerifyOtp (props) {
       const { email, password } = unregisteredUser;
       await AuthService.login(email, password).then(async () => {
         const carts = HelperService.getLocalCart();
-        await Promise.all(carts.map((value, i) => DataService.addCart(value)));
+        await Promise.all(carts.map(async (value, i) => {
+          await DataService.addCart(value);
+        }));
         HelperService.emptyLocalCart();
-      });
 
-      // send back to register...
-      location.href = "/";
-      // location.href = "https://www.yourbasket.co.ke/#/profile";
+        // send back to register...
+        location.href = "/";
+        // location.href = "https://www.yourbasket.co.ke/#/profile";
+      });
     } catch (error) {
       console.error(error);
       const resMessage = error.response?.data?.msg || error.msg || error.message || error.toString();
