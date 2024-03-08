@@ -18,7 +18,6 @@ export class ProductPage extends Component {
     const userId = auth ? auth.id : "";
     const product = await DataService.getProductDetailWithSlug(params.id, userId).then(async (data) => {
       const product = data.data.category;
-      product.vendor = product?.Brand ?? product?.User;
       product.variant = product?.Variations || [];
       product.images = product?.images
         ? JSON.parse(product?.images)

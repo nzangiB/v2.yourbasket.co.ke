@@ -26,7 +26,7 @@ async function ProductDetails ({ product }) {
           <ProductRatings productId={product.id}/>
           <ProductInfo {...product}/>
           <ProductSpecs variant={product.variant}/>
-          <ProductVendor vendor={product.vendor}/>
+          <ProductVendor brand={product?.Brand} vendor={product?.User}/>
           <ProductActions {...product}/>
         </div>
         <div className={"product-detail"}>
