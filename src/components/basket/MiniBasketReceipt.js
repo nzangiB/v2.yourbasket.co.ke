@@ -1,6 +1,8 @@
 import { OrderList } from "./OrderList";
 import { OrderSummary } from "./OrderSummary";
 
+import "./MiniBasketReceipt.scss";
+
 export function MiniBasketReceipt ({ getCart, setStep }) {
   const continueShoppingEvent = () => {
     setStep("");
@@ -33,9 +35,13 @@ export function MiniBasketReceipt ({ getCart, setStep }) {
 
       <section>
         <div>
-          <div>
-            <section>Order Details</section>
-            <section>Delivery Details</section>
+          <div className={"cards"}>
+            <section className={"card"}>
+              <div className={"title"}>Order Details</div>
+            </section>
+            <section className={"card"}>
+              <div className={"title"}>Delivery Details</div>
+            </section>
           </div>
 
           <div className={"order"}>
@@ -53,7 +59,9 @@ export function MiniBasketReceipt ({ getCart, setStep }) {
             <OrderSummary getCart={getCart}/>
           </div>
 
-          <div>Tracking</div>
+          <div className={"card"}>
+            <div className={"title"}>Tracking</div>
+          </div>
         </div>
       </section>
     </section>

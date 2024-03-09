@@ -4,6 +4,12 @@ import { KES } from "../../helpers/formatting";
 import placeholder from "../../assets/images/placeholder.png";
 
 export class OrderList extends Component {
+  constructor (props) {
+    super(props);
+
+    this.className = "order__list";
+  }
+
   async data () {
     const { getCart, ...props } = this.props;
 
@@ -40,7 +46,7 @@ export class OrderList extends Component {
     }
 
     return (
-      <section className={"order__list"}>
+      <>
         {disabled
           ? (
             <header className="header">
@@ -99,22 +105,32 @@ export class OrderList extends Component {
                     </div>
                   )}
                   <div className={"list-item__quantity"}>
-                    {!disabled && (
-                      <button className={"btn --icon icon-minus"}>
-                        <object data={require("./icons/minus.svg")} name={"Reduce quantity"}/>
-                      </button>
-                    )}
-                    <div className={"quantity"}>
-                      <span className={"text"}>{[item.quantity, disabled && "Items"].filter(Boolean).join(" ")}</span>
-                    </div>
-                    {!disabled && (
-                      <button className={"btn --icon icon-plus"}>
-                        <object data={require("./icons/plus.svg")} name={"Increase quantity"}/>
-                      </button>
-                    )}
+                    {/*  {!disabled && ( */}
+                    {/*    <button className={"btn --icon icon-minus"}> */}
+                    {/*      <object data={require("./icons/minus.svg")} name={"Reduce quantity"}/> */}
+                    {/*    </button> */}
+                    {/*  )} */}
+                    {disabled
+                      ? (
+                        <div className={"quantity"}>
+                          <span
+                            className={"text"}>{[item.quantity, disabled && "Items"].filter(Boolean).join(" ")}</span>
+                        </div>
+                      )
+                      : (
+                        <>
+                          <div className={"input-field"}>
+                            <input className={"input"} type={"number"} value={item.quantity} disabled={disabled}/>
+                          </div>
+                          {/* <button className={"btn --icon icon-remove"} onClick={() => removeFromCart(index)}>Remove</button> */}
+                        </>
+                      )}
+                    {/*  {!disabled && ( */}
+                    {/*    <button className={"btn --icon icon-plus"}> */}
+                    {/*      <object data={require("./icons/plus.svg")} name={"Increase quantity"}/> */}
+                    {/*    </button> */}
+                    {/*  )} */}
                   </div>
-                  {/* <p>Total: </p> */}
-                  {/* <button onClick={() => removeFromCart(index)}>Remove</button> */}
                 </div>
               </li>
             );
@@ -127,7 +143,7 @@ export class OrderList extends Component {
             </li>
           )}
         </ul>
-      </section>
+      </>
     );
   }
 }

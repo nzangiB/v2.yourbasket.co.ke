@@ -2,6 +2,8 @@ import { OrderList } from "./OrderList";
 import { OrderSummary } from "./OrderSummary";
 import { PaymentMethods } from "./PaymentMethods";
 
+import "./MiniBasketEdit.scss";
+
 export function MiniBasketEdit ({ getCart, setStep }) {
   const checkoutNowEvent = (e) => {
     setStep("checkout");
@@ -12,7 +14,7 @@ export function MiniBasketEdit ({ getCart, setStep }) {
   };
 
   return (
-    <section className="mini-basket__review">
+    <section className="mini-basket__edit">
       <OrderList getCart={getCart} disabled={false}/>
 
       <section className="payment">

@@ -162,7 +162,7 @@
       .payment__methods-list {
         /* payment_logos */
         display: flex;
-        flex-direction: row;
+        flex-flow: row wrap;
         align-items: flex-start;
         padding: 0;
         gap: 10px;
@@ -173,6 +173,8 @@
         flex-grow: 0;
 
         .list-item {
+          flex: 0 0 56px;
+
           object {
             /* Payment Method */
             width: 56px;
@@ -315,6 +317,9 @@
     //flex-grow: 0;
 
     &__list {
+      container: order-list / inline-size;
+      width: 100%;
+
       &-item {
         /* product_content_list */
         display: flex;
@@ -406,6 +411,20 @@
             order: 0;
             flex-grow: 0;
           }
+
+          @container (width > 400px) {
+            width: 12ch;
+
+            .title {
+              font: 600 var(--font-variant-label);
+            }
+          }
+
+          @container (width <= 400px) {
+            .title {
+              font: 600 var(--font-variant-caption);
+            }
+          }
         }
 
         .list-item__price {
@@ -413,10 +432,15 @@
           //width: 120px;
           //height: 26px;
 
-          font: 500 var(--font-variant-text);
-          font-variant-numeric: tabular-nums;
-          //letter-spacing: 0.03em;
           color: rgba(0, 0, 0, .54);
+
+          @container (width > 400px) {
+            font: 500 var(--font-variant-text);
+          }
+          @container (width <= 400px) {
+            font: 500 var(--font-variant-caption);
+          }
+          font-variant-numeric: tabular-nums;
 
           /* Inside auto layout */
           flex: none;
@@ -432,9 +456,6 @@
           align-items: center;
           padding: 0;
           gap: 8px;
-
-          //width: 120px;
-          //height: 24px;
 
           /* Inside auto layout */
           flex: none;
@@ -459,9 +480,7 @@
             width: 24px;
             height: 24px;
 
-            /* Effect Swatch - Buttons */
-            filter: drop-shadow(0px 1px 0 rgba(0, 0, 0, 0.05));
-            border-radius: 2px;
+            background: var(--color-off-white);
 
             /* Inside auto layout */
             flex: none;
@@ -482,15 +501,30 @@
             width: 24px;
             height: 24px;
 
-            background: #2C5F2D;
-            /* Effect Swatch - Buttons */
-            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
-            border-radius: 2px;
+            background: var(--color-green);
 
             /* Inside auto layout */
             flex: none;
             order: 2;
             flex-grow: 0;
+          }
+
+          .input {
+            color: #25252E;
+            background: #F5F5F5;
+            font: var(--font-variant-label);
+            font-variant-numeric: tabular-nums;
+            border: none;
+            width: 10ch;
+            height: 24px;
+            padding: 4px;
+
+            &[disabled] {
+              background: transparent;
+              color: rgba(0, 0, 0, .54);
+              font-weight: 500;
+              padding: 0;
+            }
           }
 
           .quantity {
@@ -555,6 +589,22 @@
           @extend %effect-swatch-cards;
           padding: 16px 24px;
         }
+
+        .order__list-item {
+          @container (width <= 400px) {
+            padding: 16px;
+
+            .list-item__image {
+              width: 72px;
+              height: 72px;
+              aspect-ratio: 1;
+            }
+
+            .list-item__details {
+              gap: 4px;
+            }
+          }
+        }
       }
 
       &-editable,
@@ -566,7 +616,6 @@
 
         .order__list-item {
           @extend %effect-swatch-cards;
-          flex: 50%;
           padding: 12px;
 
           .list-item__image {
@@ -576,12 +625,7 @@
           }
 
           .list-item__name {
-            width: 12ch;
             padding-right: 12px;
-
-            .title {
-              font: 600 var(--font-variant-label);
-            }
           }
 
           .list-item__details {
@@ -610,6 +654,10 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         padding: 12px 0;
         gap: 6px;
+
+        @container (width <= 400px) {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
       }
 
       &-disabled {
@@ -742,39 +790,5 @@
 
     position: relative;
     width: 100%;
-  }
-
-  &__review {
-    /* checkout_information */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px;
-    gap: 24px;
-
-    .btn-group {
-      /* buttons */
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-      gap: 12px;
-
-      /* Inside auto layout */
-      flex: none;
-      order: 1;
-      align-self: stretch;
-      flex-grow: 0;
-    }
-  }
-
-  &__checkout,
-  &__receipt {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px;
-    gap: 24px;
   }
 }

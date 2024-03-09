@@ -1,6 +1,8 @@
 import { OrderList } from "./OrderList";
 import { OrderSummary } from "./OrderSummary";
 
+import "./MiniBasketCheckout.scss";
+
 export function MiniBasketCheckout ({ getCart, setStep }) {
   const payNowEvent = (e) => {
     e.preventDefault();
