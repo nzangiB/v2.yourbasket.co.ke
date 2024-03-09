@@ -32,7 +32,7 @@ export function ProductSpecs ({ size, color, variant }) {
   //   </section>
   // );
 
-  if (!variant) return null;
+  if (!variant.length) return null;
 
   return (
     <section className="product-specs">

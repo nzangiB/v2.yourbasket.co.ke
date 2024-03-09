@@ -9,6 +9,8 @@ export function ProductVendor ({ brand, vendor }) {
     ? `https://api.yourbasket.co.ke/${brand.file_path}`
     : placeholder;
 
+  if (!name) return null;
+
   return (
     <section className="product-vendor">
       <div className="product-vendor__logo">
