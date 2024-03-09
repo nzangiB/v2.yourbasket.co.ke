@@ -4,6 +4,7 @@ import heart from "../../assets/icons/heart-small.svg";
 import "./productCard.scss";
 
 import HelperService from "../../services/helper.service";
+import { KES } from "../../helpers/formatting";
 
 export function ProductCard ({ product }) {
   if (!product.slug) return "";
@@ -36,16 +37,7 @@ export function ProductCard ({ product }) {
     ? `https://api.yourbasket.co.ke/${product.file_path}`
     : placeholder;
 
-  const costPrice = parseFloat(product.cost_price).toLocaleString(navigator.language, { minimumFractionDigits: 0 });
-  const offerPrice = parseFloat(product.offer_price).toLocaleString(navigator.language, { minimumFractionDigits: 0 });
-  const getDiscountRate = () => Math.floor(0 - ((costPrice - offerPrice) / costPrice) * 100, 100);
   const discount = HelperService.calDiscount(product);
-
-  const KES = new Intl.NumberFormat("en-KE", {
-    style: "currency",
-    currency: "KES",
-    minimumFractionDigits: 0
-  });
 
   const productName = product.name.length > 60 ? product.name.substring(0, 60) + "..." : product.name;
   const productDescription = product.description.split(" ").length > 15 ? product.description.split(" ").slice(0, 15).join(" ") + "..." : product.description;

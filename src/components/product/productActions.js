@@ -6,17 +6,7 @@ import DataService from "../../services/data.service";
 
 import "./productActions.scss";
 
-const openBasketEvent = ({ event, step }) => {
-  const basket = document.getElementById("basket");
-  basket.dataset.step = step;
-
-  const miniBasket = basket.querySelector(".mini-basket");
-  if (miniBasket.classList.contains("--visible")) {
-    miniBasket.classList.replace("--invisible", "--visible");
-  } else {
-    miniBasket.classList.add("--visible");
-  }
-};
+import { openBasketEvent } from "../../helpers/basket";
 
 export function ProductActions (product) {
   const addToCart = async (e) => {
