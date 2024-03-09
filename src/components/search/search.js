@@ -168,7 +168,7 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
         <div className="search">
           <input type="text" placeholder="Search " value=""/>
         </div>
-        <div className="options" sdata-simplebar sdata-simplebar-auto-hide="false">
+        <div className="options">
           {cats.map((category) => (
             <div className="option">
               <div className="option__name">
@@ -191,7 +191,7 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
         <div className="search">
           <input type="text" placeholder="Search " value=""/>
         </div>
-        <div className="options" sdata-simplebar>
+        <div className="options">
           {brand.map((brand) => (
             <div className="option">
               <div className="option__name">
@@ -226,7 +226,7 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
         <div className="title">Deal</div>
       </header>
       <section className="filter__options">
-        <div className="options" sdata-simplebar>
+        <div className="options">
           <div className="option">Today's Deals</div>
         </div>
       </section>
@@ -239,7 +239,7 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
         <div className="title">New Arrival</div>
       </header>
       <section className="filter__options">
-        <div className="options" sdata-simplebar>
+        <div className="options">
           <div className="option">Last 7 days</div>
           <div className="option">Last 30 days</div>
           <div className="option">Last 60 days</div>
@@ -254,7 +254,7 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
         <div className="title">Customer Review</div>
       </header>
       <section className="filter__options">
-        <div className="options" sdata-simplebar>
+        <div className="options">
           <div className="option">All stars</div>
           <div className="option">5 stars only</div>
           <div className="option">4 stars only</div>
@@ -272,7 +272,7 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
         <div className="title">Seller Score</div>
       </header>
       <section className="filter__options">
-        <div className="options" data-simplebar>
+        <div className="options">
           <div className="option">80% or more</div>
           <div className="option">60% or more</div>
           <div className="option">40% or more</div>

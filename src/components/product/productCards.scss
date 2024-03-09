@@ -2,6 +2,7 @@
 
 .product-row {
   overflow-x: auto;
+  scrollbar-width: none;
   //display: flex;
   //flex-flow: row nowrap;
   //align-items: flex-start;
@@ -11,12 +12,6 @@
   //.product-card-container {
   //  flex: 0 0 250px;
   //}
-
-  &[data-simplebar] {
-    .simplebar-track {
-      display: none;
-    }
-  }
 
   .product-cards {
     display: flex;

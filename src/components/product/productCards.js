@@ -65,7 +65,7 @@ export class ProductRow extends Component {
     }
 
     return (
-      <div className="product-cards-container" data-simplebar>
+      <div className="product-cards-container">
         <div className="product-cards">
           {products && products.slice(0, 10).map(product => (
             <ProductCard product={product}/>
