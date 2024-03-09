@@ -48,6 +48,14 @@
       display: flex;
       gap: 5px;
 
+      @include breakpoint.phablet {
+        flex-direction: row;
+      }
+
+      @include breakpoint.mobile-only {
+        flex-direction: column;
+      }
+
       input, select {
         display: inline-block;
         font: 500 var(--font-variant-caption);
@@ -117,12 +125,11 @@
     align-items: flex-start;
 
     h3 {
-      font-size: var(--font-size-3);
-      font-weight: bolder;
+      font: 600 var(--font-variant-sub-title);
     }
 
     p {
-      font-size: var(--font-size-4);
+      font: var(--font-variant-caption);
     }
   }
 
