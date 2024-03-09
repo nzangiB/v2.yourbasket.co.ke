@@ -245,7 +245,7 @@
   .categories__list {
     flex: 1;
     overflow-x: auto;
-    scrollbar-width: thin;
+    scrollbar-width: none;
     scrollbar-gutter: stable;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     border-right: 1px solid rgba(0, 0, 0, 0.1);

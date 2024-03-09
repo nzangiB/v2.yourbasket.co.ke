@@ -6,6 +6,18 @@ import DataService from "../../services/data.service";
 
 import "./productActions.scss";
 
+const openBasketEvent = ({ event, step }) => {
+  const basket = document.getElementById("basket");
+  basket.dataset.step = step;
+
+  const miniBasket = basket.querySelector(".mini-basket");
+  if (miniBasket.classList.contains("--visible")) {
+    miniBasket.classList.replace("--invisible", "--visible");
+  } else {
+    miniBasket.classList.add("--visible");
+  }
+};
+
 export function ProductActions (product) {
   const addToCart = async (e) => {
     e.preventDefault();
@@ -58,7 +70,9 @@ export function ProductActions (product) {
     e.target.disabled = true;
     e.target.innerHTML = "Checking out...";
 
-    console.log("checking out...");
+    const event = e;
+    const step = "checkout";
+    openBasketEvent({ event, step });
 
     e.target.classList.remove("--loading");
     e.target.disabled = false;

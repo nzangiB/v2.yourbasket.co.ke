@@ -107,6 +107,18 @@ async function Support () {
     ? `https://api.yourbasket.co.ke/${isAuthenticated?.file_path}`
     : placeholder;
 
+  const openBasketEvent = (e) => {
+    const basket = document.getElementById("basket");
+    basket.dataset.step = "edit";
+
+    const miniBasket = basket.querySelector(".mini-basket");
+    if (miniBasket.classList.contains("--visible")) {
+      miniBasket.classList.replace("--invisible", "--visible");
+    } else {
+      miniBasket.classList.add("--visible");
+    }
+  };
+
   return (
     <div className="support-links">
       <ul>
@@ -135,13 +147,13 @@ async function Support () {
           </a>
         </li>
         <li>
-          <a data-route="/basket">
-            <object data={basket} name="Basket Icon"/>
+          <button className={"btn --icon"} onClick={openBasketEvent}>
+            <object className={"icon"} data={basket} name="Basket Icon"/>
             <span id={"cart-count"}>
               {await Basket()}
             </span>
             <span className="srt">Basket</span>
-          </a>
+          </button>
         </li>
         <li>
           <a data-route="/support">
