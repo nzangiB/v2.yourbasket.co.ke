@@ -3,12 +3,9 @@ import { Component } from "@wearearchangel/handcrafted";
 import DataService from "../../services/data.service";
 import AuthService from "../../services/auth.service";
 
-import placeholder from "../../assets/images/placeholder.png";
-
 import { ProductDetails } from "./productDetails";
 import { RecentlyViewedProducts } from "./recentlyViewedProducts";
 import { MoreProductsFromSeller } from "./moreProductsFromSeller";
-import { Advert } from "../advert/advert";
 
 export class ProductPage extends Component {
   async data () {
@@ -45,7 +42,6 @@ export class ProductPage extends Component {
         {/* {{! ProductPageModal }} */}
         <MoreProductsFromSeller product={product}/>
         <RecentlyViewedProducts product={product}/>
-        <Advert/>
       </>
     );
   }
