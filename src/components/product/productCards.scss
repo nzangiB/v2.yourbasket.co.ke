@@ -39,8 +39,33 @@
 
 .product-group {
   .product-cards {
+    padding-inline: 20px;
     //margin-left: -5px;
     //width: calc(100% + 5px);
+
+    &:not(.flickity-enabled) {
+      display: grid;
+      gap: 10px;
+
+      @include breakpoint.phablet {
+        @include breakpoint.laptop {
+          grid-template-columns: repeat(4, minmax(144px, 1fr));
+        }
+
+        @include breakpoint.laptop-only {
+          grid-template-columns: repeat(4, minmax(144px, 1fr));
+        }
+      }
+
+      @include breakpoint.mobile-only {
+        grid-template-columns: repeat(2, minmax(144px, 1fr));
+      }
+
+      .product-card-container {
+        padding-inline: unset;
+        width: unset;
+      }
+    }
   }
 
   .product-card {

@@ -17,9 +17,17 @@
 
 .deals__header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 20px;
+
+  @include breakpoint.phablet {
+    flex-direction: row;
+    align-items: center;
+  }
+  @include breakpoint.mobile-only {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .deals__list {

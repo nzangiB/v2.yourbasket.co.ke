@@ -4,10 +4,12 @@
   display: block;
   position: relative;
   background-color: white;
+  container: productCard / inline-size;
   //border: 1px solid rgba(0, 0, 0, 0.2);
   //border-radius: 5px;
-  min-width: 150px;
   padding: .5rem;
+  min-width: 150px;
+  width: 100%;
 
   &__icons {
     display: flex;
@@ -79,40 +81,75 @@
       margin: 10px 0 0 0;
 
       &__title {
-        font: 600 var(--font-variant-text);
         color: rgba(0, 0, 0, .87);
-        line-height: 1.3;
         margin-bottom: .5rem;
+
+        @container (min-width: 240px) {
+          font: 600 var(--font-variant-text);
+          line-height: 1.3;
+        }
+        @container (max-width: 240px) {
+          font: 600 var(--font-variant-caption);
+          line-height: 1.3;
+        }
       }
 
       &__description {
-        font: 400 var(--font-variant-caption);
         color: rgba(0, 0, 0, .54);
-        line-height: 16px;
-        height: 48px;
         overflow: hidden;
         text-overflow: ellipsis;
         padding: 0;
+
+        @container (min-width: 240px) {
+          font: 400 var(--font-variant-caption);
+          line-height: 16px;
+          height: 48px;
+        }
+        @container (max-width: 240px) {
+          font: 400 var(--font-variant-label);
+          line-height: 14px;
+          height: 42px;
+        }
       }
     }
 
     .price {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       margin: 10px 5px 0 0;
 
+      @container (min-width: 240px) {
+        flex-flow: row nowrap;
+        align-items: center;
+      }
+      @container (max-width: 240px) {
+        flex-flow: column nowrap;
+        align-items: stretch;
+      }
+
       &__current {
-        font: 500 var(--font-variant-text);
         color: rgba(0, 0, 0, 1);
+
+        @container (min-width: 240px) {
+          font: 500 var(--font-variant-text);
+        }
+        @container (max-width: 240px) {
+          font: 500 var(--font-variant-caption);
+        }
       }
 
       &__initial {
         color: rgba(0, 0, 0, .54);
 
         &:not(:has(span)) {
-          font: 500 var(--font-variant-caption);
           text-decoration: line-through;
+
+          @container (min-width: 240px) {
+            font: 500 var(--font-variant-caption);
+          }
+          @container (max-width: 240px) {
+            font: 500 var(--font-variant-label);
+          }
         }
 
         &:has(span) {

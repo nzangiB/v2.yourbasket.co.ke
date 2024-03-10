@@ -25,7 +25,7 @@ export class ProductGroup extends Component {
       <div className="product-cards-container">
         <div className="product-cards" id={this.id + "-product-cards"}>
           {products && products.length
-            ? products.slice(0, 10).map(product => (
+            ? products.slice(0, 8).map(product => (
               <ProductCard product={product}/>
             ))
             : "No products found"}
