@@ -1,14 +1,10 @@
-import { NavHeader } from "../../components/nav/nav";
 import { useState } from "../../plugins/react";
 import { toast } from "../../plugins/react-toastify";
-
-import "./login.scss";
-
-import DataService from "../../services/data.service";
 import AuthService from "../../services/auth.service";
 import HelperService from "../../services/helper.service";
+import DataService from "../../services/data.service";
 
-function LoginForm (props) {
+export function LoginForm (props) {
   const [selected, setSelected] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -171,34 +167,3 @@ function LoginForm (props) {
     </section>
   );
 }
-
-function SocialLoginForm (props) {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    console.log("SocialLoginForm", form);
-  };
-
-  return (
-    <form className={"form"} onSubmit={handleSubmit}>
-			Social Login
-    </form>
-  );
-}
-
-async function Login (props) {
-  return (
-    <>
-      <NavHeader/>
-      <div className="container">
-        <main className="content">
-          <LoginForm/>
-          {/* <SocialLoginForm/> */}
-        </main>
-      </div>
-    </>
-  );
-}
-
-export default Login;
