@@ -4,4 +4,30 @@
   align-items: center;
   padding: 24px;
   gap: 24px;
+
+  .header {
+    padding: 0;
+  }
+
+  .card {
+    &:has(.order__summary) {
+      .order__summary {
+        padding: 12px 0;
+      }
+    }
+
+    &:has(.order__list-disabled) {
+      .header {
+        padding-block: 0 12px;
+      }
+
+      .order__list-disabled {
+        padding: 0 24px;
+        margin: 0 -24px;
+
+        width: calc(100% + 24px + 24px);
+        max-width: unset;
+      }
+    }
+  }
 }
