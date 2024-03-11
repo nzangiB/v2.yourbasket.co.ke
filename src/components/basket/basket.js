@@ -56,6 +56,15 @@ export class Basket extends Component {
     // const { params, query } = this.props;
     // const { cart, step, setStep } = this.state;
 
+    const url = new URL(location.href);
+    const basket = url.searchParams.get("basket");
+    if (basket) {
+      this.setStep(basket);
+      url.searchParams.delete("basket");
+      history.pushState({}, "", url.href);
+      this.render();
+    }
+
     return (
       <MiniBasket {...{ ...this.state, ...this.props }} />
     );

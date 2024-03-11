@@ -78,10 +78,11 @@ export function LoginForm (props) {
       }));
       HelperService.emptyLocalCart();
     }).then(() => {
-      const url = window.location.href;
-      const queryParam = url.split("=");
-      if (queryParam.length > 1) {
-        location.href = "/" + queryParam[1];
+      const params = new URLSearchParams(window.location.search);
+      const url = params.get("url");
+      if (url) {
+        const redirect = new URL(url, location.origin);
+        location.href = redirect.href;
       } else {
         location.href = "/";
       }

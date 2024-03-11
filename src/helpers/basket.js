@@ -1,4 +1,4 @@
-export const openBasketEvent = ({ event, step }) => {
+export const openBasketEvent = (event, step) => {
   event?.preventDefault();
 
   const basket = document.getElementById("basket");
@@ -12,8 +12,8 @@ export const openBasketEvent = ({ event, step }) => {
   }
 };
 
-export const closeBasketEvent = (e) => {
-  e.preventDefault();
+export const closeBasketEvent = (event) => {
+  event?.preventDefault();
 
   const basket = document.getElementById("basket");
   const miniBasket = basket.querySelector(".mini-basket");

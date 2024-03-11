@@ -247,7 +247,9 @@ class PaymentMethodsListDetailed extends Component {
 
     const auth = AuthService.getCurrentUser();
     if (!auth) {
-      this.navigate("/login?url=checkout");
+      const redirectURL = new URL(window.location.href);
+      redirectURL.searchParams.set("basket", "checkout");
+      this.navigate("/login?url=" + encodeURIComponent(redirectURL.toString()));
     } else {
       if (this.searchParams.has("buynow")) {
         this.state.setBuyNow(true);
