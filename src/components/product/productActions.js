@@ -54,7 +54,7 @@ export function ProductActions (product) {
     }
   };
 
-  const addToCart = async (e) => {
+  const addToBasket = async (e) => {
     e.preventDefault();
 
     // setAddedItem(product);
@@ -99,15 +99,14 @@ export function ProductActions (product) {
     setLoading(false);
   };
 
-  const checkoutNow = (e) => {
+  const checkoutNow = async (e) => {
     e.preventDefault();
     e.target.classList.add("--loading");
     e.target.disabled = true;
     e.target.innerHTML = "Checking out...";
 
-    const event = e;
-    const step = "checkout";
-    openBasketEvent({ event, step });
+    await addToBasket(e);
+    openBasketEvent(e, "checkout");
 
     e.target.classList.remove("--loading");
     e.target.disabled = false;
@@ -117,7 +116,7 @@ export function ProductActions (product) {
   return (
     <div className={"product-actions"}>
       <div className={"btn-group --product-info__btn-group"}>
-        <button type={"button"} className={"btn --primary --size-lg"} onClick={addToCart}>Add to basket</button>
+        <button type={"button"} className={"btn --primary --size-lg"} onClick={addToBasket}>Add to basket</button>
         <button type={"button"} className={"btn --secondary --size-lg"} onClick={checkoutNow}>Checkout Now</button>
       </div>
     </div>
