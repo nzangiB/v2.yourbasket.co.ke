@@ -5,13 +5,13 @@ import { Advert } from "../../components/advert/advert";
 
 import "./product.scss";
 
-async function Product ({ params }) {
+async function Product (props) {
   return (
     <>
-      <Header/>
+      <Header {...props}/>
       <div className="container">
         <div className="content">
-          <ProductPage params={params}/>
+          <ProductPage {...props}/>
           <Advert/>
         </div>
       </div>

@@ -21,7 +21,7 @@ function SocialLoginForm (props) {
 async function Login (props) {
   return (
     <>
-      <NavHeader/>
+      <NavHeader {...props}/>
       <div className="container">
         <main className="content">
           <LoginForm/>

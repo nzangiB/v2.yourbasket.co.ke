@@ -24,7 +24,7 @@ function Logo () {
   );
 }
 
-function Search () {
+function Search (props) {
   const keyUpEvent = (e) => {
     if (e.key === "Enter") {
       location.href = `/search?q=${e.target.value}`;
@@ -55,7 +55,7 @@ function Search () {
   );
 }
 
-async function Wishlist () {
+async function Wishlist (props) {
   const auth = AuthService.getCurrentUser();
   let wishlistCount = 0;
 
@@ -76,7 +76,7 @@ async function Wishlist () {
   );
 }
 
-async function Basket () {
+async function Basket (props) {
   const auth = AuthService.getCurrentUser();
   let cartCount = 0;
 
@@ -101,7 +101,7 @@ async function Basket () {
   );
 }
 
-async function Support () {
+async function Support (props) {
   const isAuthenticated = AuthService.getCurrentUser();
   const profilePic = isAuthenticated?.file_path
     ? `https://api.yourbasket.co.ke/${isAuthenticated?.file_path}`
@@ -141,7 +141,7 @@ async function Support () {
           <a data-route="/wishlist">
             <object data={wishlist} name={"Wishlist Icon"}/>
             <span id={"wishlist-count"}>
-              {await Wishlist()}
+              {await Wishlist(props)}
             </span>
             <span className="srt">Wishlist</span>
           </a>
@@ -150,7 +150,7 @@ async function Support () {
           <button className={"btn --icon"} onClick={openBasketEvent}>
             <object className={"icon"} data={basket} name="Basket Icon"/>
             <span id={"cart-count"}>
-              {await Basket()}
+              {await Basket(props)}
             </span>
             <span className="srt">Basket</span>
           </button>
@@ -202,11 +202,12 @@ export class NavHeader extends Component {
   }
 
   template () {
+    const props = this.props;
     return (
       <>
-        <Logo/>
-        <Search/>
-        <Support/>
+        <Logo {...props}/>
+        <Search {...props}/>
+        <Support {...props}/>
       </>
     );
   }

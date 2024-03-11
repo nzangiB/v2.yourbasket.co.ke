@@ -15,7 +15,7 @@ import "./home.scss";
 async function Home (props) {
   return (
     <>
-      <Header/>
+      <Header {...props}/>
 
       <div class="container">
         <aside class="aside aside__left">

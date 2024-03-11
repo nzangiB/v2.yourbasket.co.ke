@@ -53,10 +53,11 @@ export class Basket extends Component {
   }
 
   async template () {
-    const { cart, step, setStep } = this.state;
+    // const { params, query } = this.props;
+    // const { cart, step, setStep } = this.state;
 
     return (
-      <MiniBasket cart={cart} step={step} setStep={setStep}/>
+      <MiniBasket {...{ ...this.state, ...this.props }} />
     );
   }
 

@@ -28,6 +28,8 @@
   Occupies 60% of the screen
   */
   background: #F5F5F5;
+  border-left: 1px solid rgba(0, 0, 0, .12);
+  box-shadow: 0 0 12px rgba(0, 0, 0, .12);
 
   &.--invisible {
     display: none;
@@ -204,15 +206,15 @@
         .list-item {
           /* pay_on_delivery_container */
           display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
+          flex-direction: column;
+          //align-items: flex-start;
           padding: 0;
           //padding: 12px;
           //gap: 10px;
 
           width: 100%;
-          background: rgba(0, 0, 0, .02);
+          //background: #F5F5F5;
+          background: rgba(0, 0, 0, .05);
           border-radius: var(--border-radius);
 
           /* Inside auto layout */
@@ -222,22 +224,12 @@
           flex-grow: 0;
 
           &.--selected {
-            /* pay_now_container */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 0;
-
-            background: rgba(0, 0, 0, .12);
-
-            /* Inside auto layout */
-            flex: none;
-            order: 0;
-            align-self: stretch;
-            flex-grow: 0;
+            .list-item__title {
+              background: rgba(0, 0, 0, .05);
+            }
           }
 
-          .title {
+          &__title {
             font: 600 var(--font-variant-text);
             width: 100%;
 
@@ -259,6 +251,7 @@
               /* arrow_up2 */
               width: 24px;
               height: 24px;
+              padding: 2px;
 
               /* Inside auto layout */
               flex: none;
@@ -267,29 +260,50 @@
             }
           }
 
-          .form {
-            /* payment_details */
-            /* Auto layout */
+          &__content {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             padding: 12px 24px 24px;
-            //gap: 12px;
-            gap: 0;
+            gap: 12px;
 
-            //background: transparent;
-            border: none;
+            //background: rgba(255, 255, 255, 0.5) none;
 
-            /* Inside auto layout */
-            flex: none;
-            order: 1;
-            flex-grow: 0;
+            .text {
+              font: 500 var(--font-variant-caption);
+              color: rgba(0, 0, 0, .54);
+            }
+          }
+
+          .form {
+            padding: 12px 24px 24px;
+            width: 100%;
 
             .input-field {
               max-width: 300px;
               min-width: 150px;
               width: auto;
             }
+          }
+
+          .form.details {
+            /* payment_details */
+            /* Auto layout */
+            display: flex;
+            text-align: left;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 12px 24px 24px;
+            //gap: 12px;
+            gap: 0;
+
+            background: transparent;
+            border: none;
+
+            /* Inside auto layout */
+            flex: none;
+            order: 1;
+            flex-grow: 0;
           }
         }
       }

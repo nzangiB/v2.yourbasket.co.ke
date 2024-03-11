@@ -1,9 +1,9 @@
-import { OrderList } from "./OrderList";
-import { OrderSummary } from "./OrderSummary";
+import OrderList from "./OrderList";
+import OrderSummary from "./OrderSummary";
 
 import "./MiniBasketReceipt.scss";
 
-export function MiniBasketReceipt ({ getCart, setStep }) {
+function MiniBasketReceipt ({ cart, setStep }) {
   const continueShoppingEvent = () => {
     setStep("");
   };
@@ -18,19 +18,24 @@ export function MiniBasketReceipt ({ getCart, setStep }) {
 
   return (
     <section className="mini-basket__receipt">
+      <div className="message" data-status={"success"}>
+        <h3 className="title">Thank you</h3>
+        <p className="text">Your order has been placed successfully</p>
+      </div>
+
       <header className={"header"}>
-        {/* <button className={"btn --primary"} onClick={continueShoppingEvent}> */}
-        {/*  <span>Continue Shopping</span> */}
-        {/* </button> */}
-        {/* <div className="btn-group"> */}
-        <button className={"btn --secondary"} onClick={printReceiptEvent}>
-          <object data={require("./icons/print.svg")} name={"Print Receipt"}/>
-          <span>Print Receipt</span>
+        <button className={"btn --primary"} onClick={continueShoppingEvent}>
+          <span>Continue Shopping</span>
         </button>
-        <button className={"btn --link"} onClick={cancelOrderEvent}>
-          <span>Cancel Order</span>
-        </button>
-        {/* </div> */}
+        <div className="btn-group">
+          <button disabled={true} className={"btn --link"} onClick={cancelOrderEvent}>
+            <span>Cancel Order</span>
+          </button>
+          <button disabled={true} className={"btn --secondary"} onClick={printReceiptEvent}>
+            {/* <object data={require('./icons/print.svg')} name={'Print Receipt'}/> */}
+            <span>Print Receipt</span>
+          </button>
+        </div>
       </header>
 
       <section className={"card-group"}>
@@ -72,7 +77,7 @@ export function MiniBasketReceipt ({ getCart, setStep }) {
           <div className={"card-group"}>
             <section className={"card"}>
               <div className="order">
-                <OrderList getCart={getCart} disabled={true}/>
+                <OrderList getCart={cart} disabled={true}/>
               </div>
             </section>
           </div>
@@ -94,7 +99,7 @@ export function MiniBasketReceipt ({ getCart, setStep }) {
               <div className="text">December 4th, 2023 09:00AM</div>
             </div>
             <div className="content">
-              <OrderSummary getCart={getCart}/>
+              <OrderSummary getCart={cart}/>
             </div>
           </section>
 
@@ -106,3 +111,5 @@ export function MiniBasketReceipt ({ getCart, setStep }) {
     </section>
   );
 }
+
+export default MiniBasketReceipt;

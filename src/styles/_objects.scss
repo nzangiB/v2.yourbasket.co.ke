@@ -88,7 +88,7 @@
 
 .link {
   white-space: nowrap;
-  
+
   &.--see-more {
     font-weight: 500;
     font-size: var(--font-size-4);
@@ -162,6 +162,7 @@
 
 .label {
   font: 500 var(--font-variant-label);
+  text-align: inherit;
 }
 
 .input {
@@ -170,6 +171,7 @@
   background: var(--color-type-4) none;
   border-radius: var(--border-radius);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: inherit;
   width: 100%;
 }
 
@@ -306,6 +308,28 @@
     font: 600 var(--font-variant-text);
     padding: 8px 16px;
   }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:not(.--link) {
+      border-color: transparent;
+      background: rgba(0, 0, 0, 0.1) none;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    &.--link {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    object {
+      pointer-events: none;
+      fill: rgba(0, 0, 0, 0.5);
+      opacity: 0.5;
+    }
+  }
 }
 
 .btn-group {
@@ -362,6 +386,37 @@
     padding: 8px;
     height: 100%;
     width: 100%;
+  }
+}
+
+.message {
+  @extend %effect-swatch-cards;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: var(--grid);
+  gap: 5px;
+
+  .title {
+    font: 600 var(--font-variant-sub-title);
+  }
+
+  .text {
+    font: 500 var(--font-variant-caption);
+  }
+
+  &[data-status="success"] {
+    background: var(--color-green) none;
+
+    .title {
+      color: var(--color-off-white);
+    }
+
+    .text {
+      color: rgba(255, 255, 255, 0.75);
+    }
   }
 }
 

@@ -1,33 +1,33 @@
-import { MiniBasketEdit } from "./MiniBasketEdit";
-import { MiniBasketCheckout } from "./MiniBasketCheckout";
-import { MiniBasketReceipt } from "./MiniBasketReceipt";
+import MiniBasketEdit from "./MiniBasketEdit";
+import MiniBasketCheckout from "./MiniBasketCheckout";
+import MiniBasketReceipt from "./MiniBasketReceipt";
 
-export function MiniBasket ({ cart, step, setStep }) {
+export function MiniBasket (props) {
   let title, content;
-  if (step === "edit") {
+  if (props.step?.startsWith("edit")) {
     title = "Your Basket";
     content = (
-      <MiniBasketEdit setStep={setStep} getCart={cart}/>
+      <MiniBasketEdit {...props}/>
     );
-  } else if (step === "checkout") {
+  } else if (props.step?.startsWith("checkout")) {
     title = "Your Basket";
     content = (
-      <MiniBasketCheckout setStep={setStep} getCart={cart}/>
+      <MiniBasketCheckout {...props}/>
     );
-  } else if (step === "receipt") {
+  } else if (props.step?.startsWith("receipt")) {
     title = "Your Receipt";
     content = (
-      <MiniBasketReceipt setStep={setStep} getCart={cart}/>
+      <MiniBasketReceipt {...props}/>
     );
   } else {
     title = "Your Basket";
     content = (
-      <div>{step}</div>
+      <div>{props.step}</div>
     );
   }
 
   const backEvent = () => {
-    setStep("");
+    props.setStep("");
   };
 
   const closeEvent = () => {
@@ -40,7 +40,7 @@ export function MiniBasket ({ cart, step, setStep }) {
   };
 
   return (
-    <div className={["mini-basket", step && "--visible"].filter(Boolean).join(" ")}>
+    <div className={["mini-basket", props.step && "--visible"].filter(Boolean).join(" ")}>
       <header className="mini-basket__header">
         <button className={"btn --icon icon-back"} onClick={backEvent}>
           <object data={require("./icons/caret-left.svg")} name={"Back"}/>

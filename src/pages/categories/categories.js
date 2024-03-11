@@ -12,7 +12,7 @@ async function Categories (props) {
 
   return (
     <>
-      <Header/>
+      <Header {...props}/>
 
       {/* {Breadcrumbs({ name: "Categories", route: "/categories" }, params)} */}
 

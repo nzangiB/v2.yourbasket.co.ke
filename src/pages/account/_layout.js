@@ -4,7 +4,7 @@ import { Header } from "../../components/header/header";
 export function Layout (props, children) {
   return (
     <>
-      <Header/>
+      <Header {...props}/>
       <div className="container">
         <main className="content">
           {children}

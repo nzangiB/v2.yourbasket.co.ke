@@ -11,7 +11,7 @@ async function Register (props) {
 
   return (
     <>
-      <NavHeader/>
+      <NavHeader {...props}/>
       <div className="container">
         <div className="content">
           {page === "verify-otp" && <RegistrationFormVerifyOtp/>}

@@ -3,7 +3,7 @@ import { KES } from "../../helpers/formatting";
 
 import placeholder from "../../assets/images/placeholder.png";
 
-export class OrderList extends Component {
+class OrderList extends Component {
   constructor (props) {
     super(props);
 
@@ -11,9 +11,15 @@ export class OrderList extends Component {
   }
 
   async data () {
-    const { getCart, ...props } = this.props;
+    let cart, props;
+    if (this.props.cart) {
+      ({ cart, ...props } = this.props);
+    } else {
+      const { getCart, ..._props } = this.props;
+      cart = await getCart();
+      props = _props;
+    }
 
-    const cart = await getCart();
     return { cart, ...props };
   }
 
@@ -22,9 +28,64 @@ export class OrderList extends Component {
 
     if (!cart.length) {
       return (
-        <p>Your cart is empty</p>
+        <div className="message">
+          <p className="text">Your cart is empty</p>
+        </div>
       );
     }
+
+    // const getProduct = async () => {
+    //   await DataService.getCart("cart")
+    //     .then((data) => {
+    //       setLoading(false);
+    //       const response = data?.data?.data;
+    //       let total = 0;
+    //       response.map((value) => {
+    //         const price = value.price * value.quantity;
+    //         total = total + price;
+    //       });
+    //       setTotal(total);
+    //       setCartData(data?.data?.data);
+    //     })
+    //     .catch((error) => {
+    //       const resMessage =
+    // 				(error.response && error.response.data && error.response.data.msg) ||
+    // 				error.message ||
+    // 				error.toString();
+    //       setLoading(false);
+    //     });
+    // };
+    //
+    // const getCartLocal = async () => {
+    //   let total = 0;
+    //   setLoading(false);
+    //   const response = HelperService.getLocalCart();
+    //   await Promise.all(
+    //     response.map(async (value, i) => {
+    //       const price = value.price * value.quantity;
+    //       total = total + price;
+    //       // get each product from db..
+    //       await DataService.getProductDetail(value.product_id, "")
+    //         .then((data) => {
+    //           if (data?.data?.category) {
+    //             response[i].Product = data?.data?.category;
+    //           }
+    //         })
+    //         .catch((error) => {});
+    //     })
+    //   );
+    //   setLoading(false);
+    //   setTotal(total);
+    //   setCartData(response);
+    // };
+    //
+    // const initCart = () => {
+    //   if (!auth) {
+    //     getCartLocal();
+    //   } else {
+    //     getProduct();
+    //   }
+    // };
 
     const getCartSize = () => cart.reduce((subTotal, item) => {
       subTotal += parseInt(item.quantity);
@@ -114,7 +175,7 @@ export class OrderList extends Component {
                       ? (
                         <div className={"quantity"}>
                           <span
-                            className={"text"}>{[item.quantity, disabled && "Items"].filter(Boolean).join(" ")}</span>
+	                          className={"text"}>{[item.quantity, disabled && "Items"].filter(Boolean).join(" ")}</span>
                         </div>
                       )
                       : (
@@ -147,3 +208,5 @@ export class OrderList extends Component {
     );
   }
 }
+
+export default OrderList;
