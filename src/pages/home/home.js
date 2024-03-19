@@ -1,4 +1,3 @@
-import { Nav } from "../../components/nav/nav";
 import { Hero } from "../../components/hero/hero";
 import { TodayDeals } from "../../components/deals/todayDeals";
 import { ClearanceDeals } from "../../components/deals/clearanceDeals";
@@ -17,54 +16,54 @@ async function Home (props) {
     <>
       <Header {...props}/>
 
-      <div class="container">
-        <aside class="aside aside__left">
-          <div class="ad-group --column">
-            <div class="ad" style="aspect-ratio: 160/600">
-              <img src="https://via.placeholder.com/160x600" class="img" alt="Ad"/>
+      <div className="container">
+        <aside className="aside aside__left">
+          <div className="ad-group --column">
+            <div className="ad" style="aspect-ratio: 160/600">
+              <img src={require("../../assets/images/ads/aside-banner-1.png")} className="img" alt="Ad"/>
             </div>
           </div>
         </aside>
 
-        <main class="content">
+        <main className="content">
           <Hero/>
           <TodayDeals/>
 
-          <div class="ad-group --row">
-            <div class="ad" style="aspect-ratio: 920/90">
-              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
+          <div className="ad-group --row">
+            <div className="ad" style="aspect-ratio: 920/90">
+              <img src={require("../../assets/images/ads/middle-banner-1.png")} className="img" alt="Ad"/>
             </div>
           </div>
 
           <ClearanceDeals/>
 
-          <div class="ad-group --row">
-            <div class="ad" style="aspect-ratio: 920/90">
-              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
+          <div className="ad-group --row">
+            <div className="ad" style="aspect-ratio: 920/90">
+              <img src={require("../../assets/images/ads/middle-banner-2.png")} className="img" alt="Ad"/>
             </div>
           </div>
 
           <CrazyOffers/>
 
-          <div class="ad-group --row">
-            <div class="ad" style="aspect-ratio: 920/90">
-              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
+          <div className="ad-group --row">
+            <div className="ad" style="aspect-ratio: 920/90">
+              <img src={require("../../assets/images/ads/middle-banner-3.png")} className="img" alt="Ad"/>
             </div>
           </div>
 
           <LatestProducts/>
 
-          <div class="ad-group --row">
-            <div class="ad" style="aspect-ratio: 920/90">
-              <img src="https://via.placeholder.com/920x90" class="img" alt="Ad"/>
+          <div className="ad-group --row">
+            <div className="ad" style="aspect-ratio: 920/90">
+              <img src={require("../../assets/images/ads/middle-banner-4.png")} className="img" alt="Ad"/>
             </div>
           </div>
         </main>
 
-        <aside class="aside aside__right">
-          <div class="ad-group --column">
-            <div class="ad" style="aspect-ratio: 160/600">
-              <img src="https://via.placeholder.com/160x600" class="img" alt="Ad"/>
+        <aside className="aside aside__right">
+          <div className="ad-group --column">
+            <div className="ad" style="aspect-ratio: 160/600">
+              <img src={require("../../assets/images/ads/aside-banner-2.png")} className="img" alt="Ad"/>
             </div>
           </div>
         </aside>
@@ -72,12 +71,12 @@ async function Home (props) {
 
       <ClearanceSale/>
 
-      {/* <div class="ad-group --row"> */}
-      {/*  <div class="ad" style="aspect-ratio: 728/90"> */}
-      {/*    <img src="https://via.placeholder.com/728x90" class="img" alt="Ad"/> */}
+      {/* <div className="ad-group --row"> */}
+      {/*  <div className="ad" style="aspect-ratio: 728/90"> */}
+      {/*    <img src="https://via.placeholder.com/728x90" className="img" alt="Ad"/> */}
       {/*  </div> */}
-      {/*  <div class="ad" style="aspect-ratio: 728/90"> */}
-      {/*    <img src="https://via.placeholder.com/728x90" class="img" alt="Ad"/> */}
+      {/*  <div className="ad" style="aspect-ratio: 728/90"> */}
+      {/*    <img src="https://via.placeholder.com/728x90" className="img" alt="Ad"/> */}
       {/*  </div> */}
       {/* </div> */}
 
