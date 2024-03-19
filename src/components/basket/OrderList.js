@@ -3,6 +3,8 @@ import { KES } from "../../helpers/formatting";
 
 import placeholder from "../../assets/images/placeholder.png";
 
+import "./OrderList.scss";
+
 class OrderList extends Component {
   constructor (props) {
     super(props);

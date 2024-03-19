@@ -1,6 +1,8 @@
 import { Component } from "@wearearchangel/handcrafted";
 import { KES } from "../../helpers/formatting";
 
+import "./OrderSummary.scss";
+
 class OrderSummary extends Component {
   constructor (props) {
     super(props);
