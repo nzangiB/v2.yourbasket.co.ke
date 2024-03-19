@@ -227,9 +227,9 @@ export class Categories extends Component {
   skeleton () {
     return (
       <div className="categories">
-        <div className="categories__all">
-          <div className="skeleton skeleton__categories"></div>
-        </div>
+        {/* <div className="categories__all"> */}
+        {/*  <div className="skeleton skeleton__categories"></div> */}
+        {/* </div> */}
         <div className="categories__list">
           <div className="skeleton skeleton__categories"></div>
         </div>
@@ -244,30 +244,30 @@ export class Categories extends Component {
     const { topCategories, categories } = this.state;
     return (
       <nav className="categories">
-        <div className="nav categories__all">
-          <ul className="sf-menu">
-            {categories.length > 0 && (
-              <li>
-                <a data-route="/categories">
-                  <img src={hamburger} alt="Hamburger Menu"/>
-                  <span>All Categories</span>
-                </a>
-                <ul>
-                  {categories.map(NavItem).filter(Boolean)}
-                </ul>
-              </li>
-            )}
-          </ul>
-        </div>
+        {/* <div className="nav categories__all"> */}
+        {/*  <ul className="sf-menu"> */}
+        {/*    {categories.length > 0 && ( */}
+        {/*      <li> */}
+        {/*        <a data-route="/categories"> */}
+        {/*          <img src={hamburger} alt="Hamburger Menu"/> */}
+        {/*          <span>All Categories</span> */}
+        {/*        </a> */}
+        {/*        <ul> */}
+        {/*          {categories.map(NavItem).filter(Boolean)} */}
+        {/*        </ul> */}
+        {/*      </li> */}
+        {/*    )} */}
+        {/*  </ul> */}
+        {/* </div> */}
 
         <div className="nav categories__list">
-          <ul className="sf-menu">
+          <ul className="sf-menu sf-navbar">
             <li>
               <a data-route="/product/filter/top-deals">
                 <span>Today's Deals</span>
               </a>
             </li>
-            {topCategories?.length > 0 && topCategories.map(NavItem).filter(Boolean)}
+            {categories?.length > 0 && categories.map(NavItem).filter(Boolean)}
           </ul>
         </div>
 
