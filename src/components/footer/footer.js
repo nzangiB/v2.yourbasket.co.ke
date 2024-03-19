@@ -11,6 +11,8 @@ import linkedin from "../../assets/icons/linkedin.svg";
 import instagram from "../../assets/icons/instagram.svg";
 
 import { Signup } from "../signup/signup";
+import DataService from "../../services/data.service";
+import { toast } from "../../plugins/react-toastify";
 
 import "./footer.scss";
 
@@ -119,16 +121,33 @@ function NavFooter () {
   );
 }
 
-function NavSocials () {
+async function NavSocials () {
+  const smLinks = await DataService.getSocialLinks().then((data) => {
+    return data?.data?.data;
+  }).catch((error) => {
+    const resMessage = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
+  });
   return (
     <nav className="footer__socials">
       <div className="socials__content">
         <h3 className="title">Connect With Us</h3>
         <div className="social-icons">
-          <a href="#"><img src={facebook} alt=""/></a>
-          <a href="#"><img src={twitter} alt=""/></a>
-          <a href="#"><img src={linkedin} alt=""/></a>
-          <a href="#"><img src={instagram} alt=""/></a>
+          <a href={smLinks?.facebook ? smLinks?.facebook : "#"} target="_blank">
+            <object data={require("./icons/facebook.svg")} name={"facebook"} type="image/svg+xml"/>
+          </a>
+          <a href={smLinks?.twitter ? smLinks?.twitter : "#"} target="_blank">
+            <object data={require("./icons/twitter.svg")} name={"twitter"} type="image/svg+xml"/>
+          </a>
+          <a href={smLinks?.instagram ? smLinks?.instagram : "#"} target="_blank">
+            <object data={require("./icons/instagram.svg")} name={"instagram"} type="image/svg+xml"/>
+          </a>
+          <a href={smLinks?.linkedin ? smLinks?.linkedin : "#"} target="_blank">
+            <object data={require("./icons/linkedin.svg")} name={"linkedin"} type="image/svg+xml"/>
+          </a>
+          <a href={smLinks?.tiktok ? smLinks?.tiktok : "#"} target="_blank">
+            <object data={require("./icons/tiktok.svg")} name={"tiktok"} type="image/svg+xml"/>
+          </a>
         </div>
       </div>
 

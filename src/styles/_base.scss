@@ -56,6 +56,10 @@ ul {
 
 a {
   text-decoration: none;
+
+  * {
+    pointer-events: none;
+  }
 }
 
 input, select, textarea, option {
