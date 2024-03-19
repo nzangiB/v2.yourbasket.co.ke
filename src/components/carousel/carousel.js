@@ -17,7 +17,8 @@ export function Slide (banner) {
   return (
     <a className="banner" href={href}>
       <div className="banner__img">
-        <img src={placeholder} data-flickity-lazyload={image} alt={banner.title} className="img"/>
+        <img src={image} alt={banner.title} className="img"/>
+        {/* <img src={placeholder} data-flickity-lazyload={image} alt={banner.title} className="img"/> */}
       </div>
       <div className="srt banner__text">
         <h4 className="">{banner.title}</h4>
@@ -55,9 +56,9 @@ class Carousel extends Component {
   }
 
   controller ({ component }) {
-    if (!component) return;
+    if (!component) component = document.getElementById(this.id);
     const Flickity = window.Flickity;
-    new Flickity(component, {
+    return new Flickity(component, {
       autoPlay: true,
       cellAlign: "left",
       imagesLoaded: true,
