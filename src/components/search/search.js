@@ -144,17 +144,20 @@ const sortProductByPrice = (e) => {
 };
 
 async function SearchFilters ({ cats, brand, filters, ...props }) {
-  const getSubCategoryFilters = (category) => {
+  const getSubCategoryFilters = (category, categoryParentSlug) => {
     return category.Categories && (
       <div className="options">
-        {category.Categories.map(category => (
-          <div className="option">
-            <div className="option__name">
-              {category.name}
+        {category.Categories.map(category => {
+          category.slug = categoryParentSlug + "/" + category.slug;
+          return (
+            <div className="option">
+              <a data-route={category.slug} className="option__name">
+                {category.name}
+              </a>
+              {getSubCategoryFilters(category, category.slug)}
             </div>
-            {getSubCategoryFilters(category)}
-          </div>
-        )).filter(Boolean)}
+          );
+        }).filter(Boolean)}
       </div>
     );
   };
@@ -169,14 +172,17 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
           <input type="text" placeholder="Search " value=""/>
         </div>
         <div className="options">
-          {cats.map((category) => (
-            <div className="option">
-              <div className="option__name">
-                {category.name}
+          {cats.map((category) => {
+            category.slug = "/categories/" + category.slug;
+            return (
+              <div className="option">
+                <a data-route={category.slug} className="option__name">
+                  {category.name}
+                </a>
+                {getSubCategoryFilters(category, category.slug)}
               </div>
-              {getSubCategoryFilters(category)}
-            </div>
-          )).filter(Boolean)}
+            );
+          }).filter(Boolean)}
         </div>
       </section>
     </section>
@@ -340,7 +346,9 @@ class SearchResults extends Component {
 }
 
 export class Search extends Component {
-  data = async (props) => {
+  data = async () => {
+    const props = this.props;
+
     let queryData;
     let cats, masterCatData;
     await DataService.getAllCategory("0").then((data) => {

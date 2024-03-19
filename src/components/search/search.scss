@@ -128,7 +128,6 @@
         }
 
         &:not(:last-of-type) {
-
           .option__name,
           &:not(:has(.option__name)) {
             padding-bottom: .25rem;
@@ -158,6 +157,14 @@
             &:before {
               background-color: currentColor;
             }
+          }
+        }
+
+        .option__name.selected {
+          color: var(--color-type-8);
+
+          &:before {
+            background-color: currentColor;
           }
         }
       }
