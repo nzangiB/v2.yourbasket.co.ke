@@ -3,10 +3,11 @@ const path = require("path");
 const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniSvgToDataURIPlugin = require("mini-svg-data-uri");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 const plugins = [
   new webpack.DefinePlugin({
@@ -22,13 +23,18 @@ const plugins = [
     }
   }),
   new MiniCssExtractPlugin({
-    filename: "styles/[name].[contenthash].css", chunkFilename: "styles/[id].css"
+    filename: "styles/[name].[contenthash].css",
+    chunkFilename: "styles/[id].css"
   }),
-  new HtmlWebpackPlugin({
-    filename: "index.html", template: "./index.html.js", cache: false
-  }),
-  new HtmlWebpackPlugin({
-    filename: "error.html", template: "./error.html.js", cache: false
+  // new HTMLWebpackPlugin({
+  //   filename: "index.html",
+  //   template: "./index.html.js",
+  //   cache: false
+  // }),
+  new HTMLWebpackPlugin({
+    filename: "error.html",
+    template: "./error.html.js",
+    cache: false
   })
 ];
 
@@ -38,24 +44,49 @@ module.exports = (env, argv) => {
 
   const configDefault = {
     context: path.join(__dirname, "src"),
-    entry: ["./scripts/main.js", "./styles/main.scss"],
+    entry: {
+      main: {
+        import: ["./scripts/main.js", "./styles/main.scss"],
+        dependOn: "vendor"
+      },
+      vendor: ["jquery"]
+    },
     module: {
       rules: [
         {
-          test: /\.(m?js|jsx)$/,
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
           include: path.resolve(__dirname, "src"),
           exclude: /node_modules/,
-          use: "babel-loader"
+          use: {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true
+            }
+          }
+        },
+        {
+          test: /\.(htm|html)$/,
+          use: ["html-loader"]
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
-          type: "asset/resource",
+          type: "asset",
           generator: { filename: "fonts/[name].[contenthash][ext]" }
         },
         {
-          test: /\.(png|svg|jpe?g|webp|gif|ico)$/i,
-          type: "asset/resource",
+          test: /\.(png|jpe?g|webp|gif|ico)$/i,
+          type: "asset",
           generator: { filename: "images/[name].[contenthash][ext]" }
+        },
+        {
+          test: /\.svg/,
+          type: "asset/inline",
+          generator: {
+            dataUrl: content => {
+              content = content.toString();
+              return MiniSvgToDataURIPlugin(content);
+            }
+          }
         },
         {
           test: /\.(sa|sc|c)ss$/i,
@@ -76,6 +107,8 @@ module.exports = (env, argv) => {
     },
     target: "web",
     resolve: {
+      preferRelative: true,
+      extensions: [".js", ".jsx", ".module.scss"],
       fallback: {
         http: require.resolve("stream-http")
       },
@@ -104,30 +137,52 @@ module.exports = (env, argv) => {
         hot: true
       },
       optimization: {},
-      plugins: plugins.concat([])
+      plugins: plugins.concat([
+        new HTMLWebpackPlugin({
+          template: "./index.html.js",
+          favicon: "./favicon.ico",
+          manifest: "./manifest.json",
+          cache: false
+        })
+      ])
     },
     production: {
       mode: "production",
       optimization: {
         minimize: true,
-        minimizer: [new TerserPlugin({
-          parallel: true,
-          terserOptions: {
-            format: {
-              comments: false
+        minimizer: [
+          new CssMinimizerPlugin(),
+          new TerserPlugin({
+            // parallel: true,
+            terserOptions: {
+              format: {
+                comments: false
+              },
+              mangle: false,
+              keep_classnames: true,
+              keep_fnames: true,
+              // browser fixes
+              ie8: true,
+              safari10: true
             },
-            mangle: false,
-            keep_classnames: true,
-            keep_fnames: true,
-            // browser fixes
-            ie8: true,
-            safari10: true
-          },
-          extractComments: false
-        }), "...", new CssMinimizerPlugin()],
+            extractComments: false
+          }),
+          new HTMLWebpackPlugin({
+            template: "./index.html.js",
+            favicon: "./favicon.ico",
+            manifest: "./manifest.json",
+            minify: {
+              removeAttributeQuotes: true,
+              removeComments: true,
+              collapseWhitespace: false,
+              cache: false
+            }
+          })
+        ],
         usedExports: true
       },
-      plugins: plugins.concat([// new WorkboxPlugin.GenerateSW({
+      plugins: plugins.concat([
+        // new WorkboxPlugin.GenerateSW({
         //   clientsClaim: true,
         //   skipWaiting: true
         // })

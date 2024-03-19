@@ -60,7 +60,8 @@
     "deploy": "webpack --mode=production",
     "release:major": "npm version major",
     "release:minor": "npm version minor",
-    "release:patch": "npm version patch"
+    "release:patch": "npm version patch",
+    "prelease": "npm version prerelease"
   },
   "browserslist": {
     "production": [
