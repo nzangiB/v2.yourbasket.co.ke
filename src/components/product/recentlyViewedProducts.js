@@ -10,7 +10,7 @@ export async function RecentlyViewedProducts ({ product }) {
     <div className="deals-grid deals-recommended">
       <header className="deals__header">
         <div className="deals__title">
-          <h3 class={"title"}>Recently Viewed</h3>
+          <h3 className={"title"}>Recently Viewed</h3>
         </div>
       </header>
 

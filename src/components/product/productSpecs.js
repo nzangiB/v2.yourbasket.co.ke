@@ -1,5 +1,7 @@
 import { useState } from "../../plugins/react";
 
+import "./productSpecs.scss";
+
 export function ProductSpecs ({ size, color, variant }) {
   // const [size, setSize] = useState(props.size);
   // const [color, setColor] = useState(props.colors[0]);

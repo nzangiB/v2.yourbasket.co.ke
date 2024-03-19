@@ -5,6 +5,8 @@ import DataService from "../../services/data.service";
 
 import { ProductGroup } from "./productCards";
 
+import "./relatedProducts.scss";
+
 export class RelatedProducts extends Component {
   async data () {
     const { product } = this.props;

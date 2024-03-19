@@ -7,6 +7,8 @@ import { ProductDetails } from "./productDetails";
 import { RecentlyViewedProducts } from "./recentlyViewedProducts";
 import { MoreProductsFromSeller } from "./moreProductsFromSeller";
 
+import "./productPage.scss";
+
 export class ProductPage extends Component {
   async data () {
     const { params } = this.props;
