@@ -1,14 +1,25 @@
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
 body {
   font: 400 var(--font-variant-6);
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: "slnt" 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   color: var(--theme-color);
   background: var(--theme-background);
   font-size: var(--font-type-1);
-  min-height: -webkit-fill-available;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  min-height: fit-content;
   position: relative;
 }
 
@@ -47,8 +58,10 @@ a {
   text-decoration: none;
 }
 
-textarea {
+input, select, textarea, option {
   font: inherit;
+  box-sizing: border-box;
+  padding: 0;
 }
 
 address {
