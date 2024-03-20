@@ -9,8 +9,6 @@ import { Layout } from "./layout";
 
 // routes
 import Home from "../pages/home/home";
-import Cart from "../pages/cart";
-import Checkout from "../pages/checkout";
 import Products from "../pages/products";
 import Account from "../pages/account/account";
 import Login from "../pages/login";
