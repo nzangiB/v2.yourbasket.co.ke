@@ -39,27 +39,24 @@
 
 .product-group {
   padding-inline: 20px;
+  container: productGroup / inline-size;
 
   .product-cards {
-    //margin-left: -5px;
-    //width: calc(100% + 5px);
-
     &:not(.flickity-enabled) {
       display: grid;
+      grid-template-columns: repeat(var(--product-group-cards), minmax(144px, 1fr));
       gap: 10px;
 
-      @include breakpoint.phablet {
-        @include breakpoint.laptop {
-          grid-template-columns: repeat(4, minmax(144px, 1fr));
-        }
-
-        @include breakpoint.laptop-only {
-          grid-template-columns: repeat(4, minmax(144px, 1fr));
-        }
+      @container productGroup (min-width: 800px) {
+        --product-group-cards: 4;
       }
 
-      @include breakpoint.mobile-only {
-        grid-template-columns: repeat(2, minmax(144px, 1fr));
+      @container productGroup (min-width: 400px) {
+        --product-group-cards: 3;
+      }
+
+      @container productGroup (max-width: 400px) {
+        --product-group-cards: 2;
       }
 
       .product-card-container {
@@ -71,29 +68,19 @@
 
   .product-card {
     &-container {
-      //min-width: 250px;
       padding-inline: 5px;
-      //margin-bottom: 10px;
+      width: calc(100% / var(--product-group-cards));
 
-      @include breakpoint.phablet {
-        @include breakpoint.laptop {
-          //width: calc(25% - 10px);
-          width: 25%;
-        }
-
-        @include breakpoint.laptop-only {
-          //width: calc(33.3333% - 10px);
-          width: 33.3333%;
-        }
+      @container productGroup (min-width: 800px) {
+        --product-group-cards: 4;
       }
 
-      @include breakpoint.mobile-only {
-        //width: calc(50% - 10px);
-        width: 50%;
+      @container productGroup (min-width: 400px) {
+        --product-group-cards: 3;
       }
 
-      &:last-child {
-        //padding-right: 20px;
+      @container productGroup (max-width: 400px) {
+        --product-group-cards: 2;
       }
     }
   }
