@@ -2,8 +2,6 @@ import Layout from "./_layout";
 import Products from "./products";
 import Product from "./product";
 
-import "./account.scss";
-
 const routes = [
   {
     path: "/products",
