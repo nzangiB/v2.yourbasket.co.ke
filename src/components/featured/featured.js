@@ -76,7 +76,7 @@ export class FeaturedBrands extends Component {
           </div>
         </div>
 
-        <div className="featured__gallery" data-simplebar>
+        <div className="featured__gallery">
           {brands.length ? <Brands brands={brands}/> : "No brands found"}
         </div>
       </div>
@@ -84,8 +84,7 @@ export class FeaturedBrands extends Component {
   }
 }
 
-export function FeaturedText (props) {
-  const { banners } = props;
+export function FeaturedText ({ banners }) {
   return `
         <div class="featured">
             <div class="featured__image">
@@ -159,11 +158,10 @@ export function FeaturedText (props) {
 
 export function Featured (props) {
   const hasText = props.hasText || false;
-  let template = FeaturedBrands();
-  if (hasText) template += FeaturedText(props);
-  return `
-      <div class="featured">
-          ${template}
-      </div>
-  `;
+  return (
+    <div className="featured">
+      <FeaturedBrands/>
+      {hasText && <FeaturedText banners={props.banners}/>}
+    </div>
+  );
 }

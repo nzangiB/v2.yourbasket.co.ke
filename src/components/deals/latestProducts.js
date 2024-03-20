@@ -35,7 +35,7 @@ export class LatestProducts extends Component {
 
           <div className="deals__text">
             <a className="link --see-more" data-route="/product">
-							See all deals
+              <span>See all deals</span>
             </a>
           </div>
         </header>

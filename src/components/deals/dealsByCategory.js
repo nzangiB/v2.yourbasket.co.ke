@@ -6,6 +6,7 @@ import DataService from "../../services/data.service";
 import { ProductRow } from "../product/productCards";
 
 import "./deals.scss";
+import { Ad } from "../ad/ad";
 
 const topCategory = async ({ name, slug, id }) => {
   const auth = AuthService.getCurrentUser();
@@ -23,14 +24,14 @@ const topCategory = async ({ name, slug, id }) => {
   const { products } = data.data;
   return (
     <>
-      <div className="deals-list deals-on-${slug}">
+      <div className={"deals-list deals-on-" + slug}>
         <header className="deals__header">
           <div className="deals__title">
             <h3 className="title">{name}</h3>
           </div>
           <div className="deals__text">
-            <a className="link --see-more" data-route="/categories/${slug}?deals=true">
-							See more
+            <a className="link --see-more" data-route={"/categories/" + slug + "?deals=true"}>
+              <span>See more</span>
             </a>
           </div>
         </header>
@@ -41,9 +42,7 @@ const topCategory = async ({ name, slug, id }) => {
       </div>
 
       <div className="ad-group --row">
-        <div className="ad" style="aspect-ratio: 920/90">
-          <img src="https://via.placeholder.com/920x90" className="img" alt="Ad"/>
-        </div>
+        <Ad width={920} height={90}/>
       </div>
     </>
   );

@@ -14,27 +14,15 @@
 
 .featured__gallery {
   padding: 20px;
+  width: 100%;
+  overflow-x: scroll;
+  scrollbar-width: none;
 
-  .simplebar-track {
-    display: none;
-  }
-
-  &[data-simplebar] {
-    .brands {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .brand {
-      @include breakpoint.phablet {
-        flex: 0 0 240px;
-      }
-      @include breakpoint.mobile-only {
-        flex: 0 0 120px;
-      }
-    }
+  .brands {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    gap: 10px;
   }
 
   .brand {
@@ -43,6 +31,13 @@
     background-color: white;
     //position: relative;
     line-height: 0;
+
+    @include breakpoint.phablet {
+      flex: 0 0 240px;
+    }
+    @include breakpoint.mobile-only {
+      flex: 0 0 120px;
+    }
 
     .brand-image {
       width: 100%;

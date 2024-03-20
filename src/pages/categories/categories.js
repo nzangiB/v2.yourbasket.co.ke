@@ -5,6 +5,7 @@ import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
 import { Search } from "../../components/search/search";
 
 import "./categories.scss";
+import { Ad } from "../../components/ad/ad";
 
 async function Categories (props) {
   const { params, query } = props;
@@ -17,9 +18,7 @@ async function Categories (props) {
       {/* {Breadcrumbs({ name: "Categories", route: "/categories" }, params)} */}
 
       <div className="ad-group --row">
-        <div className="ad" style="aspect-ratio: 920/90">
-          <img src="https://via.placeholder.com/920x90" className="img" alt="Ad"/>
-        </div>
+        <Ad width={920} height={90}/>
       </div>
 
       <FeaturedBrands/>
@@ -31,9 +30,7 @@ async function Categories (props) {
 
         <aside className="aside aside__right">
           <div className="ad-group --column">
-            <div className="ad" style="aspect-ratio: 300/600">
-              <img src="https://via.placeholder.com/300x600" className="img" alt="Ad"/>
-            </div>
+            <Ad width={300} height={600}/>
           </div>
         </aside>
       </div>

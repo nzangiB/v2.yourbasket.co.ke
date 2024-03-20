@@ -35,7 +35,7 @@ export class ClearanceDeals extends Component {
 
           <div className="deals__text">
             <a className="link --see-more" data-route="/product/filter/new-arrivals">
-							See all deals
+              <span>See all deals</span>
             </a>
           </div>
         </header>

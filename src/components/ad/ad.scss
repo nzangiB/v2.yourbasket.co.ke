@@ -1,0 +1,28 @@
+.ad {
+  line-height: 0;
+
+  .img {
+    width: 100%;
+  }
+}
+
+.ad-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+
+  .ad-group {
+    padding: 0;
+  }
+
+  &.--column {
+    flex-direction: column;
+  }
+
+  &.--row {
+    flex-direction: row;
+  }
+}

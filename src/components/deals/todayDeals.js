@@ -29,25 +29,25 @@ export class TodayDeals extends Component {
     const { products } = this.state;
 
     return (
-      <div class="deals-grid deals-today">
-        <header class="deals__header">
-          <div class="deals__time">
-            <div class="deals__title">
+      <div className="deals-grid deals-today">
+        <header className="deals__header">
+          <div className="deals__time">
+            <div className="deals__title">
               <h3 className="title">Today's Deal</h3>
             </div>
-            <button class="deals__text">
+            <button className="deals__text">
               <span id="time"><CountDown/></span>
             </button>
           </div>
 
-          <div class="deals__text">
-            <a class="link --see-more" data-route="/product/filter/top-deals">
-							See all deals
+          <div className="deals__text">
+            <a className="link --see-more" data-route="/product/filter/top-deals">
+              <span>See all deals</span>
             </a>
           </div>
         </header>
 
-        <section class="deals__grid">
+        <section className="deals__grid">
           <ProductGroup products={products}/>
         </section>
       </div>

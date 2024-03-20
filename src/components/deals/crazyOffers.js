@@ -35,7 +35,7 @@ export class CrazyOffers extends Component {
 
           <div className="deals__text">
             <a className="link --see-more" data-route="/product/filter/best-sellers">
-							See all deals
+              <span>See all deals</span>
             </a>
           </div>
         </header>
