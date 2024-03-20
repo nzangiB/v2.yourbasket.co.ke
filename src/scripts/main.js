@@ -44,37 +44,6 @@ const routes = [
   //    data: {page: {title: 'Brand'}},
   //    template: Brands
   //  },
-  /**
-	 * 03
-	 * .0 Aspira Inactive
-	 * .1 Aspira Active
-	 * .2 Aspira Check Credit [Start]
-	 * .3 Aspira Check Credit [Input Number]
-	 * .4 Aspira Check Credit [Success]
-	 * .5 Aspira Check Credit [Error]
-	 * .6 Aspira Apply for Financing
-	 */
-  /**
-	 * 04 - Cart
-	 * .0 Cart Page
-	 * .1 Cart Page [Coupon]
-	 */
-  ...Cart,
-  /**
-	 * 05 - Checkout
-	 * .0 Checkout Page
-	 * .1 Checkout Page [Address]
-	 * .2 Checkout Page [Delivery - Door]
-	 * .3 Checkout Page [Delivery - Pickup]
-	 * .4 Checkout Page [Pay Now With Ipay]
-	 * .5 Checkout Page [Pay Now With Mpesa]
-	 * .6 Checkout Page [Pay On Delivery With Mpesa]
-	 * .7 Checkout Page [Partial Payment]
-	 * .8 Checkout Page [Buy Now Pay Later]
-	 * .9 Checkout Page [Edit]
-	 * .10 Checkout Page [Subscribe Disabled]
-	 */
-  ...Checkout,
   ...Account,
   {
     path: "/login",
