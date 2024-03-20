@@ -1,4 +1,4 @@
-import { Layout } from "./_layout";
+import Layout from "./_layout";
 
 import "./account.scss";
 

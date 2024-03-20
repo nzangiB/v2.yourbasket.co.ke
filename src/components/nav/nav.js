@@ -263,7 +263,7 @@ export class Categories extends Component {
         <div className="nav categories__list">
           <ul className="sf-menu sf-navbar">
             <li>
-              <a data-route="/product/filter/top-deals">
+              <a data-route="/products/filter/top-deals">
                 <span>Today's Deals</span>
               </a>
             </li>

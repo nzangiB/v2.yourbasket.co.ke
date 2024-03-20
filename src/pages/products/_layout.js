@@ -5,11 +5,7 @@ function Layout (props, children) {
   return (
     <>
       <Header {...props}/>
-      <div className="container">
-        <main className="content">
-          {children}
-        </main>
-      </div>
+      {children}
       <Footer/>
     </>
   );

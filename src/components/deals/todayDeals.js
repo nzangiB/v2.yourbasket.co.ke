@@ -41,7 +41,7 @@ export class TodayDeals extends Component {
           </div>
 
           <div className="deals__text">
-            <a className="link --see-more" data-route="/product/filter/top-deals">
+            <a className="link --see-more" data-route="/products/filter/top-deals">
               <span>See all deals</span>
             </a>
           </div>

@@ -9,13 +9,12 @@ import { Layout } from "./layout";
 
 // routes
 import Home from "../pages/home/home";
-import Product from "../pages/product/product";
 import Cart from "../pages/cart";
 import Checkout from "../pages/checkout";
-import Categories from "../pages/categories/categories";
+import Products from "../pages/products";
+import Account from "../pages/account/account";
 import Login from "../pages/login";
 import Register from "../pages/register";
-import Account from "../pages/account/account";
 
 // initialize defaults
 defaults.templateEngine = "react";
@@ -41,31 +40,12 @@ const routes = [
 	 * .4 Product Page > Modal > Offers Available [Card List]
 	 * .5 Product Page > Modal > Offers Available [Card Selected]
 	 */
-  {
-    path: "/product",
-    data: { page: { title: "Product" } },
-    template: Categories
-  },
-  {
-    path: "/product/search/:keyword?",
-    data: { page: { title: "Product by Search" } },
-    template: Categories
-  },
-  {
-    path: "/product/brand/:brand?",
-    data: { page: { title: "Product by Brand" } },
-    template: Categories
-  },
-  {
-    path: "/product/filter/:filter?",
-    data: { page: { title: "Product by Filter" } },
-    template: Categories
-  },
-  {
-    path: "/product/:id",
-    data: { page: { title: "Product by Id" } },
-    template: Product
-  },
+  ...Products,
+  //  {
+  //    path: "/brands/:brand?",
+  //    data: {page: {title: 'Brand'}},
+  //    template: Brands
+  //  },
   /**
 	 * 03
 	 * .0 Aspira Inactive
@@ -97,28 +77,7 @@ const routes = [
 	 * .10 Checkout Page [Subscribe Disabled]
 	 */
   ...Checkout,
-  /**
-	 * 06 TODO Categories
-	 * .0 Category [Hover]
-	 * .1 Category [Click View]
-	 * .2 Category [Click Filter View]
-	 * .3 Category [Click Subcategory View]
-	 */
-  {
-    path: "/categories{/:master}?{/:category}?{/:subcategory}?",
-    data: { page: { title: "Subcategory" } },
-    template: Categories
-  },
-  {
-    path: "/categories/:master/:category/:subcategory/:id",
-    data: { page: { title: "Category ID" } },
-    template: Product
-  },
-  //  {
-  //    path: "/brands/:brand?",
-  //    data: {page: {title: 'Brand'}},
-  //    template: Brands
-  //  },
+  ...Account,
   {
     path: "/login",
     data: { page: { title: "Login" } },
@@ -129,7 +88,6 @@ const routes = [
     data: { page: { title: "Register" } },
     template: Register
   },
-  ...Account,
   {
     path: "/support",
     data: { page: { title: "Support and Help" } },

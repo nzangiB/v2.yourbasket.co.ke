@@ -1,20 +1,16 @@
-import { Header } from "../../components/header/header";
-import { Footer } from "../../components/footer/footer";
 import { FeaturedBrands } from "../../components/featured/featured";
 import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
 import { Search } from "../../components/search/search";
-
-import "./categories.scss";
 import { Ad } from "../../components/ad/ad";
 
-async function Categories (props) {
+import "./products.scss";
+
+function Products (props) {
   const { params, query } = props;
   const filters = ["category", "brand", "price", "deals", "newArrival", "customerReview", "sellerScore"];
 
   return (
     <>
-      <Header {...props}/>
-
       {/* {Breadcrumbs({ name: "Categories", route: "/categories" }, params)} */}
 
       <div className="ad-group --row">
@@ -34,10 +30,8 @@ async function Categories (props) {
           </div>
         </aside>
       </div>
-
-      <Footer/>
     </>
   );
 }
 
-export default Categories;
+export default Products;
