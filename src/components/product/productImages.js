@@ -71,26 +71,26 @@ function ProductImageSlider ({ currentImage, slides }) {
     <div className="product-images__slider">
       <div style={sliderStyles}>
         <div style={slideStylesWithBackground}></div>
-        {slides.length > 1 && <div style={dotsContainerStyles}>
-          <button onClick={goToPrevious} style={{ ...arrowStyles, marginRight: "50px" }}>
-            <span>❰</span>
-          </button>
-          {slides.map((slide, slideIndex) => (
-            <div
-              style={{
-                ...dotStyle,
-                color: currentIndex === slideIndex ? "black" : "gray"
-              }}
-              key={slideIndex}
-              onClick={() => goToSlide(slideIndex)}
-            >
-              <span>●</span>
-            </div>
-          ))}
-          <button onClick={goToNext} style={{ ...arrowStyles, marginLeft: "50px" }}>
-            <span>❱</span>
-          </button>
-        </div>}
+        {/* {slides.length > 1 && <div style={dotsContainerStyles}> */}
+        {/*  <button onClick={goToPrevious} style={{ ...arrowStyles, marginRight: "50px" }}> */}
+        {/*    <span>❰</span> */}
+        {/*  </button> */}
+        {/*  {slides.map((slide, slideIndex) => ( */}
+        {/*    <div */}
+        {/*      style={{ */}
+        {/*        ...dotStyle, */}
+        {/*        color: currentIndex === slideIndex ? "black" : "gray" */}
+        {/*      }} */}
+        {/*      key={slideIndex} */}
+        {/*      onClick={() => goToSlide(slideIndex)} */}
+        {/*    > */}
+        {/*      <span>●</span> */}
+        {/*    </div> */}
+        {/*  ))} */}
+        {/*  <button onClick={goToNext} style={{ ...arrowStyles, marginLeft: "50px" }}> */}
+        {/*    <span>❱</span> */}
+        {/*  </button> */}
+        {/* </div>} */}
       </div>
     </div>
   );
@@ -129,7 +129,7 @@ export function ProductImages ({ product }) {
   return (
     <section className="product-images">
       <ProductImageSlider currentImage={currentImage} slides={slides}/>
-      <ProductImageThumbnails images={product.images} setCurrentImage={setCurrentImage}/>
+      {/* <ProductImageThumbnails images={product.images} setCurrentImage={setCurrentImage}/> */}
     </section>
   );
 }
