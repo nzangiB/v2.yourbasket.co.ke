@@ -50,7 +50,6 @@ function Otp ({ otpVerifiedEvent }) {
 
   return (
     <>
-      <ToastContainer/>
       <section className={"otp-form"}>
         <div className={"form-container"}>
           {/*    <object */}
