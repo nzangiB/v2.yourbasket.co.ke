@@ -106,8 +106,8 @@
       &:has(.option) {
         padding-block: 20px;
         max-height: 200px;
-        scrollbar-width: auto;
-        scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+        //scrollbar-width: auto;
+        //scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
         overflow: auto;
       }
 
