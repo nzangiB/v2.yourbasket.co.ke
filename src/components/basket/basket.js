@@ -4,9 +4,7 @@ import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 import HelperService from "../../services/helper.service";
 
-import "./basket.scss";
-
-import { MiniBasket } from "./MiniBasket";
+import MiniBasket from "./MiniBasket";
 
 export class Basket extends Component {
   constructor (props) {
@@ -16,7 +14,7 @@ export class Basket extends Component {
 
     this._state.step = this.getStep();
     this._state.setStep = this.setStep.bind(this);
-    this._state.cart = this.getCart.bind(this);
+    this._state.getCart = this.getCart.bind(this);
   }
 
   getStep () {
@@ -52,10 +50,7 @@ export class Basket extends Component {
     return { step };
   }
 
-  async template () {
-    // const { params, query } = this.props;
-    // const { cart, step, setStep } = this.state;
-
+  template () {
     const url = new URL(location.href);
     const basket = url.searchParams.get("basket");
     if (basket) {

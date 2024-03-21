@@ -1,4 +1,4 @@
-@use "../../styles/tools.effects";
+@use "../../../styles/tools.effects";
 
 .order__list {
   container: OrderList / inline-size;
@@ -97,8 +97,7 @@
       }
 
       @container OrderList (width > 400px) {
-        width: 12ch;
-
+        //width: 12ch;
         .title {
           font: 600 var(--font-variant-label);
         }
@@ -146,46 +145,61 @@
       order: 2;
       flex-grow: 0;
 
-      object {
-        width: 24px;
-        height: 24px;
-        padding: 4px;
-      }
-
-      .icon-minus {
-        /* minus */
+      .btn {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 0;
-        gap: 10px;
+        //gap: 10px;
 
         width: 24px;
         height: 24px;
 
-        background: var(--color-off-white);
+        span {
+          display: inline-block;
+          font: var(--font-variant-sub-title);
+          font-variant-numeric: tabular-nums;
+
+          width: 24px;
+          height: 24px;
+          line-height: 24px;
+        }
+
+        object {
+          width: 24px;
+          height: 24px;
+          padding: 4px;
+        }
+      }
+
+      &[data-quantity="0"] {
+        .btn {
+          background: var(--color-off-white);
+          color: var(--color-green);
+        }
+      }
+
+      &:not([data-quantity="0"]) {
+        .btn {
+          background: var(--color-green);
+          color: var(--color-off-white);
+        }
+      }
+
+      .icon-minus {
+        /* minus */
 
         /* Inside auto layout */
         flex: none;
         order: 0;
         flex-grow: 0;
-
       }
 
       .icon-plus {
         /* plus */
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        gap: 10px;
-
-        width: 24px;
-        height: 24px;
-
         background: var(--color-green);
+        color: var(--color-off-white);
 
         /* Inside auto layout */
         flex: none;

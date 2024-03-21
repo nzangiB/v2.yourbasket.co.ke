@@ -4,7 +4,7 @@ import PaymentMethodsList from "./PaymentMethodsList";
 
 import "./MiniBasketEdit.scss";
 
-async function MiniBasketEdit ({ cart, setStep }) {
+function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, setStep }) {
   const checkoutNowEvent = (e) => {
     setStep("checkout");
   };
@@ -13,13 +13,19 @@ async function MiniBasketEdit ({ cart, setStep }) {
     setStep("checkout-later");
   };
 
-  const cartExists = (await cart()).length;
+  if (loading) {
+    return (
+      <section className="mini-basket__edit">
+				Loading...
+      </section>
+    );
+  }
 
   return (
     <section className="mini-basket__edit">
-      <OrderList getCart={cart} disabled={false}/>
+      <OrderList {...{ cart, setCart, getCart, setStep }}/>
 
-      {cartExists && (
+      {cart.length > 0 && (
         <>
           <section className="payment">
             <div className="payment__methods">
@@ -28,7 +34,7 @@ async function MiniBasketEdit ({ cart, setStep }) {
               </div>
               <PaymentMethodsList/>
             </div>
-            <OrderSummary getCart={cart}/>
+            <OrderSummary {...{ subTotal }}/>
           </section>
 
           <section className="btn-group">
@@ -39,7 +45,7 @@ async function MiniBasketEdit ({ cart, setStep }) {
               <span>or</span>
             </div>
             <button className="btn --secondary" disabled={true} onClick={checkoutLaterEvent}>
-              <object data={require("./icons/calendar.svg")} name={"Checkout Later"}/>
+              <object data={require("../icons/calendar.svg")} name={"Checkout Later"}/>
               <span>Checkout Later</span>
             </button>
           </section>

@@ -1,7 +1,8 @@
-import { toast } from "../../plugins/react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import DataService from "../../services/data.service";
-import AuthService from "../../services/auth.service";
+import DataService from "../../../services/data.service";
+import AuthService from "../../../services/auth.service";
 
 function Otp ({ otpVerifiedEvent }) {
   const auth = AuthService.getCurrentUser();
@@ -50,6 +51,7 @@ function Otp ({ otpVerifiedEvent }) {
 
   return (
     <>
+      <ToastContainer/>
       <section className={"otp-form"}>
         <div className={"form-container"}>
           {/*    <object */}
