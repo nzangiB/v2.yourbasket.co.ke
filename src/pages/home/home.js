@@ -58,7 +58,7 @@ function Home (props) {
         </aside>
       </div>
 
-      <ClearanceSale/>
+      {/* <ClearanceSale/> */}
       <DealsByCategory/>
       <FeaturedBrands/>
 
