@@ -3,8 +3,15 @@ import OrderSummary from "../Orders/OrderSummary";
 import PaymentMethodsList from "../Payments/PaymentMethodsList";
 
 import "./MiniBasketEdit.scss";
+import { useEffect } from "react";
 
-function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, setStep }) {
+function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, step, setStep, ...props }) {
+  useEffect(() => {
+    const component = document.getElementById(props.id);
+    const scrollable = component?.querySelector(".mini-basket");
+    scrollable.scrollTop = 0;
+  }, [step]);
+
   const checkoutNowEvent = (e) => {
     setStep("checkout");
   };

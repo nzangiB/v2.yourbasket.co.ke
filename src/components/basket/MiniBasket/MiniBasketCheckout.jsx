@@ -9,7 +9,7 @@ import PaymentMethodsListDetailed from "../Payments/PaymentMethodsListDetailed";
 
 import "./MiniBasketCheckout.scss";
 
-function MiniBasketCheckout ({ loading, cart, getCart, subTotal, step, setStep, params, query }) {
+function MiniBasketCheckout ({ loading, params, query, cart, getCart, subTotal, step, setStep, ...props }) {
   const [buyNow, setBuyNow] = useState(false);
   const [cartData, setCartData] = useState([]);
   const [total, setTotal] = useState(0);
@@ -45,6 +45,12 @@ function MiniBasketCheckout ({ loading, cart, getCart, subTotal, step, setStep, 
       console.error(resMessage);
     });
   };
+
+  useEffect(() => {
+    const component = document.getElementById(props.id);
+    const scrollable = component?.querySelector(".mini-basket");
+    scrollable.scrollTop = 0;
+  }, [step]);
 
   useEffect(() => {
     const auth = AuthService.getCurrentUser();

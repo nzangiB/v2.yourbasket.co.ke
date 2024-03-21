@@ -1,9 +1,17 @@
+import { useEffect } from "react";
+
 import OrderList from "../Orders/OrderList";
 import OrderSummary from "../Orders/OrderSummary";
 
 import "./MiniBasketReceipt.scss";
 
-function MiniBasketReceipt ({ cart, setStep }) {
+function MiniBasketReceipt ({ cart, step, setStep, ...props }) {
+  useEffect(() => {
+    const component = document.getElementById(props.id);
+    const scrollable = component?.querySelector(".mini-basket");
+    scrollable.scrollTop = 0;
+  }, [step]);
+
   const continueShoppingEvent = () => {
     setStep("");
   };
