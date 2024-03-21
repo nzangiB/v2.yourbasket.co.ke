@@ -22,6 +22,8 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
   };
 
   const deleteItemFromCart = async ({ item }) => {
+    setLoading(true);
+
     try {
       const auth = AuthService.getCurrentUser();
       if (!auth) {
@@ -34,9 +36,10 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
       console.error(error);
       const resMessage = (error.response?.data?.msg) || error.message || error.toString();
       toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
-    } finally {
-      getCart();
     }
+
+    setLoading(false);
+    getCart();
   };
 
   const updateCartItem = async ({ item, index, quantity }) => {
@@ -108,24 +111,29 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
 
   const decreaseQuantityEvent = async (index) => {
     const item = cart[index];
-    const quantity = item.quantity - 1;
-    // if (quantity <= 0) deleteItemFromCart({ item });
+    const quantity = item.quantity > 0 ? item.quantity - 1 : 0;
+    if (quantity <= 0) await deleteItemFromCart({ item });
 
     // update quantity
     const newQuantities = [...quantities];
-    newQuantities[index] -= 1;
+    newQuantities[index] = quantity;
     setQuantities(newQuantities);
 
     // update item
-    const _cart = await Promise.all(
-      cart.map((item, i) => {
+    let _cart;
+    if (quantity === 0) {
+      _cart = cart.filter((item, i) => {
+        return index !== i;
+      });
+    } else {
+      _cart = cart.map((item, i) => {
         return index === i
           ? { ...item, quantity }
           : item;
-      })
-    );
+      });
+    }
     setCart(_cart);
-    updateQuantity(item.quantity - 1, item);
+    updateQuantity(quantity, item);
     // try {
     // 	const item = cart[index];
     // 	const quantity = item.quantity - 1;
@@ -154,7 +162,7 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
       })
     );
     setCart(_cart);
-    updateQuantity(item.quantity + 1, item);
+    updateQuantity(quantity, item);
     // try {
     //   const item = cart[index];
     //   const quantity = item.quantity + 1;

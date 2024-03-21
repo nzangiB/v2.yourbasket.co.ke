@@ -1,3 +1,4 @@
+import Layout from "./_layout";
 import { NavHeader } from "../components/nav/nav";
 import { LoginForm } from "../components/auth/LoginForm";
 
@@ -20,7 +21,7 @@ function SocialLoginForm (props) {
 
 async function Login (props) {
   return (
-    <>
+    <Layout>
       <NavHeader {...props}/>
       <div className="container">
         <main className="content">
@@ -28,8 +29,16 @@ async function Login (props) {
           {/* <SocialLoginForm/> */}
         </main>
       </div>
-    </>
+    </Layout>
   );
 }
 
-export default Login;
+const routes = [
+  {
+    path: "/login",
+    data: { page: { title: "Login" } },
+    template: Login
+  }
+];
+
+export default routes;

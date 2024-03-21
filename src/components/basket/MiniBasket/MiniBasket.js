@@ -10,11 +10,10 @@ import AuthService from "../../../services/auth.service";
 
 import "./MiniBasket.scss";
 
-function MiniBasket (props) {
+function MiniBasket ({ step, setStep, ...props }) {
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
-  const [step, setStep] = useState(props.step);
 
   const className = ["mini-basket", step && "--visible"].filter(Boolean).join(" ");
 
@@ -24,7 +23,7 @@ function MiniBasket (props) {
       setCart(response);
 
       const total = 0;
-      response.map((value) => {
+      response.forEach((value) => {
         const price = value.price * value.quantity;
         setSubTotal(total + price);
       });
@@ -96,7 +95,7 @@ function MiniBasket (props) {
     } else if (step?.startsWith("receipt")) {
       title = "Your Receipt";
       content = (
-        <MiniBasketReceipt {...props}/>
+        <MiniBasketReceipt {...{ ...props, step, setStep }}/>
       );
     } else {
       title = "Your Basket";
@@ -107,7 +106,7 @@ function MiniBasket (props) {
   }
 
   const backEvent = () => {
-    props.setStep("");
+    setStep("");
   };
 
   const closeEvent = () => {

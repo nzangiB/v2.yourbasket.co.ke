@@ -1,3 +1,4 @@
+import Layout from "./_layout";
 import { NavHeader } from "../components/nav/nav";
 import { RegistrationFormVerifyOtp } from "../components/auth/RegistrationFormVerifyOtp";
 import { RegistrationFormVendor } from "../components/auth/RegistrationFormVendor";
@@ -5,27 +6,67 @@ import { RegistrationFormUser } from "../components/auth/RegistrationFormUser";
 
 import "./register.scss";
 
-async function Register (props) {
-  const { params } = props;
-  const page = params.page || "user";
-
+async function RegisterUser (props) {
   return (
-    <>
+    <Layout>
       <NavHeader {...props}/>
       <div className="container">
         <div className="content">
-          {page === "verify-otp" && <RegistrationFormVerifyOtp/>}
-          {page === "vendor" && <RegistrationFormVendor/>}
-          {page === "user" && (
-            <div>
-              {await RegistrationFormUser()}
-              {/* <SocialLoginForm/> */}
-            </div>
-          )}
+          {await RegistrationFormUser()}
+          {/* <SocialLoginForm/> */}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
 
-export default Register;
+async function RegisterVendor (props) {
+  return (
+    <Layout>
+      <NavHeader {...props}/>
+      <div className="container">
+        <div className="content">
+          <RegistrationFormVendor/>
+        </div>
+      </div>
+    </Layout>
+  );
+}
+
+async function RegisterVerifyOTP (props) {
+  return (
+    <Layout>
+      <NavHeader {...props}/>
+      <div className="container">
+        <div className="content">
+          <RegistrationFormVerifyOtp/>
+        </div>
+      </div>
+    </Layout>
+  );
+}
+
+const routes = [
+  {
+    path: "/register{/:page}?",
+    data: { page: { title: "Register" } },
+    template: RegisterUser
+  },
+  {
+    path: "/register/user",
+    data: { page: { title: "Register" } },
+    template: RegisterUser
+  },
+  {
+    path: "/register/vendor",
+    data: { page: { title: "Register" } },
+    template: RegisterVendor
+  },
+  {
+    path: "/register/verify-otp",
+    data: { page: { title: "Register" } },
+    template: RegisterVerifyOTP
+  }
+];
+
+export default routes;

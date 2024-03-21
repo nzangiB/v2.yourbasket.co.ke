@@ -7,7 +7,7 @@ import { API_URL } from "../../../helpers/constants";
 import AuthService from "../../../services/auth.service";
 import DataService from "../../../services/data.service";
 
-import Otp from "./Otp";
+import Otp from "../../otp/Otp";
 import PaymentMethodsIPayForm from "./PaymentMethodsIPayForm";
 
 function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, total }) {

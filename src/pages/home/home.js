@@ -1,3 +1,4 @@
+import Layout from "./_layout";
 import { Hero } from "../../components/hero/hero";
 import { TodayDeals } from "../../components/deals/todayDeals";
 import { ClearanceDeals } from "../../components/deals/clearanceDeals";
@@ -6,17 +7,13 @@ import { LatestProducts } from "../../components/deals/latestProducts";
 import { ClearanceSale } from "../../components/deals/clearanceSale";
 import { FeaturedBrands } from "../../components/featured/featured";
 import { DealsByCategory } from "../../components/deals/dealsByCategory";
-import { Header } from "../../components/header/header";
-import { Footer } from "../../components/footer/footer";
 import { Ad } from "../../components/ad/ad";
 
 import "./home.scss";
 
 function Home (props) {
   return (
-    <>
-      <Header {...props}/>
-
+    <Layout>
       <div className="container">
         <aside className="aside aside__left">
           <div className="ad-group --column">
@@ -61,10 +58,21 @@ function Home (props) {
       {/* <ClearanceSale/> */}
       <DealsByCategory/>
       <FeaturedBrands/>
-
-      <Footer/>
-    </>
+    </Layout>
   );
 }
 
-export default Home;
+/**
+ * 01 Home
+ * .0 Landing Page
+ * .1 Landing Page [Search]
+ */
+const routes = [
+  {
+    path: "/",
+    data: { page: { title: "Online Shopping for Furniture, Appliances & More!" } },
+    template: Home
+  }
+];
+
+export default routes;

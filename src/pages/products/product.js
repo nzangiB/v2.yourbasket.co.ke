@@ -1,3 +1,4 @@
+import Layout from "./_layout";
 import { ProductPage } from "../../components/product/productPage";
 import { Ad } from "../../components/ad/ad";
 
@@ -5,7 +6,7 @@ import "./product.scss";
 
 async function Product (props) {
   return (
-    <>
+    <Layout>
       <div className="container">
         <div className="content">
           <ProductPage {...props}/>
@@ -14,7 +15,7 @@ async function Product (props) {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
 

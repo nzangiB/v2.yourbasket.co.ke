@@ -1,6 +1,6 @@
-import OrderList from "./OrderList";
-import OrderSummary from "./OrderSummary";
-import PaymentMethodsList from "./PaymentMethodsList";
+import OrderList from "../Orders/OrderList";
+import OrderSummary from "../Orders/OrderSummary";
+import PaymentMethodsList from "../Payments/PaymentMethodsList";
 
 import "./MiniBasketEdit.scss";
 
@@ -16,7 +16,9 @@ function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, setStep })
   if (loading) {
     return (
       <section className="mini-basket__edit">
-				Loading...
+        <div className="message">
+					Loading...
+        </div>
       </section>
     );
   }

@@ -1,3 +1,4 @@
+import Layout from "./_layout";
 import { FeaturedBrands } from "../../components/featured/featured";
 import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
 import { Search } from "../../components/search/search";
@@ -10,7 +11,7 @@ function Products (props) {
   const filters = ["category", "brand", "price", "deals", "newArrival", "customerReview", "sellerScore"];
 
   return (
-    <>
+    <Layout>
       {/* {Breadcrumbs({ name: "Categories", route: "/categories" }, params)} */}
 
       <div className="ad-group --row">
@@ -30,7 +31,7 @@ function Products (props) {
           </div>
         </aside>
       </div>
-    </>
+    </Layout>
   );
 }
 

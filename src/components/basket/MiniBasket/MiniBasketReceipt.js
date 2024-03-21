@@ -1,5 +1,5 @@
-import OrderList from "./OrderList";
-import OrderSummary from "./OrderSummary";
+import OrderList from "../Orders/OrderList";
+import OrderSummary from "../Orders/OrderSummary";
 
 import "./MiniBasketReceipt.scss";
 

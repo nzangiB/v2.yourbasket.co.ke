@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import DataService from "../../../services/data.service";
 import AuthService from "../../../services/auth.service";
 
-import OrderList from "./OrderList";
-import OrderSummary from "./OrderSummary";
-import PaymentMethodsListDetailed from "./PaymentMethodsListDetailed";
+import OrderList from "../Orders/OrderList";
+import OrderSummary from "../Orders/OrderSummary";
+import PaymentMethodsListDetailed from "../Payments/PaymentMethodsListDetailed";
 
 import "./MiniBasketCheckout.scss";
 
@@ -62,14 +62,12 @@ function MiniBasketCheckout ({ loading, cart, getCart, subTotal, step, setStep, 
     }
   }, []);
 
-  // console.log("cart", cart);
-  // console.log("cartData", cartData);
-  // console.log("total", total);
-
   if (loading) {
     return (
       <section className="mini-basket__checkout">
-				Loading...
+        <div className="message">
+					Loading...
+        </div>
       </section>
     );
   }
