@@ -52,7 +52,7 @@
         --product-group-cards: 4;
       }
 
-      @container productGroup (min-width: 400px) {
+      @container productGroup (min-width: 400px and max-width: 800px) {
         --product-group-cards: 3;
       }
 
@@ -76,7 +76,7 @@
         --product-group-cards: 4;
       }
 
-      @container productGroup (min-width: 400px) {
+      @container productGroup (min-width: 400px and max-width: 800px) {
         --product-group-cards: 3;
       }
 
