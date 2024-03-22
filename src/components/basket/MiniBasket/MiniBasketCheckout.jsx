@@ -14,6 +14,12 @@ function MiniBasketCheckout ({ loading, params, query, cart, getCart, subTotal, 
   const [cartData, setCartData] = useState([]);
   const [total, setTotal] = useState(0);
 
+  useEffect(() => {
+    const component = document.getElementById(props.id);
+    const scrollable = component?.querySelector(".mini-basket");
+    if (scrollable) scrollable.scrollTop = 0;
+  }, [step]);
+
   const getProduct = async () => {
     await DataService.getCart("cart").then((data) => {
       const response = data?.data?.data;
@@ -45,12 +51,6 @@ function MiniBasketCheckout ({ loading, params, query, cart, getCart, subTotal, 
       console.error(resMessage);
     });
   };
-
-  useEffect(() => {
-    const component = document.getElementById(props.id);
-    const scrollable = component?.querySelector(".mini-basket");
-    scrollable.scrollTop = 0;
-  }, [step]);
 
   useEffect(() => {
     const auth = AuthService.getCurrentUser();

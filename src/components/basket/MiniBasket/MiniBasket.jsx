@@ -69,7 +69,7 @@ function MiniBasket ({ step, setStep, ...props }) {
 
   useEffect(() => {
     getCart();
-  }, [subTotal]);
+  }, [step, subTotal]);
 
   let title, content;
   if (loading) {

@@ -9,7 +9,7 @@ function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, step, setS
   useEffect(() => {
     const component = document.getElementById(props.id);
     const scrollable = component?.querySelector(".mini-basket");
-    scrollable.scrollTop = 0;
+    if (scrollable) scrollable.scrollTop = 0;
   }, [step]);
 
   const checkoutNowEvent = (e) => {
@@ -17,7 +17,7 @@ function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, step, setS
   };
 
   const checkoutLaterEvent = (e) => {
-    setStep("checkout-later");
+    setStep("checkout/later");
   };
 
   if (loading) {

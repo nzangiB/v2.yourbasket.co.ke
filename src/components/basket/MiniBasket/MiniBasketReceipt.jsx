@@ -9,7 +9,7 @@ function MiniBasketReceipt ({ cart, step, setStep, ...props }) {
   useEffect(() => {
     const component = document.getElementById(props.id);
     const scrollable = component?.querySelector(".mini-basket");
-    scrollable.scrollTop = 0;
+    if (scrollable) scrollable.scrollTop = 0;
   }, [step]);
 
   const continueShoppingEvent = () => {
