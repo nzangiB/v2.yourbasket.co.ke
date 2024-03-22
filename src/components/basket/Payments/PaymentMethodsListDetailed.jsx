@@ -21,7 +21,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
   useEffect(() => {
     getUserDetail();
     if (params?.gateway) checkForGateway();
-    if (paymentMethod !== "") checkPaymentStatus();
+    if (paymentMethod === "Mpesa") checkPaymentStatus();
   }, [params, paymentMethod]);
 
   const getUserDetail = () => {
@@ -67,6 +67,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
         setOrderLoading(false);
         if (parseInt(data?.data?.ResultCode) === 0) {
           setStep("receipt");
+          return newSocket.close();
         } else {
           // console.error(data?.data?.ResultDesc);
           toast.error(data?.data?.ResultDesc, { position: toast.POSITION.TOP_RIGHT });
