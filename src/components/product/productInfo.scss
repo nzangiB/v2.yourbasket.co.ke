@@ -105,7 +105,8 @@
       ul {
         li {
           display: list-item;
-          list-style: inside;
+          list-style: unset;
+          margin: .5rem 1rem;
         }
       }
     }
