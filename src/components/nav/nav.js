@@ -91,6 +91,7 @@ async function Basket (props) {
   let cartCount = 0;
 
   if (auth) {
+    // getProduct
     await DataService.getCart("cart").then((data) => {
       cartCount = data?.data?.data.length;
     }).catch((error) => {
@@ -141,6 +142,7 @@ async function Support (props) {
         <li>
           <a data-route="/wishlist">
             <object
+              className={"icon"}
               data={require("../../assets/icons/wishlist.svg")}
               name={"Wishlist Icon"}
             />
