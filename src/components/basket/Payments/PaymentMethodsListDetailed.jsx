@@ -7,7 +7,7 @@ import { API_URL } from "../../../helpers/constants";
 import AuthService from "../../../services/auth.service";
 import DataService from "../../../services/data.service";
 
-import Otp from "../../otp/Otp";
+import Otp from "../Security/Otp";
 import PaymentMethodsIPayForm from "./PaymentMethodsIPayForm";
 
 function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, total }) {
@@ -248,7 +248,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
       <>
         <ToastContainer/>
         <div className={"payment__methods-list--detailed"}>
-          <div className={"list-item --selected"}>
+          <div className={"list-item"}>
             <div className={"list-item__title"}>
               <span>Pay on Delivery</span>
             </div>
@@ -333,9 +333,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
             {/* <object data={require("./icons/arrow-down.svg")} name={"Pay on Delivery"}/> */}
           </div>
           <div className={"list-item__content"}>
-            <p className={"text"}>
-							YourBasket will send you an OTP to verify your order before it's expedited.
-            </p>
+            <p className={"text"}>YourBasket will send you an OTP to verify your order before it's expedited.</p>
             <button className={"btn --primary"} onClick={payOnDeliveryEvent}>Pay on Delivery</button>
           </div>
         </div>
