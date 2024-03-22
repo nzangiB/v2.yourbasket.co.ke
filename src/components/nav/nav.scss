@@ -42,7 +42,7 @@
     padding: 8px;
   }
 
-  img {
+  img, object {
     @include breakpoint.phablet {
       max-width: 180px;
       height: 30px;

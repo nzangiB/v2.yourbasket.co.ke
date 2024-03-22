@@ -7,6 +7,7 @@ import MiniBasketReceipt from "./MiniBasketReceipt";
 import DataService from "../../../services/data.service";
 import HelperService from "../../../services/helper.service";
 import AuthService from "../../../services/auth.service";
+import { closeBasketEvent } from "../../../helpers/basket";
 
 import "./MiniBasket.scss";
 
@@ -105,10 +106,6 @@ function MiniBasket ({ step, setStep, ...props }) {
     }
   }
 
-  const backEvent = () => {
-    setStep("");
-  };
-
   const closeEvent = () => {
   };
 
@@ -121,7 +118,7 @@ function MiniBasket ({ step, setStep, ...props }) {
   return (
     <div className={className}>
       <header className="mini-basket__header">
-        <button className={"btn --icon icon-back"} onClick={backEvent}>
+        <button className={"btn --icon icon-back"} onClick={closeBasketEvent}>
           <object data={require("../icons/caret-left.svg")} name={"Back"}/>
         </button>
         <div className={"title"}>{title}</div>

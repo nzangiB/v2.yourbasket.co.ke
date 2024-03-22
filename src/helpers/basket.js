@@ -2,20 +2,12 @@ export const openBasketEvent = (event, step) => {
   event?.preventDefault();
 
   const basket = document.getElementById("basket");
-  basket.dataset.step = step;
-
-  const miniBasket = basket.querySelector(".mini-basket");
-  if (miniBasket.classList.contains("--visible")) {
-    miniBasket.classList.replace("--invisible", "--visible");
-  } else {
-    miniBasket.classList.add("--visible");
-  }
+  if (basket) basket.dataset.step = step;
 };
 
 export const closeBasketEvent = (event) => {
   event?.preventDefault();
 
   const basket = document.getElementById("basket");
-  const miniBasket = basket.querySelector(".mini-basket");
-  miniBasket.classList.replace("--visible", "--invisible");
+  if (basket) basket.dataset.step = "";
 };

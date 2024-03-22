@@ -1,3 +1,5 @@
+import { Component } from "@wearearchangel/handcrafted";
+
 import placeholder from "../../assets/images/placeholder.png";
 import logo from "../../assets/logos/logo-dark.svg";
 import search from "../../assets/icons/search.svg";
@@ -11,14 +13,17 @@ import "./nav.scss";
 
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
-import { Component } from "@wearearchangel/handcrafted";
 import HelperService from "../../services/helper.service";
+import { openBasketEvent } from "../../helpers/basket";
 
 function Logo () {
   return (
     <div className="logo">
       <a data-route="/">
-        <img className="img" src={logo} alt="company logo"/>
+        <object
+          data={require("../../assets/logos/logo-dark.svg")}
+          name={"Your Basket"}
+        />
       </a>
     </div>
   );
@@ -51,7 +56,10 @@ function Search (props) {
         onKeyUp={keyUpEvent}
       />
       <button className="button" type="submit">
-        <img src={search} alt="search icon"/>
+        <object
+          data={require("../../assets/icons/search.svg")}
+          name={"Search"}
+        />
       </button>
     </form>
   );
@@ -109,18 +117,6 @@ async function Support (props) {
     ? `https://api.yourbasket.co.ke/${isAuthenticated?.file_path}`
     : placeholder;
 
-  const openBasketEvent = (e) => {
-    const basket = document.getElementById("basket");
-    basket.dataset.step = "edit";
-
-    const miniBasket = basket.querySelector(".mini-basket");
-    if (miniBasket.classList.contains("--visible")) {
-      miniBasket.classList.replace("--invisible", "--visible");
-    } else {
-      miniBasket.classList.add("--visible");
-    }
-  };
-
   return (
     <div className="support-links">
       <ul>
@@ -134,14 +130,20 @@ async function Support (props) {
             )
             : (
               <a data-route="/login">
-                <img src={profile} alt="Profile Icon"/>
+                <object
+                  data={require("../../assets/icons/profile.svg")}
+                  name={"Profile Icon"}
+                />
                 <span className="srt">Sign In/ Register</span>
               </a>
             )}
         </li>
         <li>
           <a data-route="/wishlist">
-            <object data={wishlist} name={"Wishlist Icon"}/>
+            <object
+              data={require("../../assets/icons/wishlist.svg")}
+              name={"Wishlist Icon"}
+            />
             <span id={"wishlist-count"}>
               {await Wishlist(props)}
             </span>
@@ -149,8 +151,15 @@ async function Support (props) {
           </a>
         </li>
         <li>
-          <button className={"btn --icon"} onClick={openBasketEvent}>
-            <object className={"icon"} data={basket} name="Basket Icon"/>
+          <button
+            className={"btn --icon"}
+            onClick={e => openBasketEvent(e, "edit")}
+          >
+            <object
+              className={"icon"}
+              data={require("../../assets/icons/basket.svg")}
+              name="Basket Icon"
+            />
             <span id={"cart-count"}>
               {await Basket(props)}
             </span>
@@ -159,7 +168,11 @@ async function Support (props) {
         </li>
         <li>
           <a data-route="/support">
-            <img src={customer} alt="Customer Care Icon"/>
+            <object
+              className={"icon"}
+              data={require("../../assets/icons/customer_care.svg")}
+              name="Customer Care Icon"
+            />
             <span className="srt">Customer Care</span>
           </a>
         </li>
