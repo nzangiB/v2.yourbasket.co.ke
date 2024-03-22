@@ -35,7 +35,7 @@
         &__title {
           font: 600 var(--font-variant-caption);
           line-height: 16px;
-          height: 48px;
+          max-height: 48px;
           margin-bottom: 0;
         }
 
