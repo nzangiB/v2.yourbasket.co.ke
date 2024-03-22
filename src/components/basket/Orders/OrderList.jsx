@@ -230,12 +230,12 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
         )
         : (
           <header className="tabs">
-            <div className="tab">
-              <div className={"icon delete"}>
-                <object data={require("../icons/delete.svg")} name={"Icon Delete"}/>
-              </div>
-              <div className={"text"}>All</div>
-            </div>
+            {/* <div className="tab"> */}
+            {/*  <div className={"icon delete"}> */}
+            {/*    <object data={require("../icons/delete.svg")} name={"Icon Delete"}/> */}
+            {/*  </div> */}
+            {/*  <div className={"text"}>All</div> */}
+            {/* </div> */}
           </header>
         )
       }

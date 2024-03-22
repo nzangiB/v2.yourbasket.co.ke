@@ -51,7 +51,9 @@ function BasketTpl (props) {
     });
   }, [step]);
 
-  return (<MiniBasket step={step} setStep={setStep} {...props} />);
+  return (
+    <MiniBasket step={step} setStep={setStep} {...props} />
+  );
 }
 
 export default BasketTpl;
