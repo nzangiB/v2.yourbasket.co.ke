@@ -15,7 +15,7 @@ function Error404 (props) {
 
 const routes = [
   {
-    path: "/404",
+    path: "/*",
     data: { page: { title: "Page Not Found" } },
     template: Error404
   }

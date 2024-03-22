@@ -30,7 +30,7 @@ const topCategory = async ({ name, slug, id }) => {
             <h3 className="title">{name}</h3>
           </div>
           <div className="deals__text">
-            <a className="link --see-more" data-route={"/categories/" + slug + "?deals=true"}>
+            <a className="link --see-more" data-route={"/products/" + slug + "?deals=true"}>
               <span>See more</span>
             </a>
           </div>

@@ -15,7 +15,7 @@ export async function DealsForYou (props) {
                     <h3 class="title">BEST DEALS FOR YOU</h3>
                 </div>
                 <div class="deals__text">
-                    <a class="link --see-more" data-route="/categories/deals-for-you">
+                    <a class="link --see-more" data-route="/products/deals-for-you">
                         See more
                     </a>
                 </div>

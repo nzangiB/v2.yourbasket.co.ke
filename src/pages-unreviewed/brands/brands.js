@@ -1,7 +1,7 @@
 import { Header } from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
 import { Search } from "../../components/search/search";
-import { ProductRow } from "../../components/product/productRow";
+import { ProductRow } from "../../components/product/productCards";
 import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
 
 import "./brands.scss";
@@ -12,7 +12,7 @@ async function Brands (props) {
   return ` 
       ${Header()}
       
-      ${Breadcrumbs({ name: "Categories", route: "/categories" }, params)}
+      ${Breadcrumbs({ name: "Categories", route: "/products" }, params)}
 
       <div class="ad-group --row">
           <div class="ad" style="aspect-ratio: 920/90">

@@ -32,7 +32,7 @@ export function ProductCard ({ product }) {
     );
   }
 
-  const url = "/categories/" + product.mastercategory.slug + "/" + product.category.slug + "/" + product.subcategory.slug + "/" + product.slug;
+  const url = "/products/" + product.mastercategory.slug + "/" + product.category.slug + "/" + product.subcategory.slug + "/" + product.slug;
   const image = product.file_path
     ? `https://api.yourbasket.co.ke/${product.file_path}`
     : placeholder;

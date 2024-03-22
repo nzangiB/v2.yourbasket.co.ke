@@ -11,7 +11,7 @@ export function Slide (banner) {
   let href = "#";
   if (banner.url) {
     const url = new URL(banner.url);
-    href = new URL(url.hash.replace("#", "/categories"), location.origin);
+    href = new URL(url.hash.replace("#", "/products"), location.origin);
   }
 
   return (

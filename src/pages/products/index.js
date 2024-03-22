@@ -12,45 +12,35 @@ import Product from "./product";
  */
 const routes = [
   {
-    path: "/products",
-    data: { page: { title: "Product" } },
-    template: Products
-  },
-  {
-    path: "/products/search/:keyword?",
+    // path: "/#/product/search/:keyword?",
+    path: "/search/:keyword?",
     data: { page: { title: "Products by Search" } },
     template: Products
   },
   {
-    path: "/products/brand/:brand?",
+    // path: "/#/product/brand/:brand?",
+    path: "/products/brands/:brand?",
     data: { page: { title: "Products by Brand" } },
     template: Products
   },
   {
+    // path: "/#/product/filter/:filter?",
     path: "/products/filter/:filter?",
     data: { page: { title: "Products by Filter" } },
     template: Products
   },
-  // {
-  // 	path: '/products/:id',
-  // 	data: { page: { title: 'Products by Id' } },
-  // 	template: Product
-  // },
   {
-    path: "/categories{/:master}?{/:category}?{/:subcategory}?",
+    // path: "/#/:master{/:category}?{/:subcategory}?",
+    path: "/products/:master{/:category}?{/:subcategory}?",
     data: { page: { title: "Products by Category" } },
     template: Products
   },
   {
-    path: "/categories/:master/:category/:subcategory/:id",
-    data: { page: { title: "Product" } },
+    // path: "/#/:master/:category/:subcategory/:id",
+    path: "/products/:master/:category/:subcategory/:id",
+    data: { page: { title: "Product by Id" } },
     template: Product
   }
-  //  {
-  //    path: "/brands/:brand?",
-  //    data: {page: {title: 'Brand'}},
-  //    template: Brands
-  //  },
 ];
 
 export default routes;

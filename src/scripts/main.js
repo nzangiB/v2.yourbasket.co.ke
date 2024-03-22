@@ -11,10 +11,13 @@ import Account from "../pages/account/account";
 import Support from "../pages/support/support";
 import Login from "../pages/login";
 import Register from "../pages/register";
+import Fallback from "../pages/fallback";
 import Error from "../pages/error";
 
 // initialize defaults
 defaults.templateEngine = "react";
+defaults.hash = "#";
+defaults.useHash = true;
 
 const routes = [
   ...Home,
@@ -23,6 +26,7 @@ const routes = [
   ...Login,
   ...Register,
   ...Support,
+  ...Fallback,
   ...Error
 ];
 

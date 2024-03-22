@@ -27,14 +27,16 @@ function Logo () {
 function Search (props) {
   const keyUpEvent = (e) => {
     if (e.key === "Enter") {
-      location.href = `/search?q=${e.target.value}`;
+      // location.href = `/search?q=${e.target.value}`;
+      location.href = `/search/${e.target.value}`;
     }
   };
 
   const submitEvent = (e) => {
     e.preventDefault();
     const searchInput = e.target.querySelector("input[name=q]");
-    location.href = `/search?q=${searchInput.value}`;
+    // location.href = `/search?q=${searchInput.value}`;
+    location.href = `/search/${searchInput.value}`;
   };
 
   return (
@@ -169,7 +171,7 @@ async function Support (props) {
 function NavItem (item) {
   return (
     <li>
-      <a data-route={"/categories/" + item.slug}>
+      <a data-route={"/products/" + item.slug}>
         <span>{item.name}</span>
       </a>
       {item?.Categories?.length > 0 && (
@@ -248,7 +250,7 @@ export class Categories extends Component {
         {/*  <ul className="sf-menu"> */}
         {/*    {categories.length > 0 && ( */}
         {/*      <li> */}
-        {/*        <a data-route="/categories"> */}
+        {/*        <a data-route="/products"> */}
         {/*          <img src={hamburger} alt="Hamburger Menu"/> */}
         {/*          <span>All Categories</span> */}
         {/*        </a> */}

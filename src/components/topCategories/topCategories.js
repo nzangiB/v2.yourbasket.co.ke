@@ -10,7 +10,7 @@ function TopCategory (category) {
     : placeholder;
 
   return `
-    <a href="/categories/${category.slug}" class="gallery__item">
+    <a href="/products/${category.slug}" class="gallery__item">
         <div class="gallery__image">
             <img src=${image} class="w-100" alt="${category.name}" />
         </div>

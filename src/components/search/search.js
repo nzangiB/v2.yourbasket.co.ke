@@ -173,7 +173,7 @@ async function SearchFilters ({ cats, brand, filters, ...props }) {
         </div>
         <div className="options">
           {cats.map((category) => {
-            category.slug = "/categories/" + category.slug;
+            category.slug = "/products/" + category.slug;
             return (
               <div className="option">
                 <a data-route={category.slug} className="option__name">

@@ -15,7 +15,7 @@ export async function RecommendedDeals (props) {
                     <h3 class="title">RECOMMENDED FOR YOU</h3>
                 </div>
                 <div class="deals__text">
-                    <a class="link --see-more" data-route="/categories/deals-recommended">
+                    <a class="link --see-more" data-route="/products/deals-recommended">
                         See more
                     </a>
                 </div>

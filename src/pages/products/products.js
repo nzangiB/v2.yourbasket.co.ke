@@ -12,7 +12,7 @@ function Products (props) {
 
   return (
     <Layout>
-      {/* {Breadcrumbs({ name: "Categories", route: "/categories" }, params)} */}
+      {/* {Breadcrumbs({ name: "Categories", route: "/products" }, params)} */}
 
       <div className="ad-group --row">
         <Ad width={920} height={90}/>

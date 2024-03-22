@@ -15,7 +15,7 @@ export async function DealsOnElectronics (props) {
                     <h3 class="title">DEALS ON ELECTRONICS</h3>
                 </div>
                 <div class="deals__text">
-                    <a class="link --see-more" data-route="/categories/electronics?deals=true">
+                    <a class="link --see-more" data-route="/products/electronics?deals=true">
                         See more
                     </a>
                 </div>
