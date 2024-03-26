@@ -41,6 +41,8 @@
 .product-group {
   padding-inline: 20px;
   container: productGroup / inline-size;
+  width: calc(100% + 10px);
+  margin-inline: -5px;
 
   .product-cards {
     &:not(.flickity-enabled) {
