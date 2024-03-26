@@ -122,26 +122,33 @@
     font: var(--font-variant-label);
     cursor: pointer;
     height: 100%;
-    padding: 8px;
+    padding: 6px;
     gap: 0;
 
     img {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       aspect-ratio: 1/1;
+      object-fit: contain;
     }
 
     object {
       width: 20px;
       height: 20px;
       aspect-ratio: 1/1;
-      padding: 2px;
     }
 
     span {
-      display: inherit;
-      width: 20px;
-      height: 20px;
+      &:not(:empty) {
+        display: inherit;
+        align-items: center;
+        //padding: 0 8px;
+        min-width: 20px;
+        height: 20px;
+      }
+
+      //display: inherit;
+      //width: 20px;
       //padding: 5px;
 
       //@include breakpoint.laptop-only {
