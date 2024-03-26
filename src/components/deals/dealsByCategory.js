@@ -3,10 +3,10 @@ import { Component } from "@wearearchangel/handcrafted";
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
+import { Ad } from "../ad/ad";
 import { ProductRow } from "../product/productCards";
 
 import "./deals.scss";
-import { Ad } from "../ad/ad";
 
 const topCategory = async ({ name, slug, id }) => {
   const auth = AuthService.getCurrentUser();
@@ -22,6 +22,18 @@ const topCategory = async ({ name, slug, id }) => {
   }, userId);
 
   const { products } = data.data;
+  if (!products.length) return null;
+
+  const ad = { src: null, width: "920", height: "90" };
+  if (!ad.src) {
+    try {
+      ad.src = require("../../assets/images/ads/products/" + slug + ".png");
+    } catch (e) {
+      // console.error(e);
+      ad.src = `https://via.placeholder.com/${ad.width}x${ad.height}`;
+    }
+  }
+
   return (
     <>
       <div className={"deals-list deals-on-" + slug}>
@@ -42,7 +54,7 @@ const topCategory = async ({ name, slug, id }) => {
       </div>
 
       <div className="ad-group --row">
-        <Ad width={920} height={90}/>
+        <Ad src={ad.src} width={ad.width} height={ad.height}/>
       </div>
     </>
   );

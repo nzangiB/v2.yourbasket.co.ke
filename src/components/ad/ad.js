@@ -11,7 +11,7 @@ export function Ad ({ src, width, height }) {
   }
 
   return (
-    <div className="ad" style={{ aspectRatio: width / height }}>
+    <div className="ad" style={{ aspectRatio: `${width}/${height}`, maxWidth: `${width}px` }}>
       <img className="img" src={src} alt="Ad"/>
     </div>
   );
