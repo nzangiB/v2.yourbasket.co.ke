@@ -57,7 +57,6 @@ function Home (props) {
 
       {/* <ClearanceSale/> */}
       <DealsByCategory/>
-      <FeaturedBrands/>
     </Layout>
   );
 }

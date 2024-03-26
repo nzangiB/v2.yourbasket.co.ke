@@ -1,5 +1,4 @@
 import Layout from "./_layout";
-import { FeaturedBrands } from "../../components/featured/featured";
 import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
 import { Search } from "../../components/search/search";
 import { Ad } from "../../components/ad/ad";
@@ -17,8 +16,6 @@ function Products (props) {
       <div className="ad-group --row">
         <Ad width={920} height={90}/>
       </div>
-
-      <FeaturedBrands/>
 
       <div className="container">
         <main className="content">
