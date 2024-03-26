@@ -8,10 +8,11 @@ export class Basket extends Component {
     super(props);
 
     this.id = "basket";
+    this.root = null;
   }
 
   controller ({ component }) {
-    const root = createRoot(component);
-    root.render(<BasketTpl {...{ id: this.id, ...this.props }} />);
+    if (!this.root) this.root = createRoot(component);
+    this.root.render(<BasketTpl {...{ id: this.id, ...this.props }} />);
   }
 }
