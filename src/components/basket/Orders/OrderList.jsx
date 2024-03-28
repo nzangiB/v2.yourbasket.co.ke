@@ -321,7 +321,7 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
                     <div className={"btn-group"}>
                       {!disabled && (
                         <button
-                          className={"btn --icon icon-minus"}
+                          className={"btn --primary --icon icon-minus"}
                           onClick={() => decreaseQuantityEvent(index)}
                           disabled={loading || quantities[index] <= 0}
                         >
@@ -335,7 +335,7 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
                       </div>
                       {!disabled && (
                         <button
-                          className={"btn --icon icon-plus"}
+                          className={"btn --primary --icon icon-plus"}
                           onClick={() => increaseQuantityEvent(index)}
                           disabled={loading}
                           // disabled={quantities[index] >= 10}
@@ -352,6 +352,10 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
                           onClick={() => removeFromCartEvent(index)}
                           disabled={loading}
                         >
+                          {/* <object */}
+                          {/*  data={require('../icons/delete.svg')} */}
+                          {/*  name={'Remove from Cart'} */}
+                          {/* /> */}
                           <span>Remove</span>
                         </button>
                       )}

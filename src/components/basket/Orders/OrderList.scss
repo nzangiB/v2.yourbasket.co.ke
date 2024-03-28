@@ -161,6 +161,18 @@
         align-items: center;
         //gap: 10px;
 
+        &.--primary {
+          &[disabled] {
+            background: var(--color-off-white);
+            color: var(--color-green);
+          }
+
+          &:not([disabled]) {
+            background: var(--color-green);
+            color: var(--color-off-white);
+          }
+        }
+
         &.--icon {
           font: var(--font-variant-sub-title);
           font-variant-numeric: tabular-nums;
@@ -172,16 +184,6 @@
             width: 24px;
             height: 24px;
             line-height: 24px;
-          }
-
-          &[disabled] {
-            background: var(--color-off-white);
-            color: var(--color-green);
-          }
-
-          &:not([disabled]) {
-            background: var(--color-green);
-            color: var(--color-off-white);
           }
         }
 
@@ -198,13 +200,12 @@
         object {
           width: 24px;
           height: 24px;
-          padding: 4px;
+          //padding: 4px;
+          fill: currentColor;
         }
       }
 
       .icon-minus {
-        /* minus */
-
         /* Inside auto layout */
         flex: none;
         order: 0;
@@ -212,10 +213,6 @@
       }
 
       .icon-plus {
-        /* plus */
-        background: var(--color-green);
-        color: var(--color-off-white);
-
         /* Inside auto layout */
         flex: none;
         order: 2;
