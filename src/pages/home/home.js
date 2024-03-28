@@ -30,25 +30,37 @@ function Home (props) {
           <TodayDeals/>
 
           <div className="ad-group --row">
-            <Ad src={require("../../assets/images/ads/middle-banner-1.png")} width={920} height={90}/>
+            <Ad
+              src={require("../../assets/images/ads/middle-banner-1.png")}
+              redirectTo={"/products/filter/top-deals"}
+              width={920} height={90}/>
           </div>
 
           <ClearanceDeals/>
 
           <div className="ad-group --row">
-            <Ad src={require("../../assets/images/ads/middle-banner-2.png")} width={920} height={90}/>
+            <Ad
+              src={require("../../assets/images/ads/middle-banner-2.png")}
+              redirectTo={"/products/filter/new-arrivals"}
+              width={920} height={90}/>
           </div>
 
           <CrazyOffers/>
 
           <div className="ad-group --row">
-            <Ad src={require("../../assets/images/ads/middle-banner-3.png")} width={920} height={90}/>
+            <Ad
+              src={require("../../assets/images/ads/middle-banner-3.png")}
+              redirectTo={"/products/filter/best-sellers"}
+              width={920} height={90}/>
           </div>
 
           <LatestProducts/>
 
           <div className="ad-group --row">
-            <Ad src={require("../../assets/images/ads/middle-banner-4.png")} width={920} height={90}/>
+            <Ad
+              src={require("../../assets/images/ads/middle-banner-4.png")}
+              redirectTo={"/products"}
+              width={920} height={90}/>
           </div>
         </main>
 
@@ -56,6 +68,7 @@ function Home (props) {
           <div className="ad-group --column">
             <Ad
               src={require("../../assets/images/ads/aside-banner--easter-2.png")}
+              redirectTo={"/products/filter/best-sellers"}
               width={160}
               height={600}
             />

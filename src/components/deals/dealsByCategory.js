@@ -28,6 +28,7 @@ const topCategory = async ({ name, slug, id }) => {
   if (!ad.src) {
     try {
       ad.src = require("../../assets/images/ads/products/" + slug + ".png");
+      ad.redirectTo = "/products/" + slug + "?deals=true";
     } catch (e) {
       // console.error(e);
       ad.src = `https://via.placeholder.com/${ad.width}x${ad.height}`;
@@ -54,7 +55,7 @@ const topCategory = async ({ name, slug, id }) => {
       </div>
 
       <div className="ad-group --row">
-        <Ad src={ad.src} width={ad.width} height={ad.height}/>
+        <Ad src={ad.src} width={ad.width} height={ad.height} redirectTo={ad.redirectTo}/>
       </div>
     </>
   );
