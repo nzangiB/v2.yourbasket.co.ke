@@ -17,7 +17,11 @@ function Home (props) {
       <div className="container">
         <aside className="aside aside__left">
           <div className="ad-group --column">
-            <Ad src={require("../../assets/images/ads/aside-banner-1.png")} width={160} height={600}/>
+            <Ad
+              src={require("../../assets/images/ads/aside-banner--easter-1.png")}
+              width={160}
+              height={600}
+            />
           </div>
         </aside>
 
@@ -50,7 +54,11 @@ function Home (props) {
 
         <aside className="aside aside__right">
           <div className="ad-group --column">
-            <Ad src={require("../../assets/images/ads/aside-banner-2.png")} width={160} height={600}/>
+            <Ad
+              src={require("../../assets/images/ads/aside-banner--easter-2.png")}
+              width={160}
+              height={600}
+            />
           </div>
         </aside>
       </div>
