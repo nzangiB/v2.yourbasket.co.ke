@@ -3,7 +3,7 @@ import { KES } from "../../../helpers/formatting";
 
 import "./OrderSummary.scss";
 
-function OrderSummary ({ subTotal }) {
+function OrderSummary ({ loading, subTotal }) {
   const [subTotalTax, setSubTotalTax] = useState(0);
   const [coupon, setCoupon] = useState(0);
   const [deliveryFees, setDeliveryFees] = useState(0);

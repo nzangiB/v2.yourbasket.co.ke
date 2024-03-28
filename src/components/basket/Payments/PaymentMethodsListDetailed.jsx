@@ -1,6 +1,6 @@
 import io from "socket.io-client";
-import { useCallback, useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { API_URL } from "../../../helpers/constants";
@@ -11,6 +11,7 @@ import Otp from "../Security/Otp";
 import PaymentMethodsIPayForm from "./PaymentMethodsIPayForm";
 
 function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, total }) {
+  const form = useRef(null);
   const [paymentStep, setPaymentStep] = useState(step || "checkout");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [orderLoading, setOrderLoading] = useState(false);
@@ -18,15 +19,49 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
   const [coordinates, setCoordinates] = useState({ latitude: 0, longitude: 0 });
   const [data, setData] = useState([]);
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const auth = AuthService.getCurrentUser();
+
   useEffect(() => {
-    getUserDetail();
+    if (auth) getUserDetail();
     if (params?.gateway) checkForGateway();
-    if (paymentMethod === "Mpesa") checkPaymentStatus();
+    if (paymentMethod === "Mpesa") {
+      checkPaymentStatus();
+    }
   }, [params, paymentMethod]);
 
-  const getUserDetail = () => {
-    DataService.getUserDetail(data).then((data) => {
+  const onChangeFirstName = (e) => {
+    const data = e.target.value;
+    setFirstName(data);
+  };
+
+  const onChangeLastName = (e) => {
+    const data = e.target.value;
+    setLastName(data);
+  };
+
+  const onChangeEmail = (e) => {
+    const data = e.target.value;
+    setEmail(data);
+  };
+
+  const onChangePhone = (e) => {
+    const data = e.target.value;
+    setPhone(data);
+  };
+
+  const getUserDetail = async () => {
+    await DataService.getUserDetail(data).then((data) => {
       setData(data.data.data);
+      setFirstName(data.first_name);
+      setLastName(data.last_name);
+      setEmail(data.email);
+      setPhone(data.phone);
+
       setCoordinates(data.data.data);
     });
   };
@@ -79,8 +114,17 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 
   const requestOTP = async () => {
     setOrderLoading(true);
-    await DataService.sendOtp({ apikey: "yourbasket2023" }).then(() => {
-      // setOrderLoading(false);
+    const payload = auth
+      ? {
+        apikey: "yourbasket2023"
+      }
+      : {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone
+      };
+    await DataService.sendOtp(payload).then(() => {
       toast.success("OTP sent successfully!", { position: toast.POSITION.TOP_RIGHT });
       setPaymentStep("checkout/otp");
     }).catch((error) => {
@@ -230,115 +274,164 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 
   if (orderLoading) {
     return (
-      <>
-        <ToastContainer/>
-        <div className={"payment__methods-list--detailed"}>
-          <div className={"list-item --selected"}>
-            <div className={"list-item__title"}>
-              <span>Processing...</span>
-            </div>
+      <div className={"payment__methods-list--detailed"}>
+        <div className={"list-item --selected"}>
+          <div className={"list-item__title"}>
+            <span>Processing...</span>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
   if (paymentStep === "checkout/otp") {
     return (
-      <>
-        <ToastContainer/>
-        <div className={"payment__methods-list--detailed"}>
-          <div className={"list-item"}>
-            <div className={"list-item__title"}>
-              <span>Pay on Delivery</span>
-            </div>
-            <Otp otpVerifiedEvent={otpVerifiedEvent}/>
+      <div className={"payment__methods-list--detailed"}>
+        <div className={"list-item"}>
+          <div className={"list-item__title"}>
+            <span>Pay on Delivery</span>
           </div>
+          <Otp otpVerifiedEvent={otpVerifiedEvent} udPhone={phone}/>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
-      <ToastContainer/>
-      <div className={"payment__methods-list--detailed"}>
-        <div className={"list-item --selected"}>
-          <div className={"list-item__title"}>
-            <span>Pay Now</span>
-            {/* <object data={require("./icons/arrow-up.svg")} name={"Pay Now"}/> */}
+    <div className={"payment__methods-list--detailed"}>
+      <div className={"list-item --selected"}>
+        <div className={"list-item__title"}>
+          <span>Pay Now</span>
+          {/* <object data={require("./icons/arrow-up.svg")} name={"Pay Now"}/> */}
+        </div>
+        <form ref={form} className={"form details"}>
+          <div className="input-field --has-label">
+            <label className={"label"}>Choose a payment method</label>
+            <select
+              className={"input"}
+              name="payNow"
+              id="payNow"
+              defaultValue={paymentMethod}
+              onChange={changePaymentMethodEvent}
+            >
+              <option value="">Choose a payment method</option>
+              <option value="Mpesa">M-Pesa</option>
+              {/* <option value="Airtel Money">Airtel Money</option> */}
+              <option value="iPay">iPay</option>
+              <option value="Pesapal">PesaPal</option>
+              {/* <option value="Pesalink">Pesalink</option> */}
+              {/* <option value="Debit Credit Card">Debit/credit Card</option> */}
+              {/* <option value="Amex">Amex</option> */}
+            </select>
           </div>
-          <form className={"form details"}>
-            <div className="input-field --has-label">
-              <label className={"label"}>Choose a payment method</label>
-              <select
-                className={"input"}
-                name="payNow"
-                id="payNow"
-                defaultValue={paymentMethod}
-                onChange={changePaymentMethodEvent}
+          {paymentMethod === "Mpesa" && (
+            <>
+              <div className="input-field">
+                <input
+                  className={"input"}
+                  type="tel"
+                  placeholder={"Phone Number"}
+                  value={data.phone}
+                  disabled={true}
+                  readOnly={true}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={!paymentMethod || paymentMethod === "" || !data.phone}
+                className={"btn --primary"}
+                onClick={payNowEvent}
               >
-                <option value="">Choose a payment method</option>
-                <option value="Mpesa">M-Pesa</option>
-                {/* <option value="Airtel Money">Airtel Money</option> */}
-                <option value="iPay">iPay</option>
-                <option value="Pesapal">PesaPal</option>
-                {/* <option value="Pesalink">Pesalink</option> */}
-                {/* <option value="Debit Credit Card">Debit/credit Card</option> */}
-                {/* <option value="Amex">Amex</option> */}
-              </select>
-            </div>
-            {paymentMethod === "Mpesa" && (
-              <>
-                <div className="input-field">
-                  <input
-                    className={"input"}
-                    type="tel"
-                    placeholder={"Phone Number"}
-                    value={data.phone}
-                    disabled={true}
-                    readOnly={true}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={!paymentMethod || paymentMethod === ""}
-                  className={"btn --primary"}
-                  onClick={payNowEvent}
-                >
-                  <span>Pay Now</span>
-                </button>
-              </>
-            )}
-          </form>
-          <PaymentMethodsIPayForm/>
-        </div>
-        {/* <div className={"list-item --selected"}> */}
-        {/*  <div className={"list-item__title"}> */}
-        {/*    <span>Pay Later with Aspira</span> */}
-        {/*    /!* <object data={require("./icons/arrow-down.svg")} name={"Pay Later with Aspira"}/> *!/ */}
-        {/*  </div> */}
-        {/*  <div className={"list-item__content"}> */}
-        {/*    <p className={"text"}> */}
-        {/*			YourBasket is offering to give you flexibility in your spending. Simply checkout and our agents will */}
-        {/*			contact */}
-        {/*			you with more details on your order. Prices might change when paying with Aspira. */}
-        {/*    </p> */}
-        {/*    <button disabled={true} className={"btn --primary"} onClick={payLaterEvent}>Pay Later</button> */}
-        {/*  </div> */}
-        {/* </div> */}
-        <div className={"list-item --selected"}>
-          <div className={"list-item__title"}>
-            <span>Pay on Delivery</span>
-            {/* <object data={require("./icons/arrow-down.svg")} name={"Pay on Delivery"}/> */}
-          </div>
-          <div className={"list-item__content"}>
-            <p className={"text"}>YourBasket will send you an OTP to verify your order before it's expedited.</p>
-            <button className={"btn --primary"} onClick={payOnDeliveryEvent}>Pay on Delivery</button>
-          </div>
-        </div>
+                <span>Pay Now</span>
+              </button>
+            </>
+          )}
+        </form>
+        <PaymentMethodsIPayForm/>
       </div>
-    </>
+      {/* <div className={"list-item --selected"}> */}
+      {/*  <div className={"list-item__title"}> */}
+      {/*    <span>Pay Later with Aspira</span> */}
+      {/*    /!* <object data={require("./icons/arrow-down.svg")} name={"Pay Later with Aspira"}/> *!/ */}
+      {/*  </div> */}
+      {/*  <div className={"list-item__content"}> */}
+      {/*    <p className={"text"}> */}
+      {/*			YourBasket is offering to give you flexibility in your spending. Simply checkout and our agents will */}
+      {/*			contact */}
+      {/*			you with more details on your order. Prices might change when paying with Aspira. */}
+      {/*    </p> */}
+      {/*    <button disabled={true} className={"btn --primary"} onClick={payLaterEvent}>Pay Later</button> */}
+      {/*  </div> */}
+      {/* </div> */}
+      <div className={"list-item --selected"}>
+        <div className={"list-item__title"}>
+          <span>Pay on Delivery</span>
+          {/* <object data={require("./icons/arrow-down.svg")} name={"Pay on Delivery"}/> */}
+        </div>
+        <div className={"list-item__content"}>
+          <p className={"text"}>YourBasket will send you an OTP to verify your order before it's expedited.</p>
+        </div>
+        {!auth && (
+          <form className={"form details"}>
+            <div className="input-field">
+              <input
+                type="text"
+                className="input"
+                placeholder="First Name"
+                // disabled={isFieldDisabled}
+                defaultValue={firstName}
+                onChange={onChangeFirstName}
+                id="first-name"
+                required
+              />
+              <input
+                type="text"
+                className="input"
+                placeholder="Last Name"
+                // disabled={isFieldDisabled}
+                defaultValue={lastName}
+                onChange={onChangeLastName}
+                id="last-name"
+                required
+              />
+            </div>
+            <div className="input-field">
+              <input
+                type="tel"
+                className={"input"}
+                placeholder={"Phone Number"}
+                // disabled={isFieldDisabled}
+                defaultValue={phone}
+                onChange={onChangePhone}
+                id={"phone-number"}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <input
+                type="email"
+                className="input"
+                placeholder="Email"
+                // disabled={isFieldDisabled}
+                defaultValue={email}
+                onChange={onChangeEmail}
+                id="email"
+                required
+              />
+            </div>
+          </form>
+        )}
+        {firstName && lastName && phone && email && (
+          <div className={"list-item__content"}>
+            <button
+              className={"btn --primary"}
+              onClick={payOnDeliveryEvent}
+            >Pay on Delivery
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 

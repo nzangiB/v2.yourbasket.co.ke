@@ -5,10 +5,21 @@ import "react-toastify/dist/ReactToastify.css";
 import DataService from "../../../services/data.service";
 import AuthService from "../../../services/auth.service";
 
-function OTP ({ otpVerifiedEvent }) {
+function OTP ({ otpVerifiedEvent, udPhone }) {
   const [loading, setLoading] = useState(false);
+  const [phone, setPhone] = useState("");
 
   const auth = AuthService.getCurrentUser();
+  if (auth) {
+    setPhone(auth.phone);
+  } else {
+    setPhone(udPhone);
+  }
+
+  if (!phone) {
+    toast.error("Phone number is required!", { position: toast.POSITION.TOP_RIGHT });
+    return null;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +66,7 @@ function OTP ({ otpVerifiedEvent }) {
           <form className="form" onSubmit={handleSubmit}>
             <header>
               <h3 className="title">Enter OTP</h3>
-              <h4>The verification code sent <br/>to +{auth.phone?.slice(0, 3)}******{auth.phone?.slice(-3)}</h4>
+              <h4>The verification code sent <br/>to +{phone?.slice(0, 3)}******{phone?.slice(-3)}</h4>
             </header>
             <section>
               <div className={"input-field"}>

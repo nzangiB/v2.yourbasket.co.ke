@@ -12,7 +12,11 @@ export class Basket extends Component {
   }
 
   controller ({ component }) {
-    if (!this.root) this.root = createRoot(component);
+    // update dataset
+    component.dataset.step = this.props.step ?? "";
+
+    // create react root
+    if (this.root == null) this.root = createRoot(component);
     this.root.render(<BasketTpl {...{ id: this.id, ...this.props }} />);
   }
 }

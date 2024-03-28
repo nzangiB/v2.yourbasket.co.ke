@@ -1,11 +1,14 @@
+import { useEffect, useState } from "react";
+
 import OrderList from "../Orders/OrderList";
 import OrderSummary from "../Orders/OrderSummary";
 import PaymentMethodsList from "../Payments/PaymentMethodsList";
 
 import "./MiniBasketEdit.scss";
-import { useEffect } from "react";
 
-function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, step, setStep, ...props }) {
+function MiniBasketEdit ({ cart, setCart, getCart, subTotal, step, setStep, ...props }) {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const component = document.getElementById(props.id);
     const scrollable = component?.querySelector(".mini-basket");
@@ -20,6 +23,10 @@ function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, step, setS
     setStep("checkout/later");
   };
 
+  useEffect(() => {
+    getCart().then(() => { setLoading(false); });
+  }, [step, subTotal]);
+
   if (loading) {
     return (
       <section className="mini-basket__edit">
@@ -30,7 +37,7 @@ function MiniBasketEdit ({ loading, cart, setCart, getCart, subTotal, step, setS
     );
   }
 
-  return (
+  return !loading && (
     <section className="mini-basket__edit">
       <OrderList {...{ cart, setCart, getCart, setStep }}/>
 

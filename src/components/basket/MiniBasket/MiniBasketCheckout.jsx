@@ -9,7 +9,8 @@ import PaymentMethodsListDetailed from "../Payments/PaymentMethodsListDetailed";
 
 import "./MiniBasketCheckout.scss";
 
-function MiniBasketCheckout ({ loading, params, query, cart, getCart, subTotal, step, setStep, ...props }) {
+function MiniBasketCheckout ({ params, query, cart, getCart, subTotal, step, setStep, ...props }) {
+  const [loading, setLoading] = useState(true);
   const [buyNow, setBuyNow] = useState(false);
   const [cartData, setCartData] = useState([]);
   const [total, setTotal] = useState(0);
@@ -27,7 +28,7 @@ function MiniBasketCheckout ({ loading, params, query, cart, getCart, subTotal, 
 
       const total = 0;
       response.forEach(value => {
-        const price = value.price * value.quantity;
+        const price = parseFloat(value.price) * parseInt(value.quantity);
         setTotal(total + price);
       });
     }).catch((error) => {
@@ -43,7 +44,7 @@ function MiniBasketCheckout ({ loading, params, query, cart, getCart, subTotal, 
 
       const total = 0;
       response.forEach(value => {
-        const price = value.price * value.quantity;
+        const price = parseFloat(value.price) * parseInt(value.quantity);
         setTotal(total + price);
       });
     }).catch((error) => {
@@ -54,19 +55,17 @@ function MiniBasketCheckout ({ loading, params, query, cart, getCart, subTotal, 
 
   useEffect(() => {
     const auth = AuthService.getCurrentUser();
-    if (!auth) {
-      const redirectURL = new URL(window.location.href);
-      redirectURL.searchParams.set("basket", "checkout");
-      location.href = "/login?url=" + encodeURIComponent(redirectURL.toString());
-    } else {
+    if (auth) {
       if (query?.buynow) {
         setBuyNow(true);
         getTempProduct();
       } else {
         getProduct();
       }
+    } else {
+      getCart().then(() => { setLoading(false); });
     }
-  }, []);
+  }, [step, subTotal]);
 
   if (loading) {
     return (
@@ -78,7 +77,7 @@ function MiniBasketCheckout ({ loading, params, query, cart, getCart, subTotal, 
     );
   }
 
-  return (
+  return !loading && (
     <section className="mini-basket__checkout">
       <div className={"order"}>
         <OrderList {...{ cart, getCart, setStep, disabled: true, editable: true }}/>

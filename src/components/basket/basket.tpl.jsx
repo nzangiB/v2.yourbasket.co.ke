@@ -15,6 +15,28 @@ function BasketTpl (props) {
     component.dataset.step = step;
   }
 
+  const observer = new MutationObserver((mutations, observer) => {
+    for (const mutation of mutations) {
+      // console.log("mutation", mutation.target.dataset.step);
+      if (mutation.attributeName !== "data-step") continue;
+      const oldStep = mutation.oldValue;
+      const step = mutation.target.dataset.step;
+      // console.log("step changed from", oldStep, "to", step);
+      if (oldStep !== step) setStep(step);
+      observer.disconnect();
+    }
+  });
+
+  const observerOptions = {
+    attributes: true,
+    attributeOldValue: true,
+    subtree: true
+  };
+
+  const target = document.getElementById(props.id);
+  if (!target.dataset.step) target.dataset.step = "";
+  observer.observe(target, observerOptions);
+
   // useEffect(() => {
   //   const component = document.getElementById(props.id);
   //   setStep(component?.dataset?.step);
@@ -28,27 +50,15 @@ function BasketTpl (props) {
       setStep(basket);
       url.searchParams.delete("basket");
       history.pushState({}, "", url.href);
-      // props.render();
     }
   }, []);
 
   useEffect(() => {
-    const observer = new MutationObserver((mutations, observer) => {
-      for (const mutation of mutations) {
-        if (mutation.attributeName === "data-step") {
-          console.log("step changed");
-          const oldStep = mutation.oldValue;
-          const step = mutation.target.dataset.step;
-          if (oldStep !== step) setStep(step);
-          // if (oldStep !== step) props.render();
-          observer.disconnect();
-        }
-      }
-    });
-
-    observer.observe(document.getElementById(props.id), {
-      attributes: true
-    });
+    if (step === "") {
+      observer.observe(target, observerOptions);
+    } else {
+      observer.disconnect();
+    }
   }, [step]);
 
   return (

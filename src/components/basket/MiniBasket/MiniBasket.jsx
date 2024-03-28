@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 import MiniBasketEdit from "./MiniBasketEdit";
 import MiniBasketCheckout from "./MiniBasketCheckout";
@@ -7,69 +8,66 @@ import MiniBasketReceipt from "./MiniBasketReceipt";
 import DataService from "../../../services/data.service";
 import HelperService from "../../../services/helper.service";
 import AuthService from "../../../services/auth.service";
+
 import { closeBasketEvent } from "../../../helpers/basket";
 
 import "./MiniBasket.scss";
 
 function MiniBasket ({ step, setStep, ...props }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
 
   const className = ["mini-basket", step && "--visible"].filter(Boolean).join(" ");
 
   const getCartGlobal = async () => {
+    let total = 0;
     await DataService.getCart("cart").then((data) => {
       const response = data?.data?.data;
-      setCart(response);
-
-      const total = 0;
       response.forEach((value) => {
-        const price = value.price * value.quantity;
-        setSubTotal(total + price);
+        const price = parseFloat(value.price) * parseInt(value.quantity);
+        total = total + price;
       });
+      setSubTotal(total);
+      setCart(response);
     }).catch((error) => {
       const resMessage = (error.response?.data?.msg) || error.message || error.toString();
+      toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
       console.error(resMessage);
-    }).finally(() => {
-      setLoading(false);
     });
   };
 
   const getCartLocal = async () => {
-    const total = 0;
-    setLoading(false);
+    let total = 0;
     const response = HelperService.getLocalCart();
     await Promise.all(
       response.map(async (value, i) => {
-        const price = value.price * value.quantity;
-        setSubTotal(total + price);
+        const price = parseFloat(value.price) * parseInt(value.quantity);
+        total = total + price;
 
         // get each product from db.
         await DataService.getProductDetail(value.product_id, "").then((data) => {
-          if (data?.data?.category) {
-            response[i].Product = data?.data?.category;
-          }
+          if (data?.data?.category) response[i].Product = data?.data?.category;
         }).catch((error) => {});
       })
     );
-    setLoading(false);
+
     setSubTotal(total);
     setCart(response);
   };
 
-  const getCart = () => {
+  const getCart = async () => {
+    setLoading(true);
+
     const auth = AuthService.getCurrentUser();
     if (!auth) {
-      return getCartLocal();
+      getCartLocal();
     } else {
-      return getCartGlobal();
+      getCartGlobal();
     }
-  };
 
-  useEffect(() => {
-    getCart();
-  }, [step, subTotal]);
+    setLoading(false);
+  };
 
   let title, content;
   if (loading) {
@@ -80,18 +78,17 @@ function MiniBasket ({ step, setStep, ...props }) {
 					Loading...
         </div>
       </section>
-    )
-    ;
+    );
   } else {
     if (step?.startsWith("edit")) {
       title = "Your Basket";
       content = (
-        <MiniBasketEdit {...{ ...props, loading, getCart, cart, setCart, subTotal, step, setStep }}/>
+        <MiniBasketEdit {...{ ...props, loading, setLoading, getCart, cart, setCart, subTotal, step, setStep }}/>
       );
     } else if (step?.startsWith("checkout")) {
       title = "Your Basket";
       content = (
-        <MiniBasketCheckout {...{ ...props, loading, getCart, cart, subTotal, step, setStep }}/>
+        <MiniBasketCheckout {...{ ...props, loading, setLoading, getCart, cart, subTotal, step, setStep }}/>
       );
     } else if (step?.startsWith("receipt")) {
       title = "Your Receipt";
@@ -116,24 +113,27 @@ function MiniBasket ({ step, setStep, ...props }) {
   };
 
   return (
-    <div className={className}>
-      <header className="mini-basket__header">
-        <button className={"btn --icon icon-back"} onClick={closeBasketEvent}>
-          <object data={require("../icons/caret-left.svg")} name={"Back"}/>
-        </button>
-        <div className={"title"}>{title}</div>
-        {/* <button className={"btn --icon icon-close"} onClick={closeEvent}> */}
-        {/*  <object data={require("./icons/maximize.svg")} name={"Back"}/> */}
-        {/* </button> */}
-        {/* <button className={"btn --icon icon-minimize"} onClick={minimizeBasketEvent}> */}
-        {/*  <object data={require("./icons/minimize.svg")} name={"Back"}/> */}
-        {/* </button> */}
-        {/* <button className={"btn --icon icon-maximize"} onClick={maximizeBasketEvent}> */}
-        {/*  <object data={require("./icons/maximize.svg")} name={"Back"}/> */}
-        {/* </button> */}
-      </header>
-      {content}
-    </div>
+    <>
+      <ToastContainer/>
+      <div className={className}>
+        <header className="mini-basket__header">
+          <button className={"btn --icon icon-back"} onClick={closeBasketEvent}>
+            <object data={require("../icons/caret-left.svg")} name={"Back"}/>
+          </button>
+          <div className={"title"}>{title}</div>
+          {/* <button className={"btn --icon icon-close"} onClick={closeEvent}> */}
+          {/*  <object data={require("./icons/maximize.svg")} name={"Back"}/> */}
+          {/* </button> */}
+          {/* <button className={"btn --icon icon-minimize"} onClick={minimizeBasketEvent}> */}
+          {/*  <object data={require("./icons/minimize.svg")} name={"Back"}/> */}
+          {/* </button> */}
+          {/* <button className={"btn --icon icon-maximize"} onClick={maximizeBasketEvent}> */}
+          {/*  <object data={require("./icons/maximize.svg")} name={"Back"}/> */}
+          {/* </button> */}
+        </header>
+        {content}
+      </div>
+    </>
   );
 }
 

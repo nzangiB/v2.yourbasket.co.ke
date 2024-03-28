@@ -8,6 +8,15 @@ export const openBasketEvent = (event, step) => {
 
   const basket = document.getElementById("basket");
   if (basket) basket.dataset.step = step;
+
+  const miniBasket = basket?.querySelector(".mini-basket");
+  if (miniBasket) {
+    if (miniBasket.classList.contains("--visible")) {
+      miniBasket?.classList.replace("--invisible", "--visible");
+    } else {
+      miniBasket?.classList.add("--visible");
+    }
+  }
 };
 
 export const closeBasketEvent = (event) => {
@@ -15,6 +24,9 @@ export const closeBasketEvent = (event) => {
 
   const basket = document.getElementById("basket");
   if (basket) basket.dataset.step = "";
+
+  const miniBasket = basket.querySelector(".mini-basket");
+  miniBasket?.classList.replace("--visible", "--invisible");
 };
 
 export const addToWishlistEvent = (event, item) => {
