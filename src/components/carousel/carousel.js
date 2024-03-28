@@ -17,8 +17,8 @@ export function Slide (banner) {
   return (
     <a className="banner" href={href}>
       <div className="banner__img">
-        <img src={image} alt={banner.title} className="img"/>
-        {/* <img src={placeholder} data-flickity-lazyload={image} alt={banner.title} className="img"/> */}
+        {/* <img src={image} alt={banner.title} className="img"/> */}
+        <img src={placeholder} data-flickity-lazyload={image} alt={banner.title} className="img"/>
       </div>
       <div className="srt banner__text">
         <h4 className="">{banner.title}</h4>
@@ -43,30 +43,24 @@ class Carousel extends Component {
     }
 
     return (
-      <div className="carousel">
+      <>
         {banners.map(Slide).filter(Boolean)}
-      </div>
+      </>
     );
-
-    // return `
-    //   <div class="carousel" data-flickity='${JSON.stringify(props)}'>
-    //       ${banners.map(Slide).filter(Boolean).join("")}
-    //   </div>
-    // `;
   }
 
   controller ({ component }) {
     if (!component) component = document.getElementById(this.id);
     const Flickity = window.Flickity;
-    return new Flickity(component, {
+    new Flickity(component, {
       autoPlay: true,
       cellAlign: "left",
       imagesLoaded: true,
       // percentagePosition: true,
       lazyLoad: true,
       contain: true,
-      prevNextButtons: true,
-      pageDots: true
+      prevNextButtons: false
+      // pageDots: true,
       // watchCSS: true
     });
   }
