@@ -54,10 +54,10 @@ function BasketTpl (props) {
   }, []);
 
   useEffect(() => {
-    if (step === "") {
-      observer.observe(target, observerOptions);
-    } else {
+    if (step) {
       observer.disconnect();
+    } else {
+      observer.observe(target, observerOptions);
     }
   }, [step]);
 
