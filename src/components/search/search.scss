@@ -173,6 +173,7 @@
 }
 
 .search-results {
+  container: searchResults / inline-size;
   flex: 1;
 
   .results {
@@ -233,21 +234,73 @@
     }
 
     &__list {
+      .product-grid {
+        padding-inline: 20px;
+        container: productGrid / inline-size;
+        //width: calc(100% + 10px);
+        //margin-inline: -5px;
+      }
+
       .product-cards {
         display: grid;
+        grid-template-columns: repeat(var(--product-card-count), minmax(200px, 1fr));
         gap: 10px;
 
-        @include breakpoint.phablet {
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        @container productGrid (min-width: 800px) {
+          --product-card-count: 4;
         }
-        @include breakpoint.mobile-only {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        @container productGrid (min-width: 400px and max-width: 800px) {
+          --product-card-count: 3;
+        }
+
+        @container productGrid (max-width: 400px) {
+          --product-card-count: 2;
         }
       }
 
       .product-card-container {
         flex: unset;
         padding-right: 0;
+        display: flex;
+      }
+
+      .page-filters {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        //border-top: 1px solid rgba(0, 0, 0, 0.1);
+        //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        .page-filters__count {
+          font-size: var(--font-size-4);
+          color: var(--color-type-8);
+        }
+
+        .page-filters__pagination {
+          display: flex;
+          gap: 10px;
+
+          .btn-group {
+            gap: 5px;
+          }
+
+          .btn {
+            font-size: var(--font-size-4);
+            //border: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            background: white;
+            //line-height: 16px;
+
+            &:hover {
+              background: rgba(0, 0, 0, 0.1);
+            }
+          }
+
+          .page-filters__pagination--active {
+            background: rgba(0, 0, 0, 0.1);
+          }
+        }
       }
     }
   }

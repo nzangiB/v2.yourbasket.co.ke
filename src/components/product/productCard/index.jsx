@@ -1,10 +1,10 @@
-import placeholder from "../../assets/images/placeholder.png";
-import heart from "../../assets/icons/heart-small.svg";
+import placeholder from "../../../assets/images/placeholder.png";
+import heart from "../../../assets/icons/heart-small.svg";
 
-import "./productCard.scss";
+import "./index.scss";
 
-import HelperService from "../../services/helper.service";
-import { KES } from "../../helpers/formatting";
+import HelperService from "../../../services/helper.service";
+import { KES } from "../../../helpers/formatting";
 
 export function ProductCard ({ product }) {
   if (!product.slug) return "";
@@ -74,26 +74,26 @@ export function ProductCard ({ product }) {
           </div>
           <div className="rating">
             <span className="srt">4.19 out of 5 stars based on  reviews</span>
-            <span className="rating__stars rating__stars--filled">
-              <svg aria-hidden="true" className="icon is-medium">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-              </svg>
-              <svg aria-hidden="true" className="icon is-medium">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-              </svg>
-              <svg aria-hidden="true" className="icon is-medium">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-              </svg>
-              <svg aria-hidden="true" className="icon is-medium">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-              </svg>
-              <svg aria-hidden="true" className="icon is-medium">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-              </svg>
-              <svg aria-hidden="true" className="icon is-medium">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-              </svg>
-            </span>
+            {/* <span className="rating__stars rating__stars--filled"> */}
+            {/*  <svg aria-hidden="true" className="icon is-medium"> */}
+            {/*    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use> */}
+            {/*  </svg> */}
+            {/*  <svg aria-hidden="true" className="icon is-medium"> */}
+            {/*    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use> */}
+            {/*  </svg> */}
+            {/*  <svg aria-hidden="true" className="icon is-medium"> */}
+            {/*    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use> */}
+            {/*  </svg> */}
+            {/*  <svg aria-hidden="true" className="icon is-medium"> */}
+            {/*    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use> */}
+            {/*  </svg> */}
+            {/*  <svg aria-hidden="true" className="icon is-medium"> */}
+            {/*    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use> */}
+            {/*  </svg> */}
+            {/*  <svg aria-hidden="true" className="icon is-medium"> */}
+            {/*    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use> */}
+            {/*  </svg> */}
+            {/* </span> */}
           </div>
         </div>
       </a>

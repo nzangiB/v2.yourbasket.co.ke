@@ -1,11 +1,7 @@
+import { createRoot } from "react-dom/client";
 import { Component } from "@wearearchangel/handcrafted";
 
-import AuthService from "../../services/auth.service";
-import DataService from "../../services/data.service";
-
-import { ProductRow } from "../product/productCards";
-
-import "./search.scss";
+import SearchTpl from "./Search.tpl";
 
 const setIdFromSlug = async ({ cats, brands, params }) => {
   let queryData;
@@ -143,261 +139,59 @@ const sortProductByPrice = (e) => {
   }
 };
 
-async function SearchFilters ({ cats, brand, filters, ...props }) {
-  const getSubCategoryFilters = (category, categoryParentSlug) => {
-    return category.Categories && (
-      <div className="options">
-        {category.Categories.map(category => {
-          category.slug = categoryParentSlug + "/" + category.slug;
-          return (
-            <div className="option">
-              <a data-route={category.slug} className="option__name">
-                {category.name}
-              </a>
-              {getSubCategoryFilters(category, category.slug)}
-            </div>
-          );
-        }).filter(Boolean)}
-      </div>
-    );
-  };
-
-  const categoryFilter = cats.length && (
-    <section className="filter">
-      <header className="filter__title">
-        <div className="title">Category</div>
-      </header>
-      <section className="filter__options">
-        <div className="search">
-          <input type="text" placeholder="Search " value=""/>
-        </div>
-        <div className="options">
-          {cats.map((category) => {
-            category.slug = "/products/" + category.slug;
-            return (
-              <div className="option">
-                <a data-route={category.slug} className="option__name">
-                  {category.name}
-                </a>
-                {getSubCategoryFilters(category, category.slug)}
-              </div>
-            );
-          }).filter(Boolean)}
-        </div>
-      </section>
-    </section>
-  );
-
-  const brandFilter = brand.length && (
-    <section className="filter">
-      <header className="filter__title">
-        <div className="title">Brand</div>
-      </header>
-      <section className="filter__options">
-        <div className="search">
-          <input type="text" placeholder="Search " value=""/>
-        </div>
-        <div className="options">
-          {brand.map((brand) => (
-            <div className="option">
-              <div className="option__name">
-                {brand.name}
-              </div>
-            </div>
-          )).filter(Boolean)}
-        </div>
-      </section>
-    </section>
-  );
-
-  const priceFilter = (
-    <section className="filter">
-      <header className="filter__title">
-        <div className="title">Price</div>
-      </header>
-      <section className="filter__options">
-        <div className="inputs">
-          <input type="number" name="min" aria-label="min" id="filter-min-input" value="5"/>
-          <span className="between to">To</span>
-          <input type="number" name="max" aria-label="max" id="filter-max-input" value="5000"/>
-          <button className="between" type="button" disabled="" id="filter-price-btn">go</button>
-        </div>
-      </section>
-    </section>
-  );
-
-  const dealsFilter = (
-    <section className="filter">
-      <header className="filter__title">
-        <div className="title">Deal</div>
-      </header>
-      <section className="filter__options">
-        <div className="options">
-          <div className="option">Today's Deals</div>
-        </div>
-      </section>
-    </section>
-  );
-
-  const newArrivalFilter = (
-    <section className="filter">
-      <header className="filter__title">
-        <div className="title">New Arrival</div>
-      </header>
-      <section className="filter__options">
-        <div className="options">
-          <div className="option">Last 7 days</div>
-          <div className="option">Last 30 days</div>
-          <div className="option">Last 60 days</div>
-        </div>
-      </section>
-    </section>
-  );
-
-  const customerReviewFilter = (
-    <section className="filter">
-      <header className="filter__title">
-        <div className="title">Customer Review</div>
-      </header>
-      <section className="filter__options">
-        <div className="options">
-          <div className="option">All stars</div>
-          <div className="option">5 stars only</div>
-          <div className="option">4 stars only</div>
-          <div className="option">3 stars only</div>
-          <div className="option">2 stars only</div>
-          <div className="option">1 star only</div>
-        </div>
-      </section>
-    </section>
-  );
-
-  const sellerScoreFilter = (
-    <section className="filter">
-      <header className="filter__title">
-        <div className="title">Seller Score</div>
-      </header>
-      <section className="filter__options">
-        <div className="options">
-          <div className="option">80% or more</div>
-          <div className="option">60% or more</div>
-          <div className="option">40% or more</div>
-          <div className="option">20% or more</div>
-        </div>
-      </section>
-    </section>
-  );
-
-  const filterList = {
-    category: categoryFilter,
-    brand: brandFilter,
-    price: priceFilter,
-    deals: dealsFilter,
-    newArrival: newArrivalFilter,
-    customerReview: customerReviewFilter,
-    sellerScore: sellerScoreFilter
-  };
-
-  const filtersToRender = filters.map((filter) => {
-    return filterList[filter];
-  });
-
-  return (
-    <aside className="search-filters">
-      <div className="filters">
-        {filtersToRender.filter(Boolean)}
-      </div>
-    </aside>
-  );
-}
-
-class SearchResults extends Component {
-  template () {
-    const { products } = this.props;
-    return (
-      <div className="results">
-        <header className="results__header">
-          <div className="results__title">
-            <div className="title">Results</div>
-            <div className="count">
-              {products.count ? `Showing 1-12 of ${products.count}` : `0 Results Found`}
-            </div>
-          </div>
-          <div className="results__sort">
-            <div className="sort__label">Sort by</div>
-            <div className="sort__options">
-              <select onChange={sortProductByPrice}>
-                <option value="">Recommended</option>
-                <option value="popularity">Popularity</option>
-                <option value="asc">Price: Low to High</option>
-                <option value="desc">Price: High to Low</option>
-                <option value="new">Newest Arrivals</option>
-              </select>
-            </div>
-          </div>
-        </header>
-
-        <section className="results__list">
-          <ProductRow products={products.list}/>
-        </section>
-      </div>
-    );
-  }
-}
-
 export class Search extends Component {
-  data = async () => {
-    const props = this.props;
+  // data = async () => {
+  //   const props = this.props;
+  //
+  //   let queryData;
+  //   let cats, masterCatData;
+  //   await DataService.getAllCategory("0").then((data) => {
+  //     masterCatData = data.data.categories;
+  //     cats = data.data.categories;
+  //   });
+  //
+  //   let brand, brands;
+  //   await DataService.getAllBrand().then((data) => {
+  //     brand = data.data.data;
+  //     brands = data.data.data;
+  //   });
+  //
+  //   const auth = AuthService.getCurrentUser();
+  //   const userId = (auth) ? auth.id : "";
+  //
+  //   ({ queryData, brand } = await setIdFromSlug({ cats, brands, ...props }));
+  //   const customBreadcrumb = await makeBreadcrumb({ masterCatData, cats, queryData });
+  //
+  //   const products = { list: [], count: 0 };
+  //   await DataService.searchProduct({
+  //     mastCatId: queryData.mastCatId ? (queryData.catId) ? [] : [queryData.mastCatId] : [],
+  //     catId: queryData.catId ? (queryData.subCatId) ? [] : [queryData.catId] : [],
+  //     subCatId: queryData.subCatId ? [queryData.subCatId] : [],
+  //     brandId: queryData.brandId ? [queryData.brandId] : [],
+  //     dates: [],
+  //     keyword: queryData.keyword ? queryData.keyword : "",
+  //     filter: queryData.filter ? queryData.filter : ""
+  //   }, userId).then((data) => {
+  //     products.list = data.data.products;
+  //     products.count = data.data.products_count;
+  //   });
+  //
+  //   return {
+  //     customBreadcrumb,
+  //     products,
+  //     brand,
+  //     cats
+  //   };
+  // };
 
-    let queryData;
-    let cats, masterCatData;
-    await DataService.getAllCategory("0").then((data) => {
-      masterCatData = data.data.categories;
-      cats = data.data.categories;
-    });
+  constructor (props) {
+    super(props);
 
-    let brand, brands;
-    await DataService.getAllBrand().then((data) => {
-      brand = data.data.data;
-      brands = data.data.data;
-    });
+    this.root = null;
+  }
 
-    const auth = AuthService.getCurrentUser();
-    const userId = (auth) ? auth.id : "";
-
-    ({ queryData, brand } = await setIdFromSlug({ cats, brands, ...props }));
-    const customBreadcrumb = await makeBreadcrumb({ masterCatData, cats, queryData });
-
-    const products = { list: [], count: 0 };
-    await DataService.searchProduct({
-      mastCatId: queryData.mastCatId ? (queryData.catId) ? [] : [queryData.mastCatId] : [],
-      catId: queryData.catId ? (queryData.subCatId) ? [] : [queryData.catId] : [],
-      subCatId: queryData.subCatId ? [queryData.subCatId] : [],
-      brandId: queryData.brandId ? [queryData.brandId] : [],
-      dates: [],
-      keyword: queryData.keyword ? queryData.keyword : "",
-      filter: queryData.filter ? queryData.filter : ""
-    }, userId).then((data) => {
-      products.list = data.data.products;
-      products.count = data.data.products_count;
-    });
-
-    return {
-      customBreadcrumb,
-      products,
-      brand,
-      cats
-    };
-  };
-
-  template () {
-    const { filters, params, query } = this.props;
-    const { cats, brand, products } = this.state;
-    return (
-      <>
-        <SearchFilters cats={cats} brand={brand} filters={filters} params={params} query={query}/>
-        <SearchResults products={products} params={params} query={query}/>
-      </>
-    );
+  controller ({ component }) {
+    if (this.root == null) this.root = createRoot(component);
+    this.root.render(<SearchTpl {...this.props} />);
   }
 }
