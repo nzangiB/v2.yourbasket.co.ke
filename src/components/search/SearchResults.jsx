@@ -1,4 +1,4 @@
-import { ProductCard } from "../product/productCard";
+import { ProductCard } from "./productCard";
 import { Fragment } from "react";
 
 function Products ({ data }) {

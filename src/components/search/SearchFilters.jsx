@@ -1,48 +1,41 @@
 import { Fragment } from "react";
 
-function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, query, brand, filters, ...props }) {
+function SearchFilters ({ categories, clickMastCat, clickCat, clickSubCat, query, brand, filters, ...props }) {
   const getSubCategoryFilters = (item, catSlug) => {
     return item.Categories && (
       <div className="options">
         {item.Categories.map(subCat => {
-          // subCat.slug = catSlug + "/" + subCat.slug;
+          subCat.slug = catSlug + "/" + subCat.slug;
           return (
-            <div
-              key={subCat.slug}
-              className="option"
-              id={"subCat" + subCat.id}
-            >
-              <div>
-                <input
-                  value={subCat.id}
-                  type="checkbox"
-                  onClick={(e) => {
-                    clickSubCat(e, subCat.id);
-                  }}
-                  defaultChecked={
-                    !!(query?.subCatId &&
-											query?.subCatId ===
-											subCat.id)
-                  }
-                  id={"subCat_" + subCat.id}
-                  className="input subCategory"
-                  // hidden
-                />
-                <label
-                  htmlFor={"subCat_" + subCat.id}
-                  className="custom-label"
-                ></label>
-                <label
-                  htmlFor={"subCat_" + subCat.id}
-                  className="option__name"
-                >
-                  {subCat.name}
-                </label>
-                {/* <a data-route={subCat.slug} className="option__name"> */}
-                {/*  {subCat.name} */}
-                {/* </a> */}
-              </div>
-              {getSubCategoryFilters(subCat, subCat.slug)}
+            <div key={subCat.slug} className="option">
+              {/* <div */}
+              {/*  className={"option__name  sub-cat-div-list"} */}
+              {/*  id={"subCat_" + subCat.id} */}
+              {/* > */}
+              {/*   <input */}
+              {/*    type="checkbox" */}
+              {/*    value={subCat.id} */}
+              {/*    onClick={(e) => { clickSubCat(e, subCat.id); }} */}
+              {/*    defaultChecked={ */}
+              {/*      !!(query?.subCatId && */}
+              {/*  			query?.subCatId === */}
+              {/*  			subCat.id) */}
+              {/*    } */}
+              {/*    id={"subCat_" + subCat.id} */}
+              {/*    className="input subCategory" */}
+              {/*    // hidden */}
+              {/*   /> */}
+              {/*   <label htmlFor={"subCat_" + subCat.id}> */}
+              {/*    {subCat.name} */}
+              {/*   </label> */}
+              {/* </div> */}
+              <a
+                data-route={subCat.slug} href={subCat.slug}
+                className={query?.subCatId && query?.subCatId === subCat.id ? "option__name selected" : "option__name"}
+              >
+                {subCat.name}
+              </a>
+              {query?.subCatId && query?.subCatId === subCat.id && getSubCategoryFilters(subCat, subCat.slug)}
             </div>
           );
         }).filter(Boolean)}
@@ -54,43 +47,81 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
     return item.Categories && (
       <div className="options">
         {item.Categories.map(cat => {
-          // cat.slug = mastCatSlug + "/" + cat.slug;
+          cat.slug = mastCatSlug + "/" + cat.slug;
           return (
-            <div
-              key={cat.slug}
-              className={query?.mastCatId && query?.catId === cat.id ? "option" : "option close"}
-              id={"divcat_" + cat.id}
-            >
-              <div>
-                <input
-                  value={cat.id}
-                  type="checkbox"
-                  onClick={(e) => {
-                    clickCat(e, cat.id);
-                  }}
-                  defaultChecked={
-                    !!(query?.catId &&
-											query?.catId === cat.id)
-                  }
-                  id={"cat_" + cat.id}
-                  className="input category"
-                  // hidden
-                />
-                <label
-                  htmlFor={"cat_" + cat.id}
-                  className="custom-label"
-                ></label>
-                <label
-                  htmlFor={"cat_" + cat.id}
-                  className="option__name"
-                >
-                  {cat.name}
-                </label>
-                {/* <a data-route={cat.slug} className="option__name"> */}
-                {/*  {cat.name} */}
-                {/* </a> */}
-              </div>
-              {getSubCategoryFilters(cat, cat.slug)}
+            <div key={cat.slug} className={"option"}>
+              {/* <div className={ */}
+              {/*  query?.mastCatId && query?.catId === cat.id */}
+              {/*    ? "option__name catList cat-div-list" */}
+              {/*    : "option__name catList cat-div-list close" */}
+              {/* } */}
+              {/*     id={"catDiv_" + cat.id}> */}
+              {/*   <input */}
+              {/*    type="checkbox" */}
+              {/*    value={cat.id} */}
+              {/*    onClick={(e) => { clickCat(e, cat.id); }} */}
+              {/*    defaultChecked={ */}
+              {/*      !!(query?.catId && */}
+              {/*  			query?.catId === cat.id) */}
+              {/*    } */}
+              {/*    id={"cat_" + cat.id} */}
+              {/*    className="input category" */}
+              {/*    // hidden */}
+              {/*   /> */}
+              {/*   <label htmlFor={"cat_" + cat.id}> */}
+              {/*    {cat.name} */}
+              {/*   </label> */}
+              {/* </div> */}
+              <a
+                data-route={cat.slug} href={cat.slug}
+                className={query?.catId && query?.catId === cat.id ? "option__name selected" : "option__name"}
+              >
+                {cat.name}
+              </a>
+              {query?.catId && query?.catId === cat.id && getSubCategoryFilters(cat, cat.slug)}
+            </div>
+          );
+        }).filter(Boolean)}
+      </div>
+    )
+    ;
+  };
+
+  const getMasterCategoryFilters = (categories) => {
+    return categories && (
+      <div className="options">
+        {categories.map((mastCat) => {
+          mastCat.slug = "/#/products/" + mastCat.slug;
+          return (
+            <div key={mastCat.slug} className={"option"}>
+              {/* <div className={ */}
+              {/*  query?.mastCatId && */}
+              {/*	query?.mastCatId === mastCat.id */}
+              {/*    ? "option__name catList" */}
+              {/*    : "option__name catList close" */}
+              {/* } */}
+              {/*     id={"mastCat_div_" + mastCat.id} */}
+              {/* > */}
+              {/*  <input */}
+              {/*    type="checkbox" */}
+              {/*    value={mastCat.id} */}
+              {/*    defaultChecked={!!(query?.mastCatId && query?.mastCatId === mastCat.id)} */}
+              {/*    onClick={(e) => { clickMastCat(e, mastCat.id); }} */}
+              {/*    id={"masCat_" + mastCat.id} */}
+              {/*    className="input mastCat" */}
+              {/*    // hidden */}
+              {/*  /> */}
+              {/*  <label htmlFor={"masCat_" + mastCat.id}> */}
+              {/*    {mastCat.name} */}
+              {/*  </label> */}
+              {/* </div> */}
+              <a
+                data-route={mastCat.slug} href={mastCat.slug}
+                className={query?.mastCatId && query?.mastCatId === mastCat.id ? "option__name selected" : "option__name"}
+              >
+                {mastCat.name}
+              </a>
+              {query?.mastCatId && query?.mastCatId === mastCat.id && getCategoryFilters(mastCat, mastCat.slug)}
             </div>
           );
         }).filter(Boolean)}
@@ -99,7 +130,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
   };
 
   const categoryFilter = categories.length && (
-    <section className="filter">
+    <section className="filter" key={"categoryFilter"}>
       <header className="filter__title">
         <div className="title">Category</div>
       </header>
@@ -111,55 +142,13 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
             defaultValue=""
           />
         </div>
-        <div className="options">
-          {categories.map((mastCat) => {
-            // mastCat.slug = '/products/' + mastCat.slug;
-            return (
-              <div
-                key={mastCat.slug}
-                className={query?.mastCatId &&
-								query?.mastCatId === mastCat.id
-                  ? "option"
-                  : "option selected"}
-                id={"divcat_" + mastCat.id}
-              >
-                <div>
-                  <input
-                    value={mastCat.id}
-                    defaultChecked={!!(query?.mastCatId && query?.mastCatId === mastCat.id)}
-                    type="checkbox"
-                    onClick={(e) => {
-                      clickMastCat(e, mastCat.id);
-                    }}
-                    id={"masCat_" + mastCat.id}
-                    className="input mastercat"
-                    // hidden
-                  />
-                  <label
-                    htmlFor={"masCat_" + mastCat.id}
-                    className="custom-label"
-                  ></label>
-                  <label
-                    htmlFor={"masCat_" + mastCat.id}
-                    className="option__name"
-                  >
-                    {mastCat.name}
-                  </label>
-                  {/* <a data-route={mastCat.slug} className="option__name"> */}
-                  {/*  {mastCat.name} */}
-                  {/* </a> */}
-                </div>
-                {getCategoryFilters(mastCat, mastCat.slug)}
-              </div>
-            );
-          }).filter(Boolean)}
-        </div>
+        {getMasterCategoryFilters(categories)}
       </section>
     </section>
   );
 
   const brandFilter = brand.length && (
-    <section className="filter">
+    <section className="filter" key={"brandFilter"}>
       <header className="filter__title">
         <div className="title">Brand</div>
       </header>
@@ -181,7 +170,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
   );
 
   const priceFilter = (
-    <section className="filter">
+    <section className="filter" key={"priceFilter"}>
       <header className="filter__title">
         <div className="title">Price</div>
       </header>
@@ -192,7 +181,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
             name="min"
             aria-label="min"
             id="filter-min-input"
-            defaultValue={5}
+            defaultValue={"5"}
           />
           <span className="between to">To</span>
           <input
@@ -200,7 +189,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
             name="max"
             aria-label="max"
             id="filter-max-input"
-            defaultValue={5000}
+            defaultValue={"5000"}
           />
           <button
             className="between"
@@ -216,7 +205,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
   );
 
   const dealsFilter = (
-    <section className="filter">
+    <section className="filter" key={"dealsFilter"}>
       <header className="filter__title">
         <div className="title">Deal</div>
       </header>
@@ -229,7 +218,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
   );
 
   const newArrivalFilter = (
-    <section className="filter">
+    <section className="filter" key={"newArrivalFilter"}>
       <header className="filter__title">
         <div className="title">New Arrival</div>
       </header>
@@ -244,7 +233,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
   );
 
   const customerReviewFilter = (
-    <section className="filter">
+    <section className="filter" key={"customerReviewFilter"}>
       <header className="filter__title">
         <div className="title">Customer Review</div>
       </header>
@@ -262,7 +251,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
   );
 
   const sellerScoreFilter = (
-    <section className="filter">
+    <section className="filter" key={"sellerScoreFilter"}>
       <header className="filter__title">
         <div className="title">Seller Score</div>
       </header>
@@ -288,11 +277,7 @@ function SearchFilters ({ categories, clickMasterCat, clickCart, clickSubCat, qu
   };
 
   const filtersToRender = filters.map((filter, index) => {
-    return (
-      <Fragment key={index}>
-        {filterList[filter]}
-      </Fragment>
-    );
+    return filterList[filter];
   });
 
   return (

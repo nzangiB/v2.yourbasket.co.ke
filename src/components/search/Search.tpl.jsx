@@ -40,7 +40,7 @@ function SearchTpl ({ filters, params, query }) {
   let minPrice;
   let maxPrice;
   let sortByPrice = "";
-  let page_no = 1;
+  let pageNo = 1;
   let limit = 12;
 
   const setIdFromSlug = async (cats, brands) => {
@@ -133,7 +133,9 @@ function SearchTpl ({ filters, params, query }) {
 
       if (ss.length > 0) {
         nvUrl = `${ss[0].slug}`;
-        str += ` / <a href="/#/${nvUrl}" onclick="setTimeout(function () {window.location.reload(); }, 500);" >${ss[0].name}</a>`;
+        str += ` / <a href="/products/${nvUrl}" onclick="setTimeout(function () {
+	 // window.location.reload();
+	 }, 500);" >${ss[0].name}</a>`;
 
         // check sub category..
         if (ss[0].Categories.length > 0 && (obj.catId && obj.catId > 0)) {
@@ -142,7 +144,9 @@ function SearchTpl ({ filters, params, query }) {
           }));
           if (ss1.length > 0) {
             nvUrl = `${ss[0].slug}/${ss1[0].slug}`;
-            str += ` / <a href="/#/${nvUrl}"  onclick="setTimeout(function () {window.location.reload(); }, 500);">${ss1[0].name}</a>`;
+            str += ` / <a href="/products/${nvUrl}"  onclick="setTimeout(function () {
+	 // window.location.reload();
+	 }, 500);">${ss1[0].name}</a>`;
 
             // check sub sub category..
             if (ss1[0].Categories.length > 0 && (obj.subCatId && obj.subCatId > 0)) {
@@ -151,23 +155,25 @@ function SearchTpl ({ filters, params, query }) {
               }));
               if (ss2.length > 0) {
                 nvUrl = `${ss[0].slug}/${ss1[0].slug}/${ss2[0].slug}`;
-                str += ` / <a href="/#/${nvUrl}"  onclick="setTimeout(function () {window.location.reload(); }, 500);">${ss2[0].name}</a>`;
+                str += ` / <a href="/products/${nvUrl}"  onclick="setTimeout(function () {
+	 // window.location.reload();
+	 }, 500);">${ss2[0].name}</a>`;
               }
             }
           }
         }
         if (nv && nvUrl) {
           location.href = new URL("/" + nvUrl, location.origin);
-          window.location.reload();
+          // window.location.reload();
         }
       }
     } else {
       nvUrl = `product`;
-      str += " / " + "<a href='/#/product'>All Categories</a>";
+      str += " / " + "<a href='/products'>All Categories</a>";
     }
     if (nv && nvUrl) {
       location.href = new URL("/" + nvUrl, location.origin);
-      window.location.reload();
+      // window.location.reload();
     }
     setCustomBreadcrumb(str);
   };
@@ -183,7 +189,7 @@ function SearchTpl ({ filters, params, query }) {
   };
 
   const goToPage = (page) => {
-    page_no = page;
+    pageNo = page;
     setCurrentPage(page);
     selectFilterData();
   };
@@ -193,7 +199,7 @@ function SearchTpl ({ filters, params, query }) {
     setItemsPerPage(newItemsPerPage);
     setCurrentPage(1);
     limit = newItemsPerPage;
-    page_no = 1;
+    pageNo = 1;
     selectFilterData();
   };
 
@@ -209,7 +215,7 @@ function SearchTpl ({ filters, params, query }) {
       priceSort: sortByPrice,
       keyword: query?.keyword,
       filter: query?.filter,
-      page: page_no,
+      page: pageNo,
       limit
     });
 
@@ -231,7 +237,7 @@ function SearchTpl ({ filters, params, query }) {
     const subCheckboxes = document.querySelectorAll(".subcategory");
     const catDiv = document.querySelectorAll(".cat-div-list");
     if (e.target.checked) {
-      document.getElementById("divmastcat_" + id).classList.remove("close");
+      document.getElementById("mastCat_div_" + id).classList.remove("close");
     } else {
       catCheckboxes.forEach((element) => {
         element.checked = false;
@@ -242,21 +248,21 @@ function SearchTpl ({ filters, params, query }) {
       catDiv.forEach((element) => {
         element.classList.add("close");
       });
-      document.getElementById("divmastcat_" + id).classList.add("close");
+      document.getElementById("mastCat_div_" + id).classList.add("close");
     }
-    unSelectAllExcept(".mastercat", e.target);
+    unSelectAllExcept(".mastCat", e.target);
     selectFilterData(true);
   };
 
   const clickCat = (e, id) => {
     const subCatCheckboxes = document.querySelectorAll(".subcategory");
     if (e.target.checked) {
-      document.getElementById("divcat_" + id).classList.remove("close");
+      document.getElementById("catDiv_" + id).classList.remove("close");
     } else {
       subCatCheckboxes.forEach((c) => {
         c.checked = false;
       });
-      document.getElementById("divcat_" + id).classList.add("close");
+      document.getElementById("catDiv_" + id).classList.add("close");
     }
     unSelectAllExcept(".category", e.target);
     selectFilterData(true);
@@ -452,11 +458,11 @@ function SearchTpl ({ filters, params, query }) {
         brand,
         filters,
         params,
-        query
+        query: queryData
       }}/>
       <SearchResults {...{
         params,
-        query,
+        query: queryData,
         data,
         itemsPerPage,
         itemsPerPageOptions,
