@@ -1,18 +1,17 @@
-@use "../../styles/tools.breakpoint" as breakpoint;
-
 .signup__container {
   background-color: rgba(235, 240, 252, 1);
+  container: signupContainer / inline-size;
   display: grid;
   align-items: center;
   padding: 20px;
   gap: 20px;
   width: 100%;
 
-  @include breakpoint.phablet {
+  @container signupContainer (min-width: 600px) {
     grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
   }
 
-  @include breakpoint.mobile-only {
+  @container signupContainer (max-width: 600px) {
     grid-auto-flow: row;
   }
 }
@@ -25,11 +24,11 @@
   justify-content: space-between;
   gap: 20px;
 
-  @include breakpoint.phablet {
+  @container signupContainer (min-width: 600px) {
     flex-direction: row;
   }
 
-  @include breakpoint.mobile-only {
+  @container signupContainer (max-width: 600px) {
     flex-direction: column;
   }
 
@@ -48,11 +47,11 @@
       display: flex;
       gap: 5px;
 
-      @include breakpoint.phablet {
+      @container signupContainer (min-width: 480px) {
         flex-direction: row;
       }
 
-      @include breakpoint.mobile-only {
+      @container signupContainer (max-width: 480px) {
         flex-direction: column;
       }
 
@@ -84,7 +83,7 @@
   }
 
   .field__image {
-    @include breakpoint.mobile-only {
+    @container signupContainer (max-width: 600px) {
       display: none;
     }
   }
@@ -98,11 +97,11 @@
   justify-content: space-between;
   gap: 20px;
 
-  @include breakpoint.phablet {
+  @container signupContainer (min-width: 600px) {
     flex-direction: row;
   }
 
-  @include breakpoint.mobile-only {
+  @container signupContainer (max-width: 600px) {
     flex-direction: column;
   }
 
@@ -114,7 +113,7 @@
   }
 
   .links__image {
-    @include breakpoint.mobile-only {
+    @container signupContainer (max-width: 600px) {
       display: none;
     }
   }
