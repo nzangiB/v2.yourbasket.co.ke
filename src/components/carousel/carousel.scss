@@ -26,6 +26,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
   }
 }
 
@@ -42,21 +43,25 @@
 
 .main-banner {
   .carousel {
-    aspect-ratio: 600 / 314;
+    aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
+    //aspect-ratio: 600 / 314;
   }
 
   .banner {
-    aspect-ratio: 600 / 314;
+    aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
+    //aspect-ratio: 600 / 314;
   }
 }
 
 .side-banner {
   .carousel {
-    aspect-ratio: 320 / 200;
+    aspect-ratio: 350 / 275;
+    //aspect-ratio: 320 / 200;
   }
 
   .banner {
-    aspect-ratio: 320 / 200;
+    aspect-ratio: 350 / 275;
+    //aspect-ratio: 320 / 200;
   }
 }
 
