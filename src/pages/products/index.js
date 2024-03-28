@@ -30,6 +30,12 @@ const routes = [
     template: Products
   },
   {
+    // path: "/#/compare/:id?",
+    path: "/products/compare/:id?",
+    data: { page: { title: "Products by Comparison" } },
+    template: "Compare"
+  },
+  {
     // path: "/#/:master{/:category}?{/:subcategory}?",
     path: "/products/:master{/:category}?{/:subcategory}?",
     data: { page: { title: "Products by Category" } },
