@@ -46,7 +46,10 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 
   const onChangeEmail = (e) => {
     const data = e.target.value;
-    setEmail(data);
+    const isValid = Boolean(data.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    ));
+    setEmail(isValid ? data : "");
   };
 
   const onChangePhone = (e) => {
@@ -421,15 +424,15 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
             </div>
           </form>
         )}
-        {firstName && lastName && phone && email && (
-          <div className={"list-item__content"}>
-            <button
-              className={"btn --primary"}
-              onClick={payOnDeliveryEvent}
-            >Pay on Delivery
-            </button>
-          </div>
-        )}
+
+        <div className={"list-item__content"}>
+          <button
+            className={"btn --primary"}
+            onClick={payOnDeliveryEvent}
+            disabled={!(firstName && lastName && phone && email)}
+          >Pay on Delivery
+          </button>
+        </div>
       </div>
     </div>
   );
