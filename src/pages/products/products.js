@@ -1,16 +1,19 @@
 import Layout from "./_layout";
+import AdultContentWarning from "../../components/adultContentWarning/adultContentWarning";
 import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
 import { Search } from "../../components/search/search";
 import { Ad } from "../../components/ad/ad";
 
 import "./products.scss";
 
+import { CATEGORIES_ADULT_CONTENT } from "../../helpers/constants";
+
 function Products (props) {
   const { params, query } = props;
   const filters = ["category", "brand", "price", "deals", "newArrival", "customerReview", "sellerScore"];
 
   return (
-    <Layout>
+    <>
       {/* {Breadcrumbs({ name: "Categories", route: "/products" }, params)} */}
 
       <div className="ad-group --row">
@@ -28,8 +31,26 @@ function Products (props) {
           </div>
         </aside>
       </div>
-    </Layout>
+    </>
   );
 }
 
-export default Products;
+export default function (props) {
+  const { master, category, subcategory } = props.params;
+  // if content is adult, show warning
+  if (CATEGORIES_ADULT_CONTENT.includes(master)) {
+    return (
+      <Layout>
+        <AdultContentWarning>
+          <Products {...props} />
+        </AdultContentWarning>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      <Products {...props} />
+    </Layout>
+  );
+}
