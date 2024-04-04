@@ -46,6 +46,10 @@
     width: 100%;
   }
 
+  .ad {
+    max-width: unset !important;
+  }
+
   @include breakpoint.tablet-only {
     display: none;
   }

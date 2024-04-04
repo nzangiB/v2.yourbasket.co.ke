@@ -1,9 +1,9 @@
 import placeholder from "../../../assets/images/placeholder.png";
 
-import "./index.scss";
-
 import HelperService from "../../../services/helper.service";
 import { KES } from "../../../helpers/formatting";
+
+import "./index.scss";
 
 export function ProductCard ({ product }) {
   if (!product.slug) return "";
@@ -17,7 +17,7 @@ export function ProductCard ({ product }) {
           <div className="product-card__details">
             <div className="text">
               <div className="skeleton skeleton__title"></div>
-              {/* <div className="skeleton skeleton__description"></div> */}
+              <div className="skeleton skeleton__description"></div>
             </div>
             <div className="price">
               <div className="skeleton skeleton__price"></div>
@@ -43,7 +43,7 @@ export function ProductCard ({ product }) {
 
   return (
     <div className="product-card-container">
-      <a className="product-card" id={product.id} data-route={url}>
+      <a className="product-card" id={product.id} href={url}>
         <div className="product-card__icons">
           {discount && (
             <div className="discount">
@@ -64,7 +64,7 @@ export function ProductCard ({ product }) {
         <div className="product-card__details">
           <div className="text">
             <h4 className="text__title">{productName}</h4>
-            {/* <p className="text__description">{productDescription}</p> */}
+            <p className="text__description">{productDescription}</p>
           </div>
           <div className="price">
             {product.offer_price && <div className="price__current">{KES.format(product.offer_price)}</div>}

@@ -1,4 +1,4 @@
-@use "../../styles/tools.breakpoint" as breakpoint;
+@use "../../../styles/tools.breakpoint" as breakpoint;
 
 .product-row {
   overflow-x: auto;
@@ -26,6 +26,7 @@
 
   .product-card {
     &-container {
+      display: flex;
       flex: 0 0 250px;
       padding-right: 10px;
       padding-bottom: 10px;
@@ -44,9 +45,15 @@
   //margin-inline: -5px;
 
   .product-cards {
+    &:after {
+      content: 'flickity';
+      display: none; /* hide :after */
+    }
+
     &:not(.flickity-enabled) {
       display: grid;
       grid-template-columns: repeat(var(--product-group-cards), minmax(144px, 1fr));
+      padding: 1px;
       gap: 10px;
 
       @container productGroup (min-width: 800px) {
@@ -70,9 +77,12 @@
 
   .product-card {
     &-container {
+      display: flex;
       padding-inline: 5px;
       width: calc(100% / var(--product-group-cards));
-      height: 100%;
+      min-height: 100%;
+      //width: 100px;
+      //height: 200px;
 
       @container productGroup (min-width: 800px) {
         --product-group-cards: 4;

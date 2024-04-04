@@ -1,12 +1,12 @@
-import { ProductCard } from "./productCard";
+import { ProductCard } from "../product/productCard";
 import { Fragment } from "react";
 
-function Products ({ data }) {
+function Results ({ results }) {
   return (
     <div className="product-grid">
       <div className="product-cards-container">
         <div className="product-cards">
-          {data.map(product => (
+          {results.map(product => (
             <Fragment key={product.id}>
               <ProductCard product={product}/>
             </Fragment>
@@ -17,7 +17,14 @@ function Products ({ data }) {
   );
 }
 
-function PaginationButtons ({ currentPage, totalPages, goToPage }) {
+function Pagination ({
+  itemsPerPage,
+  itemsPerPageOptions,
+  currentPage,
+  totalPages,
+  handleItemsPerPageChange,
+  goToPage
+}) {
   const pageButtons = [];
   let startPage = Math.max(1, currentPage - 2);
   let endPage = Math.min(totalPages, currentPage + 2);
@@ -43,21 +50,6 @@ function PaginationButtons ({ currentPage, totalPages, goToPage }) {
     );
   }
 
-  return (
-    <div className={"btn-group"}>
-      {pageButtons}
-    </div>
-  );
-}
-
-function Pagination ({
-  itemsPerPage,
-  itemsPerPageOptions,
-  currentPage,
-  totalPages,
-  handleItemsPerPageChange,
-  goToPage
-}) {
   return (
     <section className="page-filters">
       <div className="page-filters--left">
@@ -90,7 +82,9 @@ function Pagination ({
           )}
 
           {/* Page buttons */}
-          <PaginationButtons {...{ currentPage, totalPages, goToPage }}/>
+          <div className={"btn-group"}>
+            {pageButtons}
+          </div>
 
           {/* Next page button */}
           {currentPage < totalPages && (
@@ -154,7 +148,7 @@ function SearchResults ({
             )
             : (
               <>
-                <Products data={data}/>
+                <Results results={data}/>
                 <Pagination {...{
                   itemsPerPage,
                   itemsPerPageOptions,

@@ -214,6 +214,7 @@
       .count {
         font-size: var(--font-size-4);
         color: var(--color-type-8);
+        line-height: 1;
       }
     }
 
@@ -285,6 +286,16 @@
         flex: unset;
         padding-right: 0;
         display: flex;
+
+        .product-card__details {
+          .title__description {
+            display: initial;
+          }
+
+          .price {
+            margin: 10px 5px 0 0;
+          }
+        }
       }
 
       .page-filters {
