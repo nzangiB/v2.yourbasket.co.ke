@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { Component } from "@wearearchangel/handcrafted";
 
-import { ProductCard } from "./index";
+import { ProductCard } from "./productCard";
 
 import "./productCards.scss";
 

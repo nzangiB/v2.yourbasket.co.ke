@@ -3,7 +3,7 @@ import { Component } from "@wearearchangel/handcrafted";
 import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
-import { ProductGroup } from "../product/productCard/productCards";
+import { ProductGroup } from "../productCard/productCards";
 
 import "./deals.scss";
 

@@ -4,7 +4,7 @@ import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
 import { Ad } from "../ad/ad";
-import { ProductRow } from "../product/productCard/productCards";
+import { ProductRow } from "../productCard/productCards";
 
 import "./deals.scss";
 

@@ -1,7 +1,7 @@
-import placeholder from "../../../assets/images/placeholder.png";
+import placeholder from "../../assets/images/placeholder.png";
 
-import HelperService from "../../../services/helper.service";
-import { KES } from "../../../helpers/formatting";
+import HelperService from "../../services/helper.service";
+import { KES } from "../../helpers/formatting";
 
 import "./index.scss";
 

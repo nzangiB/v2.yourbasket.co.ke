@@ -4,7 +4,7 @@ import AuthService from "../../services/auth.service";
 import DataService from "../../services/data.service";
 
 import CountDown from "../countDown";
-import { ProductGroup } from "../product/productCard/productCards";
+import { ProductGroup } from "../productCard/productCards";
 
 import "./deals.scss";
 
