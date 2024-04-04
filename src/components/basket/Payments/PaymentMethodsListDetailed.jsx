@@ -16,7 +16,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
   const [paymentMethod, setPaymentMethod] = useState("");
   const [orderLoading, setOrderLoading] = useState(false);
   const [orderSent, setOrderSent] = useState(false);
-  const [coordinates, setCoordinates] = useState({ latitude: 0, longitude: 0 });
+  // const [coordinates, setCoordinates] = useState({ latitude: 0, longitude: 0 });
   const [data, setData] = useState([]);
 
   const [firstName, setFirstName] = useState("");
@@ -65,7 +65,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
       setEmail(data.email);
       setPhone(data.phone);
 
-      setCoordinates(data.data.data);
+      // setCoordinates(data.data.data);
     });
   };
 
@@ -90,7 +90,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
             setStep("checkout");
           }
         } else {
-          setStep("");
+          setStep(undefined);
         }
       }
     }
@@ -331,17 +331,19 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
             <>
               <div className="input-field">
                 <input
-                  className={"input"}
                   type="tel"
+                  className={"input"}
                   placeholder={"Phone Number"}
-                  value={data.phone}
-                  disabled={true}
-                  readOnly={true}
+                  // disabled={isFieldDisabled}
+                  defaultValue={phone}
+                  onChange={onChangePhone}
+                  id={"phone-number"}
+                  required
                 />
               </div>
               <button
                 type="submit"
-                disabled={!paymentMethod || paymentMethod === "" || !data.phone}
+                disabled={!paymentMethod || paymentMethod === "" || !phone}
                 className={"btn --primary"}
                 onClick={payNowEvent}
               >
