@@ -3,14 +3,21 @@
 .page__footer {
   .footer__nav {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 40px;
     padding: 20px;
+
+    @include breakpoint.phablet {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 40px;
+    }
+    @include breakpoint.mobile-only {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
   }
 
   .footer__nav--item {
     .title {
-      //font-size: var(--font-size-4);
+      font: 600 var(--font-variant-sub-title);
       //font-weight: bold;
       margin-block: 20px;
     }

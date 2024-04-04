@@ -17,7 +17,7 @@ export function ProductCard ({ product }) {
           <div className="product-card__details">
             <div className="text">
               <div className="skeleton skeleton__title"></div>
-              <div className="skeleton skeleton__description"></div>
+              {/* <div className="skeleton skeleton__description"></div> */}
             </div>
             <div className="price">
               <div className="skeleton skeleton__price"></div>
@@ -64,7 +64,7 @@ export function ProductCard ({ product }) {
         <div className="product-card__details">
           <div className="text">
             <h4 className="text__title">{productName}</h4>
-            <p className="text__description">{productDescription}</p>
+            {/* <p className="text__description">{productDescription}</p> */}
           </div>
           <div className="price">
             {product.offer_price && <div className="price__current">{KES.format(product.offer_price)}</div>}

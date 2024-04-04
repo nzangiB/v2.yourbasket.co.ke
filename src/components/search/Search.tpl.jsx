@@ -44,6 +44,7 @@ function SearchTpl ({ filters, params, query }) {
   let limit = 12;
 
   const setIdFromSlug = async (cats, brands) => {
+    let ss;
     const obj = {
       mastCatId: "",
       catId: "",
@@ -51,9 +52,9 @@ function SearchTpl ({ filters, params, query }) {
       brandId: ""
     };
 
-    // check if category..
+    // check if category.
     if (params.master && params.master.length > 0) {
-      var ss = await Promise.all(cats.filter((item, i) => {
+      ss = await Promise.all(cats.filter((item, i) => {
         return (item.slug === params.master);
       }));
 
@@ -95,7 +96,7 @@ function SearchTpl ({ filters, params, query }) {
 
     // check if brand...
     if (params.brand && params.brand.length > 0) {
-      var ss = await Promise.all(brands.filter((item, i) => {
+      ss = await Promise.all(brands.filter((item, i) => {
         return (item.slug === params.brand);
       }));
 
@@ -104,12 +105,12 @@ function SearchTpl ({ filters, params, query }) {
       }
     }
 
-    // check if keyword..
+    // check if keyword.
     if (params.keyword && params.keyword.length > 0) {
       obj.keyword = params.keyword;
     }
 
-    // check if keyword..
+    // check if keyword.
     if (params.filter && params.filter.length > 0) {
       obj.filter = params.filter;
     }

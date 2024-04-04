@@ -56,7 +56,7 @@ class Carousel extends Component {
       autoPlay: true,
       cellAlign: "left",
       imagesLoaded: true,
-      // percentagePosition: true,
+      percentagePosition: true,
       lazyLoad: true,
       contain: true,
       prevNextButtons: false

@@ -5,7 +5,6 @@
   }
 
   &-grid {
-    padding-block: 20px;
   }
 
   &-carousel {
@@ -18,7 +17,7 @@
 .deals__header {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  margin-bottom: 20px;
 
   @include breakpoint.phablet {
     flex-direction: row;
@@ -47,7 +46,6 @@
 
 .deals-today {
   @extend .deals-grid;
-  padding-inline: 0;
 
   .deals__header {
     @include breakpoint.tablet {
@@ -83,6 +81,18 @@
 
 .deals-recommended {
   //padding-inline: 20px;
+}
+
+.deals-by-category {
+  padding-block: 20px;
+
+  .deals__header {
+    padding-inline: 20px;
+  }
+
+  .product-card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }
 
 .deals-more {

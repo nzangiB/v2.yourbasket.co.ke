@@ -1,6 +1,6 @@
 import placeholder from "../../../assets/images/placeholder.png";
 
-import "./index.scss";
+// import "./index.scss";
 
 import HelperService from "../../../services/helper.service";
 import { KES } from "../../../helpers/formatting";

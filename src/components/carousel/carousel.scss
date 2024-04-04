@@ -1,6 +1,6 @@
 .carousel {
   width: 100%;
-  border-radius: 5px;
+  //border-radius: 5px;
   overflow: hidden;
 }
 
@@ -43,13 +43,15 @@
 
 .main-banner {
   .carousel {
-    aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
+    //aspect-ratio: calc(350 * 2 + 20) / calc(275 * 2 + 20);
     //aspect-ratio: 600 / 314;
+    //aspect-ratio: 800 / 650;
   }
 
   .banner {
-    aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
+    //aspect-ratio: calc(350 * 2 + 20) / calc(275 * 2 + 20);
     //aspect-ratio: 600 / 314;
+    //aspect-ratio: 800 / 650;
   }
 }
 

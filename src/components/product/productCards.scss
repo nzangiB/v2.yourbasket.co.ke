@@ -16,7 +16,7 @@
   .product-cards {
     display: flex;
     flex-flow: row nowrap;
-    align-items: flex-start;
+    align-items: stretch;
     padding-inline: 20px;
     //gap: 10px;
 
@@ -25,8 +25,6 @@
   }
 
   .product-card {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-
     &-container {
       flex: 0 0 250px;
       padding-right: 10px;
@@ -39,10 +37,11 @@
 }
 
 .product-group {
-  padding-inline: 20px;
+  //padding-inline: 20px;
   container: productGroup / inline-size;
-  width: calc(100% + 10px);
-  margin-inline: -5px;
+  //width: calc(100% + 10px);
+  width: 100%;
+  //margin-inline: -5px;
 
   .product-cards {
     &:not(.flickity-enabled) {
@@ -73,12 +72,13 @@
     &-container {
       padding-inline: 5px;
       width: calc(100% / var(--product-group-cards));
+      height: 100%;
 
       @container productGroup (min-width: 800px) {
         --product-group-cards: 4;
       }
 
-      @container productGroup (min-width: 400px and max-width: 800px) {
+      @container productGroup (min-width: 600px and max-width: 800px) {
         --product-group-cards: 3;
       }
 

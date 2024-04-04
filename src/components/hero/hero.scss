@@ -9,13 +9,13 @@
   //flex-direction: row;
   //align-items: flex-start;
   //gap: var(--hero-gap);
-  padding: 20px;
+  padding-block: 20px;
   width: 100%;
 }
 
 .hero__nav {
   flex: 0 0 20%;
-  border-radius: 5px;
+  //border-radius: 5px;
   background-color: var(--color-type-4);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   max-width: 300px;

@@ -197,7 +197,7 @@ function SearchFilters ({ categories, clickMastCat, clickCat, clickSubCat, query
             disabled=""
             id="filter-price-btn"
           >
-						go
+            <span>go</span>
           </button>
         </div>
       </section>

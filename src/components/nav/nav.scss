@@ -17,7 +17,7 @@
   @include breakpoint.tablet {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-areas: "navLogo navSearch navSupport";
-    height: 46px;
+    height: 48px;
   }
 
   @include breakpoint.tablet-only {
