@@ -75,7 +75,7 @@ function MiniBasket ({ step, setStep, ...props }) {
     content = (
       <section className="mini-basket__items">
         <div className="message">
-					Loading...
+          <span>Loading...</span>
         </div>
       </section>
     );
@@ -117,18 +117,18 @@ function MiniBasket ({ step, setStep, ...props }) {
       <ToastContainer/>
       <div className={className}>
         <header className="mini-basket__header">
-          <button className={"btn --icon icon-back"} onClick={closeBasketEvent}>
-            <object data={require("../icons/caret-left.svg")} name={"Back"}/>
+          {/* <button className={"btn --icon icon-back"} onClick={closeBasketEvent}> */}
+          {/*  <object data={require("../icons/caret-left.svg")} name={"Back"}/> */}
+          {/* </button> */}
+          <button className={"btn --icon icon-close"} onClick={closeBasketEvent}>
+            <object data={require("../icons/close.svg")} name={"Close"}/>
           </button>
           <div className={"title"}>{title}</div>
-          {/* <button className={"btn --icon icon-close"} onClick={closeEvent}> */}
-          {/*  <object data={require("./icons/maximize.svg")} name={"Back"}/> */}
-          {/* </button> */}
           {/* <button className={"btn --icon icon-minimize"} onClick={minimizeBasketEvent}> */}
-          {/*  <object data={require("./icons/minimize.svg")} name={"Back"}/> */}
+          {/*  <object data={require("../icons/minimize.svg")} name={"Back"}/> */}
           {/* </button> */}
           {/* <button className={"btn --icon icon-maximize"} onClick={maximizeBasketEvent}> */}
-          {/*  <object data={require("./icons/maximize.svg")} name={"Back"}/> */}
+          {/*  <object data={require("../icons/maximize.svg")} name={"Back"}/> */}
           {/* </button> */}
         </header>
         {content}
