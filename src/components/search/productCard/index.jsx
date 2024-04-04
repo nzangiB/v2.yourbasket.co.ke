@@ -43,7 +43,7 @@ export function ProductCard ({ product }) {
 
   return (
     <div className="product-card-container">
-      <a className="product-card" id={product.id} data-route={url}>
+      <a href={url} data-route={url} className="product-card" id={product.id}>
         <div className="product-card__icons">
           {discount && (
             <div className="discount">
