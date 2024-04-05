@@ -167,16 +167,19 @@ async function NavSocials () {
 function FooterLinks () {
   return (
     <nav className="footer__links">
-      <p>2023 YourBasket. All Rights Reserved</p>
-      <ul className="list">
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Sell with us</a></li>
-        <li><a href="#">Returns &amp; Refunds Policy</a></li>
-        <li><a href="#">Terms &amp; Conditions</a></li>
-        <li><a href="#">Cookies Notice</a></li>
-        <li><a href="#">My Profile</a></li>
-      </ul>
+      <div>2023 YourBasket. All Rights Reserved</div>
+      <div className="links">
+        <a className="link" href="#"><span>Blog</span></a>
+        <a className="link" href="#"><span>About us</span></a>
+        <a className="link" href="#"><span>Sell with us</span></a>
+        <a className="link" href="#"><span>Returns &amp; Refunds Policy</span></a>
+        <a className="link" href="#"><span>Terms &amp; Conditions</span></a>
+        <a className="link" href="#"><span>Cookies Notice</span></a>
+        <a className="link" href="#"><span>My Profile</span></a>
+      </div>
+      <div>
+        <a href="https://wearearchangel.com">Handcrafted in Kenya</a>
+      </div>
     </nav>
   );
 }

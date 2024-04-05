@@ -58,14 +58,14 @@
       padding: 10px;
     }
 
-    ul {
+    .links {
       display: flex;
       flex-flow: row wrap;
       align-items: center;
       justify-content: center;
-      column-gap: 10px;
+      gap: 0 10px;
 
-      li {
+      .link {
         flex: 0 0 auto;
       }
     }
