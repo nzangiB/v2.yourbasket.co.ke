@@ -2,9 +2,27 @@
 
 .deals {
   &-list {
+    .deals__header {
+      padding-inline: 20px;
+    }
+
+    .product-cards {
+      &-container {
+        padding-inline: 20px;
+      }
+    }
   }
 
   &-grid {
+    .deals__header {
+      padding-inline: 20px;
+    }
+
+    .product-cards {
+      &-container {
+        padding-inline: 20px;
+      }
+    }
   }
 
   &-carousel {
@@ -94,14 +112,9 @@
   }
 
   .deals-list {
-  }
-
-  .deals__header {
-    padding-inline: 20px;
-  }
-
-  .product-card {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    .product-card {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
   }
 }
 

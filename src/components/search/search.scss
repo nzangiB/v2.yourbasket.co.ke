@@ -4,7 +4,6 @@
   display: flex;
   // max-width: 100%;
   // width: 100%;
-  gap: 20px;
 
   @include breakpoint.tablet {
     flex-direction: row;
@@ -19,7 +18,7 @@
   flex: 0 0 300px;
 
   .filters {
-    padding-block: 20px;
+    padding: 20px;
   }
 
   .filter {
@@ -195,6 +194,7 @@
 
 .search-results {
   container: searchResults / inline-size;
+  padding: 20px;
   flex: 1;
 
   .results {
@@ -202,7 +202,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-block: 20px;
+      margin-bottom: 20px;
       width: 100%;
     }
 
@@ -270,16 +270,18 @@
         grid-template-columns: repeat(var(--product-card-count), minmax(0, 1fr));
         gap: 10px;
 
-        @container productGrid (min-width: 800px) {
-          --product-card-count: 4;
-        }
+        &-container {
+          @container productGrid (min-width: 800px) {
+            --product-card-count: 4;
+          }
 
-        @container productGrid (min-width: 400px and max-width: 800px) {
-          --product-card-count: 3;
-        }
+          @container productGrid (min-width: 600px and max-width: 800px) {
+            --product-card-count: 3;
+          }
 
-        @container productGrid (max-width: 400px) {
-          --product-card-count: 2;
+          @container productGrid (max-width: 400px) {
+            --product-card-count: 2;
+          }
         }
       }
 
