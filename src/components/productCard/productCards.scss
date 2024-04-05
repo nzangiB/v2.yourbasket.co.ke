@@ -47,15 +47,15 @@
   .product-cards {
     &-container {
       @container productGroup (min-width: 800px) {
-        --product-group-cards: 4;
+        --product-card-count: 4;
       }
 
       @container productGroup (min-width: 600px and max-width: 800px) {
-        --product-group-cards: 3;
+        --product-card-count: 3;
       }
 
       @container productGroup (max-width: 400px) {
-        --product-group-cards: 2;
+        --product-card-count: 2;
       }
     }
 
@@ -86,7 +86,7 @@
 
     &:not(.flickity-enabled) {
       display: grid;
-      grid-template-columns: repeat(var(--product-group-cards), minmax(144px, 1fr));
+      grid-template-columns: repeat(var(--product-card-count), minmax(144px, 1fr));
       padding: 1px;
       gap: 10px;
 
@@ -103,7 +103,7 @@
     &-container {
       display: flex;
       //padding-inline: 5px;
-      width: calc(100% / var(--product-group-cards));
+      width: calc(100% / var(--product-card-count));
       min-height: 100%;
       //width: 100px;
       //height: 200px;

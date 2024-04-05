@@ -19,9 +19,18 @@
       width: 100%;
       padding: 0;
       margin: 0;
-      //width: calc(100% + 10px);
-      //margin-left: -5px;
-      //margin-right: 5px;
+      
+      @container productGroup (min-width: 600px) {
+        --product-card-count: 4;
+      }
+
+      @container productGroup (min-width: 300px and max-width: 450px) {
+        --product-card-count: 3;
+      }
+
+      @container productGroup (max-width: 300px) {
+        --product-card-count: 2;
+      }
     }
   }
 

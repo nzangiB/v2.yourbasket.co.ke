@@ -18,7 +18,7 @@ function ProductGroupTpl ({ id, products, options }) {
       pageDots: false,
       wrapAround: true,
       // prevNextButtons: true,
-      // adaptiveHeight: false,
+      adaptiveHeight: false,
       watchCSS: true
     });
   }, []);

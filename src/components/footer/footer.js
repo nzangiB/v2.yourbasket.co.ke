@@ -131,21 +131,20 @@ async function NavSocials () {
   return (
     <nav className="footer__socials">
       <div className="socials__content">
-        <h3 className="title">Connect With Us</h3>
-        <div className="social-icons">
-          <a href={smLinks?.facebook ? smLinks?.facebook : "#"} target="_blank">
+        <div className="btn-group social-icons">
+          <a className="btn --icon" href={smLinks?.facebook ? smLinks?.facebook : "#"} target="_blank">
             <object data={require("./icons/facebook.svg")} name={"facebook"} type="image/svg+xml"/>
           </a>
-          <a href={smLinks?.twitter ? smLinks?.twitter : "#"} target="_blank">
+          <a className="btn --icon" href={smLinks?.twitter ? smLinks?.twitter : "#"} target="_blank">
             <object data={require("./icons/twitter.svg")} name={"twitter"} type="image/svg+xml"/>
           </a>
-          <a href={smLinks?.instagram ? smLinks?.instagram : "#"} target="_blank">
+          <a className="btn --icon" href={smLinks?.instagram ? smLinks?.instagram : "#"} target="_blank">
             <object data={require("./icons/instagram.svg")} name={"instagram"} type="image/svg+xml"/>
           </a>
-          <a href={smLinks?.linkedin ? smLinks?.linkedin : "#"} target="_blank">
+          <a className="btn --icon" href={smLinks?.linkedin ? smLinks?.linkedin : "#"} target="_blank">
             <object data={require("./icons/linkedin.svg")} name={"linkedin"} type="image/svg+xml"/>
           </a>
-          <a href={smLinks?.tiktok ? smLinks?.tiktok : "#"} target="_blank">
+          <a className="btn --icon" href={smLinks?.tiktok ? smLinks?.tiktok : "#"} target="_blank">
             <object data={require("./icons/tiktok.svg")} name={"tiktok"} type="image/svg+xml"/>
           </a>
         </div>
