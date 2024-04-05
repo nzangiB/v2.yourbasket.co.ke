@@ -1,13 +1,18 @@
 .carousel {
   width: 100%;
-  height: 100%;
+  //height: 100%;
+  background-color: rgba(0, 0, 0, .12);
   //border-radius: 5px;
   overflow: hidden;
+
+  &:after {
+    content: 'flickity';
+    display: none; /* hide :after */
+  }
 }
 
 [class*="-banner"] {
   //  display: block;
-  background-color: rgba(0, 0, 0, .12);
 }
 
 .banner {
@@ -47,13 +52,13 @@
   height: 100%;
 
   .carousel {
-    //aspect-ratio: calc(350 * 2 + 20) / calc(275 * 2 + 20);
+    aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
     //aspect-ratio: 600 / 314;
     //aspect-ratio: 800 / 650;
   }
 
   .banner {
-    //aspect-ratio: calc(350 * 2 + 20) / calc(275 * 2 + 20);
+    aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
     //aspect-ratio: 600 / 314;
     //aspect-ratio: 800 / 650;
   }

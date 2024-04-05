@@ -68,19 +68,21 @@ export function Signup (props) {
       </section>
 
       <section className="signup__links">
-        <div className="links__content_container">
-          <div className="links__content">
-            <div className="links__image">
-              <img src={logo} alt="company logo"/>
-            </div>
-            <div className="link__text">
-              <h3>SHOP ON THE GO</h3>
-              <p>Get access to exclusive offers!</p>
-            </div>
+        <div className="link__text">
+          <div>
+            <img className="img" src={logo} alt="company logo"/>
           </div>
-          <div className="links__images">
-            <img src={android} alt="android download logo"/>
-            <img src={ios} alt="ios download logo"/>
+          <div>
+            <h3 className="title">SHOP ON THE GO</h3>
+            <p className="text">Get access to exclusive offers!</p>
+            <div className="btn-group">
+              <button className="btn">
+                <img src={android} alt="android download logo"/>
+              </button>
+              <button className="btn">
+                <img src={ios} alt="ios download logo"/>
+              </button>
+            </div>
           </div>
         </div>
 

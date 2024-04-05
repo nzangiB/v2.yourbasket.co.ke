@@ -17,7 +17,7 @@
 .deals__header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   @include breakpoint.phablet {
     flex-direction: row;
@@ -84,7 +84,17 @@
 }
 
 .deals-by-category {
+  display: flex;
+  flex-direction: column;
   padding-block: 20px;
+  gap: 20px;
+
+  .ad-group {
+    padding-block: 0 10px;
+  }
+
+  .deals-list {
+  }
 
   .deals__header {
     padding-inline: 20px;

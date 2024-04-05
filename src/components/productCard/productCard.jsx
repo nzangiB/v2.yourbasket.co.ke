@@ -3,7 +3,7 @@ import placeholder from "../../assets/images/placeholder.png";
 import HelperService from "../../services/helper.service";
 import { KES } from "../../helpers/formatting";
 
-import "./index.scss";
+import "./productCard.scss";
 
 export function ProductCard ({ product }) {
   if (!product.slug) return "";
@@ -43,7 +43,7 @@ export function ProductCard ({ product }) {
 
   return (
     <div className="product-card-container">
-      <a className="product-card" id={product.id} href={url}>
+      <a href={url} className="product-card" id={product.id}>
         <div className="product-card__icons">
           {discount && (
             <div className="discount">

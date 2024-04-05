@@ -1,3 +1,5 @@
+@use "../../styles/tools.breakpoint" as breakpoint;
+
 .signup__container {
   background-color: rgba(235, 240, 252, 1);
   container: signupContainer / inline-size;
@@ -8,20 +10,22 @@
   gap: 20px;
   width: 100%;
 
-  @container signupContainer (min-width: 600px) {
-    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  @include breakpoint.tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @container signupContainer (max-width: 600px) {
+  @include breakpoint.tablet-only {
     grid-auto-flow: row;
   }
 }
 
 .signup__field {
   padding: 20px;
+  container: signupField / inline-size;
   background-color: var(--color-type-10);
   border-radius: 5px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
 
@@ -33,26 +37,32 @@
     flex-direction: column;
   }
 
-  h3 {
-    font-size: var(--font-size-3);
-    font-weight: bolder;
-  }
+  .field__text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
-  p {
-    font-size: var(--font-size-4);
-    padding: 10px 0;
+    h3 {
+      font: 600 var(--font-variant-sub-title);
+    }
+
+    p {
+      font: var(--font-variant-caption);
+      margin-bottom: 10px;
+    }
   }
 
   .field__input {
     form {
       display: flex;
+      margin-bottom: 10px;
       gap: 5px;
 
-      @container signupContainer (min-width: 480px) {
+      @container signupField (min-width: 360px) {
         flex-direction: row;
       }
 
-      @container signupContainer (max-width: 480px) {
+      @container signupField (max-width: 360px) {
         flex-direction: column;
       }
 
@@ -84,17 +94,19 @@
   }
 
   .field__image {
-    @container signupContainer (max-width: 600px) {
+    @container signupField (max-width: 600px) {
       display: none;
     }
   }
 }
 
 .signup__links {
+  container: signupLinks / inline-size;
   background-color: var(--color-type-10);
   padding: 20px;
   border-radius: 5px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
 
@@ -106,23 +118,22 @@
     flex-direction: column;
   }
 
-  .links__content {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
-    gap: 10px;
-  }
-
-  .links__image {
-    @container signupContainer (max-width: 600px) {
-      display: none;
-    }
-  }
-
   .link__text {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+
+    @container signupField (min-width: 360px) {
+      flex-direction: row;
+    }
+
+    @container signupField (max-width: 360px) {
+      flex-direction: column;
+
+      .img {
+        display: none;
+      }
+    }
 
     h3 {
       font: 600 var(--font-variant-sub-title);
@@ -130,12 +141,22 @@
 
     p {
       font: var(--font-variant-caption);
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      padding: 0;
+      background: transparent;
+
+      &-group {
+        gap: 0;
+      }
     }
   }
 
-  .links__images {
-    img:first-child {
-      margin-right: 10px;
+  .links__image {
+    @container signupLinks (max-width: 600px) {
+      display: none;
     }
   }
 }
