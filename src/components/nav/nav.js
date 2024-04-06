@@ -19,7 +19,7 @@ import { openBasketEvent } from "../../helpers/basket";
 function Logo () {
   return (
     <div className="logo">
-      <a data-route="/">
+      <a href="/">
         <object
           data={require("../../assets/logos/logo-dark.svg")}
           name={"Your Basket"}
@@ -78,11 +78,19 @@ async function Wishlist (props) {
   }
 
   return (
-    <>
-      {wishlistCount > 0
-        ? <span className="count">{wishlistCount}</span>
-        : ""}
-    </>
+    <a href="/wishlist">
+      <object
+        className={"icon"}
+        data={require("../../assets/icons/wishlist.svg")}
+        name={"Wishlist Icon"}
+      />
+      <span id={"wishlist-count"}>
+        {wishlistCount > 0
+	        ? <span className="count">{wishlistCount}</span>
+	        : ""}
+      </span>
+      <span className="srt">Wishlist</span>
+    </a>
   );
 }
 
@@ -104,11 +112,22 @@ async function Basket (props) {
   }
 
   return (
-    <>
-      {cartCount > 0
-        ? <span className="count">{cartCount}</span>
-        : ""}
-    </>
+    <button
+      className={"btn --icon"}
+      onClick={e => openBasketEvent(e, "edit")}
+    >
+      <object
+        className={"icon"}
+        data={require("../../assets/icons/basket.svg")}
+        name="Basket Icon"
+      />
+      <span id={"cart-count"}>
+        {cartCount > 0
+	        ? <span className="count">{cartCount}</span>
+	        : ""}
+      </span>
+      <span className="srt">Basket</span>
+    </button>
   );
 }
 
@@ -124,13 +143,13 @@ async function Support (props) {
         <li>
           {isAuthenticated
             ? (
-              <a data-route="/account">
+              <a href="/account">
                 <img src={profilePic} alt="Profile Picture"/>
                 <span className="srt">Profile</span>
               </a>
             )
             : (
-              <a data-route="/login">
+              <a href="/login">
                 <object
                   data={require("../../assets/icons/profile.svg")}
                   name={"Profile Icon"}
@@ -140,36 +159,13 @@ async function Support (props) {
             )}
         </li>
         <li>
-          <a data-route="/wishlist">
-            <object
-              className={"icon"}
-              data={require("../../assets/icons/wishlist.svg")}
-              name={"Wishlist Icon"}
-            />
-            <span id={"wishlist-count"}>
-              {await Wishlist(props)}
-            </span>
-            <span className="srt">Wishlist</span>
-          </a>
+          {await Wishlist(props)}
         </li>
         <li>
-          <button
-            className={"btn --icon"}
-            onClick={e => openBasketEvent(e, "edit")}
-          >
-            <object
-              className={"icon"}
-              data={require("../../assets/icons/basket.svg")}
-              name="Basket Icon"
-            />
-            <span id={"cart-count"}>
-              {await Basket(props)}
-            </span>
-            <span className="srt">Basket</span>
-          </button>
+          {await Basket(props)}
         </li>
         <li>
-          <a data-route="/support">
+          <a href="/support">
             <object
               className={"icon"}
               data={require("../../assets/icons/customer_care.svg")}
@@ -186,7 +182,7 @@ async function Support (props) {
 function NavItem (item) {
   return (
     <li>
-      <a data-route={"/products/" + item.slug}>
+      <a href={"/products/" + item.slug}>
         <span>{item.name}</span>
       </a>
       {item?.Categories?.length > 0 && (
@@ -265,7 +261,7 @@ export class Categories extends Component {
         {/*  <ul className="sf-menu"> */}
         {/*    {categories.length > 0 && ( */}
         {/*      <li> */}
-        {/*        <a data-route="/products"> */}
+        {/*        <a href="/products"> */}
         {/*          <img src={hamburger} alt="Hamburger Menu"/> */}
         {/*          <span>All Categories</span> */}
         {/*        </a> */}
@@ -280,7 +276,7 @@ export class Categories extends Component {
         <div className="nav categories__list">
           <ul className="sf-menu sf-navbar">
             <li>
-              <a data-route="/products/filter/top-deals">
+              <a href="/products/filter/top-deals">
                 <span>Today's Deals</span>
               </a>
             </li>

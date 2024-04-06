@@ -13,7 +13,7 @@ function MiniBasketReceipt ({ cart, step, setStep, ...props }) {
   }, [step]);
 
   const continueShoppingEvent = () => {
-    setStep("");
+    setStep(undefined);
   };
 
   const cancelOrderEvent = (e) => {

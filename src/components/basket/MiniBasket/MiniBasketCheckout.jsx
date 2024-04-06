@@ -15,12 +15,6 @@ function MiniBasketCheckout ({ params, query, cart, getCart, subTotal, step, set
   const [cartData, setCartData] = useState([]);
   const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    const component = document.getElementById(props.id);
-    const scrollable = component?.querySelector(".mini-basket");
-    if (scrollable) scrollable.scrollTop = 0;
-  }, [step]);
-
   const getProduct = async () => {
     await DataService.getCart("cart").then((data) => {
       const response = data?.data?.data;
@@ -67,11 +61,17 @@ function MiniBasketCheckout ({ params, query, cart, getCart, subTotal, step, set
     }
   }, [step, subTotal]);
 
+  useEffect(() => {
+    const component = document.getElementById(props.id);
+    const scrollable = component?.querySelector(".mini-basket");
+    if (scrollable) scrollable.scrollTop = 0;
+  }, [step]);
+
   if (loading) {
     return (
       <section className="mini-basket__checkout">
         <div className="message">
-					Loading...
+          <span>Loading...</span>
         </div>
       </section>
     );

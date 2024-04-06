@@ -31,7 +31,7 @@ function MiniBasketEdit ({ cart, setCart, getCart, subTotal, step, setStep, ...p
     return (
       <section className="mini-basket__edit">
         <div className="message">
-					Loading...
+          <span>Loading...</span>
         </div>
       </section>
     );
