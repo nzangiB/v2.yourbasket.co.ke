@@ -2,22 +2,22 @@ function PaymentMethodsList () {
   return (
     <div className={"payment__methods-list"}>
       <div className={"list-item"}>
-        <object data={require("../icons/mastercard.svg")} name={"Mastercard"}/>
+        <object data={require("../icons/psp-mastercard.svg")} name={"Mastercard"}/>
       </div>
       <div className={"list-item"}>
-        <object data={require("../icons/mpesa.svg")} name={"M-Pesa"}/>
+        <object data={require("../icons/psp-mpesa.svg")} name={"M-Pesa"}/>
       </div>
       <div className={"list-item"}>
-        <object data={require("../icons/amex.svg")} name={"AMEX"}/>
+        <object data={require("../icons/psp-amex.svg")} name={"AMEX"}/>
       </div>
       <div className={"list-item"}>
-        <object data={require("../icons/visa.svg")} name={"Visa"}/>
+        <object data={require("../icons/psp-visa.svg")} name={"Visa"}/>
       </div>
       <div className={"list-item"}>
-        <object data={require("../icons/union-pay.svg")} name={"Union Pay"}/>
+        <object data={require("../icons/psp-union-pay.svg")} name={"Union Pay"}/>
       </div>
       <div className={"list-item"}>
-        <object data={require("../icons/american-express.svg")} name={"American Express"}/>
+        <object data={require("../icons/psp-american-express.svg")} name={"American Express"}/>
       </div>
     </div>
   );
