@@ -34,20 +34,21 @@ function SearchFilters (props) {
           return (
             <div key={subCat.slug} className="option">
               <div
-                className={"option__name  sub-cat-div-list"}
                 id={"subCatDiv_" + subCat.id}
+                className={
+                  query?.subCatId &&
+									query?.subCatId === subCat.id
+                    ? "option__name subCatDivList"
+                    : "option__name subCatDivList close"
+                }
               >
                 <input
                   type="checkbox"
                   value={subCat.id}
+                  defaultChecked={!!(query?.subCatId && query?.subCatId === subCat.id)}
                   onClick={(e) => { clickSubCat(e, subCat.id); }}
-                  defaultChecked={
-                    !!(query?.subCatId &&
-											query?.subCatId ===
-											subCat.id)
-                  }
-                  id={"subCat_" + subCat.id}
                   className="input subCatCheckbox"
+                  id={"subCat_" + subCat.id}
                   // hidden
                 />
                 <label htmlFor={"subCat_" + subCat.id}>
@@ -76,22 +77,21 @@ function SearchFilters (props) {
           // cat.slug = mastCatSlug + "/" + cat.slug;
           return (
             <div key={cat.slug} className={"option"}>
-              <div className={
-                query?.mastCatId && query?.catId === cat.id
-                  ? "option__name catList cat-div-list"
-                  : "option__name catList cat-div-list close"
-              }
-							     id={"catDiv_" + cat.id}>
+              <div
+                id={"catDiv_" + cat.id}
+                className={
+                  query?.mastCatId && query?.catId === cat.id
+                    ? "option__name catDivList"
+                    : "option__name catDivList close"
+                }
+              >
                 <input
                   type="checkbox"
                   value={cat.id}
+                  defaultChecked={!!(query?.catId && query?.catId === cat.id)}
                   onClick={(e) => { clickCat(e, cat.id); }}
-                  defaultChecked={
-                    !!(query?.catId &&
-											query?.catId === cat.id)
-                  }
-                  id={"cat_" + cat.id}
                   className="input catCheckbox"
+                  id={"cat_" + cat.id}
                   // hidden
                 />
                 <label htmlFor={"cat_" + cat.id}>
@@ -113,31 +113,32 @@ function SearchFilters (props) {
     );
   };
 
-  const getMasterCategoryFilters = (categories) => {
+  const getMastCategoryFilters = (categories) => {
     return categories && (
       <div className="options">
         {categories.map((mastCat) => {
           // mastCat.slug = "/#/products/" + mastCat.slug;
           return (
             <div key={mastCat.slug} className={"option"}>
-              <div className={
-                query?.mastCatId &&
-								query?.mastCatId === mastCat.id
-                  ? "option__name master-cat-list"
-                  : "option__name master-cat-list close"
-              }
-							     id={"mastCatDiv_" + mastCat.id}
+              <div
+                id={"mastCatDiv_" + mastCat.id}
+                className={
+                  query?.mastCatId &&
+									query?.mastCatId === mastCat.id
+                    ? "option__name mastCatDivList"
+                    : "option__name mastCatDivList close"
+                }
               >
                 <input
                   type="checkbox"
                   value={mastCat.id}
                   defaultChecked={!!(query?.mastCatId && query?.mastCatId === mastCat.id)}
                   onClick={(e) => { clickMastCat(e, mastCat.id); }}
-                  id={"masCat_" + mastCat.id}
-                  className="input masterCatCheckbox"
+                  className="input mastCatCheckbox"
+                  id={"mastCat_" + mastCat.id}
                   // hidden
                 />
-                <label htmlFor={"masCat_" + mastCat.id}>
+                <label htmlFor={"mastCat_" + mastCat.id}>
                   {mastCat.name}
                 </label>
               </div>
@@ -169,7 +170,7 @@ function SearchFilters (props) {
         {/*    defaultValue="" */}
         {/*  /> */}
         {/* </div> */}
-        {getMasterCategoryFilters(categories)}
+        {getMastCategoryFilters(categories)}
       </section>
     </section>
   );
@@ -192,15 +193,15 @@ function SearchFilters (props) {
                   ? "option__name brandList"
                   : "option__name brandList close"
               }
-							     id={"brand_div_" + brand.id}
+							     id={"brandDiv_" + brand.id}
               >
                 <input
                   type="checkbox"
                   value={brand.id}
                   defaultChecked={!!(query?.brandId && query?.brandId === brand.id)}
                   onClick={(e) => { clickBrand(e, brand.id); }}
-                  id={"brand_" + brand.id}
                   className="input brandCheckbox"
+                  id={"brand_" + brand.id}
                   // hidden
                 />
                 <label htmlFor={"brand_" + brand.id}>
@@ -270,9 +271,54 @@ function SearchFilters (props) {
       </header>
       <section className="filter__options">
         <div className="options">
-          <div className="option">Last 7 days</div>
-          <div className="option">Last 30 days</div>
-          <div className="option">Last 60 days</div>
+          <div className="option">
+            <div className="option__name">
+              <input
+                type="checkbox"
+                onClick={(e) => clickDates(e, "7")}
+                value="7"
+                name="7days"
+                className="input dateCheckbox"
+                id="7days"
+                // hidden
+              />
+              <label htmlFor="7days">
+								Last 7 days
+              </label>
+            </div>
+          </div>
+          <div className="option">
+            <div className="option__name">
+              <input
+                type="checkbox"
+                onClick={(e) => clickDates(e, "30")}
+                value="30"
+                name="30days"
+                className="input dateCheckbox"
+                id="30days"
+                // hidden
+              />
+              <label htmlFor="30days">
+								Last 30 days
+              </label>
+            </div>
+          </div>
+          <div className="option">
+            <div className="option__name">
+              <input
+                type="checkbox"
+                onClick={(e) => clickDates(e, "60")}
+                value="60"
+                name="60days"
+                className="input dateCheckbox"
+                id="60days"
+                // hidden
+              />
+              <label htmlFor="60days">
+								Last 60 days
+              </label>
+            </div>
+          </div>
         </div>
       </section>
     </section>

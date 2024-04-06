@@ -11,7 +11,7 @@ import "./search.scss";
 function SearchTpl ({ filters, params, query }) {
   const [data, setData] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
-  const [masterCatData, setMasterCatData] = useState([]);
+  const [mastCatData, setMastCatData] = useState([]);
   const [catData, setCatData] = useState([]);
   const [brand, setBrand] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -121,43 +121,45 @@ function SearchTpl ({ filters, params, query }) {
 
   const makeBreadcrumb = async (obj, mArray = [], nv = false) => {
     let nvUrl = null;
-    // const nvParams = {};
+    const nvParams = {};
     let str = "<a href='/'>Home</a>";
     // check master category..
-    if (masterCatData.length > 0) {
-      mArray = masterCatData;
+    if (mastCatData.length > 0) {
+      mArray = mastCatData;
     }
 
     if (obj.mastCatId && obj.mastCatId > 0) {
       const ss = await Promise.all(mArray.filter((item, i) => {
-        return (item.id === obj.mastCatId);
+        return (parseInt(item.id) === parseInt(obj.mastCatId));
       }));
 
       if (ss.length > 0) {
-        // nvParams.master = ss[0].slug;
+        nvParams.mastCatId = ss[0].id;
         nvUrl = `/products/${ss[0].slug}`;
         str += `<div class="breadcrumb-spacer">></div><a class="breadcrumb" href="${nvUrl}">{ss[0].name}</a>`;
 
         // check sub category..
         if (ss[0].Categories.length > 0 && (obj.catId && obj.catId > 0)) {
           const ss1 = await Promise.all(ss[0].Categories.filter((item, i) => {
-            return (item.id === obj.catId);
+            return (parseInt(item.id) === parseInt(obj.catId));
           }));
+
           if (ss1.length > 0) {
-            // nvParams.master = ss[0].slug;
-            // nvParams.category = ss1[0].slug;
+            nvParams.mastCatId = ss[0].id;
+            nvParams.catId = ss1[0].id;
             nvUrl = `/products/${ss[0].slug}/${ss1[0].slug}`;
             str += `<div class="breadcrumb-spacer">></div><a class="breadcrumb" href="${nvUrl}">${ss1[0].name}</a>`;
 
             // check sub sub category..
             if (ss1[0].Categories.length > 0 && (obj.subCatId && obj.subCatId > 0)) {
               const ss2 = await Promise.all(ss1[0].Categories.filter((item, i) => {
-                return (item.id === obj.subCatId);
+                return (parseInt(item.id) === parseInt(obj.subCatId));
               }));
+
               if (ss2.length > 0) {
-                // nvParams.master = ss[0].slug;
-                // nvParams.category = ss1[0].slug;
-                // nvParams.subcategory = ss2[0].slug;
+                nvParams.mastCatId = ss[0].id;
+                nvParams.catId = ss1[0].id;
+                nvParams.subCatId = ss2[0].id;
                 nvUrl = `/products/${ss[0].slug}/${ss1[0].slug}/${ss2[0].slug}`;
                 str += `<div class="breadcrumb-spacer">></div><a class="breadcrumb" href="${nvUrl}">${ss2[0].name}</a>`;
               }
@@ -166,29 +168,19 @@ function SearchTpl ({ filters, params, query }) {
         }
 
         if (nv && nvUrl) {
-          // console.log(nvParams);
-          // params = nvParams;
-          // setQueryData(nvParams);
-          // console.log(nvUrl);
-          window.history.pushState({}, "", "/" + nvUrl);
-          // location.replace(new URL("/" + nvUrl, location.origin));
+          setQueryData(nvParams);
+          window.history.pushState(nvParams, "", nvUrl);
           // window.location.reload();
         }
       }
     } else {
-      nvUrl = `/products`;
+      nvUrl = `/products/`;
       str += `<div class="breadcrumb-spacer">></div><a href="${nvUrl}">All Categories</a>`;
     }
 
-    console.log(nv, nvUrl);
-
     if (nv && nvUrl) {
-      // console.log(nvParams);
-      // params = nvParams;
-      // setQueryData(nvParams);
-      // console.log(nvUrl);
-      window.history.pushState({}, "", "/" + nvUrl);
-      // location.replace(new URL("/" + nvUrl, location.origin));
+      setQueryData(nvParams);
+      window.history.pushState(nvParams, "", nvUrl);
       // window.location.reload();
     }
 
@@ -251,37 +243,43 @@ function SearchTpl ({ filters, params, query }) {
   };
 
   const clickMastCat = (e, id) => {
-    const catCheckboxes = document.querySelectorAll(".catCheckbox");
-    const subCheckboxes = document.querySelectorAll(".subCatCheckbox");
-    const catDiv = document.querySelectorAll(".cat-div-list");
     if (e.target.checked) {
       document.getElementById("mastCatDiv_" + id).classList.remove("close");
     } else {
+      const catCheckboxes = document.querySelectorAll(".catCheckbox");
       catCheckboxes.forEach((element) => {
         element.checked = false;
       });
+
+      const subCheckboxes = document.querySelectorAll(".subCatCheckbox");
       subCheckboxes.forEach((element) => {
         element.checked = false;
       });
+
+      const catDiv = document.querySelectorAll(".catDivList");
       catDiv.forEach((element) => {
         element.classList.add("close");
       });
+
       document.getElementById("mastCatDiv_" + id).classList.add("close");
     }
-    unSelectAllExcept(".masterCatCheckbox", e.target);
+
+    unSelectAllExcept(".mastCatCheckbox", e.target);
     selectFilterData(true);
   };
 
   const clickCat = (e, id) => {
-    const subCatCheckboxes = document.querySelectorAll(".subCatCheckbox");
     if (e.target.checked) {
       document.getElementById("catDiv_" + id).classList.remove("close");
     } else {
+      const subCatCheckboxes = document.querySelectorAll(".subCatCheckbox");
       subCatCheckboxes.forEach((c) => {
         c.checked = false;
       });
+
       document.getElementById("catDiv_" + id).classList.add("close");
     }
+
     unSelectAllExcept(".catCheckbox", e.target);
     selectFilterData(true);
   };
@@ -310,7 +308,7 @@ function SearchTpl ({ filters, params, query }) {
     let cats = [];
     let brands = [];
     await DataService.getAllCategory("0").then((data) => {
-      setMasterCatData(data.data.categories);
+      setMastCatData(data.data.categories);
       cats = data.data.categories;
     });
 
@@ -348,13 +346,13 @@ function SearchTpl ({ filters, params, query }) {
     selectFilterData();
   };
 
-  const unSelectAllExcept = (classs, current = null) => {
-    const checkboxes = document.querySelectorAll(classs);
+  const unSelectAllExcept = (className, current = null) => {
+    const checkboxes = document.querySelectorAll(className);
     checkboxes.forEach((element) => {
       if (element !== current) {
         element.checked = false;
 
-        // find all categories..
+        // find all categories.
         let list =
 					element.parentNode.parentNode.getElementsByClassName("catCheckbox");
         if (list && list.length > 0) {
@@ -363,7 +361,7 @@ function SearchTpl ({ filters, params, query }) {
           }
         }
 
-        // find all categories..
+        // find all categories.
         list = element.parentNode.parentNode.getElementsByClassName("subCatCheckbox");
         if (list && list.length > 0) {
           for (let i = 0; i < list.length; i++) {
@@ -383,32 +381,27 @@ function SearchTpl ({ filters, params, query }) {
     brandId = [];
     dates = [];
     breadC = { master: "", cat: "", sub: "" };
-    const masterCatCheckboxes = document.querySelectorAll(".masterCatCheckbox:checked");
-    // console.log(masterCatCheckboxes);
+    const mastCatCheckboxes = document.querySelectorAll(".mastCatCheckbox:checked");
+    // console.log(mastCatCheckboxes);
     const catCheckboxes = document.querySelectorAll(".catCheckbox:checked");
     // console.log(catCheckboxes);
     const subCatCheckboxes = document.querySelectorAll(".subCatCheckbox:checked");
     // console.log(subCatCheckboxes);
     const brandCheckboxes = document.querySelectorAll(".brandCheckbox:checked");
     // console.log(brandCheckboxes);
-    const dateCheckboxes = document.querySelectorAll(".datecustome:checked");
+    const dateCheckboxes = document.querySelectorAll(".dateCheckbox:checked");
     // console.log(dateCheckboxes);
 
-    masterCatCheckboxes.forEach((element) => {
+    mastCatCheckboxes.forEach((element) => {
       if (mastCatId.indexOf(element.value) <= -1) {
         let allowed = true;
-        const list =
-					element.parentNode.parentNode.getElementsByClassName("catCheckbox");
+        const list = element.parentNode.parentNode.getElementsByClassName("catCheckbox");
         if (list && list.length > 0) {
           for (let i = 0; i < list.length; i++) {
-            if (list[i].checked) {
-              allowed = false;
-            }
+            if (list[i].checked) allowed = false;
           }
         }
-        if (allowed) {
-          mastCatId.push(element.value);
-        }
+        if (allowed) mastCatId.push(element.value);
         breadC.master = element.value;
       }
     });
@@ -416,18 +409,13 @@ function SearchTpl ({ filters, params, query }) {
     catCheckboxes.forEach((element) => {
       if (catId.indexOf(element.value) <= -1) {
         let allowed = true;
-        const list =
-					element.parentNode.parentNode.getElementsByClassName("subCatCheckbox");
+        const list = element.parentNode.parentNode.getElementsByClassName("subCatCheckbox");
         if (list && list.length > 0) {
           for (let i = 0; i < list.length; i++) {
-            if (list[i].checked) {
-              allowed = false;
-            }
+            if (list[i].checked) allowed = false;
           }
         }
-        if (allowed) {
-          catId.push(element.value);
-        }
+        if (allowed) catId.push(element.value);
         breadC.cat = element.value;
       }
     });
@@ -447,6 +435,7 @@ function SearchTpl ({ filters, params, query }) {
         dates.push(element.value);
       }
     });
+
     filterData(nv);
   };
 
@@ -485,16 +474,16 @@ function SearchTpl ({ filters, params, query }) {
           clickDates,
           priceMinHandle,
           priceMaxHandle,
-          categories: masterCatData,
+          categories: mastCatData,
           brand,
           filters,
           params,
-          queryData,
+          query: queryData,
           loading
         }}/>
         <SearchResults {...{
           params,
-          queryData,
+          query: queryData,
           data,
           itemsPerPage,
           itemsPerPageOptions,
