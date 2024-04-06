@@ -1,24 +1,35 @@
 @use "../../styles/tools.breakpoint" as breakpoint;
 
 .search {
-  display: flex;
-  // max-width: 100%;
-  // width: 100%;
+  padding-block: 20px;
 
-  @include breakpoint.tablet {
-    flex-direction: row;
+  &__header {
+    .breadcrumbs {
+      padding-inline: 20px;
+      margin-bottom: 20px;
+    }
   }
 
-  @include breakpoint.tablet-only {
-    flex-direction: column;
+  &__content {
+    display: flex;
+    // max-width: 100%;
+    // width: 100%;
+
+    @include breakpoint.tablet {
+      flex-direction: row;
+    }
+
+    @include breakpoint.tablet-only {
+      flex-direction: column;
+    }
   }
 }
 
 .search-filters {
   flex: 0 0 300px;
+  padding-inline: 20px;
 
   .filters {
-    padding: 20px;
   }
 
   .filter {
@@ -194,7 +205,7 @@
 
 .search-results {
   container: searchResults / inline-size;
-  padding: 20px;
+  padding-inline: 20px;
   flex: 1;
 
   .results {

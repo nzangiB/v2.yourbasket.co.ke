@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
+
 import DataService from "../../services/data.service";
 import AuthService from "../../services/auth.service";
 
@@ -8,7 +9,6 @@ import SearchResults from "./SearchResults";
 import "./search.scss";
 
 function SearchTpl ({ filters, params, query }) {
-  // const { cats, brand, products } = this.state;
   const [data, setData] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [masterCatData, setMasterCatData] = useState([]);
@@ -28,6 +28,7 @@ function SearchTpl ({ filters, params, query }) {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageOptions[0]);
+  const limit = useRef(12);
 
   const totalPages = Math.ceil(totalRecords / itemsPerPage);
 
@@ -41,7 +42,6 @@ function SearchTpl ({ filters, params, query }) {
   let maxPrice;
   let sortByPrice = "";
   let pageNo = 1;
-  let limit = 12;
 
   const setIdFromSlug = async (cats, brands) => {
     let ss;
@@ -121,6 +121,7 @@ function SearchTpl ({ filters, params, query }) {
 
   const makeBreadcrumb = async (obj, mArray = [], nv = false) => {
     let nvUrl = null;
+    // const nvParams = {};
     let str = "<a href='/'>Home</a>";
     // check master category..
     if (masterCatData.length > 0) {
@@ -133,10 +134,9 @@ function SearchTpl ({ filters, params, query }) {
       }));
 
       if (ss.length > 0) {
-        nvUrl = `${ss[0].slug}`;
-        str += ` / <a href="/products/${nvUrl}" onclick="setTimeout(function () {
-	 // window.location.reload();
-	 }, 500);" >${ss[0].name}</a>`;
+        // nvParams.master = ss[0].slug;
+        nvUrl = `/products/${ss[0].slug}`;
+        str += `<div class="breadcrumb-spacer">></div><a class="breadcrumb" href="${nvUrl}">{ss[0].name}</a>`;
 
         // check sub category..
         if (ss[0].Categories.length > 0 && (obj.catId && obj.catId > 0)) {
@@ -144,10 +144,10 @@ function SearchTpl ({ filters, params, query }) {
             return (item.id === obj.catId);
           }));
           if (ss1.length > 0) {
-            nvUrl = `${ss[0].slug}/${ss1[0].slug}`;
-            str += ` / <a href="/products/${nvUrl}"  onclick="setTimeout(function () {
-	 // window.location.reload();
-	 }, 500);">${ss1[0].name}</a>`;
+            // nvParams.master = ss[0].slug;
+            // nvParams.category = ss1[0].slug;
+            nvUrl = `/products/${ss[0].slug}/${ss1[0].slug}`;
+            str += `<div class="breadcrumb-spacer">></div><a class="breadcrumb" href="${nvUrl}">${ss1[0].name}</a>`;
 
             // check sub sub category..
             if (ss1[0].Categories.length > 0 && (obj.subCatId && obj.subCatId > 0)) {
@@ -155,27 +155,43 @@ function SearchTpl ({ filters, params, query }) {
                 return (item.id === obj.subCatId);
               }));
               if (ss2.length > 0) {
-                nvUrl = `${ss[0].slug}/${ss1[0].slug}/${ss2[0].slug}`;
-                str += ` / <a href="/products/${nvUrl}"  onclick="setTimeout(function () {
-	 // window.location.reload();
-	 }, 500);">${ss2[0].name}</a>`;
+                // nvParams.master = ss[0].slug;
+                // nvParams.category = ss1[0].slug;
+                // nvParams.subcategory = ss2[0].slug;
+                nvUrl = `/products/${ss[0].slug}/${ss1[0].slug}/${ss2[0].slug}`;
+                str += `<div class="breadcrumb-spacer">></div><a class="breadcrumb" href="${nvUrl}">${ss2[0].name}</a>`;
               }
             }
           }
         }
+
         if (nv && nvUrl) {
-          location.href = new URL("/" + nvUrl, location.origin);
+          // console.log(nvParams);
+          // params = nvParams;
+          // setQueryData(nvParams);
+          // console.log(nvUrl);
+          window.history.pushState({}, "", "/" + nvUrl);
+          // location.replace(new URL("/" + nvUrl, location.origin));
           // window.location.reload();
         }
       }
     } else {
-      nvUrl = `product`;
-      str += " / " + "<a href='/products'>All Categories</a>";
+      nvUrl = `/products`;
+      str += `<div class="breadcrumb-spacer">></div><a href="${nvUrl}">All Categories</a>`;
     }
+
+    console.log(nv, nvUrl);
+
     if (nv && nvUrl) {
-      location.href = new URL("/" + nvUrl, location.origin);
+      // console.log(nvParams);
+      // params = nvParams;
+      // setQueryData(nvParams);
+      // console.log(nvUrl);
+      window.history.pushState({}, "", "/" + nvUrl);
+      // location.replace(new URL("/" + nvUrl, location.origin));
       // window.location.reload();
     }
+
     setCustomBreadcrumb(str);
   };
 
@@ -198,13 +214,14 @@ function SearchTpl ({ filters, params, query }) {
   const handleItemsPerPageChange = (event) => {
     const newItemsPerPage = parseInt(event.target.value);
     setItemsPerPage(newItemsPerPage);
-    setCurrentPage(1);
-    limit = newItemsPerPage;
+    limit.current = newItemsPerPage;
+
     pageNo = 1;
+    setCurrentPage(1);
     selectFilterData();
   };
 
-  const filterData = (nv = false) => {
+  const filterData = async (nv = false) => {
     searchProduct({
       dates,
       brandId,
@@ -214,10 +231,10 @@ function SearchTpl ({ filters, params, query }) {
       minPrice,
       maxPrice,
       priceSort: sortByPrice,
-      keyword: query?.keyword,
-      filter: query?.filter,
+      keyword: params?.keyword,
+      filter: params?.filter,
       page: pageNo,
-      limit
+      limit: limit.current
     });
 
     if (nv) {
@@ -234,11 +251,11 @@ function SearchTpl ({ filters, params, query }) {
   };
 
   const clickMastCat = (e, id) => {
-    const catCheckboxes = document.querySelectorAll(".category");
-    const subCheckboxes = document.querySelectorAll(".subcategory");
+    const catCheckboxes = document.querySelectorAll(".catCheckbox");
+    const subCheckboxes = document.querySelectorAll(".subCatCheckbox");
     const catDiv = document.querySelectorAll(".cat-div-list");
     if (e.target.checked) {
-      document.getElementById("mastCat_div_" + id).classList.remove("close");
+      document.getElementById("mastCatDiv_" + id).classList.remove("close");
     } else {
       catCheckboxes.forEach((element) => {
         element.checked = false;
@@ -249,14 +266,14 @@ function SearchTpl ({ filters, params, query }) {
       catDiv.forEach((element) => {
         element.classList.add("close");
       });
-      document.getElementById("mastCat_div_" + id).classList.add("close");
+      document.getElementById("mastCatDiv_" + id).classList.add("close");
     }
-    unSelectAllExcept(".mastCat", e.target);
+    unSelectAllExcept(".masterCatCheckbox", e.target);
     selectFilterData(true);
   };
 
   const clickCat = (e, id) => {
-    const subCatCheckboxes = document.querySelectorAll(".subcategory");
+    const subCatCheckboxes = document.querySelectorAll(".subCatCheckbox");
     if (e.target.checked) {
       document.getElementById("catDiv_" + id).classList.remove("close");
     } else {
@@ -265,12 +282,12 @@ function SearchTpl ({ filters, params, query }) {
       });
       document.getElementById("catDiv_" + id).classList.add("close");
     }
-    unSelectAllExcept(".category", e.target);
+    unSelectAllExcept(".catCheckbox", e.target);
     selectFilterData(true);
   };
 
   const clickSubCat = (e, id) => {
-    unSelectAllExcept(".subcategory", e.target);
+    unSelectAllExcept(".subCatCheckbox", e.target);
     selectFilterData(true);
   };
 
@@ -326,25 +343,30 @@ function SearchTpl ({ filters, params, query }) {
     maxPrice = e.target.value;
   };
 
+  const sortProductByPrice = (e) => {
+    sortByPrice = e.target.value;
+    selectFilterData();
+  };
+
   const unSelectAllExcept = (classs, current = null) => {
     const checkboxes = document.querySelectorAll(classs);
     checkboxes.forEach((element) => {
       if (element !== current) {
         element.checked = false;
 
-        // find all category..
+        // find all categories..
         let list =
-					element.parentNode.parentNode.getElementsByClassName("category");
+					element.parentNode.parentNode.getElementsByClassName("catCheckbox");
         if (list && list.length > 0) {
-          for (var i = 0; i < list.length; i++) {
+          for (let i = 0; i < list.length; i++) {
             list[i].checked = false;
           }
         }
 
-        // find all category..
-        list = element.parentNode.parentNode.getElementsByClassName("subcategory");
+        // find all categories..
+        list = element.parentNode.parentNode.getElementsByClassName("subCatCheckbox");
         if (list && list.length > 0) {
-          for (var i = 0; i < list.length; i++) {
+          for (let i = 0; i < list.length; i++) {
             list[i].checked = false;
           }
         }
@@ -355,25 +377,28 @@ function SearchTpl ({ filters, params, query }) {
   };
 
   const selectFilterData = (nv = false) => {
-    setLoading(true);
-
     mastCatId = [];
     catId = [];
     subCatId = [];
     brandId = [];
     dates = [];
     breadC = { master: "", cat: "", sub: "" };
-    const masterCheckboxes = document.querySelectorAll(".mastercat:checked");
-    const catCheckboxes = document.querySelectorAll(".category:checked");
-    const subCheckboxes = document.querySelectorAll(".subcategory:checked");
-    const brandCheckboxes = document.querySelectorAll(".brandsearch:checked");
+    const masterCatCheckboxes = document.querySelectorAll(".masterCatCheckbox:checked");
+    // console.log(masterCatCheckboxes);
+    const catCheckboxes = document.querySelectorAll(".catCheckbox:checked");
+    // console.log(catCheckboxes);
+    const subCatCheckboxes = document.querySelectorAll(".subCatCheckbox:checked");
+    // console.log(subCatCheckboxes);
+    const brandCheckboxes = document.querySelectorAll(".brandCheckbox:checked");
+    // console.log(brandCheckboxes);
     const dateCheckboxes = document.querySelectorAll(".datecustome:checked");
+    // console.log(dateCheckboxes);
 
-    masterCheckboxes.forEach((element) => {
+    masterCatCheckboxes.forEach((element) => {
       if (mastCatId.indexOf(element.value) <= -1) {
         let allowed = true;
         const list =
-					element.parentNode.parentNode.getElementsByClassName("category");
+					element.parentNode.parentNode.getElementsByClassName("catCheckbox");
         if (list && list.length > 0) {
           for (let i = 0; i < list.length; i++) {
             if (list[i].checked) {
@@ -392,7 +417,7 @@ function SearchTpl ({ filters, params, query }) {
       if (catId.indexOf(element.value) <= -1) {
         let allowed = true;
         const list =
-					element.parentNode.parentNode.getElementsByClassName("subcategory");
+					element.parentNode.parentNode.getElementsByClassName("subCatCheckbox");
         if (list && list.length > 0) {
           for (let i = 0; i < list.length; i++) {
             if (list[i].checked) {
@@ -406,7 +431,7 @@ function SearchTpl ({ filters, params, query }) {
         breadC.cat = element.value;
       }
     });
-    subCheckboxes.forEach((element) => {
+    subCatCheckboxes.forEach((element) => {
       if (subCatId.indexOf(element.value) <= -1) {
         subCatId.push(element.value);
         breadC.sub = element.value;
@@ -423,13 +448,6 @@ function SearchTpl ({ filters, params, query }) {
       }
     });
     filterData(nv);
-
-    setLoading(false);
-  };
-
-  const sortProductByPrice = (e) => {
-    sortByPrice = e.target.value;
-    selectFilterData();
   };
 
   useEffect(() => {
@@ -448,32 +466,47 @@ function SearchTpl ({ filters, params, query }) {
 
   return (
     <>
-      <SearchFilters {...{
-        clickMastCat,
-        clickCat,
-        clickSubCat,
-        clickPrice,
-        clickBrand,
-        clickDates,
-        categories: masterCatData,
-        brand,
-        filters,
-        params,
-        query: queryData
-      }}/>
-      <SearchResults {...{
-        params,
-        query: queryData,
-        data,
-        itemsPerPage,
-        itemsPerPageOptions,
-        currentPage,
-        totalPages,
-        handleItemsPerPageChange,
-        goToPage,
-        sortProductByPrice,
-        totalRecords
-      }}/>
+      {/* <section className="search__header"> */}
+      {/*  <div className="breadcrumbs"> */}
+      {/*    {customBreadcrumb.map((breadcrumb, i) => ( */}
+      {/*      <a key={i} className="breadcrumb" data-route={breadcrumb.url}> */}
+      {/*        <span>{breadcrumb.name}</span> */}
+      {/*      </a> */}
+      {/*    )).join("/")} */}
+      {/*  </div> */}
+      {/* </section> */}
+      <section className="search__content">
+        <SearchFilters {...{
+          clickMastCat,
+          clickCat,
+          clickSubCat,
+          clickPrice,
+          clickBrand,
+          clickDates,
+          priceMinHandle,
+          priceMaxHandle,
+          categories: masterCatData,
+          brand,
+          filters,
+          params,
+          queryData,
+          loading
+        }}/>
+        <SearchResults {...{
+          params,
+          queryData,
+          data,
+          itemsPerPage,
+          itemsPerPageOptions,
+          currentPage,
+          totalPages,
+          handleItemsPerPageChange,
+          goToPage,
+          sortProductByPrice,
+          totalRecords,
+          loading
+        }}/>
+      </section>
     </>
   );
 }

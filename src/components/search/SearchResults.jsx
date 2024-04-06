@@ -1,15 +1,20 @@
 import { ProductCard } from "../productCard/productCard";
-import { Fragment } from "react";
 
-function Results ({ results }) {
+function Results ({ loading, results }) {
+  if (loading) {
+    return (
+      <div className="loading">
+        <span>Loading...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="product-grid">
       <div className="product-cards-container">
         <div className="product-cards">
           {results.map(product => (
-            <Fragment key={product.id}>
-              <ProductCard product={product}/>
-            </Fragment>
+            <ProductCard key={product.id} product={product}/>
           )).filter(Boolean)}
         </div>
       </div>
@@ -115,6 +120,16 @@ function SearchResults ({
   totalRecords,
   loading
 }) {
+  // if (loading) {
+  //   return (
+  //     <section className="search-results">
+  //       <div className="message" role="status">
+  //         <span>Loading...</span>
+  //       </div>
+  //     </section>
+  //   );
+  // }
+
   return (
     <section className="search-results">
       <div className="results">
@@ -140,25 +155,15 @@ function SearchResults ({
         </header>
 
         <section className="results__list">
-          {loading
-            ? (
-              <div className="loading">
-								Loading...
-              </div>
-            )
-            : (
-              <>
-                <Results results={data}/>
-                <Pagination {...{
-                  itemsPerPage,
-                  itemsPerPageOptions,
-                  currentPage,
-                  totalPages,
-                  handleItemsPerPageChange,
-                  goToPage
-                }}/>
-              </>
-            )}
+          <Results {...{ loading, results: data }}/>
+          <Pagination {...{
+            itemsPerPage,
+            itemsPerPageOptions,
+            currentPage,
+            totalPages,
+            handleItemsPerPageChange,
+            goToPage
+          }}/>
         </section>
       </div>
     </section>
