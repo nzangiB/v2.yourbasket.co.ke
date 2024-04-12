@@ -20,7 +20,7 @@ export function ProductVendor ({ brand, vendor }) {
         <h2 className="title">{capitalize(name)}</h2>
         <p className="text">
           {brand && (
-            <a className={"btn --link"} data-route={`/brands/${brand.slug}`}>
+            <a className={"btn --link"} data-route={`/products/brands/${brand.slug}`}>
 							More products from {capitalize(name)}
             </a>
           )}
