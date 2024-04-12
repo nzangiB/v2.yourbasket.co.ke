@@ -106,7 +106,9 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
     setLoading(false);
   };
 
-  const editCartEvent = () => { setStep("edit"); };
+  const editCartEvent = (e) => {
+    setStep("edit");
+  };
 
   const decreaseQuantityEvent = async (index) => {
     setLoading(true);
