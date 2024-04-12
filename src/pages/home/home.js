@@ -18,7 +18,8 @@ function Home (props) {
         <aside className="aside aside__left">
           <div className="ad-group --column">
             <Ad
-              src={require("../../assets/images/ads/aside-banner--easter-1.png")}
+              src={require("../../assets/images/ads/aside-banner--elimu-tab.png")}
+              redirectTo={"/products/phones-tablets/tablets"}
               width={160}
               height={600}
             />
@@ -67,8 +68,7 @@ function Home (props) {
         <aside className="aside aside__right">
           <div className="ad-group --column">
             <Ad
-              src={require("../../assets/images/ads/aside-banner--easter-2.png")}
-              redirectTo={"/products/filter/best-sellers"}
+              src={require("../../assets/images/ads/aside-banner--order-now.png")}
               width={160}
               height={600}
             />
