@@ -431,7 +431,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
           <button
             className={"btn --primary"}
             onClick={payOnDeliveryEvent}
-            disabled={!(firstName && lastName && phone && email)}
+            disabled={!auth && !(firstName && lastName && phone && email)}
           >Pay on Delivery
           </button>
         </div>
