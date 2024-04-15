@@ -169,7 +169,7 @@ function SearchTpl ({ filters, params, query }) {
 
         if (nv && nvUrl) {
           setQueryData(nvParams);
-          window.history.pushState(nvParams, "", nvUrl);
+          window.history.replaceState(nvParams, "", nvUrl);
           // window.location.reload();
         }
       }
@@ -180,7 +180,7 @@ function SearchTpl ({ filters, params, query }) {
 
     if (nv && nvUrl) {
       setQueryData(nvParams);
-      window.history.pushState(nvParams, "", nvUrl);
+      window.history.replaceState(nvParams, "", nvUrl);
       // window.location.reload();
     }
 

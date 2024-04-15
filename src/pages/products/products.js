@@ -10,7 +10,8 @@ import { CATEGORIES_ADULT_CONTENT } from "../../helpers/constants";
 
 function Products (props) {
   const { params, query } = props;
-  const filters = ["category", "brand", "price", "deals", "newArrival", "customerReview", "sellerScore"];
+  // const filters = ["category", "brand", "price", "deals", "newArrival", "customerReview", "sellerScore"];
+  const filters = ["category", "brand", "price", "newArrival"];
 
   return (
     <>
