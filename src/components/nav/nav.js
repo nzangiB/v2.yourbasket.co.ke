@@ -53,6 +53,7 @@ function Search (props) {
         id="searchInput"
         name="q"
         placeholder="Search products, brands and more"
+        defaultValue={props?.params?.keyword}
         onKeyUp={keyUpEvent}
       />
       <button className="button" type="submit">
@@ -240,9 +241,9 @@ export class Categories extends Component {
   skeleton () {
     return (
       <div className="categories">
-        {/* <div className="categories__all"> */}
-        {/*  <div className="skeleton skeleton__categories"></div> */}
-        {/* </div> */}
+        <div className="categories__all">
+          <div className="skeleton skeleton__categories"></div>
+        </div>
         <div className="categories__list">
           <div className="skeleton skeleton__categories"></div>
         </div>
@@ -257,21 +258,33 @@ export class Categories extends Component {
     const { topCategories, categories } = this.state;
     return (
       <nav className="categories">
-        {/* <div className="nav categories__all"> */}
-        {/*  <ul className="sf-menu"> */}
-        {/*    {categories.length > 0 && ( */}
-        {/*      <li> */}
-        {/*        <a href="/products"> */}
-        {/*          <img src={hamburger} alt="Hamburger Menu"/> */}
-        {/*          <span>All Categories</span> */}
-        {/*        </a> */}
-        {/*        <ul> */}
-        {/*          {categories.map(NavItem).filter(Boolean)} */}
-        {/*        </ul> */}
-        {/*      </li> */}
-        {/*    )} */}
-        {/*  </ul> */}
-        {/* </div> */}
+        <div className="nav categories__all">
+          <ul className="sf-menu">
+            {categories.length > 0 && (
+              <li>
+                <a href="#" style={{ boxShadow: "none", border: "none" }}>
+                  <img src={hamburger} alt="Hamburger Menu"/>
+                  <span>All Categories</span>
+                </a>
+                <ul>
+                  {categories.slice(0, 8).map(NavItem).filter(Boolean)}
+                  {categories && categories.length > 8
+                    ? (
+                      <li>
+                        <a href="#">
+                          <span>Others</span>
+                        </a>
+                        <ul>
+                          {categories.slice(8).map(NavItem).filter(Boolean)}
+                        </ul>
+                      </li>
+                    )
+                    : ""}
+                </ul>
+              </li>
+            )}
+          </ul>
+        </div>
 
         <div className="nav categories__list">
           <ul className="sf-menu sf-navbar">
@@ -280,12 +293,12 @@ export class Categories extends Component {
                 <span>Today's Deals</span>
               </a>
             </li>
-            {categories?.length > 0 && categories.map(NavItem).filter(Boolean)}
+            {/* {categories?.length > 0 && categories.map(NavItem).filter(Boolean)} */}
           </ul>
         </div>
 
         <div className="cta">
-          <a href="#">
+          <a href="//v1.yourbasket.co.ke/#/become-vendor">
             <span>Sell on YourBasket</span>
           </a>
         </div>

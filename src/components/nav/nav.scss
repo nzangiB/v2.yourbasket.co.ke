@@ -38,7 +38,7 @@
   }
 
   a {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     padding: 8px;
   }
@@ -71,7 +71,7 @@
   }
 
   .button {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px solid transparent;
@@ -172,8 +172,8 @@
 .categories {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-flow: row nowrap;
+  justify-content: space-between;
   background-color: white;
   width: 100%;
 
@@ -182,7 +182,7 @@
     align-items: center;
 
     a {
-      display: flex;
+      display: inline-flex;
       font: 500 var(--font-variant-caption);
       white-space: nowrap;
       //padding: 10px 10px;
@@ -196,7 +196,8 @@
 
   .nav {
     a {
-      //height: 48px;
+      height: 48px;
+      //border: 1px solid rgba(0, 0, 0, .1);
       line-height: 24px;
       padding: 12px;
     }
@@ -221,27 +222,34 @@
 
     ul, .sf-menu {
       display: flex;
-      flex-flow: row nowrap;
+      flex-flow: column nowrap;
       margin-bottom: 0;
+      box-shadow: none;
+      border: none;
 
       ul {
-        //box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+        //box-shadow: 2px 2px 6px rgba(0, 0, 0, .2);
         //min-width: 12em;
 
         ul {
-          top: 100%;
-          left: 0;
+          //top: 100%;
+          //left: 0;
         }
       }
     }
 
     li {
       background: var(--color-type-4);
+
+      &.sfHover {
+        background-color: var(--color-type-9);
+      }
     }
 
     a {
       align-items: center;
       color: var(--color-type-8);
+      box-shadow: 0 0 1px var(--color-type-8);
       position: relative;
       max-width: 48ch;
 
@@ -272,29 +280,35 @@
       }
     }
   }
+}
 
-  .categories__all {
-    overflow: hidden;
+.categories__all {
+  overflow: hidden;
+  box-shadow: none;
+  border: none;
 
-    &:has(.sf-js-enabled) {
-      overflow: visible;
-    }
+  &:has(.sf-js-enabled) {
+    overflow: visible;
   }
 
-  .categories__list {
-    flex: 1;
-    scrollbar-width: none;
-    scrollbar-gutter: stable;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  a {
+    width: 100%;
+  }
+}
 
-    &:has(.sf-js-enabled) {
-      overflow-x: visible;
-    }
+.categories__list {
+  flex: 1;
+  scrollbar-width: none;
+  scrollbar-gutter: stable;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 
-    @include breakpoint.mobile-only {
-      display: none;
-    }
+  &:has(.sf-js-enabled) {
+    overflow-x: visible;
+  }
+
+  @include breakpoint.mobile-only {
+    display: none;
   }
 }
