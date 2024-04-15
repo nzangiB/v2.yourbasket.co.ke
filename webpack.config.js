@@ -14,10 +14,12 @@ const plugins = [
     "process.env": JSON.stringify(process.env)
   }),
   new CopyPlugin({
-    patterns: [".htaccess", "robots.txt", "manifest.json", "manifest/**/*", {
-      from: "vendor/scripts",
-      to: "scripts"
-    }, { from: "vendor/styles", to: "styles" }],
+    patterns: [
+      ".htaccess",
+      "robots.txt",
+      "manifest.json",
+      "manifest/**/*"
+    ],
     options: {
       concurrency: 100
     }
@@ -44,13 +46,10 @@ module.exports = (env, argv) => {
 
   const configDefault = {
     context: path.join(__dirname, "src"),
-    entry: {
-      main: {
-        import: ["./scripts/main.js", "./styles/main.scss"],
-        dependOn: "vendor"
-      },
-      vendor: ["jquery"]
-    },
+    entry: [
+      "./scripts/main.js",
+      "./styles/main.scss"
+    ],
     module: {
       rules: [
         {

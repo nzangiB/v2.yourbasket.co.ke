@@ -1,10 +1,5 @@
-import favicon from "./favicon.ico";
-
-const name = "YourBasket";
-const description = "What's in your basket?";
-const keywords = "Handcrafted, Starter, Kit";
-
-export default `<!DOCTYPE html>
+export default `
+	<!DOCTYPE html>
 		<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 		<head>
 		    <meta charset="utf-8">
@@ -15,50 +10,87 @@ export default `<!DOCTYPE html>
 		
 		    <meta name="msapplication-tap-highlight" content="no"/>
 		    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-		    <meta name="description" content="${description}"/>
-		    <meta name="keywords" content="${keywords}"/>
+		    <meta name="description" content="What's in your basket?"/>
+		    <meta name="keywords" content=""/>
 		
-		    <link rel="manifest" href="/manifest.json"/>
-		    <link rel="shortcut icon" href="${favicon}"/>
+		    <link rel="manifest" href="./manifest.json"/>
+		    <link rel="shortcut icon" href="./favicon.ico"/>
 		    <link rel="preconnect" href="https://fonts.googleapis.com">
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-				<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-		    
-				<link href="/styles/flickity.css" rel="stylesheet" media="screen">
-				<link href="/styles/superfish.css" rel="stylesheet" media="screen">
-				<link href="/styles/superfish-navbar.css" rel="stylesheet" media="screen">
-				<link href="/styles/superfish-vertical.css" rel="stylesheet" media="screen">
-				<link href="/styles/simplebar.css" rel="stylesheet" media="screen">
+				<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+		    <link
+		    	rel="stylesheet"
+		    	href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css"
+		    	integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ=="
+		    	crossorigin="anonymous"
+		    	referrerpolicy="no-referrer"
+	      />
+				<link
+					rel="stylesheet"
+					href="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/css/superfish.min.css"
+					integrity="sha512-a/XY/t5oyeHkl1aap3QkgydkPGXe2HljQHAuQt97XEM5Q7WHW16V7LYPKO9YEydlt3TjlIETC2YicOaeo7xdcg=="
+					crossorigin="anonymous"
+					referrerpolicy="no-referrer"
+				/>
+				<link
+					rel="stylesheet"
+					href="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/css/megafish.css"
+					integrity="sha512-pnu/pv4l/t/AIzC5uFrIo//i/F/Ajdx5bmH7LrTm7vTIO0QVxkjcDKg6hiRVtS9r5BWiX/qItr48lsPyQdo7eg=="
+					crossorigin="anonymous"
+					referrerpolicy="no-referrer"
+			 	/>
 		
-		    <title>${name}</title>
+		    <title>YourBasket</title>
 		
-		    <script src="/scripts/jquery.js"></script>
-        <script src="/scripts/simplebar.js"></script>
-		    <script src="/scripts/hoverIntent.js"></script>
-		    <script defer src="/scripts/superfish.js"></script>
-        <script defer src="/scripts/flickity.pkgd.js"></script>
+		    <script
+		    	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+		      integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+		      crossorigin="anonymous"
+		      referrerpolicy="no-referrer">
+				</script>
+		    <script
+		     	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/1.10.2/jquery.hoverIntent.min.js"
+		     	integrity="sha512-sw+oNcbTS/A0W2RCoTKChyNVw/OClp76mxn3yaOZiDaxpGMXFIWrZC6BlgtieaWp2oh2asgj44TJd1f4Lz2C8Q=="
+		     	crossorigin="anonymous"
+		     	referrerpolicy="no-referrer">
+				</script>
+		    <script
+		      src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/js/superfish.min.js"
+		      integrity="sha512-gdhtclwUZCkHSSb/Q79++RssWL4eDLKHO15TC7kR/XnvlNyzcvZDRLn4BIuxadMWGIxPuj/IbFBInMpYockVCA=="
+		      crossorigin="anonymous"
+		      referrerpolicy="no-referrer">
+				</script>
+        <script
+        	src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js"
+        	integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA=="
+        	crossorigin="anonymous"
+        	referrerpolicy="no-referrer">
+				</script>
+		    <script
+	        src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+	        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+	        crossorigin="anonymous"
+	        async>
+		    </script>
+		    <!-- Google Tag Manager -->
+		    <script>(function (w, d, s, l, i) {
+		        w[l] = w[l] || [];
+		        w[l].push({
+		            'gtm.start':
+		                new Date().getTime(), event: 'gtm.js'
+		        });
+		        var f = d.getElementsByTagName(s)[0],
+		            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+		        j.async = true;
+		        j.src =
+		            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+		        f.parentNode.insertBefore(j, f);
+		    })(window, document, 'script', 'dataLayer', 'GTM-N6R9SD82');</script>
+		    <!-- End Google Tag Manager -->
 		</head>
 		
 		<body class="wrapper" style="display: flex; flex-flow: column nowrap; min-height: 100vh;">
 		    <noscript>You need to enable JavaScript to view this site.</noscript>
-		    <noscript>
-		        <style>
-		            /**
-		            * Reinstate scrolling for non-JS clients
-		            */
-		            .simplebar-content-wrapper {
-		                scrollbar-width: auto;
-		                -ms-overflow-style: auto;
-		            }
-		
-		            .simplebar-content-wrapper::-webkit-scrollbar,
-		            .simplebar-hide-scrollbar::-webkit-scrollbar {
-		                display: initial;
-		                width: initial;
-		                height: initial;
-		            }
-		        </style>
-		    </noscript>
 		    
 		    <div style="display: none">
 		        <?xml version="1.0" encoding="utf-8" ?>
@@ -364,5 +396,5 @@ export default `<!DOCTYPE html>
 						</div>		    
 				</main>
 		</body>
-		</html>
+	</html>
 `;
