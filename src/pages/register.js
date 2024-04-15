@@ -48,11 +48,6 @@ async function RegisterVerifyOTP (props) {
 
 const routes = [
   {
-    path: "/register{/:page}?",
-    data: { page: { title: "Register" } },
-    template: RegisterUser
-  },
-  {
     path: "/register/user",
     data: { page: { title: "Register" } },
     template: RegisterUser
@@ -66,6 +61,11 @@ const routes = [
     path: "/register/verify-otp",
     data: { page: { title: "Register" } },
     template: RegisterVerifyOTP
+  },
+  {
+    path: "/register{/:page}?",
+    data: { page: { title: "Register" } },
+    template: RegisterUser
   }
 ];
 
