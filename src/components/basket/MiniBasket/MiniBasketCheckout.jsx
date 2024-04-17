@@ -9,11 +9,16 @@ import PaymentMethodsListDetailed from "../Payments/PaymentMethodsListDetailed";
 
 import "./MiniBasketCheckout.scss";
 
-function MiniBasketCheckout ({ params, query, cart, getCart, subTotal, step, setStep, ...props }) {
-  const [loading, setLoading] = useState(true);
+function MiniBasketCheckout ({ loading, setLoading, params, query, cart, getCart, subTotal, step, setStep, ...props }) {
+  // const [loading, setLoading] = useState(true);
   const [buyNow, setBuyNow] = useState(false);
   const [cartData, setCartData] = useState([]);
   const [total, setTotal] = useState(0);
+
+  const auth = AuthService.getCurrentUser();
+  const redirectURL = new URL(window.location.href);
+  redirectURL.searchParams.set("basket", "checkout");
+  const loginUrl = "/login?url=" + encodeURIComponent(redirectURL.toString());
 
   const getProduct = async () => {
     await DataService.getCart("cart").then((data) => {
@@ -48,16 +53,21 @@ function MiniBasketCheckout ({ params, query, cart, getCart, subTotal, step, set
   };
 
   useEffect(() => {
-    const auth = AuthService.getCurrentUser();
-    if (auth) {
-      if (query?.buynow) {
-        setBuyNow(true);
-        getTempProduct();
-      } else {
-        getProduct();
-      }
+    if (!auth) {
+      location.href = loginUrl;
     } else {
-      getCart().then(() => { setLoading(false); });
+      // if (!step.startsWith("checkout/")) {
+      //   getCart().then(() => { setLoading(false); });
+      // } else {
+      getCart();
+      // setLoading(false);
+      // }
+      // if (query?.buynow) {
+      //   setBuyNow(true);
+      //   getTempProduct();
+      // } else {
+      //   getProduct();
+      // }
     }
   }, [step, subTotal]);
 
@@ -79,6 +89,18 @@ function MiniBasketCheckout ({ params, query, cart, getCart, subTotal, step, set
 
   return !loading && (
     <section className="mini-basket__checkout">
+      {auth && (
+        <div className="auth">
+          <p className="text">You are signed up with {auth.current.email}
+            <span>
+              <a className="" rel="noopener follow" href={loginUrl}>
+              Not you?
+              </a>
+            </span>
+          </p>
+        </div>
+      )}
+
       <div className={"order"}>
         <OrderList {...{ cart, getCart, setStep, disabled: true, editable: true }}/>
         {cart.length > 0 && <OrderSummary {...{ subTotal, total, setTotal }}/>}
