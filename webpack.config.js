@@ -30,13 +30,13 @@ const plugins = [
   }),
   // new HTMLWebpackPlugin({
   //   filename: "index.html",
-  //   template: "./index.html.js",
-  //   cache: false
+  //   template: "./index.html",
+  //   cache: true
   // }),
   new HTMLWebpackPlugin({
     filename: "error.html",
-    template: "./error.html.js",
-    cache: false
+    template: "./error.html",
+    cache: true
   })
 ];
 
@@ -117,6 +117,35 @@ module.exports = (env, argv) => {
     }
   };
 
+  // Bundler Polyfill Issues - Webpack 5
+  const fallback = configDefault.resolve.fallback || {};
+  Object.assign(fallback, {
+    crypto: false, // require.resolve("crypto-browserify") can be polyfilled here if needed
+    stream: false, // require.resolve("stream-browserify") can be polyfilled here if needed
+    assert: false, // require.resolve("assert") can be polyfilled here if needed
+    http: false, // require.resolve("stream-http") can be polyfilled here if needed
+    https: false, // require.resolve("https-browserify") can be polyfilled here if needed
+    os: false, // require.resolve("os-browserify") can be polyfilled here if needed
+    url: false, // require.resolve("url") can be polyfilled here if needed
+    zlib: false // require.resolve("browserify-zlib") can be polyfilled here if needed
+  });
+  configDefault.resolve.fallback = fallback;
+  configDefault.plugins = (configDefault.plugins || []).concat([
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+      Buffer: ["buffer", "Buffer"]
+    })
+  ]);
+  configDefault.ignoreWarnings = [/Failed to parse source map/];
+  configDefault.module.rules.push({
+    test: /\.(js|mjs|jsx)$/,
+    enforce: "pre",
+    loader: require.resolve("source-map-loader"),
+    resolve: {
+      fullySpecified: false
+    }
+  });
+
   const config = {
     development: {
       mode: "development",
@@ -138,10 +167,10 @@ module.exports = (env, argv) => {
       optimization: {},
       plugins: plugins.concat([
         new HTMLWebpackPlugin({
-          template: "./index.html.js",
+          template: "./index.html",
           favicon: "./favicon.ico",
           manifest: "./manifest.json",
-          cache: false
+          cache: true
         })
       ])
     },
@@ -167,14 +196,14 @@ module.exports = (env, argv) => {
             extractComments: false
           }),
           new HTMLWebpackPlugin({
-            template: "./index.html.js",
+            template: "./index.html",
             favicon: "./favicon.ico",
             manifest: "./manifest.json",
             minify: {
               removeAttributeQuotes: true,
               removeComments: true,
               collapseWhitespace: false,
-              cache: false
+              cache: true
             }
           })
         ],
