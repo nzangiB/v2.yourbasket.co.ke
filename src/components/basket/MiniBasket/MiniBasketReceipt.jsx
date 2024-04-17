@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 
 import OrderList from "../Orders/OrderList";
-import OrderSummary from "../Orders/OrderSummary";
+import OrderDetails from "../Orders/OrderDetails";
+import DeliveryDetails from "../Delivery/DeliveryDetails";
+import PaymentDetails from "../Payments/PaymentDetails";
+import DeliveryTracker from "../Delivery/DeliveryTracker";
 
 import "./MiniBasketReceipt.scss";
 
@@ -50,42 +53,22 @@ function MiniBasketReceipt ({ cart, step, setStep, ...props }) {
       {/*  <div className={"card-group"}> */}
       {/*    <div className={"card-group"}> */}
       {/*      <section className={"card"}> */}
-      {/*        <div className={"title"}>Order Details</div> */}
-      {/*        <div className="content"> */}
-      {/*          <div className="title">Order Date:</div> */}
-      {/*          <div className="text">December 4th, 2023 09:00AM</div> */}
-      {/*        </div> */}
-      {/*        <div className="content"> */}
-      {/*          <div className="title">Order Status:</div> */}
-      {/*          <div className="text">Cancelled</div> */}
-      {/*        </div> */}
-      {/*        <div className="content"> */}
-      {/*          <div className="title">Order Id.:</div> */}
-      {/*          <div className="text">#445</div> */}
-      {/*        </div> */}
-      {/*        <div className="content"> */}
-      {/*          <div className="title">Invoice Id.:</div> */}
-      {/*          <div className="text">#A5445</div> */}
+      {/*        <div className="order"> */}
+      {/*          <OrderDetails/> */}
       {/*        </div> */}
       {/*      </section> */}
 
       {/*      <section className={"card"}> */}
-      {/*        <div className={"title"}>Delivery Details</div> */}
-      {/*        <div className="content"> */}
-      {/*          <div className="title">Pickup Point:</div> */}
-      {/*          <div className="text">Duhqa Shop Pangani (Default)</div> */}
-      {/*        </div> */}
-      {/*        <div className="content"> */}
-      {/*          <div className="title">Shipping Cost:</div> */}
-      {/*          <div className="text">Free</div> */}
+      {/*        <div className="order"> */}
+      {/*          <OrderList getCart={cart} disabled={true}/> */}
       {/*        </div> */}
       {/*      </section> */}
       {/*    </div> */}
 
       {/*    <div className={"card-group"}> */}
       {/*      <section className={"card"}> */}
-      {/*        <div className="order"> */}
-      {/*          <OrderList getCart={cart} disabled={true}/> */}
+      {/*        <div className="payment"> */}
+      {/*          <PaymentDetails/> */}
       {/*        </div> */}
       {/*      </section> */}
       {/*    </div> */}
@@ -93,26 +76,15 @@ function MiniBasketReceipt ({ cart, step, setStep, ...props }) {
 
       {/*  <div className={"card-group"}> */}
       {/*    <section className={"card"}> */}
-      {/*      <div className="title">Payment Details</div> */}
-      {/*      <div className="content"> */}
-      {/*        <div className="title">Payment Method:</div> */}
-      {/*        <div className="text">Payment Method</div> */}
-      {/*      </div> */}
-      {/*      <div className="content"> */}
-      {/*        <div className="title">Payment Name:</div> */}
-      {/*        <div className="text">Brian Mugo</div> */}
-      {/*      </div> */}
-      {/*      <div className="content"> */}
-      {/*        <div className="title">Payment Date</div> */}
-      {/*        <div className="text">December 4th, 2023 09:00AM</div> */}
-      {/*      </div> */}
-      {/*      <div className="content"> */}
-      {/*        <OrderSummary getCart={cart}/> */}
+      {/*      <div className="delivery"> */}
+      {/*        <DeliveryDetails/> */}
       {/*      </div> */}
       {/*    </section> */}
 
       {/*    <section className={"card"}> */}
-      {/*      <div className={"title"}>Tracking</div> */}
+      {/*      <div className="delivery"> */}
+      {/*        <DeliveryTracker/> */}
+      {/*      </div> */}
       {/*    </section> */}
       {/*  </div> */}
       {/* </section> */}
