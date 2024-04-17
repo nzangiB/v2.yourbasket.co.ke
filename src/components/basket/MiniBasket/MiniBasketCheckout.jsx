@@ -91,12 +91,10 @@ function MiniBasketCheckout ({ loading, setLoading, params, query, cart, getCart
     <section className="mini-basket__checkout">
       {auth && (
         <div className="auth">
-          <p className="text">You are signed up with {auth.current.email}
-            <span>
-              <a className="" rel="noopener follow" href={loginUrl}>
-              Not you?
-              </a>
-            </span>
+          <p className="text">
+						You are paying as <span>{auth.email}</span>.
+						&nbsp;
+            <a className="btn --link" rel="noopener follow" href={loginUrl}>Not you?</a>
           </p>
         </div>
       )}

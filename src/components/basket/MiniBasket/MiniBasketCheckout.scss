@@ -9,8 +9,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F9F9F9;
-    margin-bottom: 24px;
-    padding: 6px 12px;
+    background-color: rgba(0, 0, 0, .05);
+    padding: 12px 24px;
+
+    .text {
+      font: var(--font-variant-caption);
+      text-align: center;
+
+      span {
+        font-weight: 500;
+      }
+
+      a {
+        display: inline;
+        color: #2C5F2D;
+      }
+    }
   }
 }
