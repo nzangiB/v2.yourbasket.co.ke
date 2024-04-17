@@ -48,7 +48,11 @@ function MiniBasket ({ step, setStep, ...props }) {
         // get each product from db.
         await DataService.getProductDetail(value.product_id, "").then((data) => {
           if (data?.data?.category) response[i].Product = data?.data?.category;
-        }).catch((error) => {});
+        }).catch((error) => {
+          const resMessage = (error.response?.data?.msg) || error.message || error.toString();
+          toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
+          console.error(resMessage);
+        });
       })
     );
 

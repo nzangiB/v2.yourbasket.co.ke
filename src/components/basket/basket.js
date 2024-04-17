@@ -54,8 +54,7 @@ export class Basket extends Component {
     // console.log("target", target, target.dataset.step);
 
     // create react root
-    const root = createRoot(component);
-    // if (this.root == null) this.root = createRoot(component);
+    const root = this.root !== null ? this.root : createRoot(component);
     root.render(
       <BasketTpl {...{
         id: this.id,
