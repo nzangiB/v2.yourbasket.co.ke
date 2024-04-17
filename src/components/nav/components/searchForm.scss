@@ -1,0 +1,39 @@
+@use "../../../styles/tools.breakpoint" as breakpoint;
+
+.search-form {
+  grid-area: navSearch;
+  display: flex;
+  border-radius: 5px;
+  align-items: center;
+
+  @include breakpoint.tablet {
+    max-width: 625px;
+  }
+
+  @include breakpoint.tablet-only {
+    padding: 0 10px 10px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid transparent;
+    //border-radius: 0 5px 5px 0;
+    margin-left: 5px;
+    padding: 8px;
+
+    object {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .field {
+    flex: 1;
+    font: var(--font-variant-label);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    //border-radius: 5px 0 0 5px;
+    padding: 8px 16px;
+  }
+}

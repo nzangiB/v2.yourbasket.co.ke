@@ -1,5 +1,5 @@
 import Layout from "./_layout";
-import { NavHeader } from "../components/nav/nav";
+import { NavHeader } from "../components/nav/navHeader";
 import { RegistrationFormVerifyOtp } from "../components/auth/RegistrationFormVerifyOtp";
 import { RegistrationFormVendor } from "../components/auth/RegistrationFormVendor";
 import { RegistrationFormUser } from "../components/auth/RegistrationFormUser";

@@ -1,0 +1,24 @@
+@use "../../styles/tools.breakpoint" as breakpoint;
+
+.nav-header {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-type-5);
+
+  & > * {
+    flex: 1;
+  }
+
+  @include breakpoint.tablet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas: "navLogo navSearch navSupport";
+    gap: 10px 0;
+    height: 48px;
+  }
+
+  @include breakpoint.tablet-only {
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas: "navLogo navSupport" "navSearch navSearch";
+  }
+}

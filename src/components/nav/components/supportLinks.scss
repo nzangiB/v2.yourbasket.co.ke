@@ -1,0 +1,74 @@
+.support-links {
+  grid-area: navSupport;
+  justify-self: end;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  li {
+    &:not(:first-child) {
+      //padding-left: 15px;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &:not(:last-child) {
+      //padding-right: 15px;
+    }
+  }
+
+  a, button {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    font: var(--font-variant-label);
+    cursor: pointer;
+    height: 100%;
+    padding: 6px 8px;
+    gap: 0;
+
+    img {
+      width: 20px;
+      height: 20px;
+      aspect-ratio: 1/1;
+    }
+
+    object {
+      width: 20px;
+      height: 20px;
+      aspect-ratio: 1/1;
+    }
+
+    span {
+      &:not(:empty) {
+        display: inherit;
+        align-items: center;
+        min-width: 20px;
+        height: 20px;
+      }
+
+      //display: inherit;
+      //width: 20px;
+      //padding: 5px;
+
+      //@include breakpoint.laptop-only {
+      //  display: none;
+      //}
+    }
+
+    .count {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2px 4px;
+      margin-left: 4px;
+      font: 500 var(--font-variant-label);
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: var(--border-radius);
+      min-width: 16px;
+      height: 20px;
+    }
+  }
+}

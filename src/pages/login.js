@@ -1,5 +1,5 @@
 import Layout from "./_layout";
-import { NavHeader } from "../components/nav/nav";
+import { NavHeader } from "../components/nav/navHeader";
 import { LoginForm } from "../components/auth/LoginForm";
 
 import "./login.scss";
