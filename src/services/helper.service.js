@@ -295,4 +295,4 @@ const HelperService = {
   orderStatus
 };
 
-module.exports = HelperService;
+export default HelperService;

@@ -1,5 +1,19 @@
 {
   "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "esmodules": true
+        },
+        "useBuiltIns": "usage",
+        "corejs": {
+          "version": "3.37",
+          "proposals": true
+        },
+        "bugfixes": true
+      }
+    ],
     "next/babel"
   ],
   "plugins": [

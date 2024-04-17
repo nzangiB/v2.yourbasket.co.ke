@@ -27,9 +27,12 @@ export async function ProductRatings ({ productId }) {
             ? (
               <span className="rating__stars rating__stars--filled">
                 {ratings.map((value, index) => (
-	                <svg key={index} aria-hidden="true" className="icon is-medium">
-		                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"/>
-	                </svg>
+	                <object
+		                key={index}
+		                className="icon is-medium"
+		                data={require("./icons/star.svg")}
+		                name={"Star"}
+	                />
                 ))}
               </span>
             )

@@ -195,4 +195,5 @@ const DataService = {
   getProductReviews,
   getNotifications
 };
+
 export default DataService;

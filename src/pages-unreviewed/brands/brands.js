@@ -1,7 +1,7 @@
 import { Header } from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
 import { Search } from "../../components/search/search";
-import { ProductRow } from "../../components/product/productCards";
+import { ProductRow } from "../../components/productCard/productCards";
 import { Breadcrumbs } from "../../components/breadcrumbs/breadcrumbs";
 
 import "./brands.scss";
