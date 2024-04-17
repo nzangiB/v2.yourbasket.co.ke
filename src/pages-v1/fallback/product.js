@@ -1,4 +1,4 @@
-import Products from "../products/products";
+import Products from "../../pages/products/products";
 
 const routes = [
   {

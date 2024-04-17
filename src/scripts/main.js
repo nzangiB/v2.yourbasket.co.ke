@@ -8,25 +8,29 @@ import { updateViewport } from "../plugins/updateViewport";
 import Home from "../pages/home/home";
 import Products from "../pages/products";
 import Account from "../pages/account/account";
-import Support from "../pages/support/support";
+import Basket from "../pages/basket/basket";
 import Login from "../pages/login";
 import Register from "../pages/register";
-import Fallback from "../pages/fallback";
+// import ResetPassword from "../pages-v1/reset-password";
+// import Support from "../pages-v1/support/support";
+// import Fallback from "../pages-v1/fallback";
 import Error from "../pages/error";
 
 // initialize defaults
 defaults.templateEngine = "react";
 defaults.hash = "#";
-defaults.useHash = true;
+defaults.useHash = false;
 
 const routes = [
   ...Home,
   ...Products,
   ...Account,
+  ...Basket,
   ...Login,
   ...Register,
-  ...Support,
-  ...Fallback,
+  // ...ResetPassword,
+  // ...Support,
+  // ...Fallback,
   ...Error
 ];
 
