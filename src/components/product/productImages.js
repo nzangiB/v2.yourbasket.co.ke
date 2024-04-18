@@ -1,4 +1,4 @@
-import { useState } from "../../plugins/react";
+// import { useState } from "react";
 import placeholder from "../../assets/images/placeholder.png";
 
 import "./productImages.scss";
@@ -44,23 +44,24 @@ function ProductImageSlider ({ currentImage, slides }) {
     );
   }
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const goToPrevious = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const goToNext = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
+  const currentIndex = 0;
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  //
+  // const goToPrevious = () => {
+  //   const isFirstSlide = currentIndex === 0;
+  //   const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+  //   setCurrentIndex(newIndex);
+  // };
+  //
+  // const goToNext = () => {
+  //   const isLastSlide = currentIndex === slides.length - 1;
+  //   const newIndex = isLastSlide ? 0 : currentIndex + 1;
+  //   setCurrentIndex(newIndex);
+  // };
+  //
+  // const goToSlide = (slideIndex) => {
+  //   setCurrentIndex(slideIndex);
+  // };
 
   const slideStylesWithBackground = {
     ...slideStyles,
@@ -113,9 +114,12 @@ function ProductImageThumbnails ({ images, setCurrentImage }) {
 }
 
 export function ProductImages ({ product }) {
-  const [currentImage, setCurrentImage] = useState(product.file_path
+  // const [currentImage, setCurrentImage] = useState(product.file_path
+  //   ? `https://api.yourbasket.co.ke/${product.file_path}`
+  //   : placeholder);
+  const currentImage = product.file_path
     ? `https://api.yourbasket.co.ke/${product.file_path}`
-    : placeholder);
+    : placeholder;
 
   const slides = product?.images?.map(image => {
     image = image ?? placeholder;

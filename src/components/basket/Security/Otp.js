@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 import DataService from "../../../services/data.service";
 import AuthService from "../../../services/auth.service";
@@ -59,35 +58,32 @@ function OTP ({ otpVerifiedEvent, udPhone }) {
   };
 
   return (
-    <>
-      <ToastContainer/>
-      <section className={"otp-form"}>
-        <div className={"form-container"}>
-          <form className="form" onSubmit={handleSubmit}>
-            <header>
-              <h3 className="title">Enter OTP</h3>
-              <h4>The verification code sent <br/>to +{phone?.slice(0, 3)}******{phone?.slice(-3)}</h4>
-            </header>
-            <section>
-              <div className={"input-field"}>
-                <input className={"input"} type="text" required name="otp" placeholder="Enter your OTP"/>
-              </div>
-            </section>
-            <footer>
-              <button className="btn --primary" type="submit" disabled={loading}>
-                <span>{loading ? "Verifying..." : "Verify OTP"}</span>
-              </button>
-            </footer>
-          </form>
-
-          <p>
-            <button className="btn" type={"button"} onClick={resendOTP}>
-              <span>Resend OTP</span>
+    <section className={"otp-form"}>
+      <div className={"form-container"}>
+        <form className="form" onSubmit={handleSubmit}>
+          <header>
+            <h3 className="title">Enter OTP</h3>
+            <h4>The verification code sent <br/>to +{phone?.slice(0, 3)}******{phone?.slice(-3)}</h4>
+          </header>
+          <section>
+            <div className={"input-field"}>
+              <input className={"input"} type="text" required name="otp" placeholder="Enter your OTP"/>
+            </div>
+          </section>
+          <footer>
+            <button className="btn --primary" type="submit" disabled={loading}>
+              <span>{loading ? "Verifying..." : "Verify OTP"}</span>
             </button>
-          </p>
-        </div>
-      </section>
-    </>
+          </footer>
+        </form>
+
+        <p>
+          <button className="btn" type={"button"} onClick={resendOTP}>
+            <span>Resend OTP</span>
+          </button>
+        </p>
+      </div>
+    </section>
   );
 }
 

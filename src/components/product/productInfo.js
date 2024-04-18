@@ -1,4 +1,4 @@
-import { useState } from "../../plugins/react";
+// import { useState } from "react";
 
 import "./productInfo.scss";
 
@@ -6,13 +6,13 @@ import HelperService from "../../services/helper.service";
 import { KES } from "../../helpers/formatting";
 
 export function ProductInfo (product) {
-  const [showFullDescription, setShowFullDescription] = useState(false);
-
-  const limitedDescription = product.description.split(" ").slice(0, 20).join(" ") + "...";
-
-  const toggleDescription = () => {
-    setShowFullDescription(!showFullDescription);
-  };
+  // const [showFullDescription, setShowFullDescription] = useState(false);
+  //
+  // const limitedDescription = product.description.split(" ").slice(0, 20).join(" ") + "...";
+  //
+  // const toggleDescription = () => {
+  //   setShowFullDescription(!showFullDescription);
+  // };
 
   const discount = HelperService.calDiscount(product);
 

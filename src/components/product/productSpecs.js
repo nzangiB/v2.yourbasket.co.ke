@@ -1,4 +1,4 @@
-import { useState } from "../../plugins/react";
+// import { useState } from "react";
 
 import "./productSpecs.scss";
 

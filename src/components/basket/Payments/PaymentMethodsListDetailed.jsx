@@ -1,7 +1,6 @@
 import io from "socket.io-client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import { API_URL } from "../../../helpers/constants";
 import AuthService from "../../../services/auth.service";
