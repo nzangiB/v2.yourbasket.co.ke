@@ -63,23 +63,6 @@
   //width: 80%;
 }
 
-.logo__text {
-  flex: 1;
-  display: flex;
-  flex-flow: column;
-  padding-left: calc(var(--grid) / 3);
-
-  .name,
-  .tagline {
-    white-space: nowrap;
-    line-height: 15px;
-  }
-
-  .name {
-    font-weight: 700;
-  }
-}
-
 .title {
   @include breakpoint.phablet {
     font: 600 var(--font-variant-6);
@@ -127,20 +110,11 @@
   stroke-width: 0;
   height: 0.9375rem;
   width: 0.9375rem;
-}
 
-.icon.is-medium {
-  height: 0.9375rem;
-  width: 0.9375rem;
-}
-
-.form-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: var(--grid);
-  gap: 20px
+  &.is-medium {
+    height: 0.9375rem;
+    width: 0.9375rem;
+  }
 }
 
 .form {
@@ -156,6 +130,15 @@
   max-width: 400px;
   padding: calc(var(--grid) * 2) var(--grid);
   gap: 10px;
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: var(--grid);
+    gap: 20px
+  }
 
   .title {
     font: 500 var(--font-variant-sub-title);
@@ -249,7 +232,6 @@
   }
 }
 
-
 .btn {
   display: flex;
   flex-direction: row;
@@ -265,6 +247,12 @@
   background: var(--color-type-4) none;
   border-radius: var(--border-radius);
   border: 1px solid rgba(0, 0, 0, 0.1);
+
+  &-group {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 10px;
+  }
 
   * {
     display: inherit;
@@ -338,12 +326,6 @@
       opacity: 0.5;
     }
   }
-}
-
-.btn-group {
-  display: inline-flex;
-  flex-direction: row;
-  gap: 10px;
 }
 
 .loading {
@@ -437,6 +419,16 @@
   gap: 10px;
   max-width: 400px;
 
+  &-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
   .title {
     font: 600 var(--font-variant-sub-title);
   }
@@ -472,14 +464,4 @@
     font: 500 var(--font-variant-caption);
     color: var(--color-orange);
   }
-}
-
-.card-group {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
 }
