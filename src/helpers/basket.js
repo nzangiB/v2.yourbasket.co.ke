@@ -107,7 +107,6 @@ export const addToBasketEvent = async (event, item) => {
   }
 };
 
-
 const updateLoadingState = (target, isLoading) => {
   if (isLoading) {
     target.classList.add("--loading");
@@ -119,6 +118,7 @@ const updateLoadingState = (target, isLoading) => {
     target.innerHTML = "Add to basket";
   }
 };
+
 export const checkoutNowEvent = async (event, item) => {
   event.preventDefault();
 
