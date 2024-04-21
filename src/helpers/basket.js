@@ -66,48 +66,59 @@ export const addToWishlistEvent = (event, item) => {
   if (element.className === "remove-cart") { removeItem(); } else { addItem(); }
 };
 
-export const addToBasketEvent = async (event, item) => {
-  event.preventDefault();
-
-  const setLoading = (status) => {
-    if (status) {
-      event.target.classList.add("--loading");
-      event.target.disabled = true;
-      event.target.innerHTML = "Adding to basket...";
-    } else {
-      event.target.classList.remove("--loading");
-      event.target.disabled = false;
-      event.target.innerHTML = "Add to basket";
-    }
+const handleCartAddition = async (item) => {
+  const data = {
+    product_title: item.name,
+    price: item.offer_price,
+    product_sku: item.sku,
+    quantity: item.cart_qty,
+    variant: item.variation || "",
+    product_id: item.id,
+    type: "cart"
   };
 
-  const data = {};
-  data.product_title = item.name;
-  data.price = item.offer_price;
-  data.product_sku = item.sku;
-  data.quantity = item.cart_qty ? item.cart_qty : "1";
-  data.variant = item.variation ? item.variation : null;
-  data.product_id = item.id;
-  data.type = "cart";
-
-  setLoading(true);
   const auth = AuthService.getCurrentUser();
   if (auth) {
-    await DataService.addCart(data).catch((error) => {
-      console.error(error);
-      const resMessage = error.response?.data?.msg || error.msg || error.message || error.toString();
-      toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
-    });
+    return DataService.addCart(data);
   } else {
     HelperService.setLocalCart(data);
-    toast.success("Product added to your basket!", { position: toast.POSITION.TOP_RIGHT });
     HelperService.updateCartCount();
+    return Promise.resolve(); // Simulate async operation for consistency
   }
-
-  window.scrollTo(0, 0);
-  setLoading(false);
 };
 
+export const addToBasketEvent = async (event, item) => {
+  event.preventDefault();
+  updateLoadingState(event.target, true);
+
+  const newItem = { ...item, cart_qty: 1 };
+  // console.log("Attempting to add item to basket with quantity:", newItem.cart_qty);
+
+  try {
+    await handleCartAddition(newItem);
+    toast.success("Product added to your basket!", { position: toast.POSITION.TOP_RIGHT });
+  } catch (error) {
+    console.error("Error while adding to basket:", error);
+    const resMessage = (error.response?.data?.msg) || error.message || error.toString();
+    toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
+  } finally {
+    updateLoadingState(event.target, false);
+    window.scrollTo(0, 0);
+  }
+};
+
+
+const updateLoadingState = (target, isLoading) => {
+  if (isLoading) {
+    target.classList.add("--loading");
+    target.disabled = true;
+    target.innerHTML = "Adding to basket...";
+  } else {
+    target.classList.remove("--loading");
+    target.disabled = false;
+    target.innerHTML = "Add to basket";
+  }
+};
 export const checkoutNowEvent = async (event, item) => {
   event.preventDefault();
 
