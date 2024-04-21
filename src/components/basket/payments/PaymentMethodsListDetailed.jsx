@@ -7,10 +7,10 @@ import AuthService from '../../../services/auth.service';
 import DataService from '../../../services/data.service';
 
 import Otp from '../security/OTP';
-import PaymentMethodsIPayForm from './PaymentMethodsIPayForm';
 
 function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, subTotal, total }) {
 	const form = useRef(null);
+	const iPayForm = useRef(null);
 	const [paymentStep, setPaymentStep] = useState(step || 'checkout');
 	const [paymentMethod, setPaymentMethod] = useState('');
 	const [orderLoading, setOrderLoading] = useState(false);
@@ -151,7 +151,6 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 	};
 
 	const submitOrder = () => {
-		console.log(paymentMethod);
 		if (paymentMethod === 'Cash on delivery') {
 			return requestOTP();
 		} else {
@@ -186,7 +185,8 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 		data.ipay_data = iPayData.join('~~');
 		data.sale_type = buyNow ? 'buynow' : 'cart';
 
-		await DataService.createOrder(data).then(async (response) => {
+		try {
+			const response = await DataService.createOrder(data);
 			if (response?.data?.data?.order_tracking_id) {
 				window.location.href = response.data.data.redirect_url;
 			} else if (response?.data?.data?.CheckoutRequestID) {
@@ -195,16 +195,35 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 			} else if (response?.data?.data?.hash) {
 				if (response?.data?.data?.formdata) {
 					localStorage.setItem('ipay_oid', response?.data?.data?.formdata?.oid);
-					const form1 = document.getElementById('ipay-payment-form');
+
+					const iPayFormElement = document.createElement('form');
+					iPayFormElement.method = 'post';
+					iPayFormElement.id = 'ipay-payment-form';
+					iPayFormElement.action = 'https://payments.ipayafrica.com/v3/ke';
+					iPayFormElement.style.display = 'none';
+
+					// add iPay form to body for submission
+					document.body.appendChild(iPayFormElement);
+
+					const iPayForm = document.getElementById('ipay-payment-form');
+					if (!iPayForm) {
+						toast.error('No iPay Form found', { position: toast.POSITION.TOP_RIGHT });
+						return;
+					}
+
 					const entries = Object.entries(response?.data?.data?.formdata);
 					await Promise.all(entries.map(([key, val]) => {
 						const input = document.createElement('input');
 						input.type = 'hidden';
 						input.name = key;
 						input.value = val;
-						form1.appendChild(input);
+						iPayForm.appendChild(input);
 					}));
-					document.getElementById('ipay-payment-form').submit();
+
+					iPayForm.submit();
+
+					// remove iPay form from body after submission
+					document.body.removeChild(iPayForm);
 				}
 			} else {
 				localStorage.removeItem('addressId');
@@ -213,12 +232,12 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 				setOrderLoading(false);
 				setStep('receipt');
 			}
-		}).catch((error) => {
+		} catch (error) {
 			const resMessage = (error.response?.data?.msg) || error.message || error.toString();
 			toast.error(resMessage, { position: toast.POSITION.TOP_RIGHT });
-		}).finally(() => {
+		} finally {
 			setOrderLoading(false);
-		});
+		}
 	};
 
 	const otpVerifiedEvent = () => {
@@ -263,7 +282,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 		if (orderLoading) return;  // Prevents running if already processing another payment
 
 		setOrderLoading(true);  // Shows loading indication
-		setPaymentMethod('Cash on delivery')
+		setPaymentMethod('Cash on delivery');
 
 		const button = e.target;
 		button.disabled = true;
@@ -274,7 +293,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 			await requestOTP();
 		} catch (error) {
 			console.error('Error processing payment:', error);
-			toast.error("Failed to process payment", { position: toast.POSITION.TOP_RIGHT });
+			toast.error('Failed to process payment', { position: toast.POSITION.TOP_RIGHT });
 		} finally {
 			setOrderLoading(false);
 			button.disabled = false;
@@ -282,7 +301,6 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 		}
 
 	}, [orderLoading, requestOTP]); // Include all dependencies here
-
 
 	// const changePaymentMethodEvent = (e) => {
 	//   const value = e.target.value;
@@ -349,31 +367,28 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 						</select>
 					</div>
 					{paymentMethod === 'Mpesa' && (
-						<>
-							<div className="input-field">
-								<input
-									type="tel"
-									className="input"
-									// value={phone}
-									defaultValue={phone}
-									onChange={onChangePhone}
-									placeholder="Phone Number"
-									id="phone-number"
-									required
-								/>
-							</div>
-							<button
-								type="submit"
-								disabled={!paymentMethod || paymentMethod === '' || !phone}
-								className={'btn --primary'}
-								onClick={payNowEvent}
-							>
-								<span>Pay Now</span>
-							</button>
-						</>
+						<div className="input-field">
+							<input
+								type="tel"
+								className="input"
+								// value={phone}
+								defaultValue={phone}
+								onChange={onChangePhone}
+								placeholder="Phone Number"
+								id="phone-number"
+								required
+							/>
+						</div>
 					)}
+					<button
+						type="submit"
+						disabled={paymentMethod === '' || paymentMethod === 'Mpesa' && phone === ''}
+						className={'btn --primary'}
+						onClick={payNowEvent}
+					>
+						<span>Pay Now</span>
+					</button>
 				</form>
-				<PaymentMethodsIPayForm/>
 			</div>
 			{/* <div className={"list-item --selected"}> */}
 			{/*  <div className={"list-item__title"}> */}
