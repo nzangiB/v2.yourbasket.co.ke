@@ -14,13 +14,13 @@ const getLocalCart = () => {
 
 const setLocalCart = (item, qty = null) => {
   try {
-    let user_cart = JSON.parse(localStorage.getItem("user_cart")) || [];
+    const user_cart = JSON.parse(localStorage.getItem("user_cart")) || [];
     const itemIndex = user_cart.findIndex(k => parseInt(k.product_id) === parseInt(item.product_id));
 
     if (itemIndex !== -1) {
       user_cart[itemIndex].quantity = qty === null ? user_cart[itemIndex].quantity + 1 : qty;
     } else {
-      user_cart.push({...item, quantity: qty || 1});
+      user_cart.push({ ...item, quantity: qty || 1 });
     }
 
     localStorage.setItem("user_cart", JSON.stringify(user_cart));
