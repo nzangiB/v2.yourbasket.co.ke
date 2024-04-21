@@ -26,14 +26,18 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 	const auth = AuthService.getCurrentUser();
 
 	useEffect(() => {
-		if (auth && auth.phone) {
-			setPhone(auth.phone || '');
-			getUserDetail();
-		}
-	}, [auth]);
+		if (auth) {
+			// Get phone and other data if exists in the auth object
+			if (auth.data) setData(auth.data);
+			if (auth.first_name) setFirstName(auth.first_name);
+			if (auth.last_name) setLastName(auth.last_name);
+			if (auth.email) setEmail(auth.email);
+			if (auth.phone) setPhone(auth.phone);
+			// if (auth.data) setCoordinates(data.data.data);
 
-	useEffect(() => {
-		if (auth) getUserDetail();
+			// if user is authenticated but phone is missing, attempt to get phone from db
+			// getUserDetail();
+		}
 		if (params?.gateway) checkForGateway();
 		if (paymentMethod === 'Mpesa') {
 			checkPaymentStatus();
@@ -64,16 +68,12 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 
 	const getUserDetail = async () => {
 		await DataService.getUserDetail(data).then((data) => {
-			setData(data.data.data);
-			setFirstName(data.first_name);
-			setLastName(data.last_name);
-			setEmail(data.email);
-			setPhone(data.phone);
-
-			if (data.phone) {
-				setPhone(data.phone);
-			}
-			// setCoordinates(data.data.data);
+			if (data.data.data) setData(data.data.data); // TODO: Investigate why in v1 this and setCoordinates both store the same data.
+			if (data.first_name) setFirstName(data.first_name);
+			if (data.last_name) setLastName(data.last_name);
+			if (data.email) setEmail(data.email);
+			if (data.phone) setPhone(data.phone);
+			// if (data.data.data) setCoordinates(data.data.data); // TODO: Investigate why thi in v1s and setData both store the same data.
 		});
 	};
 
