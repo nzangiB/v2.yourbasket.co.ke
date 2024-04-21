@@ -354,8 +354,8 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 								<input
 									type="tel"
 									className="input"
-									value={phone}
-									// defaultValue={phone}
+									// value={phone}
+									defaultValue={phone}
 									onChange={onChangePhone}
 									placeholder="Phone Number"
 									id="phone-number"
@@ -397,56 +397,54 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 				<div className={'list-item__content'}>
 					<p className={'text'}>YourBasket will send you an OTP to verify your order before it's expedited.</p>
 				</div>
-				{!auth && (
-					<form className={'form details'}>
-						<div className="input-field">
-							<input
-								type="text"
-								className="input"
-								placeholder="First Name"
-								// disabled={isFieldDisabled}
-								defaultValue={firstName}
-								onChange={onChangeFirstName}
-								id="first-name"
-								required
-							/>
-							<input
-								type="text"
-								className="input"
-								placeholder="Last Name"
-								// disabled={isFieldDisabled}
-								defaultValue={lastName}
-								onChange={onChangeLastName}
-								id="last-name"
-								required
-							/>
-						</div>
-						<div className="input-field">
-							<input
-								type="tel"
-								className={'input'}
-								placeholder={'Phone Number'}
-								// disabled={isFieldDisabled}
-								defaultValue={phone}
-								onChange={onChangePhone}
-								id={'phone-number'}
-								required
-							/>
-						</div>
-						<div className="input-field">
-							<input
-								type="email"
-								className="input"
-								placeholder="Email"
-								// disabled={isFieldDisabled}
-								defaultValue={email}
-								onChange={onChangeEmail}
-								id="email"
-								required
-							/>
-						</div>
-					</form>
-				)}
+				<form className={'form details'}>
+					<div className="input-field">
+						<input
+							type="text"
+							className="input"
+							placeholder="First Name"
+							// disabled={isFieldDisabled}
+							defaultValue={firstName}
+							onChange={onChangeFirstName}
+							id="first-name"
+							required
+						/>
+						<input
+							type="text"
+							className="input"
+							placeholder="Last Name"
+							// disabled={isFieldDisabled}
+							defaultValue={lastName}
+							onChange={onChangeLastName}
+							id="last-name"
+							required
+						/>
+					</div>
+					<div className="input-field">
+						<input
+							type="tel"
+							className={'input'}
+							placeholder={'Phone Number'}
+							// disabled={isFieldDisabled}
+							defaultValue={phone}
+							onChange={onChangePhone}
+							id={'phone-number'}
+							required
+						/>
+					</div>
+					<div className="input-field">
+						<input
+							type="email"
+							className="input"
+							placeholder="Email"
+							// disabled={isFieldDisabled}
+							defaultValue={email}
+							onChange={onChangeEmail}
+							id="email"
+							required
+						/>
+					</div>
+				</form>
 
 				<div className={'list-item__content'}>
 					<button
