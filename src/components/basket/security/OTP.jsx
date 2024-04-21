@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 import DataService from "../../../services/data.service";
@@ -8,17 +8,16 @@ function OTP ({ otpVerifiedEvent, udPhone }) {
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
 
-  const auth = AuthService.getCurrentUser();
-  if (auth) {
-    setPhone(auth.phone);
-  } else {
-    setPhone(udPhone);
-  }
+  useEffect(() => {
+    const auth = AuthService.getCurrentUser();
+    const initialPhone = auth?.phone || udPhone || "";
+    setPhone(initialPhone);
 
-  if (!phone) {
-    toast.error("Phone number is required!", { position: toast.POSITION.TOP_RIGHT });
-    return null;
-  }
+    if (!initialPhone) {
+      toast.error("Phone number is required!", { position: toast.POSITION.TOP_RIGHT });
+    }
+  }, [udPhone]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

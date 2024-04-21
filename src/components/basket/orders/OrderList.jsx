@@ -211,14 +211,15 @@ function OrderList ({ cart, setCart, getCart, disabled, editable, setStep }) {
   }, [cart]);
 
   useEffect(() => {
-    let totalItems = 0;
-    const qty = cartToShow.map(item => {
-      totalItems += parseInt(item.quantity);
-      return parseInt(item.quantity);
+    let newCartSize = 0;
+    const newQuantities = cartToShow.map(item => {
+      const quantity = parseInt(item.quantity, 10) || 0; // Safely parse and handle possibly undefined or non-numeric quantities
+      newCartSize += quantity;
+      return quantity;
     });
-    // console.log("getCartSize", totalItems);
-    setCartSize(totalItems);
-    setQuantities(qty);
+
+    setCartSize(newCartSize);
+    setQuantities(newQuantities);
   }, [cartToShow]);
 
   return (

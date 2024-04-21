@@ -26,6 +26,13 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 	const auth = AuthService.getCurrentUser();
 
 	useEffect(() => {
+		if (auth && auth.phone) {
+			setPhone(auth.phone || '');
+			getUserDetail();
+		}
+	}, [auth]);
+
+	useEffect(() => {
 		if (auth) getUserDetail();
 		if (params?.gateway) checkForGateway();
 		if (paymentMethod === 'Mpesa') {
@@ -52,8 +59,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 	};
 
 	const onChangePhone = (e) => {
-		const data = e.target.value;
-		setPhone(data);
+		setPhone(e.target.value);
 	};
 
 	const getUserDetail = async () => {
@@ -64,6 +70,9 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 			setEmail(data.email);
 			setPhone(data.phone);
 
+			if (data.phone) {
+				setPhone(data.phone);
+			}
 			// setCoordinates(data.data.data);
 		});
 	};
@@ -248,19 +257,32 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 		button.innerHTML = 'Pay Later';
 	};
 
-	const payOnDeliveryEvent = async (e) => {
+	const payOnDeliveryEvent = useCallback(async (e) => {
 		e.preventDefault();
+
+		if (orderLoading) return;  // Prevents running if already processing another payment
+
+		setOrderLoading(true);  // Shows loading indication
+		setPaymentMethod('Cash on delivery')
 
 		const button = e.target;
 		button.disabled = true;
-		button.innerHTML = 'Paying...';
+		button.innerHTML = 'Processing...';
 
-		setPaymentMethod('Cash on delivery');
-		await requestOTP();
+		try {
+			// Simulate request OTP call
+			await requestOTP();
+		} catch (error) {
+			console.error('Error processing payment:', error);
+			toast.error("Failed to process payment", { position: toast.POSITION.TOP_RIGHT });
+		} finally {
+			setOrderLoading(false);
+			button.disabled = false;
+			button.innerHTML = 'Pay on Delivery';
+		}
 
-		button.disabled = false;
-		button.innerHTML = 'Pay on Delivery';
-	};
+	}, [orderLoading, requestOTP]); // Include all dependencies here
+
 
 	// const changePaymentMethodEvent = (e) => {
 	//   const value = e.target.value;
@@ -331,12 +353,12 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 							<div className="input-field">
 								<input
 									type="tel"
-									className={'input'}
-									placeholder={'Phone Number'}
-									// disabled={isFieldDisabled}
-									defaultValue={phone}
+									className="input"
+									value={phone}
+									// defaultValue={phone}
 									onChange={onChangePhone}
-									id={'phone-number'}
+									placeholder="Phone Number"
+									id="phone-number"
 									required
 								/>
 							</div>
