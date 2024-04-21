@@ -9,11 +9,24 @@ import PaymentMethodsListDetailed from '../payments/PaymentMethodsListDetailed';
 
 import './MiniBasketCheckout.scss';
 
-function MiniBasketCheckout ({ loading, setLoading, params, query, cart, getCart, subTotal, step, setStep, ...props }) {
+function MiniBasketCheckout ({
+	loading,
+	setLoading,
+	params,
+	query,
+	cart,
+	getCart,
+	subTotal,
+	setSubTotal,
+	total,
+	setTotal,
+	step,
+	setStep,
+	...props
+}) {
 	// const [loading, setLoading] = useState(true);
 	const [buyNow, setBuyNow] = useState(false);
 	const [cartData, setCartData] = useState([]);
-	const [total, setTotal] = useState(0);
 
 	const auth = AuthService.getCurrentUser();
 	const redirectURL = new URL(window.location.href);
@@ -28,7 +41,7 @@ function MiniBasketCheckout ({ loading, setLoading, params, query, cart, getCart
 			const total = 0;
 			response.forEach(value => {
 				const price = parseFloat(value.price) * parseInt(value.quantity);
-				setTotal(total + price);
+				setSubTotal(total + price);
 			});
 		}).catch((error) => {
 			const resMessage = (error.response?.data?.msg) || error.message || error.toString();
@@ -44,7 +57,7 @@ function MiniBasketCheckout ({ loading, setLoading, params, query, cart, getCart
 			const total = 0;
 			response.forEach(value => {
 				const price = parseFloat(value.price) * parseInt(value.quantity);
-				setTotal(total + price);
+				setSubTotal(total + price);
 			});
 		}).catch((error) => {
 			const resMessage = (error.response?.data?.msg) || error.message || error.toString();
@@ -56,18 +69,13 @@ function MiniBasketCheckout ({ loading, setLoading, params, query, cart, getCart
 		if (!auth) {
 			location.href = loginUrl;
 		} else {
-			// if (!step.startsWith("checkout/")) {
-			//   getCart().then(() => { setLoading(false); });
-			// } else {
-			getCart();
-			// setLoading(false);
-			// }
-			// if (query?.buynow) {
-			//   setBuyNow(true);
-			//   getTempProduct();
-			// } else {
-			//   getProduct();
-			// }
+			// getCart().then(() => { setLoading(false); });
+			if (query?.buynow) {
+				setBuyNow(true);
+				getTempProduct();
+			} else {
+				getProduct();
+			}
 		}
 	}, [step, subTotal]);
 
@@ -100,17 +108,17 @@ function MiniBasketCheckout ({ loading, setLoading, params, query, cart, getCart
 			)}
 
 			<div className={'order'}>
-				<OrderList {...{ cart, getCart, setStep, disabled: true, editable: true }}/>
-				{cart.length > 0 && <OrderSummary {...{ subTotal, total, setTotal }}/>}
+				<OrderList {...{ cart: cartData, getCart, setStep, disabled: true, editable: true }}/>
+				{cartData.length > 0 && <OrderSummary {...{ subTotal, setSubTotal, total, setTotal }}/>}
 			</div>
 
-			{cart.length > 0 && (
+			{cartData.length > 0 && (
 				<div className={'payment'}>
 					<div className="payment__methods">
 						<div className="payment__methods-title">
 							<div className="title">Payment</div>
 						</div>
-						<PaymentMethodsListDetailed {...{ step, setStep, buyNow, total }}/>
+						<PaymentMethodsListDetailed {...{ params, query, step, setStep, buyNow, total }}/>
 					</div>
 				</div>
 			)}

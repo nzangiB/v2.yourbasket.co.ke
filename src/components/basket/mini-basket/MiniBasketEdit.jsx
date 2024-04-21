@@ -6,7 +6,7 @@ import PaymentMethodsList from '../payments/PaymentMethodsList';
 
 import './MiniBasketEdit.scss';
 
-function MiniBasketEdit ({ cart, setCart, getCart, subTotal, step, setStep, ...props }) {
+function MiniBasketEdit ({ cart, setCart, getCart, subTotal, setSubTotal, total, setTotal, step, setStep, ...props }) {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -50,7 +50,7 @@ function MiniBasketEdit ({ cart, setCart, getCart, subTotal, step, setStep, ...p
 							</div>
 							<PaymentMethodsList/>
 						</div>
-						<OrderSummary {...{ subTotal }}/>
+						<OrderSummary {...{ subTotal, setSubTotal, total, setTotal }}/>
 					</section>
 
 					<section className="btn-group">

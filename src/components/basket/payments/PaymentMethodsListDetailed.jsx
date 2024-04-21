@@ -9,7 +9,7 @@ import DataService from '../../../services/data.service';
 import Otp from '../security/OTP';
 import PaymentMethodsIPayForm from './PaymentMethodsIPayForm';
 
-function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, total }) {
+function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, subTotal, total }) {
 	const form = useRef(null);
 	const [paymentStep, setPaymentStep] = useState(step || 'checkout');
 	const [paymentMethod, setPaymentMethod] = useState('');
@@ -176,12 +176,12 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, tot
 		const data = {};
 		data.payment_method = paymentMethod;
 		// data.total_amount = total+((total*16)/100)+shippingAmount;
-		data.total_amount = total + shippingAmount;
-		data.item_amount = total;
+		data.total_amount = total + shippingAmount; // TODO: Use 'total' value
+		data.item_amount = total; // TODO: Use 'subTotal' value
 		data.tax_amount = 0;// (total*16)/100;
 		data.address_id = JSON.parse(localStorage.getItem('addressId'));
 		data.billing_address_id = JSON.parse(localStorage.getItem('addressId2'));
-		data.shipping_amount = shippingAmount;
+		data.shipping_amount = shippingAmount; // TODO: Use 'deliveryFee'
 		data.phone_number = phoneNumber;
 		data.ipay_data = iPayData.join('~~');
 		data.sale_type = buyNow ? 'buynow' : 'cart';
