@@ -24,6 +24,9 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 
 	const auth = AuthService.getCurrentUser();
 
+	// TODO: Disabled editing contacts until feature is available
+	const isFieldDisabled = true;
+
 	useEffect(() => {
 		if (auth) {
 			// Get phone and other data if exists in the auth object
@@ -377,8 +380,9 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 								className="input"
 								// value={phone}
 								defaultValue={phone}
-								onChange={onChangePhone}
 								placeholder="Phone Number"
+								disabled={isFieldDisabled}
+								onChange={onChangePhone}
 								id="phone-number"
 								required
 							/>
@@ -422,8 +426,8 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 							type="text"
 							className="input"
 							placeholder="First Name"
-							// disabled={isFieldDisabled}
 							defaultValue={firstName}
+							disabled={isFieldDisabled}
 							onChange={onChangeFirstName}
 							id="first-name"
 							required
@@ -432,8 +436,8 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 							type="text"
 							className="input"
 							placeholder="Last Name"
-							// disabled={isFieldDisabled}
 							defaultValue={lastName}
+							disabled={isFieldDisabled}
 							onChange={onChangeLastName}
 							id="last-name"
 							required
@@ -444,8 +448,8 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 							type="tel"
 							className={'input'}
 							placeholder={'Phone Number'}
-							// disabled={isFieldDisabled}
 							defaultValue={phone}
+							disabled={isFieldDisabled}
 							onChange={onChangePhone}
 							id={'phone-number'}
 							required
@@ -456,8 +460,8 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 							type="email"
 							className="input"
 							placeholder="Email"
-							// disabled={isFieldDisabled}
 							defaultValue={email}
+							disabled={isFieldDisabled}
 							onChange={onChangeEmail}
 							id="email"
 							required
