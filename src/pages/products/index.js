@@ -18,6 +18,12 @@ const routes = [
     template: Products
   },
   {
+    // path: "/#/product",
+    path: "/products{/}?",
+    data: { page: { title: "All Products" } },
+    template: Products
+  },
+  {
     // path: "/#/product/brand/:brand?",
     path: "/products/brands/:brand?",
     data: { page: { title: "Products by Brand" } },

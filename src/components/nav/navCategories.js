@@ -59,7 +59,7 @@ export class NavCategories extends Component {
           <ul className="sf-menu">
             {categories.length > 0 && (
               <li>
-                <a href="#" style={{ boxShadow: "none", border: "none" }}>
+                <a href="/products" style={{ boxShadow: "none", border: "none" }}>
                   <object
                     className={"img"}
                     data={require("../../assets/icons/hamburger_menu.svg")}
@@ -72,7 +72,7 @@ export class NavCategories extends Component {
                   {categories && categories.length > 8
                     ? (
                       <li>
-                        <a href="#">
+                        <a href="#" onClick={(e) => e.preventDefault()}>
                           <span>Others</span>
                         </a>
                         <ul>
