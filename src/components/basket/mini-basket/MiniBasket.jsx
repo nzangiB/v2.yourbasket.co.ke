@@ -30,6 +30,7 @@ function MiniBasket ({ step, setStep, ...props }) {
 				const price = parseFloat(value.price) * parseInt(value.quantity);
 				total = total + price;
 			});
+
 			setSubTotal(total);
 			setCart(response);
 		}).catch((error) => {

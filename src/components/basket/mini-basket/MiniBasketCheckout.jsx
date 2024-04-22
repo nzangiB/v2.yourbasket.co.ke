@@ -38,11 +38,13 @@ function MiniBasketCheckout ({
 			const response = data?.data?.data;
 			setCartData(response);
 
-			const total = 0;
+			let total = 0;
 			response.forEach(value => {
 				const price = parseFloat(value.price) * parseInt(value.quantity);
-				setSubTotal(total + price);
+				total = total + price;
 			});
+
+			setSubTotal(total);
 		}).catch((error) => {
 			const resMessage = (error.response?.data?.msg) || error.message || error.toString();
 			console.error(resMessage);
@@ -54,11 +56,13 @@ function MiniBasketCheckout ({
 			const response = data?.data?.data;
 			setCartData(data?.data?.data);
 
-			const total = 0;
+			let total = 0;
 			response.forEach(value => {
 				const price = parseFloat(value.price) * parseInt(value.quantity);
-				setSubTotal(total + price);
+				total = total + price;
 			});
+			
+			setSubTotal(total);
 		}).catch((error) => {
 			const resMessage = (error.response?.data?.msg) || error.message || error.toString();
 			console.error(resMessage);
