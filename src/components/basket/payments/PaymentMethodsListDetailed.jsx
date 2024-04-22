@@ -10,7 +10,6 @@ import Otp from '../security/OTP';
 
 function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, subTotal, total }) {
 	const form = useRef(null);
-	const iPayForm = useRef(null);
 	const [paymentStep, setPaymentStep] = useState(step || 'checkout');
 	const [paymentMethod, setPaymentMethod] = useState('');
 	const [orderLoading, setOrderLoading] = useState(false);
@@ -36,22 +35,26 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 			// if (auth.data) setCoordinates(data.data.data);
 
 			// if user is authenticated but phone is missing, attempt to get phone from db
-			// getUserDetail();
+			// useful if user changed their details on another device without logging out of the current one
+			getUserDetail();
 		}
+	}, []);
+
+	useEffect(() => {
 		if (params?.gateway) checkForGateway();
-		if (paymentMethod === 'Mpesa') {
-			checkPaymentStatus();
-		}
-	}, [params, paymentMethod]);
+		if (paymentMethod === 'Mpesa' && orderLoading) checkPaymentStatus();
+	}, [params, paymentMethod, orderLoading]);
 
 	const onChangeFirstName = (e) => {
 		const data = e.target.value;
 		setFirstName(data);
+		e.target.value = data.replace(/[^\d]/g, '');
 	};
 
 	const onChangeLastName = (e) => {
 		const data = e.target.value;
 		setLastName(data);
+		e.target.value = data.replace(/[^\d]/g, '');
 	};
 
 	const onChangeEmail = (e) => {
@@ -60,10 +63,12 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		));
 		setEmail(isValid ? data : '');
+		e.target.value = isValid ? data : '';
 	};
 
 	const onChangePhone = (e) => {
 		setPhone(e.target.value);
+		e.target.value = e.target.value.replace(/[^\d]/g, '');
 	};
 
 	const getUserDetail = async () => {
@@ -125,16 +130,15 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 
 	const requestOTP = async () => {
 		setOrderLoading(true);
-		const payload = auth
-			? {
-				apikey: 'yourbasket2023'
-			}
-			: {
-				first_name: firstName,
-				last_name: lastName,
-				email,
-				phone
-			};
+		const user = {
+			first_name: firstName,
+			last_name: lastName,
+			email,
+			phone
+		};
+
+		const payload = { user };
+		if (auth) payload.apikey = 'yourbasket2023';
 		await DataService.sendOtp(payload).then(() => {
 			toast.success('OTP sent successfully!', { position: toast.POSITION.TOP_RIGHT });
 			setPaymentStep('checkout/otp');
@@ -170,7 +174,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 		setOrderLoading(true);
 
 		const shippingAmount = (localStorage.getItem('shippingAmount') ? JSON.parse(localStorage.getItem('shippingAmount')) : 0);
-		const phoneNumber = (localStorage.getItem('phone') ? JSON.parse(localStorage.getItem('phone')) : 0);
+		// const phoneNumber = (localStorage.getItem('phone') ? JSON.parse(localStorage.getItem('phone')) : 0);
 
 		const data = {};
 		data.payment_method = paymentMethod;
@@ -181,7 +185,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 		data.address_id = JSON.parse(localStorage.getItem('addressId'));
 		data.billing_address_id = JSON.parse(localStorage.getItem('addressId2'));
 		data.shipping_amount = shippingAmount; // TODO: Use 'deliveryFee'
-		data.phone_number = phoneNumber;
+		data.phone_number = phone;
 		data.ipay_data = iPayData.join('~~');
 		data.sale_type = buyNow ? 'buynow' : 'cart';
 
@@ -366,7 +370,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 							{/* <option value="Amex">Amex</option> */}
 						</select>
 					</div>
-					{paymentMethod === 'Mpesa' && (
+					{paymentMethod && (
 						<div className="input-field">
 							<input
 								type="tel"
@@ -465,7 +469,7 @@ function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, sub
 					<button
 						className={'btn --primary'}
 						onClick={payOnDeliveryEvent}
-						disabled={!auth && !(firstName && lastName && phone && email)}
+						disabled={!(firstName && lastName && phone && email)}
 					>Pay on Delivery
 					</button>
 				</div>
