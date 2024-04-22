@@ -50,8 +50,13 @@
 .main-banner {
   width: 100%;
   height: 100%;
+  aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
+  position: relative;
 
   .carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
     //aspect-ratio: 600 / 314;
     //aspect-ratio: 800 / 650;
@@ -65,7 +70,15 @@
 }
 
 .side-banner {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 350 / 275;
+  position: relative;
+
   .carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     aspect-ratio: 350 / 275;
     //aspect-ratio: 320 / 200;
   }
@@ -106,6 +119,12 @@
 
   .banner {
     aspect-ratio: 728 / 90;
+  }
+}
+
+.flickity-slider {
+  .img {
+    max-width: 100%;
   }
 }
 
@@ -167,6 +186,45 @@
     line-height: 0;
 
     &.is-selected {
+      background-color: var(--color-type-5);
+    }
+  }
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
+
+.slick-list {
+  width: 100%;
+  height: 100%;
+
+  .slick-track {
+    height: 100%;
+  }
+}
+
+.slick-dots {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  place-content: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  bottom: 10px;
+
+  li {
+    text-indent: -9999px;
+
+    height: 4px;
+    width: 24px;
+    margin: 0 2px;
+    opacity: 1;
+    background-color: var(--color-type-4);
+    border-radius: 0;
+    line-height: 0;
+
+    &.slick-active {
       background-color: var(--color-type-5);
     }
   }
