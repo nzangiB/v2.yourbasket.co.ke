@@ -1,7 +1,10 @@
 .recently-viewed-products {
-  .product-cards {
-    &-container {
-      //padding-inline: 20px;
+  .deals-grid {
+    .deals__header {
+      padding-inline: 20px;
+    }
+
+    .deals__list {
     }
   }
 }

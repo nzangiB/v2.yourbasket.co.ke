@@ -18,7 +18,14 @@
     flex-flow: row nowrap;
     align-items: stretch;
     //padding-inline: 20px;
-    //gap: 10px;
+    gap: 10px;
+
+    &:before, &:after {
+      content: "";
+      display: flex;
+      flex: 0 0 10px;
+      height: 10px;
+    }
 
     &-container {
     }
@@ -28,8 +35,8 @@
     &-container {
       display: flex;
       flex: 0 0 250px;
-      padding-right: 10px;
-      padding-bottom: 10px;
+      //padding-right: 10px;
+      //padding-bottom: 10px;
 
       &:last-child {
       }
