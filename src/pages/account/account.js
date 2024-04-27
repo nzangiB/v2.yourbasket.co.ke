@@ -1,18 +1,24 @@
 import Layout from "./_layout";
 
 import "./account.scss";
+import OrderDetails from "../../components/basket/orders/OrderDetails";
+import MyOrders from "../../components/basket/orders/MyOrders";
 
 const routes = [
-  { path: "/account{/}?", template: "Account" },
+  {
+    path: "/account{/}?",
+    template: Account,
+    data: { page: { title: "Account" } }
+  },
   { path: "/account/address", template: "AddressPage" },
   { path: "/account/profile", template: "Profile" },
   { path: "/account/notifications", template: "Notifications" },
-  { path: "/account/myorders", template: "Orders" }, // orders
-  { path: "/account/track-order", template: "Orders" }, // orders/:id/track
+  { path: "/account/myorders", template: MyOrders }, // receipt
+  { path: "/account/track-order", template: "Orders" }, // receipt/:id/track
   { path: "/account/deliveryaddress", template: "DeliveryAddress" },
   { path: "/account/checkout/:gateway?", template: "Checkout" },
-  { path: "/account/order-details/:id", template: "OrderDetails" }, // orders/:id
-  { path: "/account/invoice-details/:id", template: "InvoiceDetails" }, // orders/:id/invoice/:id
+  { path: "/account/order-details/:id", template: OrderDetails }, // receipt/:id
+  { path: "/account/invoice-details/:id", template: "InvoiceDetails" }, // receipt/:id/invoice/:id
   { path: "/account/favorites", template: "My Favorites" }
 ];
 //   .map((route) => {
@@ -31,3 +37,11 @@ const routes = [
 // });
 
 export default routes;
+
+function Account () {
+  return (
+    <Layout>
+      <h1>Account</h1>
+    </Layout>
+  );
+}
