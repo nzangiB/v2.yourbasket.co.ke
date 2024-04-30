@@ -10,6 +10,7 @@ import "./MiniBasketEdit.scss";
 import DataService from "../../../services/data.service";
 import HelperService from "../../../services/helper.service";
 import AuthService from "../../../services/auth.service";
+import DeliveryDetails from "../delivery/DeliveryDetails";
 
 function MiniBasketEdit ({ cart, setCart, subTotal, setSubTotal, total, setTotal, step, setStep, ...props }) {
   const [loading, setLoading] = useState(false);
@@ -96,6 +97,8 @@ function MiniBasketEdit ({ cart, setCart, subTotal, setSubTotal, total, setTotal
     return (
       <section className="mini-basket__edit">
         <OrderList {...{ cart, setCart, getCart, setStep }}/>
+
+        <DeliveryDetails />
 
         {cart.length > 0 && (
           <>

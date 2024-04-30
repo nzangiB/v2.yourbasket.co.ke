@@ -53,6 +53,8 @@ function MiniBasket ({ step, setStep, ...props }) {
     content = (
       <MiniBasketReceipt {...{
         ...props,
+        cart,
+        setCart,
         step,
         setStep
       }}/>

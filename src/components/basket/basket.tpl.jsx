@@ -47,8 +47,8 @@ function BasketTpl (props) {
 		const urlStep = url.searchParams.get('basket');
 		if (urlStep) {
 			setStepAttr(urlStep);
-			url.searchParams.delete('basket');
-			history.pushState({}, '', url.href);
+			// url.searchParams.delete('basket');
+			// history.pushState({}, '', url.href);
 		}
 	}, []);
 

@@ -95,13 +95,13 @@
   }
 
   .payment {
-    @extend %effect-swatch-cards;
+    //@extend %effect-swatch-cards;
 
     /* payment */
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-    gap: 12px;
+    //display: flex;
+    //flex-direction: column;
+    //padding: 12px;
+    //gap: 12px;
 
     /* Inside auto layout */
     flex: none;
@@ -129,6 +129,10 @@
           font: 600 var(--font-variant-sub-title);
         }
       }
+
+      // TODO: Payment details
+
+
 
       .payment__methods-list {
         /* payment_logos */

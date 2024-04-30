@@ -8,7 +8,7 @@ import DeliveryTracker from "../delivery/DeliveryTracker";
 
 import "./MiniBasketReceipt.scss";
 
-function MiniBasketReceipt ({ cart, step, setStep, ...props }) {
+function MiniBasketReceipt ({ cart, setCart, step, setStep, ...props }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -28,6 +28,8 @@ function MiniBasketReceipt ({ cart, step, setStep, ...props }) {
   const printReceiptEvent = (e) => {
 
   };
+
+  console.log("CArt", cart);
 
   if (loading) {
     return (
@@ -60,45 +62,46 @@ function MiniBasketReceipt ({ cart, step, setStep, ...props }) {
           </div>
         </header>
 
-        {/* <section className={"card-group"}> */}
-        {/*  <div className={"card-group"}> */}
-        {/*    <div className={"card-group"}> */}
-        {/*      <section className={"card"}> */}
-        {/*        <div className="order"> */}
-        {/*          <OrderDetails/> */}
-        {/*        </div> */}
-        {/*      </section> */}
+         <section className={"card-group"}>
+          <div className={"card-group"}>
+            <div className={"card-group"}>
+              <section className={"card"}>
+                <div className="order">
+                  <OrderDetails/>
+                </div>
+              </section>
 
-        {/*      <section className={"card"}> */}
-        {/*        <div className="order"> */}
-        {/*          <OrderList getCart={cart} disabled={true}/> */}
-        {/*        </div> */}
-        {/*      </section> */}
-        {/*    </div> */}
+              <section className={"card"}>
+                <div className="order">
+                  Order List
+                  {/*<OrderList getCart={cart} disabled={true}/>*/}
+                </div>
+              </section>
+            </div>
 
-        {/*    <div className={"card-group"}> */}
-        {/*      <section className={"card"}> */}
-        {/*        <div className="payment"> */}
-        {/*          <PaymentDetails/> */}
-        {/*        </div> */}
-        {/*      </section> */}
-        {/*    </div> */}
-        {/*  </div> */}
+            <div className={"card-group"}>
+              <section className={"card"}>
+                <div className="payment">
+                  <PaymentDetails/>
+                </div>
+              </section>
+            </div>
+          </div>
 
-        {/*  <div className={"card-group"}> */}
-        {/*    <section className={"card"}> */}
-        {/*      <div className="delivery"> */}
-        {/*        <DeliveryDetails/> */}
-        {/*      </div> */}
-        {/*    </section> */}
+          <div className={"card-group"}>
+            <section className={"card"}>
+              <div className="delivery">
+                <DeliveryDetails/>
+              </div>
+            </section>
 
-        {/*    <section className={"card"}> */}
-        {/*      <div className="delivery"> */}
-        {/*        <DeliveryTracker/> */}
-        {/*      </div> */}
-        {/*    </section> */}
-        {/*  </div> */}
-        {/* </section> */}
+            <section className={"card"}>
+              <div className="delivery">
+                <DeliveryTracker/>
+              </div>
+            </section>
+          </div>
+         </section>
       </section>
     );
   }
