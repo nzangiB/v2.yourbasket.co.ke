@@ -253,13 +253,37 @@ const getRecentProducts = () => {
 };
 
 const getAddress = async () => {
-	try {
-		const response = await axios.get(API_URL + "api/address");
-		return response.data; // Assuming the server response is in the expected format
-	} catch (error) {
-		console.error("Error fetching addresses:", error);
-		throw error; // Rethrow or handle as needed for your application context
-	}
+  try {
+    const response = await axios.get(API_URL + "api/address");
+    return response.data; // Assuming the server response is in the expected format
+  } catch (error) {
+    console.error("Error fetching addresses:", error);
+    throw error; // Rethrow or handle as needed for your application context
+  }
+};
+
+const formatDate = (date) => {
+  const d = new Date(date);
+  return d.toLocaleDateString();
+};
+
+const formatDateTime = (dateString) => {
+  const months = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+  const suffixes = ["th", "st", "nd", "rd"];
+
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const monthIndex = date.getMonth();
+  const year = date.getFullYear();
+  const hour = date.getHours();
+  const minute = date.getMinutes().toString().padStart(2, "0");
+
+  // Determine the correct suffix for the day
+  const relevantDigits = (day < 30) ? day % 20 : day % 30;
+  const suffix = (relevantDigits <= 3) ? suffixes[relevantDigits] : suffixes[0];
+
+  return `${months[monthIndex]} ${day}${suffix}, ${year} ${hour}:${minute}`;
 };
 
 const orderStatus = (data) => {
@@ -289,10 +313,12 @@ const HelperService = {
   emptyLocalCart,
   updateCartCount,
   getShippingRate,
-    getShippingRates,
+  getShippingRates,
   setRecentProducts,
   getRecentProducts,
-  orderStatus
+  orderStatus,
+  formatDate,
+  formatDateTime
 };
 
 export default HelperService;

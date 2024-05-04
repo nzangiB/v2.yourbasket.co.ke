@@ -7,15 +7,52 @@ import PaymentDetails from "../payments/PaymentDetails";
 import DeliveryTracker from "../delivery/DeliveryTracker";
 
 import "./MiniBasketReceipt.scss";
+import { toast } from "react-toastify";
+import DataService from "../../../services/data.service";
+import { useParams } from "next/navigation";
+import OrderSummary from "../orders/OrderSummary";
 
-function MiniBasketReceipt ({ cart, setCart, step, setStep, ...props }) {
+function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props }) {
   const [loading, setLoading] = useState(false);
+  const params = useParams();
+  const [data, setData] = useState([]);
+  const [orderItems, setOrderItems] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+    const [total, setTotal] = useState(0);
+
 
   useEffect(() => {
-    const component = document.getElementById(props.id);
-    const scrollable = component?.querySelector(".mini-basket");
-    if (scrollable) scrollable.scrollTop = 0;
-  }, [step]);
+    getData();
+  }, []);
+  const getData = async () => {
+    setLoading(true);
+    try {
+      const response = await DataService.getOrderDetail(orderId);
+      setData(response?.data?.data);
+      setOrderItems(response?.data?.data?.OrderItems);
+      setTotal(response?.data?.data?.total_amount);
+      setLoading(false);
+    } catch (error) {
+      const resMessage =
+          (error.response?.data?.message) ||
+          error.message ||
+          error.toString();
+      toast.error(resMessage, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      setLoading(false);
+    }
+  };
+  // const downloadInv = (e) => {
+  //   var element = document.getElementById('invoice_details_wrap');
+  //   html2pdf().set({ margin: 3, filename: 'order.pdf', html2canvas:  { scale: 2 }}).from(element).save();
+  // }
+
+  useEffect(() => {
+    if (orderId) {
+      getData();
+    }
+  }, [orderId]);
 
   const continueShoppingEvent = () => {
     setStep(undefined);
@@ -62,19 +99,19 @@ function MiniBasketReceipt ({ cart, setCart, step, setStep, ...props }) {
           </div>
         </header>
 
-         <section className={"card-group"}>
+        <section className={"card-group"}>
           <div className={"card-group"}>
             <div className={"card-group"}>
               <section className={"card"}>
                 <div className="order">
-                  <OrderDetails/>
+                  <OrderDetails order={data}/>
                 </div>
               </section>
 
               <section className={"card"}>
                 <div className="order">
                   Order List
-                  {/*<OrderList getCart={cart} disabled={true}/>*/}
+                  <OrderList {...{ cart: orderItems, setStep, disabled: true, editable: false }}/>
                 </div>
               </section>
             </div>
@@ -82,7 +119,10 @@ function MiniBasketReceipt ({ cart, setCart, step, setStep, ...props }) {
             <div className={"card-group"}>
               <section className={"card"}>
                 <div className="payment">
-                  <PaymentDetails/>
+                  <PaymentDetails
+                    payment={data}
+                  />
+                  {orderItems.length > 0 && <OrderSummary {...{ subTotal: total, total: total, setTotal }}/>}
                 </div>
               </section>
             </div>
@@ -101,7 +141,7 @@ function MiniBasketReceipt ({ cart, setCart, step, setStep, ...props }) {
               </div>
             </section>
           </div>
-         </section>
+        </section>
       </section>
     );
   }

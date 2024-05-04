@@ -115,7 +115,7 @@ function DeliveryDetails () {
       try {
         const response = await DataService.getAddress();
         setAddresses(response.data.data);
-        console.log("Addresses:", response.data.data);
+        // console.log("Addresses:", response.data.data);
         if (response.data.data.length > 0) {
           setSelectedAddressId(response.data.data[0].id); // Set default address if available
           updateShippingAmount(response.data.data[0].region);

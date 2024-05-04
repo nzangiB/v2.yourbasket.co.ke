@@ -14,8 +14,11 @@ function MiniBasket ({ step, setStep, ...props }) {
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const [orderId, setOrderId] = useState("474");
 
   const className = ["mini-basket", step && "--visible"].filter(Boolean).join(" ");
+
+  console.log(orderId);
 
   let title, content;
   if (step?.startsWith("edit")) {
@@ -53,6 +56,7 @@ function MiniBasket ({ step, setStep, ...props }) {
     content = (
       <MiniBasketReceipt {...{
         ...props,
+        orderId,
         cart,
         setCart,
         step,
