@@ -1,0 +1,30 @@
+.message {
+  @extend %effect-swatch-cards;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: var(--grid);
+  gap: 5px;
+
+  .title {
+    font: 600 var(--font-variant-sub-title);
+  }
+
+  .text {
+    font: 500 var(--font-variant-caption);
+  }
+
+  &[data-status="success"] {
+    background: var(--color-green) none;
+
+    .title {
+      color: var(--color-off-white);
+    }
+
+    .text {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  }
+}

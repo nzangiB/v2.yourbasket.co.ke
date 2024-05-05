@@ -1,0 +1,12 @@
+.icon {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+  height: 0.9375rem;
+  width: 0.9375rem;
+
+  &.is-medium {
+    height: 0.9375rem;
+    width: 0.9375rem;
+  }
+}

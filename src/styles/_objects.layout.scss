@@ -1,0 +1,63 @@
+@use "tools.breakpoint" as breakpoint;
+
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: var(--100vh, 100vh);
+  //width: var(--100vw, 100vw);
+  //overflow: auto;
+
+  .page {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-type-7);
+}
+
+.aside {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
+  flex: .15;
+  position: sticky;
+  top: 96px;
+
+  &__left {
+    align-items: flex-end;
+  }
+
+  &__right {
+    align-items: flex-start;
+  }
+
+  .ad, .ad-group {
+    width: 100%;
+  }
+
+  .ad {
+    max-width: unset !important;
+  }
+
+  @include breakpoint.tablet-only {
+    display: none;
+  }
+}
+
+.content {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  //max-width: 1200px;
+  //width: 80%;
+}

@@ -1,0 +1,42 @@
+@use "tools.breakpoint" as breakpoint;
+
+.title {
+  @include breakpoint.phablet {
+    font: 600 var(--font-variant-6);
+  }
+  @include breakpoint.mobile-only {
+    font: 600 var(--font-variant-sub-title);
+  }
+  line-height: 1;
+}
+
+.link {
+  white-space: nowrap;
+
+  &.--see-more {
+    font-weight: 500;
+    font-size: var(--font-size-4);
+    background-image: url("/assets/icons/right_arrow.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 16px 16px;
+    padding-right: 16px;
+    color: var(--color-type-6);
+  }
+
+  &.--see-all {
+    font-weight: 500;
+    font-size: var(--font-size-4);
+    padding: 5px 15px;
+    background: var(--color-type-8) none;
+    border-radius: 99em;
+    border: none;
+    color: var(--color-type-4);
+  }
+}
+
+.lead {
+  font: 500 var(--font-variant-4);
+  margin-bottom: var(--grid);
+  text-align: center;
+}
