@@ -33,9 +33,9 @@ function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props })
       setLoading(false);
     } catch (error) {
       const resMessage =
-          (error.response?.data?.message) ||
-          error.message ||
-          error.toString();
+				(error.response?.data?.message) ||
+				error.message ||
+				error.toString();
       toast.error(resMessage, {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -109,7 +109,6 @@ function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props })
 
               <section className={"card"}>
                 <div className="order">
-                  Order List
                   <OrderList {...{ cart: orderItems, setStep, disabled: true, editable: false }}/>
                 </div>
               </section>
@@ -134,11 +133,11 @@ function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props })
               </div>
             </section>
 
-            {/*<section className={"card"}>*/}
-            {/*  <div className="delivery">*/}
-            {/*    /!*<DeliveryTracker/>*!/*/}
-            {/*  </div>*/}
-            {/*</section>*/}
+            {/* <section className={"card"}> */}
+            {/*  <div className="delivery"> */}
+            {/*    /!*<DeliveryTracker/>*!/ */}
+            {/*  </div> */}
+            {/* </section> */}
           </div>
         </section>
       </section>
