@@ -7,7 +7,6 @@
     "@wearearchangel/handcrafted": "^1.0.0-beta.0",
     "@wearearchangel/handcrafted-plugin-template-syntax-react": "^1.0.0",
     "axios": "^1.6.7",
-    "mini-svg-data-uri": "^1.4.4",
     "next": "^14.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -21,6 +20,7 @@
     "whatwg-url": "^14.0.0"
   },
   "devDependencies": {
+    "mini-svg-data-uri": "^1.4.4",
     "@babel/core": "^7.23.0",
     "@babel/eslint-parser": "^7.23.0",
     "@babel/plugin-transform-private-property-in-object": "^7.23.0",

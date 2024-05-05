@@ -29,24 +29,27 @@ const plugins = [
     filename: "styles/[name].[contenthash].css",
     chunkFilename: "styles/[id].css"
   }),
-  // new HTMLWebpackPlugin({
-  //   filename: "index.html",
-  //   template: "./index.html",
-  //   cache: true
-  // }),
   new HTMLWebpackPlugin({
-    filename: "error.html",
-    template: "./error.html",
+    filename: "index.html",
+    template: "./index.html",
     cache: true
   })
+  // new HTMLWebpackPlugin({
+  // 	filename: 'error.html',
+  // 	template: './error.html',
+  // 	cache: true
+  // })
 ];
 
 module.exports = (env, argv) => {
   const NODE_ENV = argv.mode || process.env.NODE_ENV || "production";
-  const devMode = NODE_ENV !== "production";
+  const PUBLIC_PATH = process.env.PUBLIC_PATH || "/";
+
+  const devMode = NODE_ENV === "development";
 
   const configDefault = {
     context: path.join(__dirname, "src"),
+    // entry: ['./scripts/main.js', './styles/main.scss'],
     entry: {
       main: {
         import: ["./scripts/main.js", "./styles/main.scss"],
@@ -55,14 +58,15 @@ module.exports = (env, argv) => {
       handcrafted: [
         "whatwg-fetch",
         "whatwg-url",
-        "@wearearchangel/handcrafted"
+        // '@wearearchangel/handcrafted'
+        path.resolve("../handcrafted/packages/handcrafted")
       ],
       polyfill: "@next/polyfill-nomodule"
     },
     module: {
       rules: [
         {
-          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          test: /\.(mjs|js?x|ts?x)$/,
           include: path.resolve(__dirname, "src"),
           exclude: /node_modules/,
           use: {
@@ -82,20 +86,20 @@ module.exports = (env, argv) => {
           generator: { filename: "fonts/[name].[contenthash][ext]" }
         },
         {
-          test: /\.(png|jpe?g|webp|gif|ico)$/i,
+          test: /\.(png|jpe?g|webp|gif|ico|svg)$/i,
           type: "asset",
           generator: { filename: "images/[name].[contenthash][ext]" }
         },
-        {
-          test: /\.svg/,
-          type: "asset/inline",
-          generator: {
-            dataUrl: content => {
-              content = content.toString();
-              return MiniSvgToDataURIPlugin(content);
-            }
-          }
-        },
+        // {
+        // 	test: /\.svg/,
+        // 	type: 'asset/inline',
+        // 	generator: {
+        // 		dataUrl: content => {
+        // 			content = content.toString();
+        // 			return MiniSvgToDataURIPlugin(content);
+        // 		}
+        // 	}
+        // },
         {
           test: /\.(sa|sc|c)ss$/i,
           use: [devMode ? "style-loader" : MiniCssExtractPlugin.loader, {
@@ -106,23 +110,123 @@ module.exports = (env, argv) => {
         }
       ]
     },
+    optimization: {
+      minimize: !devMode,
+      minimizer: [
+        !devMode && new CssMinimizerPlugin(),
+        !devMode && new TerserPlugin({
+          // parallel: true,
+          terserOptions: {
+            format: {
+              comments: false
+            },
+            mangle: false,
+            keep_classnames: true,
+            keep_fnames: true,
+            // browser fixes
+            ie8: true,
+            safari10: true
+          },
+          extractComments: false
+        }),
+        !devMode && new HTMLWebpackPlugin({
+          filename: "index.html",
+          template: "./index.html",
+          minify: {
+            removeAttributeQuotes: true,
+            removeComments: true,
+            collapseWhitespace: false,
+            cache: true
+          }
+        })
+      ].filter(Boolean),
+      runtimeChunk: "single",
+      usedExports: devMode
+      // splitChunks: {
+      //   // chunks: 'all',
+      //   // 	maxSize: 200000,
+      //   cacheGroups: {
+      //     // 	common: {
+      //     // 		test: /[\\/]node_modules[\\/]/,
+      //     // 		priority: -5,
+      //     // 		reuseExistingChunk: true,
+      //     // 		chunks: 'initial',
+      //     // 		name: 'common_app',
+      //     // 		minSize: 0,
+      //     // 	},
+      //     // 	default: {
+      //     // 		minChunks: 2,
+      //     // 		priority: -20,
+      //     // 		reuseExistingChunk: true,
+      //     // 	},
+      //     // 	defaultVendors: false,
+      //     // 	reactPackage: {
+      //     // 		test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
+      //     // 		name: 'vendor_react',
+      //     // 		chunks: 'all',
+      //     // 		priority: 10,
+      //     // 	},
+      //     shared: {
+      //       test: /[\\/]pages[\\/]/,
+      //       name: "shared",
+      //       minSize: 0,
+      //       chunks: "all",
+      //       priority: 5,
+      //       reuseExistingChunk: true
+      //     },
+      //     account: {
+      //       test: /[\\/]pages[\\/]account[\\/]/,
+      //       name: "account",
+      //       minSize: 0,
+      //       chunks: "all",
+      //       priority: 10,
+      //       reuseExistingChunk: true
+      //     },
+      //     basket: {
+      //       test: /[\\/]pages[\\/]basket[\\/]/,
+      //       name: "basket",
+      //       minSize: 0,
+      //       chunks: "all",
+      //       priority: 10,
+      //       reuseExistingChunk: true
+      //     },
+      //     home: {
+      //       test: /[\\/]pages[\\/]home[\\/]/,
+      //       name: "home",
+      //       minSize: 0,
+      //       chunks: "all",
+      //       priority: 10,
+      //       reuseExistingChunk: true
+      //     },
+      //     products: {
+      //       test: /[\\/]pages[\\/]products[\\/]/,
+      //       name: "products",
+      //       minSize: 0,
+      //       chunks: "all",
+      //       priority: 10,
+      //       reuseExistingChunk: true
+      //     }
+      //   }
+      // }
+    },
     output: {
       filename: `scripts/${devMode ? "[name]" : `[name]-[contenthash]`}.js`,
       chunkFilename: `scripts/${devMode ? "[id]" : `[id]-[contenthash]`}.chunk.js`,
       path: path.resolve(devMode ? ".cache" : "dist"),
-      publicPath: "/",
+      publicPath: PUBLIC_PATH,
       clean: true
     },
-    target: "web",
+    target: "browserslist",
     resolve: {
       preferRelative: true,
-      extensions: [".js", ".jsx", ".module.scss"],
-      fallback: {
-        http: require.resolve("stream-http")
-      },
+      extensions: [".js", ".jsx"],
       alias: {
-        react: path.resolve("./node_modules/react")
-      }
+        react: path.resolve("./node_modules/react"),
+        "react-dom/client": path.resolve("./node_modules/react-dom/client.js"),
+        "react-dom/server": path.resolve("./node_modules/react-dom/server.js")
+        // '@wearearchangel/handcrafted': path.resolve('../handcrafted/packages/handcrafted')
+      },
+      cache: true
     }
   };
 
@@ -144,7 +248,6 @@ module.exports = (env, argv) => {
         compress: true,
         hot: true
       },
-      optimization: {},
       plugins: plugins.concat([
         new HTMLWebpackPlugin({
           filename: "index.html",
@@ -155,38 +258,6 @@ module.exports = (env, argv) => {
     },
     production: {
       mode: "production",
-      optimization: {
-        minimize: true,
-        minimizer: [
-          new CssMinimizerPlugin(),
-          new TerserPlugin({
-            // parallel: true,
-            terserOptions: {
-              format: {
-                comments: false
-              },
-              mangle: false,
-              keep_classnames: true,
-              keep_fnames: true,
-              // browser fixes
-              ie8: true,
-              safari10: true
-            },
-            extractComments: false
-          }),
-          new HTMLWebpackPlugin({
-            filename: "index.html",
-            template: "./index.html",
-            minify: {
-              removeAttributeQuotes: true,
-              removeComments: true,
-              collapseWhitespace: false,
-              cache: true
-            }
-          })
-        ],
-        usedExports: true
-      },
       plugins: plugins.concat([
         // new WorkboxPlugin.GenerateSW({
         //   clientsClaim: true,
