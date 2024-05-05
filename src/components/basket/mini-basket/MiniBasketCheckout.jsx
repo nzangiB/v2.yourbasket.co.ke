@@ -33,7 +33,6 @@ function MiniBasketCheckout ({
   const getCart = async () => {
     await DataService.getCart("cart").then((data) => {
       const response = data?.data?.data;
-      console.log("CArt Details", response);
       setCart(response);
 
       let total = 0;

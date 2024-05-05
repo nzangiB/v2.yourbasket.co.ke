@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import OrderList from "../orders/OrderList";
 import OrderDetails from "../orders/OrderDetails";
-import DeliveryDetails from "../delivery/DeliveryDetails";
+import DeliveryDetails, { DeliveryCard } from "../delivery/DeliveryDetails";
 import PaymentDetails from "../payments/PaymentDetails";
 import DeliveryTracker from "../delivery/DeliveryTracker";
 
@@ -18,8 +18,7 @@ function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props })
   const [data, setData] = useState([]);
   const [orderItems, setOrderItems] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
-    const [total, setTotal] = useState(0);
-
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     getData();
@@ -122,7 +121,7 @@ function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props })
                   <PaymentDetails
                     payment={data}
                   />
-                  {orderItems.length > 0 && <OrderSummary {...{ subTotal: total, total: total, setTotal }}/>}
+                  {orderItems.length > 0 && <OrderSummary {...{ subTotal: total, total, setTotal }}/>}
                 </div>
               </section>
             </div>
@@ -135,11 +134,11 @@ function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props })
               </div>
             </section>
 
-            <section className={"card"}>
-              <div className="delivery">
-                <DeliveryTracker/>
-              </div>
-            </section>
+            {/*<section className={"card"}>*/}
+            {/*  <div className="delivery">*/}
+            {/*    /!*<DeliveryTracker/>*!/*/}
+            {/*  </div>*/}
+            {/*</section>*/}
           </div>
         </section>
       </section>

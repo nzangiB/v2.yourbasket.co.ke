@@ -1,52 +1,96 @@
 import "./DeliveryDetails.scss";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import HelperService from "../../../services/helper.service";
 import DataService from "../../../services/data.service";
 import { toast } from "react-toastify";
 
 // TODO: Delivery details form
-import React from 'react';
-
-function AddressForm({
-                       showFormId,
-                       formData,
-                       handleFormChange,
-                       handleSubmit,
-                       zones,
-                       setSelectedRegion,
-                       selectedRegion,
-                       loading
-                     }) {
+function AddressForm ({
+  showFormId,
+  formData,
+  handleFormChange,
+  handleSubmit,
+  zones,
+  setSelectedRegion,
+  selectedRegion,
+  loading
+}) {
   if (!showFormId) return null;
 
   return (
-      <div className="form-container">
-        <form onSubmit={handleSubmit} className="form-details">
-          <div className={"input-field"}>
-            <h3 className="title">{formData.id ? "Edit Address" : "Add New Address"}</h3>
-          </div>
-          <div className={"input-field"}>
-            <select className="input" name="addresstype" value={formData.addresstype} onChange={handleFormChange}>
-              <option value="">Select Address Type</option>
-              <option value="home">Home</option>
-              <option value="office">Office</option>
-            </select>
-          </div>
-          {/* More input fields here */}
-          <div className={"footer"}>
-            <button type="submit" className="btn --primary" disabled={loading}>
-              {loading && <span className="spinner-border spinner-border-sm"></span>}
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="form-details">
+        <div className={"input-field"}>
+          <h3 className="title">{formData.id ? "Edit Address" : "Add New Address"}</h3>
+        </div>
+        <div className={"input-field"}>
+          <select className="input" name="addresstype" value={formData.addresstype} onChange={handleFormChange}>
+            <option value="">Select Address Type</option>
+            <option value="home">Home</option>
+            <option value="office">Office</option>
+          </select>
+        </div>
+        {/* More input fields here */}
+        <div className={"footer"}>
+          <button type="submit" className="btn --primary" disabled={loading}>
+            {loading && <span className="spinner-border spinner-border-sm"></span>}
               Save Address
-            </button>
-          </div>
-        </form>
-      </div>
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
-
-
 // TODO: Delivery Details card
+export function DeliveryCard ({
+  address,
+  handleAddressChange,
+  selectedAddressId,
+  startEditing,
+  deleteAddress
+}) {
+  return (
+    <div key={address.id} className="payment__details__card">
+      <div className={"card__header"}>
+        <div>
+          <input
+            type="radio"
+            id={`address-${address.id}`}
+            name="address"
+            value={address.id}
+            checked={parseInt(selectedAddressId) === address.id}
+            onChange={handleAddressChange}
+          />
+          <label htmlFor={`address-${address.id}`} className={"title"}>
+            {`${address.first_name} ${address.last_name}`}
+          </label>
+        </div>
+        <div className={"action__btns"}>
+          <button onClick={(e) => startEditing(e, address)} className="btn --secondary">
+            <object data={require("../../../assets/icons/edit.svg")} name={"Edit"}/>
+          </button>
+          <button onClick={() => deleteAddress(address.id)} className="btn --secondary">
+            <object data={require("../../../assets/icons/trash.svg")} name={"Delete"}/>
+          </button>
+        </div>
+      </div>
+      <div className="content">
+        <div className="address__badge">{address.type === "office" ? "Office" : "Home"}</div>
+        <div className="text">
+          <div className="d-flex">
+            <div className="phone">{address.phone}</div>
+          </div>
+          <div className="address">
+            {`${address.address}, ${address.city}, ${address.region}`}
+            <br/>
+            {address.landmark}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function DeliveryDetails () {
   const [addresses, setAddresses] = useState([]);
@@ -69,10 +113,15 @@ function DeliveryDetails () {
   const [shippingRate, setShippingRate] = useState(0);
   const [editingAddress, setEditingAddress] = useState(null);
   const [showFormId, setShowFormId] = useState(null);
+  const [billingAddressId, setBillingAddressId] = useState("");
+  const [sameAsShipping, setSameAsShipping] = useState(false);
+  const [showAddressDetails, setShowAddressDetails] = useState(false);
+
 
   const startEditing = (e, address) => {
     e.preventDefault();
 
+    console.log(address);
     setShowFormId(address.id);
 
     setEditingAddress(address);
@@ -130,7 +179,8 @@ function DeliveryDetails () {
 
   useEffect(() => {
     const loadShippingRates = async () => {
-      const rates = HelperService.getShippingRates();
+      const rates = await HelperService.getShippingRates();
+      console.log(rates);
       setZones(rates);
     };
 
@@ -148,6 +198,7 @@ function DeliveryDetails () {
 
   const handleRegionChange = (event) => {
     const { value } = event.target;
+    console.log("Selected region:", value);
     setSelectedRegion(value);
     const foundRate = zones.flatMap(zone => zone.regions).find(region => region.name === value)?.rate;
     setShippingRate(foundRate || 0);
@@ -200,8 +251,15 @@ function DeliveryDetails () {
     e.preventDefault();
     setLoading(true);
 
+    if (!selectedAddressId) {
+      toast.error("Please select a shipping address.", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
+
     // Basic validation
-    if (!firstName || !lastName || !phone || !address || !city || !regions) {
+    if (!firstName || !lastName || !phone || !address || !city || !selectedRegion) {
       toast.error("Please fill in all required fields.", {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -219,11 +277,20 @@ function DeliveryDetails () {
       address,
       landmark,
       gender,
-      regions
+      region: selectedRegion
     };
-    const action = editingAddress ? DataService.updateAddress : DataService.addAddress;
 
-    action(data).then(() => {
+    const action = editingAddress ? () => DataService.updateAddress(data, editingAddress.id) : DataService.addAddress;
+
+    action(data).then((response) => {
+      const updatedAddress = response.data;
+
+      if (editingAddress) {
+        const updatedAddresses = addresses.map(addr => addr.id === updatedAddress.id ? updatedAddress : addr);
+        setAddresses(updatedAddresses);
+      } else {
+        setAddresses([...addresses, updatedAddress]); // Append the new address to the list
+      }
       toast.success(`Address ${editingAddress ? "updated" : "added"} successfully!`, {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -231,7 +298,7 @@ function DeliveryDetails () {
       setShowForm(false);
       setShowFormId(null);
       // Reload or update the addresses list
-    }).catch((error) => {
+    }).catch(() => {
       toast.error(`Failed to ${editingAddress ? "update" : "add"} address.`, {
         position: toast.POSITION.TOP_RIGHT
       });
@@ -296,12 +363,12 @@ function DeliveryDetails () {
                 onChange={handleChange}/>
             </div>
             <div className={"input-field"}>
-              <select className={"input"} onChange={handleRegionChange} value={selectedRegion}>
+              <select className="input" onChange={handleRegionChange} value={selectedRegion}>
                 <option value="">Select a region</option>
                 {zones.map(zone => (
-                  <optgroup label={zone.name} key={zone.name} className={"title"}>
+                  <optgroup label={zone.name} key={zone.id}>
                     {zone.regions.map(region => (
-                      <option key={`${region.name}-${region.provider}`} value={region.name} className={"input"}>
+                      <option key={`${region.name}-${region.provider}`} value={region.name}>
                         {`${region.name} - ${region.provider} (KES ${region.rate})`}
                       </option>
                     ))}
@@ -321,51 +388,43 @@ function DeliveryDetails () {
         </div>
       )}
       <div>
-        <form>
+        <form className="content">
           {addresses.map(address => (
-            <div key={address.id} className="payment__details__card">
-              <div className={"card__header"}>
-                <div>
-                  <input
-                    type="radio"
-                    id={`address-${address.id}`}
-                    name="address"
-                    value={address.id}
-                    checked={parseInt(selectedAddressId) === address.id}
-                    onChange={handleAddressChange}
-                  />
-                  <label htmlFor={`address-${address.id}`} className={"title"}>
-                    {`${address.first_name} ${address.last_name}`}
-                  </label>
-                </div>
-                <div className={"action__btns"}>
-                  <button onClick={(e) => startEditing(e, address)} className="btn --secondary">Edit</button>
-                  <button onClick={() => deleteAddress(address.id)} className="btn --danger">Delete</button>
-                </div>
-              </div>
-              <div className="content">
-                <div className="address__badge">{address.type === "office" ? "Office" : "Home"}</div>
-                <div className="text">
-                  <div className="d-flex">
-                    <div className="phone">{address.phone}</div>
-                  </div>
-                  <div className="address">
-                    {`${address.address}, ${address.city}, ${address.region}`}
-                    <br/>
-                    {address.landmark}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <DeliveryCard
+              key={address.id}
+              address={address}
+              selectedAddressId={selectedAddressId}
+              startEditing={startEditing}
+              handleAddressChange={handleAddressChange} />
           ))}
         </form>
         <section>
-          {/*<div className="content">*/}
-          {/*  <div className="title">Shipping Cost:</div>*/}
-          {/*  <div className="text">*/}
-          {/*    {shippingAmount === 0 ? `${shippingRate ? `KES ${shippingRate}` : "Free"}` : `KES ${shippingAmount.toFixed(2)}`}*/}
-          {/*  </div>*/}
-          {/*</div>*/}
+          <div className="content">
+            <label
+              className="form-check-label"
+            >
+              <input type="checkbox"
+                checked={sameAsShipping}
+                onChange={(e) => setSameAsShipping(e.target.checked)}/>
+              Billing address same as shipping address
+            </label>
+          </div>
+
+          {!sameAsShipping && (
+            <div className="content">
+              <div className="input-field"><h3 className="title">Select Billing Address</h3></div>
+              {addresses.map((address) => (
+                <DeliveryCard
+                  key={address.id}
+                  address={address}
+                  selectedAddressId={billingAddressId}
+                  startEditing={startEditing}
+                  handleAddressChange={handleAddressChange}
+                />
+              ))}
+            </div>
+          )}
+
         </section>
       </div>
     </div>
