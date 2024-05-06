@@ -141,10 +141,11 @@ module.exports = (env, argv) => {
           watch: true
         },
         historyApiFallback: true,
-        compress: true,
-        hot: true
+        compress: true
       },
-      optimization: {},
+      optimization: {
+        runtimeChunk: "single"
+      },
       plugins: plugins.concat([
         new HTMLWebpackPlugin({
           filename: "index.html",
