@@ -28,12 +28,12 @@ const plugins = [
   new MiniCssExtractPlugin({
     filename: "styles/[name].[contenthash].css",
     chunkFilename: "styles/[id].css"
-  }),
-  new HTMLWebpackPlugin({
-    filename: "index.html",
-    template: "./index.html",
-    cache: true
   })
+  // new HTMLWebpackPlugin({
+  //   filename: "index.html",
+  //   template: "./index.html",
+  //   cache: true
+  // })
   // new HTMLWebpackPlugin({
   // 	filename: 'error.html',
   // 	template: './error.html',
@@ -66,7 +66,7 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.(mjs|js?x|ts?x)$/,
+          test: /\.(mjs|js|jsx|ts|tsx)$/,
           include: path.resolve(__dirname, "src"),
           exclude: /node_modules/,
           use: {
