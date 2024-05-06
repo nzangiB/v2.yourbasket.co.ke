@@ -1,8 +1,10 @@
-.order {
-  .__content {
-    display: flex;
-    flex-flow: column nowrap;
-    padding: 12px 0;
-    gap: 12px;
+.order__details {
+  .card {
+    &__content {
+      display: flex;
+      flex-flow: column nowrap;
+      padding: 12px 0;
+      gap: 12px;
+    }
   }
 }

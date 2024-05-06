@@ -4,7 +4,7 @@ import "./OrderDetails.scss";
 
 function OrderDetails ({ order, ...props }) {
   return (
-    <>
+    <div className="order__details">
       <header className="__header">
         <div className="title">Order Details</div>
       </header>
@@ -32,7 +32,7 @@ function OrderDetails ({ order, ...props }) {
           </div>
         </section>
       </section>
-    </>
+    </div>
   );
 }
 
