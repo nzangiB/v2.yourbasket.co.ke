@@ -4,11 +4,6 @@
   background-color: rgba(0, 0, 0, .12);
   //border-radius: 5px;
   overflow: hidden;
-
-  &:after {
-    content: 'flickity';
-    display: none; /* hide :after */
-  }
 }
 
 [class*="-banner"] {
@@ -57,13 +52,13 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
+    //aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
     //aspect-ratio: 600 / 314;
     //aspect-ratio: 800 / 650;
   }
 
   .banner {
-    aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
+    //aspect-ratio: calc(350 * 3) / calc(275 * 2 + 20);
     //aspect-ratio: 600 / 314;
     //aspect-ratio: 800 / 650;
   }
@@ -79,46 +74,45 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    aspect-ratio: 350 / 275;
+    //aspect-ratio: 350 / 275;
     //aspect-ratio: 320 / 200;
   }
 
   .banner {
-    aspect-ratio: 350 / 275;
+    //aspect-ratio: 350 / 275;
     //aspect-ratio: 320 / 200;
   }
 }
 
 .vendor-banner {
+  aspect-ratio: 1300 / 228;
+
   .carousel {
-    aspect-ratio: 1300 / 228;
   }
 
   .banner {
-    aspect-ratio: 1300 / 228;
   }
 }
 
 .offer-banner {
+  aspect-ratio: 1300 / 228;
+
   .carousel {
-    aspect-ratio: 1300 / 228;
   }
 
   .banner {
-    aspect-ratio: 1300 / 228;
   }
 }
 
 .category-banner {
   padding: 20px;
   margin-bottom: 20px;
+  aspect-ratio: 728 / 90;
 
   .carousel {
-    aspect-ratio: 728 / 90;
   }
 
   .banner {
-    aspect-ratio: 728 / 90;
   }
 }
 
