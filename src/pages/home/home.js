@@ -30,39 +30,39 @@ function Home (props) {
           <Hero/>
           <TodayDeals/>
 
-          <div className="ad-group --row">
-            <Ad
-              src={require("../../assets/images/ads/middle-banner-1.png")}
-              redirectTo={"/products/filter/top-deals"}
-              width={920} height={90}/>
-          </div>
+          {/* <div className="ad-group --row"> */}
+          {/*  <Ad */}
+          {/*    src={require("../../assets/images/ads/middle-banner-1.png")} */}
+          {/*    redirectTo={"/products/filter/top-deals"} */}
+          {/*    width={920} height={90}/> */}
+          {/* </div> */}
 
           <ClearanceDeals/>
 
-          <div className="ad-group --row">
-            <Ad
-              src={require("../../assets/images/ads/middle-banner-2.png")}
-              redirectTo={"/products/filter/new-arrivals"}
-              width={920} height={90}/>
-          </div>
+          {/* <div className="ad-group --row"> */}
+          {/*  <Ad */}
+          {/*    src={require("../../assets/images/ads/middle-banner-2.png")} */}
+          {/*    redirectTo={"/products/filter/new-arrivals"} */}
+          {/*    width={920} height={90}/> */}
+          {/* </div> */}
 
           <CrazyOffers/>
 
-          <div className="ad-group --row">
-            <Ad
-              src={require("../../assets/images/ads/middle-banner-3.png")}
-              redirectTo={"/products/filter/best-sellers"}
-              width={920} height={90}/>
-          </div>
+          {/* <div className="ad-group --row"> */}
+          {/*  <Ad */}
+          {/*    src={require("../../assets/images/ads/middle-banner-3.png")} */}
+          {/*    redirectTo={"/products/filter/best-sellers"} */}
+          {/*    width={920} height={90}/> */}
+          {/* </div> */}
 
           <LatestProducts/>
 
-          <div className="ad-group --row">
-            <Ad
-              src={require("../../assets/images/ads/middle-banner-4.png")}
-              redirectTo={"/products"}
-              width={920} height={90}/>
-          </div>
+          {/* <div className="ad-group --row"> */}
+          {/*  <Ad */}
+          {/*    src={require("../../assets/images/ads/middle-banner-4.png")} */}
+          {/*    redirectTo={"/products"} */}
+          {/*    width={920} height={90}/> */}
+          {/* </div> */}
         </main>
 
         <aside className="aside aside__right">
