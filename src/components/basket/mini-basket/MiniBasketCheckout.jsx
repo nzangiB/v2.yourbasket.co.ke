@@ -114,7 +114,7 @@ function MiniBasketCheckout ({
         )}
 
         <div className="delivery">
-          <DeliveryDetails/>
+          <DeliveryDetails {...{ disabled: true, editable: true }}/>
         </div>
 
         <div className={"order"}>

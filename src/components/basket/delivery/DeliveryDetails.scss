@@ -50,6 +50,18 @@
       }
     }
 
+    &:has(.card) {
+      .form {
+        padding: 0 24px 24px;
+
+        &-container {
+          background: rgba(0, 0, 0, 0.05) none;
+          border-radius: var(--border-radius);
+          width: 100%;
+        }
+      }
+    }
+
     &:not(:has(.form)) {
       .card {
         padding: unset;
@@ -67,16 +79,6 @@
         .input-field:has(.checkbox) {
           width: unset;
         }
-      }
-    }
-
-    .form {
-      padding: 0 24px 24px;
-
-      &-container {
-        background: rgba(0, 0, 0, 0.05) none;
-        border-radius: var(--border-radius);
-        width: 100%;
       }
     }
   }

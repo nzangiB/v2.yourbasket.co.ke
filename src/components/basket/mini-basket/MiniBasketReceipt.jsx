@@ -131,7 +131,7 @@ function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props })
           <div className={"card-group"}>
             <section className={"card"}>
               <div className="delivery">
-                <DeliveryDetails/>
+                <DeliveryDetails {...{ disabled: true, editable: false }}/>
               </div>
             </section>
 

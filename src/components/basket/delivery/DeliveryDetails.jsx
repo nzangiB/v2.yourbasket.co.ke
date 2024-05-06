@@ -94,7 +94,7 @@ export function DeliveryCard ({
   );
 }
 
-function DeliveryDetails () {
+function DeliveryDetails ({ disabled, editable }) {
   const [addresses, setAddresses] = useState([]);
   const [selectedAddressId, setSelectedAddressId] = useState("");
   const [shippingAmount, setShippingAmount] = useState(0);
@@ -116,7 +116,7 @@ function DeliveryDetails () {
   const [editingAddress, setEditingAddress] = useState(null);
   const [showFormId, setShowFormId] = useState(null);
   const [billingAddressId, setBillingAddressId] = useState("");
-  const [sameAsShipping, setSameAsShipping] = useState(true);
+  const [sameAsShipping, setSameAsShipping] = useState(Boolean(editable));
   const [showAddressDetails, setShowAddressDetails] = useState(false);
 
   const startEditing = (e, address) => {
@@ -319,7 +319,7 @@ function DeliveryDetails () {
       </header>
 
       <section className={"delivery__details-shipping"}>
-        {showForm
+        {editable && (showForm
           ? (
             <div className="form">
               <form onSubmit={handleSubmit} className="form-container">
@@ -408,7 +408,7 @@ function DeliveryDetails () {
                 </button>
               </div>
             </div>
-          )}
+          ))}
 
         {selectedAddressId && (
           <form className="content">
@@ -425,21 +425,24 @@ function DeliveryDetails () {
       </section>
 
       <section className={"delivery__details-billing"}>
-        <section className="card">
-          <div className="content">
-            <label htmlFor={"sameAsShippingCheckbox"} className="input-field">
-              <input
-                type="checkbox"
-                checked={sameAsShipping}
-                id={"sameAsShippingCheckbox"}
-                onChange={(e) => setSameAsShipping(e.target.checked)}
-                className={"checkbox"}
-              />
-              <span className="label">Billing address same as shipping address</span>
-            </label>
-          </div>
-        </section>
+        {editable && (
+          <section className="card">
+            <div className="content">
+              <label htmlFor={"sameAsShippingCheckbox"} className="input-field">
+                <input
+                  type="checkbox"
+                  checked={sameAsShipping}
+                  id={"sameAsShippingCheckbox"}
+                  onChange={(e) => setSameAsShipping(e.target.checked)}
+                  className={"checkbox"}
+                />
+                <span className="label">Billing address same as shipping address</span>
+              </label>
+            </div>
+          </section>
+        )}
 
+        {/* TODO: Mixed component / should account for editable=false */}
         {!sameAsShipping && (
           <section className="form">
             <form className="form-container">
