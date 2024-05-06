@@ -26,9 +26,13 @@
     gap: 20px
   }
 
-  .title {
-    font: 500 var(--font-variant-sub-title);
-    margin-bottom: var(--grid);
+  &__header {
+    &:has(.btn) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 }
 
@@ -102,11 +106,21 @@
     }
   }
 
-  &:has(.icon) {
-    //.input {
-    //  width: 100%;
-    //}
+  &:has(.checkbox) {
+    flex-direction: row;
+    align-items: flex-start;
 
+    .checkbox {
+      width: 16px;
+      height: 16px;
+    }
+
+    .label {
+      height: 16px;
+    }
+  }
+
+  &:has(.icon) {
     .icon {
       position: absolute;
       top: 15px;

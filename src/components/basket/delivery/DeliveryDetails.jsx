@@ -20,23 +20,25 @@ function AddressForm ({
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="form-details">
-        <div className={"input-field"}>
-          <h3 className="title">{formData.id ? "Edit Address" : "Add New Address"}</h3>
-        </div>
-        <div className={"input-field"}>
-          <select className="input" name="addresstype" value={formData.addresstype} onChange={handleFormChange}>
-            <option value="">Select Address Type</option>
-            <option value="home">Home</option>
-            <option value="office">Office</option>
-          </select>
-        </div>
-        {/* More input fields here */}
-        <div className={"footer"}>
+        <section>
+          <div className={"input-field"}>
+            <h3 className="title">{formData.id ? "Edit Address" : "Add New Address"}</h3>
+          </div>
+          <div className={"input-field"}>
+            <select className="input" name="addresstype" value={formData.addresstype} onChange={handleFormChange}>
+              <option value="">Select Address Type</option>
+              <option value="home">Home</option>
+              <option value="office">Office</option>
+            </select>
+          </div>
+          {/* More input fields here */}
+        </section>
+        <footer className={"footer"}>
           <button type="submit" className="btn --primary" disabled={loading}>
             {loading && <span className="spinner-border spinner-border-sm"></span>}
-              Save Address
+						Save Address
           </button>
-        </div>
+        </footer>
       </form>
     </div>
   );
@@ -114,9 +116,8 @@ function DeliveryDetails () {
   const [editingAddress, setEditingAddress] = useState(null);
   const [showFormId, setShowFormId] = useState(null);
   const [billingAddressId, setBillingAddressId] = useState("");
-  const [sameAsShipping, setSameAsShipping] = useState(false);
+  const [sameAsShipping, setSameAsShipping] = useState(true);
   const [showAddressDetails, setShowAddressDetails] = useState(false);
-
 
   const startEditing = (e, address) => {
     e.preventDefault();
@@ -312,121 +313,154 @@ function DeliveryDetails () {
   };
 
   return (
-    <div className={"payment__details"}>
-      <header>
+    <div className={"delivery__details"}>
+      <header className={"delivery__details-header"}>
         <div className="title">Delivery Details</div>
-
-        <button onClick={toggleForm} className="btn --primary">
-          {showForm ? "Hide Form" : "Add New Address"}
-        </button>
       </header>
-      {showForm && (
-        <div className="form-container">
-          <form onSubmit={handleSubmit} className="form-details">
-            <div className={"input-field"}>
-              <h3 className="title">Add New Address</h3>
-            </div>
-            <div className={"input-field"}>
-              <select className="input" name="addresstype" value={addresstype} onChange={handleChange}>
-                <option value="">Select Address Type</option>
-                <option value="home">Home</option>
-                <option value="office">Office</option>
-              </select>
-            </div>
-            <div className={"input-field"}>
-              <input type="text" name="firstName" placeholder="First Name" className="input" value={firstName}
-                onChange={handleChange}/>
-              <input type="text" name="lastName" placeholder="Last Name" className="input" value={lastName}
-                onChange={handleChange}/>
-            </div>
-            <div className={"input-field"}>
-              <input type="text" placeholder="Address" name="address" className="input" value={address}
-                onChange={handleChange}/>
-              <select className="input" value={gender} name="gender" onChange={handleChange}>
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
 
-            <div className={"input-field"}>
-              <input type="text" placeholder="Phone" name="phone" className="input" value={phone}
-                onChange={handleChange}/>
-              <input type="text" placeholder="Alternate Phone" name="alternatephone" className="input"
-                value={alternatephone}
-                onChange={handleChange}/>
-              <input type="text" placeholder="City" name="city" className="input" value={city} onChange={handleChange}/>
-            </div>
+      <section className={"delivery__details-shipping"}>
+        {showForm
+          ? (
+            <div className="form">
+              <form onSubmit={handleSubmit} className="form-container">
+                <header>
+                  <h3 className="title">Add New Address</h3>
+                </header>
 
-            <div className={"input-field"}>
-              <input type="text" placeholder="Landmark" name="landmark" className="input" value={landmark}
-                onChange={handleChange}/>
-            </div>
-            <div className={"input-field"}>
-              <select className="input" onChange={handleRegionChange} value={selectedRegion}>
-                <option value="">Select a region</option>
-                {zones.map(zone => (
-                  <optgroup label={zone.name} key={zone.id}>
-                    {zone.regions.map(region => (
-                      <option key={`${region.name}-${region.provider}`} value={region.name}>
-                        {`${region.name} - ${region.provider} (KES ${region.rate})`}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-            </div>
+                <section>
+                  <div className={"input-field"}>
+                    <select className="input" name="addresstype" value={addresstype} onChange={handleChange}>
+                      <option value="">Select Address Type</option>
+                      <option value="home">Home</option>
+                      <option value="office">Office</option>
+                    </select>
+                  </div>
+                  <div className={"input-field"}>
+                    <input type="text" name="firstName" placeholder="First Name" className="input" value={firstName}
+										       onChange={handleChange}/>
+                    <input type="text" name="lastName" placeholder="Last Name" className="input" value={lastName}
+										       onChange={handleChange}/>
+                  </div>
+                  <div className={"input-field"}>
+                    <input type="text" placeholder="Address" name="address" className="input" value={address}
+										       onChange={handleChange}/>
+                    <select className="input" value={gender} name="gender" onChange={handleChange}>
+                      <option value="">Select Gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
 
-            <div className={"footer"}>
-              <button type="submit" className="btn --primary" disabled={loading}>
-                {loading && <span className="spinner-border spinner-border-sm"></span>}
-                Save Address
-              </button>
+                  <div className={"input-field"}>
+                    <input type="text" placeholder="Phone" name="phone" className="input" value={phone}
+										       onChange={handleChange}/>
+                    <input type="text" placeholder="Alternate Phone" name="alternatephone" className="input"
+										       value={alternatephone}
+										       onChange={handleChange}/>
+                    <input type="text" placeholder="City" name="city" className="input" value={city}
+										       onChange={handleChange}/>
+                  </div>
+
+                  <div className={"input-field"}>
+                    <input type="text" placeholder="Landmark" name="landmark" className="input" value={landmark}
+										       onChange={handleChange}/>
+                  </div>
+                  <div className={"input-field"}>
+                    <select className="input" onChange={handleRegionChange} value={selectedRegion}>
+                      <option value="">Select a region</option>
+                      {zones.map(zone => (
+                        <optgroup label={zone.name} key={zone.id}>
+                          {zone.regions.map(region => (
+                            <option key={`${region.name}-${region.provider}`} value={region.name}>
+                              {`${region.name} - ${region.provider} (KES ${region.rate})`}
+                            </option>
+                          ))}
+                        </optgroup>
+                      ))}
+                    </select>
+                  </div>
+                </section>
+
+                <footer>
+                  <div className="btn-group">
+                    <button type="submit" className="btn --primary" disabled={loading}>
+                      {loading && <span className="spinner-border spinner-border-sm"></span>}
+											Save Address
+                    </button>
+                    <button onClick={toggleForm} className="btn --secondary">
+											Cancel
+                    </button>
+                  </div>
+                </footer>
+              </form>
             </div>
-          </form>
-
-        </div>
-      )}
-      <div>
-        <form className="content">
-          {addresses.map(address => (
-            <DeliveryCard
-              key={address.id}
-              address={address}
-              selectedAddressId={selectedAddressId}
-              startEditing={startEditing}
-              handleAddressChange={handleAddressChange} />
-          ))}
-        </form>
-        <section>
-          <div className="content">
-            <label
-              className="form-check-label"
-            >
-              <input type="checkbox"
-                checked={sameAsShipping}
-                onChange={(e) => setSameAsShipping(e.target.checked)}/>
-              Billing address same as shipping address
-            </label>
-          </div>
-
-          {!sameAsShipping && (
-            <div className="content">
-              <div className="input-field"><h3 className="title">Select Billing Address</h3></div>
-              {addresses.map((address) => (
-                <DeliveryCard
-                  key={address.id}
-                  address={address}
-                  selectedAddressId={billingAddressId}
-                  startEditing={startEditing}
-                  handleAddressChange={handleAddressChange}
-                />
-              ))}
+          )
+          : (
+            <div className="card">
+              <div className="content">
+                <button onClick={toggleForm} className="btn --primary">
+                  <object
+                    className="icon"
+                    data={require("../icons/plus.svg")}
+                    name={"Add New Address"}
+                  />
+                  <span>Add New Address</span>
+                </button>
+              </div>
             </div>
           )}
 
+        {selectedAddressId && (
+          <form className="content">
+            {addresses.map(address => (
+              <DeliveryCard
+                key={address.id}
+                address={address}
+                selectedAddressId={selectedAddressId}
+                startEditing={startEditing}
+                handleAddressChange={handleAddressChange}/>
+            ))}
+          </form>
+        )}
+      </section>
+
+      <section className={"delivery__details-billing"}>
+        <section className="card">
+          <div className="content">
+            <label htmlFor={"sameAsShippingCheckbox"} className="input-field">
+              <input
+                type="checkbox"
+                checked={sameAsShipping}
+                id={"sameAsShippingCheckbox"}
+                onChange={(e) => setSameAsShipping(e.target.checked)}
+                className={"checkbox"}
+              />
+              <span className="label">Billing address same as shipping address</span>
+            </label>
+          </div>
         </section>
-      </div>
+
+        {!sameAsShipping && (
+          <section className="form">
+            <form className="form-container">
+              <header>
+                <h3 className="title">Select Billing Address</h3>
+              </header>
+              <section>
+                {addresses.map((address) => (
+                  <DeliveryCard
+                    key={address.id}
+                    address={address}
+                    selectedAddressId={billingAddressId}
+                    startEditing={startEditing}
+                    handleAddressChange={handleAddressChange}
+                  />
+                ))}
+              </section>
+            </form>
+          </section>
+        )}
+      </section>
     </div>
   );
 }
