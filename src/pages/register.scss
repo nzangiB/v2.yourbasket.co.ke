@@ -1,2 +1,9 @@
 .page-register {
+  .form {
+    margin-inline: auto;
+
+    .title {
+      margin-bottom: var(--grid);
+    }
+  }
 }

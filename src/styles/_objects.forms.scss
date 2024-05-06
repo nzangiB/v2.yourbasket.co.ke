@@ -12,12 +12,17 @@
   padding: calc(var(--grid) * 2) var(--grid);
   gap: 10px;
 
+  .title {
+    font: 500 var(--font-variant-sub-title);
+  }
+
   &-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: var(--grid);
+    text-align: left;
     gap: 20px
   }
 
