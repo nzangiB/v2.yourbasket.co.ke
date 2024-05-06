@@ -4,16 +4,28 @@
   align-items: stretch;
   gap: 24px;
 
-  .header {
-    padding: 0;
-  }
-
   .card {
     max-width: 100%;
+    gap: 24px;
+
+    .header {
+      padding: 0;
+    }
+
+    .contents {
+    }
+
+    &:has(.order__summary) {
+    }
 
     &:has(.order__summary) {
       .order__summary {
-        padding: 12px 0;
+        padding: 0;
+
+        .summary__item:last-of-type {
+          padding-bottom: 0;
+          margin-bottom: 0;
+        }
       }
     }
 

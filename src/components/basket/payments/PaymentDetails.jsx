@@ -7,11 +7,12 @@ function PaymentDetails ({ payment }) {
   console.log("Payment Details", payment);
   return (
     <>
-      <header>
+      <header className="__header">
         <div className="title">Payment Details</div>
       </header>
-      <section className="grid-layout">
-        <div className="content">
+
+      <section className="__contents">
+        <section className="contents">
           <div className="content">
             <div className="title">Payment Method:</div>
             <div className="text">{payment.payment_method}</div>
@@ -20,17 +21,18 @@ function PaymentDetails ({ payment }) {
             <div className="title">Payment Name:</div>
             <div className="text">{userName}</div>
           </div>
-
-        </div>
-        <div className="content">
-          <div className="title">Payment Date</div>
-          <div className="text">
-            {HelperService.formatDateTime(payment.createdAt)}
+        </section>
+        <section className="contents">
+          <div className="content">
+            <div className="title">Payment Date</div>
+            <div className="text">
+              {HelperService.formatDateTime(payment.createdAt)}
+            </div>
           </div>
-        </div>
-        <div className="content">
+        </section>
+        <section className="contents">
           {/* <OrderSummary getCart={cart}/> */}
-        </div>
+        </section>
       </section>
     </>
   );

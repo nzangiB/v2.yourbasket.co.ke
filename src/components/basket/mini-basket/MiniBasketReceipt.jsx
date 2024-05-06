@@ -117,11 +117,13 @@ function MiniBasketReceipt ({ orderId, cart, setCart, step, setStep, ...props })
             <div className={"card-group"}>
               <section className={"card"}>
                 <div className="payment">
-                  <PaymentDetails
-                    payment={data}
-                  />
-                  {orderItems.length > 0 && <OrderSummary {...{ subTotal: total, total, setTotal }}/>}
+                  <PaymentDetails payment={data}/>
                 </div>
+                {orderItems.length > 0 && (
+                  <div className="order">
+                    <OrderSummary {...{ subTotal: total, total, setTotal }}/>
+                  </div>
+                )}
               </section>
             </div>
           </div>

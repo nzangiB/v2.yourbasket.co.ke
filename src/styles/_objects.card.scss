@@ -19,12 +19,39 @@
     width: 100%;
   }
 
+  .__header {
+  }
+
+  .__contents {
+    &:not(:empty) {
+      margin-top: 15px;
+    }
+
+    &:has(.content) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 12px;
+    }
+  }
+
+  .__footer {
+    &:not(:empty) {
+      margin-top: 15px;
+    }
+  }
+
   .title {
     font: 600 var(--font-variant-sub-title);
   }
 
   .text {
     font: 500 var(--font-variant-caption);
+  }
+
+  .contents {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .content {
