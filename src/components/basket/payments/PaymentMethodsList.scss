@@ -1,0 +1,28 @@
+.payment {
+  &__methods-list {
+    /* payment_logos */
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    padding: 0;
+    gap: 10px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+    .list-item {
+      flex: 0 0 56px;
+
+      object {
+        /* Payment Method */
+        width: 56px;
+        aspect-ratio: 52.5/36px;
+
+        background: #FFFFFF;
+        border-radius: 6px;
+      }
+    }
+  }
+}

@@ -1,12 +1,14 @@
 import OrderSummary from "../orders/OrderSummary";
 import HelperService from "../../../services/helper.service";
 
+import "./PaymentDetails.scss";
+
 function PaymentDetails ({ payment }) {
   const userName = payment.User ? `${payment.User.first_name} ${payment.User.last_name || ""}`.trim() : "No user details";
 
   console.log("Payment Details", payment);
   return (
-    <>
+    <div className="payment__details">
       <header className="__header">
         <div className="title">Payment Details</div>
       </header>
@@ -34,7 +36,7 @@ function PaymentDetails ({ payment }) {
           {/* <OrderSummary getCart={cart}/> */}
         </section>
       </section>
-    </>
+    </div>
   );
 }
 

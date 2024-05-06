@@ -8,6 +8,8 @@ import DataService from "../../../services/data.service";
 
 import Otp from "../security/OTP";
 
+import "./PaymentMethodsListDetailed.scss";
+
 function PaymentMethodsListDetailed ({ params, query, step, setStep, buyNow, subTotal, total }) {
   const form = useRef(null);
   const [paymentStep, setPaymentStep] = useState(step || "checkout");

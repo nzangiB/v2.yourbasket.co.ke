@@ -1,3 +1,5 @@
+import "./PaymentMethodsList.scss";
+
 function PaymentMethodsList () {
   return (
     <div className={"payment__methods-list"}>
