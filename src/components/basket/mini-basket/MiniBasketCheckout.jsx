@@ -5,6 +5,7 @@ import AuthService from "../../../services/auth.service";
 
 import OrderList from "../orders/OrderList";
 import OrderSummary from "../orders/OrderSummary";
+import DeliveryDetails from "../delivery/DeliveryDetails";
 import PaymentMethodsListDetailed from "../payments/PaymentMethodsListDetailed";
 
 import "./MiniBasketCheckout.scss";
@@ -111,6 +112,10 @@ function MiniBasketCheckout ({
             </p>
           </div>
         )}
+
+        <div className="delivery">
+          <DeliveryDetails/>
+        </div>
 
         <div className={"order"}>
           <OrderList {...{ cart, setStep, disabled: true, editable: true }}/>

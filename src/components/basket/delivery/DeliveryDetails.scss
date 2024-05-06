@@ -22,7 +22,7 @@
   }
 
   &-shipping {
-    margin-top: 24px;
+    margin-top: 12px;
 
     .card, .form {
       background: rgba(0, 0, 0, 0.05) none;
@@ -41,7 +41,7 @@
   }
 
   &-billing {
-    margin-top: 24px;
+    margin-top: 12px;
 
     &:has(.form) {
       @extend %effect-swatch-cards;

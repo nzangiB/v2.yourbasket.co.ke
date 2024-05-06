@@ -1,3 +1,5 @@
+@use "../../../styles/tools.effects";
+
 .mini-basket__checkout {
   display: flex;
   flex-direction: column;
@@ -24,5 +26,10 @@
         color: #2C5F2D;
       }
     }
+  }
+
+  .delivery__details {
+    @extend %effect-swatch-cards;
+    padding: 24px;
   }
 }

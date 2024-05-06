@@ -12,11 +12,6 @@
     padding: 12px;
   }
 
-  .delivery__details {
-    @extend %effect-swatch-cards;
-    padding: 24px;
-  }
-
   .btn-group {
     /* buttons */
     display: flex;
